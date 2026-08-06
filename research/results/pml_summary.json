@@ -1,0 +1,91 @@
+{
+  "data": {
+    "markets": 39427,
+    "state_rows": 236562,
+    "days": 73
+  },
+  "validation_winner": {
+    "split": "valid",
+    "min_spread_c": 5,
+    "cancel_after_min": 1,
+    "cap": 6,
+    "selection": "widest",
+    "n_markets": 220,
+    "active_markets": 157,
+    "both_rate": 0.42272727272727273,
+    "single_rate": 0.2909090909090909,
+    "none_rate": 0.2863636363636364,
+    "total_pnl_q15": -332.69999999999993,
+    "mean_day_q15": -18.48333333333333,
+    "sd_day_q15": 18.643749938376292,
+    "t_stat": -4.206135691198702,
+    "edge_per_posted_pair_c": -10.081818181818182,
+    "edge_per_active_pair_c": -14.127388535031846,
+    "max_drawdown_q15": 343.35000000000014,
+    "worst_window_q15": -14.25,
+    "positive_day_fraction": 0.16666666666666666,
+    "objective": -6.880246436244658
+  },
+  "test": {
+    "split": "test",
+    "min_spread_c": 5.0,
+    "cancel_after_min": 1,
+    "cap": 6,
+    "selection": "widest",
+    "n_markets": 82,
+    "active_markets": 57,
+    "both_rate": 0.35365853658536583,
+    "single_rate": 0.34146341463414637,
+    "none_rate": 0.3048780487804878,
+    "total_pnl_q15": -172.2,
+    "mean_day_q15": -8.61,
+    "sd_day_q15": 14.14623438828938,
+    "t_stat": -2.721932177542731,
+    "edge_per_posted_pair_c": -13.999999999999998,
+    "edge_per_active_pair_c": -20.14035087719298,
+    "max_drawdown_q15": 172.2,
+    "worst_window_q15": -9.3,
+    "positive_day_fraction": 0.05
+  },
+  "day_bootstrap": {
+    "mean_day": -8.61,
+    "ci_lo": -15.052874999999998,
+    "ci_hi": -3.037125000000005,
+    "p_nonpositive": 1.0
+  },
+  "block_bootstrap": [
+    {
+      "minutes": 15,
+      "n_blocks": 80,
+      "observed": -172.2,
+      "ci_lo": -237.89999999999998,
+      "ci_hi": -110.39625000000004,
+      "p_nonpositive": 1.0
+    },
+    {
+      "minutes": 30,
+      "n_blocks": 76,
+      "observed": -172.2,
+      "ci_lo": -237.00000000000003,
+      "ci_hi": -111.14999999999999,
+      "p_nonpositive": 1.0
+    },
+    {
+      "minutes": 60,
+      "n_blocks": 66,
+      "observed": -172.2,
+      "ci_lo": -244.20375,
+      "ci_hi": -105.14625000000004,
+      "p_nonpositive": 1.0
+    },
+    {
+      "minutes": 90,
+      "n_blocks": 62,
+      "observed": -172.2,
+      "ci_lo": -247.5,
+      "ci_hi": -103.49625000000003,
+      "p_nonpositive": 1.0
+    }
+  ],
+  "hard_pass": false
+}
