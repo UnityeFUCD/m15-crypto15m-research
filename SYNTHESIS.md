@@ -1,5 +1,19 @@
 # What this project established
 
+> **CORRECTION (2026-08-06).** Figures on this page quoting **-0.43c** as the
+> fill-corrected population edge used the OLD fill model (0.843/0.962), which
+> was estimated on 286 orders BEFORE the 17 late-closing outcomes were
+> recovered. With the corrected model measured on all 303 (0.8848/0.9884) the
+> population edge is **+0.02c per submitted contract, 95% CI [-1.57, +1.62],
+> P(<=0) 0.49** on 8,187 in-band markets over 73 days.
+>
+> The corrected reading is **indistinguishable from zero**, not negative.
+> Statements below that the strategy is "below zero" or "not profitable"
+> overstate the evidence; the defensible claim is that no edge is measurable
+> either way. The -0.43c figure was also per FILLED contract while +0.02c is
+> per SUBMITTED - two different denominators that were being compared.
+
+
 Everything below is re-derivable from `data/` via `research/project_synthesis.py`.
 Figures are quoted per contract in cents, because dollars depend on size and
 size has changed.
