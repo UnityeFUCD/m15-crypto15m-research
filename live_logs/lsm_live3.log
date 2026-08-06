@@ -1,0 +1,22 @@
+resumed: 10 markets already entered, $7.30 deployed
+KILL FILE: C:\Users\fycin\m15-claude-independent\live\LSM_KILL
+MODE: *** LIVE ***  qty=10  band=(0.65, 0.85)  minutes_left=(8.0, 14.0)  MAX_GROSS=$80.0  stop=$50.0
+NEVER CROSSES - post_only only, no taker path exists in this program
+{"ev": "start", "utc": "2026-08-04T14:10:43.299168+00:00", "dry_run": false, "qty": 10, "band": [0.65, 0.85], "min_left": [8.0, 14.0], "max_gross": 80.0, "max_loss": 50.0, "per_window": 2}
+{"ev": "start_balance", "utc": "2026-08-04T14:10:43.596631+00:00", "balance": 211.5894}
+{"ev": "deployed_reconciled", "utc": "2026-08-04T14:10:43.649517+00:00", "internal": 7.3, "exchange": 13.9, "drift": 6.6, "open_positions": 2}
+{"ev": "heartbeat", "utc": "2026-08-04T14:10:43.713685+00:00", "resting": 0, "orders": 0, "entered": 10, "gross": 13.9, "deployed": 13.9, "realised": 13.9}
+{"ev": "heartbeat", "utc": "2026-08-04T14:10:48.906116+00:00", "resting": 0, "orders": 0, "entered": 10, "gross": 13.9, "deployed": 13.9, "realised": 13.9}
+{"ev": "heartbeat", "utc": "2026-08-04T14:10:54.066158+00:00", "resting": 0, "orders": 0, "entered": 10, "gross": 13.9, "deployed": 13.9, "realised": 13.9}
+{"ev": "heartbeat", "utc": "2026-08-04T14:10:59.291237+00:00", "resting": 0, "orders": 0, "entered": 10, "gross": 13.9, "deployed": 13.9, "realised": 13.9}
+{"ev": "heartbeat", "utc": "2026-08-04T14:11:04.468576+00:00", "resting": 0, "orders": 0, "entered": 10, "gross": 13.9, "deployed": 13.9, "realised": 13.9}
+{"ev": "heartbeat", "utc": "2026-08-04T14:11:09.666488+00:00", "resting": 0, "orders": 0, "entered": 10, "gross": 13.9, "deployed": 13.9, "realised": 13.9}
+{"ev": "heartbeat", "utc": "2026-08-04T14:11:14.878619+00:00", "resting": 0, "orders": 0, "entered": 10, "gross": 13.9, "deployed": 13.9, "realised": 13.9}
+{"ev": "heartbeat", "utc": "2026-08-04T14:11:20.025398+00:00", "resting": 0, "orders": 0, "entered": 10, "gross": 13.9, "deployed": 13.9, "realised": 13.9}
+{"ev": "heartbeat", "utc": "2026-08-04T14:11:25.173240+00:00", "resting": 0, "orders": 0, "entered": 10, "gross": 13.9, "deployed": 13.9, "realised": 13.9}
+{"ev": "heartbeat", "utc": "2026-08-04T14:11:30.321351+00:00", "resting": 0, "orders": 0, "entered": 10, "gross": 13.9, "deployed": 13.9, "realised": 13.9}
+{"ev": "heartbeat", "utc": "2026-08-04T14:11:35.464233+00:00", "resting": 0, "orders": 0, "entered": 10, "gross": 13.9, "deployed": 13.9, "realised": 13.9}
+{"ev": "heartbeat", "utc": "2026-08-04T14:11:40.605613+00:00", "resting": 0, "orders": 0, "entered": 10, "gross": 13.9, "deployed": 13.9, "realised": 13.9}
+{"ev": "heartbeat", "utc": "2026-08-04T14:11:45.838589+00:00", "resting": 0, "orders": 0, "entered": 10, "gross": 13.9, "deployed": 13.9, "realised": 13.9}
+{"ev": "heartbeat", "utc": "2026-08-04T14:11:51.063866+00:00", "resting": 0, "orders": 0, "entered": 10, "gross": 13.9, "deployed": 13.9, "realised": 13.9}
+{"ev": "halted", "utc": "2026-08-04T14:11:56.069050+00:00"}

@@ -1,0 +1,7 @@
+{"utc": "2026-08-05T14:44:28.669147+00:00", "event": "watchdog_start", "baseline_equity": 363.3058, "cash": 363.3058, "open_positions": 0, "cycle_s": 60, "persistent_peak": 450.53, "watch_frac": 0.22, "stop_frac": 0.2, "halt_at": 351.41, "absolute_ceiling": 150.0, "hwm_ok": true}
+{"utc": "2026-08-05T14:45:29.112099+00:00", "event": "ok", "equity": 363.3058, "cash": 363.3058, "open_positions": 0, "peak": 450.53, "dd_from_peak": 87.22, "dd_frac": 0.1936, "halt_at": 351.41, "runner_alive": true}
+{"utc": "2026-08-05T14:46:29.500019+00:00", "event": "ok", "equity": 363.3058, "cash": 356.0458, "open_positions": 1, "peak": 450.53, "dd_from_peak": 87.22, "dd_frac": 0.1936, "halt_at": 351.41, "runner_alive": true}
+{"utc": "2026-08-05T14:47:29.502025+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T14:48:29.503154+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T14:49:29.504070+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T14:50:29.504838+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}

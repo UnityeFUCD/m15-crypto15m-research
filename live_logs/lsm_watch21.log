@@ -1,0 +1,39 @@
+{"utc": "2026-08-05T14:05:15.674303+00:00", "event": "watchdog_start", "baseline_equity": 400.12579999999997, "cash": 363.3058, "open_positions": 3, "cycle_s": 60, "persistent_peak": 450.53, "watch_frac": 0.22, "stop_frac": 0.2, "halt_at": 351.41, "absolute_ceiling": 150.0, "hwm_ok": true}
+{"utc": "2026-08-05T14:06:16.083254+00:00", "event": "ok", "equity": 400.1258, "cash": 363.3058, "open_positions": 3, "peak": 450.53, "dd_from_peak": 50.4, "dd_frac": 0.1119, "halt_at": 351.41, "runner_alive": true}
+{"utc": "2026-08-05T14:07:16.464106+00:00", "event": "ok", "equity": 400.1258, "cash": 363.3058, "open_positions": 3, "peak": 450.53, "dd_from_peak": 50.4, "dd_frac": 0.1119, "halt_at": 351.41, "runner_alive": true}
+{"utc": "2026-08-05T14:08:16.851346+00:00", "event": "ok", "equity": 400.1258, "cash": 363.3058, "open_positions": 3, "peak": 450.53, "dd_from_peak": 50.4, "dd_frac": 0.1119, "halt_at": 351.41, "runner_alive": true}
+{"utc": "2026-08-05T14:09:17.303700+00:00", "event": "ok", "equity": 400.1258, "cash": 363.3058, "open_positions": 3, "peak": 450.53, "dd_from_peak": 50.4, "dd_frac": 0.1119, "halt_at": 351.41, "runner_alive": true}
+{"utc": "2026-08-05T14:10:17.683094+00:00", "event": "ok", "equity": 400.1258, "cash": 363.3058, "open_positions": 3, "peak": 450.53, "dd_from_peak": 50.4, "dd_frac": 0.1119, "halt_at": 351.41, "runner_alive": true}
+{"utc": "2026-08-05T14:11:17.723797+00:00", "event": "api_unreachable", "msg": "skipping cycle, not halting"}
+{"utc": "2026-08-05T14:12:18.169729+00:00", "event": "ok", "equity": 400.1258, "cash": 363.3058, "open_positions": 3, "peak": 450.53, "dd_from_peak": 50.4, "dd_frac": 0.1119, "halt_at": 351.41, "runner_alive": true}
+{"utc": "2026-08-05T14:13:18.559882+00:00", "event": "ok", "equity": 400.1258, "cash": 363.3058, "open_positions": 3, "peak": 450.53, "dd_from_peak": 50.4, "dd_frac": 0.1119, "halt_at": 351.41, "runner_alive": true}
+{"utc": "2026-08-05T14:14:19.021929+00:00", "event": "ok", "equity": 400.1258, "cash": 363.3058, "open_positions": 3, "peak": 450.53, "dd_from_peak": 50.4, "dd_frac": 0.1119, "halt_at": 351.41, "runner_alive": true}
+{"utc": "2026-08-05T14:15:19.394386+00:00", "event": "ok", "equity": 363.3058, "cash": 363.3058, "open_positions": 0, "peak": 450.53, "dd_from_peak": 87.22, "dd_frac": 0.1936, "halt_at": 351.41, "runner_alive": true}
+{"utc": "2026-08-05T14:16:19.801091+00:00", "event": "ok", "equity": 363.3058, "cash": 363.3058, "open_positions": 0, "peak": 450.53, "dd_from_peak": 87.22, "dd_frac": 0.1936, "halt_at": 351.41, "runner_alive": true}
+{"utc": "2026-08-05T14:17:19.802283+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T14:18:19.803006+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T14:19:19.803612+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T14:20:19.804099+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T14:21:19.804941+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T14:22:19.806040+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T14:23:19.806860+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T14:24:19.807665+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T14:25:19.808201+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T14:26:19.808944+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T14:27:19.809796+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T14:28:19.810843+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T14:29:19.811649+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T14:30:19.812706+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T14:31:19.813381+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T14:32:19.813988+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T14:33:19.814734+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T14:34:19.815324+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T14:35:19.816065+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T14:36:19.817223+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T14:37:19.818042+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T14:38:19.818845+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T14:39:19.819830+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T14:40:19.820830+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T14:41:19.821565+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T14:42:19.822541+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T14:43:19.823197+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}

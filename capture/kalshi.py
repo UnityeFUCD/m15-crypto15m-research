@@ -69,15 +69,37 @@ class KalshiClient:
                 if "=" in line and not line.strip().startswith("#"):
                     k, v = line.split("=", 1)
                     cfg[k.strip()] = v.strip().strip('"').strip("'")
-        self.key_id = os.environ.get("KALSHI_API_KEY_ID") or cfg.get(
-            "KALSHI_API_KEY_ID")
-        pem = os.environ.get("KALSHI_PRIVATE_KEY_PATH") or str(
-            self.cred_dir / "kalshi_private_key.pem")
+        # PRECEDENCE MATTERS AND MUST BE VISIBLE.
+        # A stale KALSHI_API_KEY_ID in the environment silently overrode the
+        # .env file once and produced a bare 401 with no clue that two
+        # different key ids were in play. The file is the source of truth for
+        # this deployment; the environment only fills gaps, and whichever won
+        # is recorded on `cred_source` so a 401 is diagnosable.
+        file_key = cfg.get("KALSHI_API_KEY_ID")
+        env_key = os.environ.get("KALSHI_API_KEY_ID")
+        if file_key:
+            self.key_id, self.cred_source = file_key, f"{env}"
+            if env_key and env_key != file_key:
+                self.cred_conflict = (
+                    f"environment KALSHI_API_KEY_ID ({env_key[:8]}...) differs "
+                    f"from {env} ({file_key[:8]}...); using the file")
+            else:
+                self.cred_conflict = None
+        else:
+            self.key_id, self.cred_source = env_key, "environment"
+            self.cred_conflict = None
+
+        pem = (cfg.get("KALSHI_RSA_PRIVATE_KEY_PATH")
+               or os.environ.get("KALSHI_PRIVATE_KEY_PATH")
+               or os.environ.get("KALSHI_RSA_PRIVATE_KEY_PATH")
+               or str(self.cred_dir / "kalshi_private_key.pem"))
+        if not Path(pem).is_absolute():
+            pem = str(self.cred_dir / pem)
         if not self.key_id or not Path(pem).exists():
             raise RuntimeError(
                 f"credentials not found (key_id={'set' if self.key_id else 'MISSING'}, "
-                f"pem={pem}). Set KALSHI_CRED_DIR or KALSHI_API_KEY_ID + "
-                f"KALSHI_PRIVATE_KEY_PATH. Never commit them.")
+                f"pem={pem}). Set KALSHI_CRED_DIR, or KALSHI_API_KEY_ID + "
+                f"KALSHI_RSA_PRIVATE_KEY_PATH. Never commit them.")
         self._priv = serialization.load_pem_private_key(
             Path(pem).read_bytes(), password=None)
         self._s = requests.Session()

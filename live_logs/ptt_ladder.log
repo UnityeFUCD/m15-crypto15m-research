@@ -1,0 +1,59 @@
+KILL FILE (touch to halt): C:\Users\fycin\m15-claude-independent\live\PTT_KILL
+MODE: *** LIVE ***   qty=11
+{"ev": "start", "utc": "2026-08-04T10:49:38.318129+00:00", "dry_run": false, "qty": 11, "kill": "C:\\Users\\fycin\\m15-claude-independent\\live\\PTT_KILL", "arms": [0, 15, 30, 60, 120], "placements": ["bid_plus_1", "ask_minus_1"], "max_loss": 80.0, "max_gross": 150.0}
+SIZE LADDER: (3, 8, 20, 45)   MAX_GROSS $150.0   stop $80.0
+{"ev": "start_balance", "utc": "2026-08-04T10:49:38.627250+00:00", "balance": 211.3109}
+{"ev": "heartbeat", "utc": "2026-08-04T10:49:38.698964+00:00", "resting": 0, "orders": 0, "entered": 0, "gross": 0.0, "realised": 0.0}
+{"ev": "heartbeat", "utc": "2026-08-04T10:49:43.836682+00:00", "resting": 0, "orders": 0, "entered": 0, "gross": 0.0, "realised": 0.0}
+{"ev": "heartbeat", "utc": "2026-08-04T10:49:48.939337+00:00", "resting": 0, "orders": 0, "entered": 0, "gross": 0.0, "realised": 0.0}
+{"ev": "heartbeat", "utc": "2026-08-04T10:49:54.124551+00:00", "resting": 0, "orders": 0, "entered": 0, "gross": 0.0, "realised": 0.0}
+{"ev": "heartbeat", "utc": "2026-08-04T10:49:59.274348+00:00", "resting": 0, "orders": 0, "entered": 0, "gross": 0.0, "realised": 0.0}
+{"ev": "opportunity", "utc": "2026-08-04T10:50:04.616823+00:00", "ticker": "KXSOL15M-26AUG040700-00", "minute": 5, "side": "yes", "arm": 0, "placement": "ask_minus_1", "fav_mid": 0.9385, "bid": 0.934, "ask": 0.943, "rest_at": 0.942, "c_imm_per": 0.947133, "c_imm_per_c": 94.713, "top_ask_c": 94.68, "depth_avail": 3, "worst_px": 0.944}
+{"ev": "order", "utc": "2026-08-04T10:50:04.660669+00:00", "ticker": "KXSOL15M-26AUG040700-00", "side": "yes", "v2_side": "bid", "price": 0.944, "v2_price": 0.944, "qty": 3, "post_only": false, "tag": "control_ioc", "status": 201, "immediate_fill": 3, "remaining": "0.00", "ack_ms": 1785840604700, "resp": "{'average_fee_paid': '0.0038', 'average_fill_price': '0.9433', 'client_order_id': 'ptt1785840604619', 'fill_count': '3.00', 'order_id': 'c8106d67-ba38-40ab-8672-315dd23d8108', 'remaining_count': '0.00"}
+{"ev": "shortfall", "utc": "2026-08-04T10:50:04.756836+00:00", "ticker": "KXSOL15M-26AUG040700-00", "window": "2026-08-04T11:00:00Z", "minute": 5, "arm": 0, "placement": "ask_minus_1", "target": 3, "passive_qty": 0, "taker_qty": 2, "abandoned": 1, "acquired": 2, "F_Q": 0.0, "completed": false, "rest_px": 0.942, "c_imm_per": 0.947133, "c_ptt": 1.8936, "c_imm": 1.894267, "IS_total": -0.000667, "IS_per_contract_c": -0.0333, "cost_src": "fills", "depth_at_decision": 3, "spread0_c": 0.9}
+{"ev": "heartbeat", "utc": "2026-08-04T10:50:04.996810+00:00", "resting": 0, "orders": 1, "entered": 1, "gross": 0.0, "realised": 0.0}
+{"ev": "opportunity", "utc": "2026-08-04T10:50:10.200109+00:00", "ticker": "KXXRP15M-26AUG040700-00", "minute": 5, "side": "yes", "arm": 0, "placement": "bid_plus_1", "fav_mid": 0.9515, "bid": 0.95, "ask": 0.953, "rest_at": 0.951, "c_imm_per": 0.956167, "c_imm_per_c": 95.617, "top_ask_c": 95.62, "depth_avail": 3, "worst_px": 0.953}
+{"ev": "order", "utc": "2026-08-04T10:50:10.241052+00:00", "ticker": "KXXRP15M-26AUG040700-00", "side": "yes", "v2_side": "bid", "price": 0.953, "v2_price": 0.953, "qty": 3, "post_only": false, "tag": "control_ioc", "status": 201, "immediate_fill": 3, "remaining": "0.00", "ack_ms": 1785840610281, "resp": "{'average_fee_paid': '0.0031', 'average_fill_price': '0.9530', 'client_order_id': 'ptt1785840610201', 'fill_count': '3.00', 'order_id': 'bbd7a00e-0dcf-490b-ba83-d8ae888be2eb', 'remaining_count': '0.00"}
+{"ev": "dropped_row", "utc": "2026-08-04T10:50:10.337096+00:00", "ticker": "KXXRP15M-26AUG040700-00", "reason": "control_fills_unavailable"}
+{"ev": "heartbeat", "utc": "2026-08-04T10:50:10.391807+00:00", "resting": 0, "orders": 2, "entered": 2, "gross": 2.83, "realised": -2.8415}
+{"ev": "opportunity", "utc": "2026-08-04T10:50:15.532101+00:00", "ticker": "KXETH15M-26AUG040700-00", "minute": 5, "side": "yes", "arm": 60, "placement": "bid_plus_1", "fav_mid": 0.9405, "bid": 0.94, "ask": 0.941, "rest_at": 0.941, "c_imm_per": 0.9449, "c_imm_per_c": 94.49, "top_ask_c": 94.49, "depth_avail": 3, "worst_px": 0.941}
+{"ev": "order", "utc": "2026-08-04T10:50:15.578676+00:00", "ticker": "KXETH15M-26AUG040700-00", "side": "yes", "v2_side": "bid", "price": 0.941, "v2_price": 0.941, "qty": 3, "post_only": true, "tag": "rest", "status": 400, "immediate_fill": 0, "remaining": null, "ack_ms": null, "resp": "{'error': {'code': 'invalid_order', 'message': 'invalid order', 'details': 'post only cross'}}"}
+{"ev": "shortfall", "utc": "2026-08-04T10:50:15.578676+00:00", "ticker": "KXETH15M-26AUG040700-00", "window": "2026-08-04T11:00:00Z", "minute": 5, "arm": 60, "placement": "bid_plus_1", "target": 3, "passive_qty": 0, "taker_qty": 0, "abandoned": 3, "acquired": 0, "F_Q": 0.0, "completed": false, "rest_px": 0.941, "c_imm_per": 0.9449, "c_ptt": 0.0, "c_imm": 0.0, "IS_total": 0.0, "IS_per_contract_c": null, "cost_src": "mixed", "depth_at_decision": 3, "spread0_c": 0.1}
+{"ev": "heartbeat", "utc": "2026-08-04T10:50:15.608033+00:00", "resting": 0, "orders": 3, "entered": 3, "gross": 8.5, "realised": -5.71}
+{"ev": "heartbeat", "utc": "2026-08-04T10:50:20.699776+00:00", "resting": 0, "orders": 3, "entered": 3, "gross": 8.5, "realised": -5.71}
+{"ev": "heartbeat", "utc": "2026-08-04T10:50:25.793012+00:00", "resting": 0, "orders": 3, "entered": 3, "gross": 8.5, "realised": -5.71}
+{"ev": "heartbeat", "utc": "2026-08-04T10:50:30.883971+00:00", "resting": 0, "orders": 3, "entered": 3, "gross": 8.5, "realised": -5.71}
+{"ev": "heartbeat", "utc": "2026-08-04T10:50:35.998989+00:00", "resting": 0, "orders": 3, "entered": 3, "gross": 8.5, "realised": -5.71}
+{"ev": "heartbeat", "utc": "2026-08-04T10:50:41.178848+00:00", "resting": 0, "orders": 3, "entered": 3, "gross": 8.5, "realised": -5.71}
+{"ev": "heartbeat", "utc": "2026-08-04T10:50:46.276686+00:00", "resting": 0, "orders": 3, "entered": 3, "gross": 8.5, "realised": -5.71}
+{"ev": "heartbeat", "utc": "2026-08-04T10:50:51.376905+00:00", "resting": 0, "orders": 3, "entered": 3, "gross": 8.5, "realised": -5.71}
+{"ev": "heartbeat", "utc": "2026-08-04T10:50:56.559680+00:00", "resting": 0, "orders": 3, "entered": 3, "gross": 8.5, "realised": -5.71}
+{"ev": "heartbeat", "utc": "2026-08-04T10:51:01.661882+00:00", "resting": 0, "orders": 3, "entered": 3, "gross": 8.5, "realised": -5.71}
+{"ev": "heartbeat", "utc": "2026-08-04T10:51:06.813272+00:00", "resting": 0, "orders": 3, "entered": 3, "gross": 8.5, "realised": -5.71}
+{"ev": "heartbeat", "utc": "2026-08-04T10:51:11.915303+00:00", "resting": 0, "orders": 3, "entered": 3, "gross": 8.5, "realised": -5.71}
+{"ev": "heartbeat", "utc": "2026-08-04T10:51:17.018615+00:00", "resting": 0, "orders": 3, "entered": 3, "gross": 8.5, "realised": -5.71}
+{"ev": "heartbeat", "utc": "2026-08-04T10:51:22.305844+00:00", "resting": 0, "orders": 3, "entered": 3, "gross": 8.5, "realised": -5.71}
+{"ev": "heartbeat", "utc": "2026-08-04T10:51:27.450624+00:00", "resting": 0, "orders": 3, "entered": 3, "gross": 8.5, "realised": -5.71}
+{"ev": "heartbeat", "utc": "2026-08-04T10:51:32.605947+00:00", "resting": 0, "orders": 3, "entered": 3, "gross": 8.5, "realised": -5.71}
+{"ev": "heartbeat", "utc": "2026-08-04T10:51:37.753455+00:00", "resting": 0, "orders": 3, "entered": 3, "gross": 8.5, "realised": -5.71}
+{"ev": "heartbeat", "utc": "2026-08-04T10:51:42.863677+00:00", "resting": 0, "orders": 3, "entered": 3, "gross": 8.5, "realised": -5.71}
+{"ev": "heartbeat", "utc": "2026-08-04T10:51:47.961494+00:00", "resting": 0, "orders": 3, "entered": 3, "gross": 8.5, "realised": -5.71}
+{"ev": "heartbeat", "utc": "2026-08-04T10:51:53.080032+00:00", "resting": 0, "orders": 3, "entered": 3, "gross": 8.5, "realised": -5.71}
+{"ev": "heartbeat", "utc": "2026-08-04T10:51:58.180227+00:00", "resting": 0, "orders": 3, "entered": 3, "gross": 8.5, "realised": -5.71}
+{"ev": "heartbeat", "utc": "2026-08-04T10:52:03.282176+00:00", "resting": 0, "orders": 3, "entered": 3, "gross": 8.5, "realised": -5.71}
+{"ev": "heartbeat", "utc": "2026-08-04T10:52:08.388560+00:00", "resting": 0, "orders": 3, "entered": 3, "gross": 8.5, "realised": -5.71}
+{"ev": "heartbeat", "utc": "2026-08-04T10:52:13.542667+00:00", "resting": 0, "orders": 3, "entered": 3, "gross": 8.5, "realised": -5.71}
+{"ev": "heartbeat", "utc": "2026-08-04T10:52:18.643979+00:00", "resting": 0, "orders": 3, "entered": 3, "gross": 8.5, "realised": -5.71}
+{"ev": "heartbeat", "utc": "2026-08-04T10:52:23.750754+00:00", "resting": 0, "orders": 3, "entered": 3, "gross": 8.5, "realised": -5.71}
+{"ev": "heartbeat", "utc": "2026-08-04T10:52:28.837215+00:00", "resting": 0, "orders": 3, "entered": 3, "gross": 8.5, "realised": -5.71}
+{"ev": "heartbeat", "utc": "2026-08-04T10:52:33.955983+00:00", "resting": 0, "orders": 3, "entered": 3, "gross": 8.5, "realised": -5.71}
+{"ev": "heartbeat", "utc": "2026-08-04T10:52:39.129288+00:00", "resting": 0, "orders": 3, "entered": 3, "gross": 8.5, "realised": -5.71}
+{"ev": "heartbeat", "utc": "2026-08-04T10:52:44.219072+00:00", "resting": 0, "orders": 3, "entered": 3, "gross": 8.5, "realised": -5.71}
+{"ev": "heartbeat", "utc": "2026-08-04T10:52:49.322233+00:00", "resting": 0, "orders": 3, "entered": 3, "gross": 8.5, "realised": -5.71}
+{"ev": "heartbeat", "utc": "2026-08-04T10:52:54.445195+00:00", "resting": 0, "orders": 3, "entered": 3, "gross": 8.5, "realised": -5.71}
+{"ev": "heartbeat", "utc": "2026-08-04T10:52:59.620604+00:00", "resting": 0, "orders": 3, "entered": 3, "gross": 8.5, "realised": -5.71}
+{"ev": "heartbeat", "utc": "2026-08-04T10:53:04.770159+00:00", "resting": 0, "orders": 3, "entered": 3, "gross": 8.5, "realised": -5.71}
+{"ev": "heartbeat", "utc": "2026-08-04T10:53:09.868231+00:00", "resting": 0, "orders": 3, "entered": 3, "gross": 8.5, "realised": -5.71}
+{"ev": "heartbeat", "utc": "2026-08-04T10:53:15.095186+00:00", "resting": 0, "orders": 3, "entered": 3, "gross": 8.5, "realised": -5.71}
+{"ev": "heartbeat", "utc": "2026-08-04T10:53:20.199955+00:00", "resting": 0, "orders": 3, "entered": 3, "gross": 8.5, "realised": -5.71}
+{"ev": "halted", "utc": "2026-08-04T10:53:25.206108+00:00", "path": "C:\\Users\\fycin\\m15-claude-independent\\live\\PTT_KILL"}

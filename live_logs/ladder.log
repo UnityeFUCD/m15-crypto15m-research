@@ -1,0 +1,74 @@
+utc        2026-08-05 22:40:41Z
+cash       $280.07
+open pos   3   cost basis $40.00
+EQUITY     $320.07
+    KXXRP15M-26AUG051845-45                +20  $13.00
+    KXDOGE15M-26AUG051845-45               +20  $13.20
+    KXBTC15M-26AUG051845-45                +20  $13.80
+
+settled    1190   won 1016 (0.8538)   contracts 18,883   fees $5.45
+realised   $-584.06   per-contract -3.09c
+sampling 5,000 markets over 73 days
+cache: 3,085
+to fetch: 2,561
+
+  200/2561 kept 3278 errs 3 eta 1.9min
+  400/2561 kept 3477 errs 3 eta 2.5min
+  600/2561 kept 3674 errs 4 eta 2.5min
+  800/2561 kept 3873 errs 5 eta 2.3min
+  1000/2561 kept 4071 errs 7 eta 2.1min
+  1200/2561 kept 4269 errs 9 eta 1.9min
+  1400/2561 kept 4468 errs 10 eta 1.6min
+  1600/2561 kept 4668 errs 10 eta 1.4min
+  1800/2561 kept 4868 errs 10 eta 1.1min
+  2000/2561 kept 5066 errs 12 eta 0.8min
+  2200/2561 kept 5266 errs 12 eta 0.5min
+  2400/2561 kept 5464 errs 14 eta 0.2min
+
+paths stored: 5,624
+
+entries in band with a usable path: 1,091
+
+==============================================================================
+THE LADDER - how fill rate and edge change as we post more aggressively
+==============================================================================
+              rung      n    fill   fill|WIN   fill|LOSE   avg px   edge/posted
+      bid + 0 tick   1091  0.9221     0.8943      1.0000   69.70c        +1.60c
+      bid + 1 tick   1091  0.9716     0.9614      1.0000   70.70c        +2.12c
+      bid + 2 tick    433  0.9654     0.9531      1.0000   71.38c        +1.52c
+      bid + 3 tick    251  0.9880     0.9843      1.0000   72.25c        +3.51c
+      bid + 4 tick    128  0.9922     0.9900      1.0000   73.19c        +4.71c
+
+  'edge/posted' counts an unfilled order as zero, which is what it is.
+  fill|WIN vs fill|LOSE is the adverse selection: the gap should NARROW
+  as we post higher, which is the entire point.
+
+==============================================================================
+IS THE BEST RUNG BETTER THAN THE BID, DAY-CLUSTERED?
+==============================================================================
+  bid+1 minus bid: +0.63c/posted   95% CI [+0.15, +1.19]   better 34/73 days   P(<=0) 0.0049
+  bid+2 minus bid: +0.62c/posted   95% CI [-0.33, +1.69]   better 25/71 days   P(<=0) 0.1175
+  bid+3 minus bid: -0.81c/posted   95% CI [-1.79, +0.41]   better 17/59 days   P(<=0) 0.9185
+  bid+4 minus bid: -0.53c/posted   95% CI [-2.49, +1.80]   better 10/42 days   P(<=0) 0.6974
+
+==============================================================================
+ONLY WHERE THERE IS ROOM (spread > 1 tick)
+==============================================================================
+  markets with a 2+ tick spread: 433 of 1091 (0.397)
+              rung      n    fill   fill|WIN   edge/posted
+      bid + 0 tick    433  0.8938     0.8562        +1.22c
+      bid + 1 tick    433  0.9284     0.9031        +1.34c
+      bid + 2 tick    433  0.9654     0.9531        +1.52c
+      bid + 3 tick    251  0.9880     0.9843        +3.51c
+
+  This is the deployable subset: when the spread is one tick there
+  is nothing to do, so any rule would only act on these.
+ad: 434 of 1091 (0.398)
+              rung      n    fill   fill|WIN   edge/posted
+      bid + 0 tick    434  0.8940     0.8567        +1.30c
+      bid + 1 tick    434  0.9286     0.9034        +1.41c
+      bid + 2 tick    434  0.9654     0.9533        +1.58c
+      bid + 3 tick    251  0.9880     0.9843        +3.51c
+
+  This is the deployable subset: when the spread is one tick there
+  is nothing to do, so any rule would only act on these.

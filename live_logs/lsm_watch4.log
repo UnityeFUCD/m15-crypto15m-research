@@ -1,0 +1,11 @@
+{"utc": "2026-08-04T23:09:42.885837+00:00", "event": "watchdog_start", "baseline_equity": 310.6094, "cash": 310.6094, "open_positions": 0, "max_dd": 150.0, "cycle_s": 60}
+{"utc": "2026-08-04T23:10:43.736678+00:00", "event": "ok", "equity": 310.6094, "cash": 310.6094, "open_positions": 0, "dd_from_baseline": 0.0, "dd_from_peak": 0.0, "runner_alive": true}
+{"utc": "2026-08-04T23:11:44.665544+00:00", "event": "ok", "equity": 310.6094, "cash": 310.6094, "open_positions": 0, "dd_from_baseline": 0.0, "dd_from_peak": 0.0, "runner_alive": true}
+{"utc": "2026-08-04T23:12:45.444825+00:00", "event": "ok", "equity": 310.6094, "cash": 310.6094, "open_positions": 0, "dd_from_baseline": 0.0, "dd_from_peak": 0.0, "runner_alive": true}
+{"utc": "2026-08-04T23:13:46.244030+00:00", "event": "ok", "equity": 310.6094, "cash": 310.6094, "open_positions": 0, "dd_from_baseline": 0.0, "dd_from_peak": 0.0, "runner_alive": true}
+{"utc": "2026-08-04T23:14:47.039304+00:00", "event": "ok", "equity": 310.6094, "cash": 310.6094, "open_positions": 0, "dd_from_baseline": 0.0, "dd_from_peak": 0.0, "runner_alive": true}
+{"utc": "2026-08-04T23:15:47.851195+00:00", "event": "ok", "equity": 310.6094, "cash": 310.6094, "open_positions": 0, "dd_from_baseline": 0.0, "dd_from_peak": 0.0, "runner_alive": true}
+{"utc": "2026-08-04T23:16:48.938198+00:00", "event": "ok", "equity": 310.6094, "cash": 269.5094, "open_positions": 2, "dd_from_baseline": -0.0, "dd_from_peak": -0.0, "runner_alive": true}
+{"utc": "2026-08-04T23:17:49.773893+00:00", "event": "ok", "equity": 310.6094, "cash": 269.5094, "open_positions": 2, "dd_from_baseline": -0.0, "dd_from_peak": 0.0, "runner_alive": true}
+{"utc": "2026-08-04T23:18:50.788407+00:00", "event": "ok", "equity": 310.6094, "cash": 269.5094, "open_positions": 2, "dd_from_baseline": -0.0, "dd_from_peak": 0.0, "runner_alive": true}
+{"utc": "2026-08-04T23:19:51.692612+00:00", "event": "ok", "equity": 310.6094, "cash": 269.5094, "open_positions": 2, "dd_from_baseline": -0.0, "dd_from_peak": 0.0, "runner_alive": true}

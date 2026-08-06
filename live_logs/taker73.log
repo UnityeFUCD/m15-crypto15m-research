@@ -1,0 +1,63 @@
+utc        2026-08-05 22:28:39Z
+cash       $280.07
+open pos   3   cost basis $44.40
+EQUITY     $324.47
+    KXHYPE15M-26AUG051830-30               +20  $14.40
+    KXSOL15M-26AUG051830-30                +20  $15.80
+    KXETH15M-26AUG051830-30                +20  $14.20
+
+settled    1188   won 1015 (0.8544)   contracts 18,843   fees $5.45
+realised   $-574.06   per-contract -3.05c
+to fetch: 3,225
+
+  400/3225 kept 352 errs 0 eta 2.3min
+  800/3225 kept 682 errs 3 eta 1.9min
+  1200/3225 kept 1029 errs 7 eta 1.6min
+  1600/3225 kept 1373 errs 9 eta 1.3min
+  2000/3225 kept 1727 errs 10 eta 1.0min
+  2400/3225 kept 2057 errs 26 eta 0.7min
+  2800/3225 kept 2386 errs 34 eta 0.4min
+  3200/3225 kept 2735 errs 35 eta 0.0min
+
+entries 2,758 over 73 days
+
+==============================================================================
+THE SPREAD WE WOULD PAY, MEASURED OVER 73 DAYS
+==============================================================================
+  median 1.00c   mean 2.08c   p90 4.00c   one tick or less 0.529
+  (live 2-day sample said median 1.00c, mean 1.21c, 80.8% one tick)
+
+==============================================================================
+MAKER (with measured fill bias) vs TAKER (crosses, pays fees)
+==============================================================================
+                        accounting      $/day   per contract
+     BACKTEST (100% fill, no cost)      26.15         +3.46c
+              MAKER with fill bias       5.43         +0.82c
+                             TAKER      -0.15         -0.02c
+
+  TAKER minus MAKER: $-5.58/day   95% CI [-7.27, -3.88]   better 18/73 days   P(taker worse) 1.0000
+
+==============================================================================
+BREAK-EVEN, AND IS IT STILL INSIDE THE PARAMETER'S OWN CI?
+==============================================================================
+  taker wins while P(fill|win) < 0.8094
+  measured P(fill|win) = 0.8426, 95% CI [0.7703, 0.9100]
+  break-even is INSIDE that interval
+  (this morning, against the understated edge, break-even was 0.8710)
+
+==============================================================================
+SENSITIVITY
+==============================================================================
+ P(fill|win)   maker $/day   taker $/day   taker-maker
+       0.780         -5.02         -0.15         +4.87
+       0.843          5.43         -0.15         -5.58
+       0.880         11.56         -0.15        -11.71
+       0.910         16.54         -0.15        -16.69
+       0.950         23.17         -0.15        -23.32
+       1.000         31.46         -0.15        -31.61
+
+==============================================================================
+RECENT PERIOD ONLY - where the premium is largest
+==============================================================================
+  last 30 days: maker $  20.12/day   taker $  20.28/day   diff $  +0.16   taker better 16/30   (population +5.82c)
+  last 14 days: maker $  29.83/day   taker $  32.00/day   diff $  +2.17   taker better 11/14   (population +8.49c)

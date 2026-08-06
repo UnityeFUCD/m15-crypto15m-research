@@ -1,0 +1,206 @@
+{"utc": "2026-08-05T09:19:27.684020+00:00", "event": "watchdog_start", "baseline_equity": 507.3078, "cash": 445.8078, "open_positions": 3, "cycle_s": 60, "persistent_peak": 524.71, "watch_frac": 0.22, "stop_frac": 0.2, "halt_at": 409.27, "absolute_ceiling": 150.0, "hwm_ok": true}
+{"utc": "2026-08-05T09:20:28.075991+00:00", "event": "ok", "equity": 507.3078, "cash": 445.8078, "open_positions": 3, "peak": 524.71, "dd_from_peak": 17.4022, "dd_frac": 0.0332, "halt_at": 409.27, "runner_alive": true}
+{"utc": "2026-08-05T09:21:28.500322+00:00", "event": "ok", "equity": 507.3078, "cash": 445.8078, "open_positions": 3, "peak": 524.71, "dd_from_peak": 17.4022, "dd_frac": 0.0332, "halt_at": 409.27, "runner_alive": true}
+{"utc": "2026-08-05T09:22:28.868154+00:00", "event": "ok", "equity": 507.3078, "cash": 445.8078, "open_positions": 3, "peak": 524.71, "dd_from_peak": 17.4022, "dd_frac": 0.0332, "halt_at": 409.27, "runner_alive": true}
+{"utc": "2026-08-05T09:23:29.293115+00:00", "event": "ok", "equity": 507.3078, "cash": 445.8078, "open_positions": 3, "peak": 524.71, "dd_from_peak": 17.4022, "dd_frac": 0.0332, "halt_at": 409.27, "runner_alive": true}
+{"utc": "2026-08-05T09:24:29.691238+00:00", "event": "ok", "equity": 507.3078, "cash": 445.8078, "open_positions": 3, "peak": 524.71, "dd_from_peak": 17.4022, "dd_frac": 0.0332, "halt_at": 409.27, "runner_alive": true}
+{"utc": "2026-08-05T09:25:30.078236+00:00", "event": "ok", "equity": 507.3078, "cash": 445.8078, "open_positions": 3, "peak": 524.71, "dd_from_peak": 17.4022, "dd_frac": 0.0332, "halt_at": 409.27, "runner_alive": true}
+{"utc": "2026-08-05T09:26:30.476631+00:00", "event": "ok", "equity": 507.3078, "cash": 445.8078, "open_positions": 3, "peak": 524.71, "dd_from_peak": 17.4022, "dd_frac": 0.0332, "halt_at": 409.27, "runner_alive": true}
+{"utc": "2026-08-05T09:27:30.856435+00:00", "event": "ok", "equity": 507.3078, "cash": 445.8078, "open_positions": 3, "peak": 524.71, "dd_from_peak": 17.4022, "dd_frac": 0.0332, "halt_at": 409.27, "runner_alive": true}
+{"utc": "2026-08-05T09:28:31.493837+00:00", "event": "ok", "equity": 507.3078, "cash": 445.8078, "open_positions": 3, "peak": 524.71, "dd_from_peak": 17.4022, "dd_frac": 0.0332, "halt_at": 409.27, "runner_alive": true}
+{"utc": "2026-08-05T09:29:31.867213+00:00", "event": "ok", "equity": 507.3078, "cash": 445.8078, "open_positions": 3, "peak": 524.71, "dd_from_peak": 17.4022, "dd_frac": 0.0332, "halt_at": 409.27, "runner_alive": true}
+{"utc": "2026-08-05T09:30:32.245486+00:00", "event": "ok", "equity": 505.8078, "cash": 505.8078, "open_positions": 0, "peak": 524.71, "dd_from_peak": 18.9022, "dd_frac": 0.036, "halt_at": 409.27, "runner_alive": true}
+{"utc": "2026-08-05T09:31:32.627936+00:00", "event": "ok", "equity": 505.8078, "cash": 505.8078, "open_positions": 0, "peak": 524.71, "dd_from_peak": 18.9022, "dd_frac": 0.036, "halt_at": 409.27, "runner_alive": true}
+{"utc": "2026-08-05T09:32:33.023036+00:00", "event": "ok", "equity": 505.8078, "cash": 486.3078, "open_positions": 1, "peak": 524.71, "dd_from_peak": 18.9022, "dd_frac": 0.036, "halt_at": 409.27, "runner_alive": true}
+{"utc": "2026-08-05T09:33:33.397122+00:00", "event": "ok", "equity": 505.8078, "cash": 486.3078, "open_positions": 1, "peak": 524.71, "dd_from_peak": 18.9022, "dd_frac": 0.036, "halt_at": 409.27, "runner_alive": true}
+{"utc": "2026-08-05T09:34:33.814986+00:00", "event": "ok", "equity": 505.8078, "cash": 464.7078, "open_positions": 2, "peak": 524.71, "dd_from_peak": 18.9022, "dd_frac": 0.036, "halt_at": 409.27, "runner_alive": true}
+{"utc": "2026-08-05T09:35:34.232773+00:00", "event": "ok", "equity": 505.8078, "cash": 444.537, "open_positions": 3, "peak": 524.71, "dd_from_peak": 18.9022, "dd_frac": 0.036, "halt_at": 409.27, "runner_alive": true}
+{"utc": "2026-08-05T09:36:34.598667+00:00", "event": "ok", "equity": 505.8078, "cash": 444.537, "open_positions": 3, "peak": 524.71, "dd_from_peak": 18.9022, "dd_frac": 0.036, "halt_at": 409.27, "runner_alive": true}
+{"utc": "2026-08-05T09:37:35.011364+00:00", "event": "ok", "equity": 505.8078, "cash": 441.3078, "open_positions": 3, "peak": 524.71, "dd_from_peak": 18.9022, "dd_frac": 0.036, "halt_at": 409.27, "runner_alive": true}
+{"utc": "2026-08-05T09:38:35.385196+00:00", "event": "ok", "equity": 505.8078, "cash": 441.3078, "open_positions": 3, "peak": 524.71, "dd_from_peak": 18.9022, "dd_frac": 0.036, "halt_at": 409.27, "runner_alive": true}
+{"utc": "2026-08-05T09:39:35.775275+00:00", "event": "ok", "equity": 505.8078, "cash": 441.3078, "open_positions": 3, "peak": 524.71, "dd_from_peak": 18.9022, "dd_frac": 0.036, "halt_at": 409.27, "runner_alive": true}
+{"utc": "2026-08-05T09:40:36.153461+00:00", "event": "ok", "equity": 505.8078, "cash": 441.3078, "open_positions": 3, "peak": 524.71, "dd_from_peak": 18.9022, "dd_frac": 0.036, "halt_at": 409.27, "runner_alive": true}
+{"utc": "2026-08-05T09:41:36.529610+00:00", "event": "ok", "equity": 505.8078, "cash": 441.3078, "open_positions": 3, "peak": 524.71, "dd_from_peak": 18.9022, "dd_frac": 0.036, "halt_at": 409.27, "runner_alive": true}
+{"utc": "2026-08-05T09:42:36.905028+00:00", "event": "ok", "equity": 505.8078, "cash": 441.3078, "open_positions": 3, "peak": 524.71, "dd_from_peak": 18.9022, "dd_frac": 0.036, "halt_at": 409.27, "runner_alive": true}
+{"utc": "2026-08-05T09:43:37.313078+00:00", "event": "ok", "equity": 505.8078, "cash": 441.3078, "open_positions": 3, "peak": 524.71, "dd_from_peak": 18.9022, "dd_frac": 0.036, "halt_at": 409.27, "runner_alive": true}
+{"utc": "2026-08-05T09:44:37.696599+00:00", "event": "ok", "equity": 505.8078, "cash": 441.3078, "open_positions": 3, "peak": 524.71, "dd_from_peak": 18.9022, "dd_frac": 0.036, "halt_at": 409.27, "runner_alive": true}
+{"utc": "2026-08-05T09:45:38.084778+00:00", "event": "ok", "equity": 531.3078, "cash": 531.3078, "open_positions": 0, "peak": 531.31, "dd_from_peak": 0.0, "dd_frac": 0.0, "halt_at": 414.42, "runner_alive": true}
+{"utc": "2026-08-05T09:46:38.466763+00:00", "event": "ok", "equity": 531.3078, "cash": 531.3078, "open_positions": 0, "peak": 531.31, "dd_from_peak": 0.0, "dd_frac": 0.0, "halt_at": 414.42, "runner_alive": true}
+{"utc": "2026-08-05T09:47:38.895408+00:00", "event": "ok", "equity": 531.3078, "cash": 531.3078, "open_positions": 0, "peak": 531.31, "dd_from_peak": 0.0, "dd_frac": 0.0, "halt_at": 414.42, "runner_alive": true}
+{"utc": "2026-08-05T09:48:39.341931+00:00", "event": "ok", "equity": 531.3078, "cash": 531.3078, "open_positions": 0, "peak": 531.31, "dd_from_peak": 0.0, "dd_frac": 0.0, "halt_at": 414.42, "runner_alive": true}
+{"utc": "2026-08-05T09:49:39.723505+00:00", "event": "ok", "equity": 531.3078, "cash": 531.3078, "open_positions": 0, "peak": 531.31, "dd_from_peak": 0.0, "dd_frac": 0.0, "halt_at": 414.42, "runner_alive": true}
+{"utc": "2026-08-05T09:50:40.092244+00:00", "event": "ok", "equity": 531.3078, "cash": 531.3078, "open_positions": 0, "peak": 531.31, "dd_from_peak": 0.0, "dd_frac": 0.0, "halt_at": 414.42, "runner_alive": true}
+{"utc": "2026-08-05T09:51:40.478848+00:00", "event": "ok", "equity": 531.3078, "cash": 522.5458, "open_positions": 1, "peak": 531.31, "dd_from_peak": 0.0, "dd_frac": 0.0, "halt_at": 414.42, "runner_alive": true}
+{"utc": "2026-08-05T09:52:40.843551+00:00", "event": "ok", "equity": 531.3078, "cash": 501.8458, "open_positions": 2, "peak": 531.31, "dd_from_peak": 0.0, "dd_frac": 0.0, "halt_at": 414.42, "runner_alive": true}
+{"utc": "2026-08-05T09:53:41.337073+00:00", "event": "ok", "equity": 531.3078, "cash": 501.8458, "open_positions": 2, "peak": 531.31, "dd_from_peak": 0.0, "dd_frac": 0.0, "halt_at": 414.42, "runner_alive": true}
+{"utc": "2026-08-05T09:54:41.718375+00:00", "event": "ok", "equity": 531.3078, "cash": 501.8458, "open_positions": 2, "peak": 531.31, "dd_from_peak": 0.0, "dd_frac": 0.0, "halt_at": 414.42, "runner_alive": true}
+{"utc": "2026-08-05T09:55:42.098132+00:00", "event": "ok", "equity": 531.3078, "cash": 501.8458, "open_positions": 2, "peak": 531.31, "dd_from_peak": 0.0, "dd_frac": 0.0, "halt_at": 414.42, "runner_alive": true}
+{"utc": "2026-08-05T09:56:42.478016+00:00", "event": "ok", "equity": 531.3078, "cash": 501.8458, "open_positions": 2, "peak": 531.31, "dd_from_peak": 0.0, "dd_frac": 0.0, "halt_at": 414.42, "runner_alive": true}
+{"utc": "2026-08-05T09:57:42.908197+00:00", "event": "ok", "equity": 531.3078, "cash": 501.8458, "open_positions": 2, "peak": 531.31, "dd_from_peak": 0.0, "dd_frac": 0.0, "halt_at": 414.42, "runner_alive": true}
+{"utc": "2026-08-05T09:58:43.310274+00:00", "event": "ok", "equity": 531.3078, "cash": 501.8458, "open_positions": 2, "peak": 531.31, "dd_from_peak": 0.0, "dd_frac": 0.0, "halt_at": 414.42, "runner_alive": true}
+{"utc": "2026-08-05T09:59:43.739799+00:00", "event": "ok", "equity": 531.3078, "cash": 501.8458, "open_positions": 2, "peak": 531.31, "dd_from_peak": 0.0, "dd_frac": 0.0, "halt_at": 414.42, "runner_alive": true}
+{"utc": "2026-08-05T10:00:44.118576+00:00", "event": "ok", "equity": 515.3258, "cash": 515.3258, "open_positions": 0, "peak": 531.31, "dd_from_peak": 15.982, "dd_frac": 0.0301, "halt_at": 414.42, "runner_alive": true}
+{"utc": "2026-08-05T10:01:44.517814+00:00", "event": "ok", "equity": 515.3258, "cash": 515.3258, "open_positions": 0, "peak": 531.31, "dd_from_peak": 15.982, "dd_frac": 0.0301, "halt_at": 414.42, "runner_alive": true}
+{"utc": "2026-08-05T10:02:44.898778+00:00", "event": "ok", "equity": 515.3258, "cash": 495.5258, "open_positions": 1, "peak": 531.31, "dd_from_peak": 15.982, "dd_frac": 0.0301, "halt_at": 414.42, "runner_alive": true}
+{"utc": "2026-08-05T10:03:45.529103+00:00", "event": "ok", "equity": 515.3258, "cash": 495.5258, "open_positions": 1, "peak": 531.31, "dd_from_peak": 15.982, "dd_frac": 0.0301, "halt_at": 414.42, "runner_alive": true}
+{"utc": "2026-08-05T10:04:45.905197+00:00", "event": "ok", "equity": 515.3258, "cash": 495.5258, "open_positions": 1, "peak": 531.31, "dd_from_peak": 15.982, "dd_frac": 0.0301, "halt_at": 414.42, "runner_alive": true}
+{"utc": "2026-08-05T10:05:46.279111+00:00", "event": "ok", "equity": 515.3258, "cash": 475.7258, "open_positions": 2, "peak": 531.31, "dd_from_peak": 15.982, "dd_frac": 0.0301, "halt_at": 414.42, "runner_alive": true}
+{"utc": "2026-08-05T10:06:46.666560+00:00", "event": "ok", "equity": 515.3258, "cash": 475.7258, "open_positions": 2, "peak": 531.31, "dd_from_peak": 15.982, "dd_frac": 0.0301, "halt_at": 414.42, "runner_alive": true}
+{"utc": "2026-08-05T10:07:47.062278+00:00", "event": "ok", "equity": 515.3258, "cash": 454.7258, "open_positions": 3, "peak": 531.31, "dd_from_peak": 15.982, "dd_frac": 0.0301, "halt_at": 414.42, "runner_alive": true}
+{"utc": "2026-08-05T10:08:47.985153+00:00", "event": "ok", "equity": 515.3258, "cash": 454.7258, "open_positions": 3, "peak": 531.31, "dd_from_peak": 15.982, "dd_frac": 0.0301, "halt_at": 414.42, "runner_alive": true}
+{"utc": "2026-08-05T10:09:48.359169+00:00", "event": "ok", "equity": 515.3258, "cash": 454.7258, "open_positions": 3, "peak": 531.31, "dd_from_peak": 15.982, "dd_frac": 0.0301, "halt_at": 414.42, "runner_alive": true}
+{"utc": "2026-08-05T10:10:48.742430+00:00", "event": "ok", "equity": 515.3258, "cash": 454.7258, "open_positions": 3, "peak": 531.31, "dd_from_peak": 15.982, "dd_frac": 0.0301, "halt_at": 414.42, "runner_alive": true}
+{"utc": "2026-08-05T10:11:49.216160+00:00", "event": "ok", "equity": 515.3258, "cash": 454.7258, "open_positions": 3, "peak": 531.31, "dd_from_peak": 15.982, "dd_frac": 0.0301, "halt_at": 414.42, "runner_alive": true}
+{"utc": "2026-08-05T10:12:49.664993+00:00", "event": "ok", "equity": 515.3258, "cash": 454.7258, "open_positions": 3, "peak": 531.31, "dd_from_peak": 15.982, "dd_frac": 0.0301, "halt_at": 414.42, "runner_alive": true}
+{"utc": "2026-08-05T10:13:50.041980+00:00", "event": "ok", "equity": 515.3258, "cash": 454.7258, "open_positions": 3, "peak": 531.31, "dd_from_peak": 15.982, "dd_frac": 0.0301, "halt_at": 414.42, "runner_alive": true}
+{"utc": "2026-08-05T10:14:50.459068+00:00", "event": "ok", "equity": 515.3258, "cash": 454.7258, "open_positions": 3, "peak": 531.31, "dd_from_peak": 15.982, "dd_frac": 0.0301, "halt_at": 414.42, "runner_alive": true}
+{"utc": "2026-08-05T10:15:50.833702+00:00", "event": "ok", "equity": 484.7258, "cash": 484.7258, "open_positions": 0, "peak": 531.31, "dd_from_peak": 46.582, "dd_frac": 0.0877, "halt_at": 414.42, "runner_alive": true}
+{"utc": "2026-08-05T10:16:51.186831+00:00", "event": "ok", "equity": 484.7258, "cash": 434.3258, "open_positions": 2, "peak": 531.31, "dd_from_peak": 46.582, "dd_frac": 0.0877, "halt_at": 414.42, "runner_alive": true}
+{"utc": "2026-08-05T10:17:51.587080+00:00", "event": "ok", "equity": 484.7258, "cash": 413.0661, "open_positions": 3, "peak": 531.31, "dd_from_peak": 46.582, "dd_frac": 0.0877, "halt_at": 414.42, "runner_alive": true}
+{"utc": "2026-08-05T10:18:51.960925+00:00", "event": "ok", "equity": 484.7258, "cash": 413.0661, "open_positions": 3, "peak": 531.31, "dd_from_peak": 46.582, "dd_frac": 0.0877, "halt_at": 414.42, "runner_alive": true}
+{"utc": "2026-08-05T10:19:52.327710+00:00", "event": "ok", "equity": 484.7258, "cash": 413.0661, "open_positions": 3, "peak": 531.31, "dd_from_peak": 46.582, "dd_frac": 0.0877, "halt_at": 414.42, "runner_alive": true}
+{"utc": "2026-08-05T10:20:52.706757+00:00", "event": "ok", "equity": 484.7258, "cash": 411.2258, "open_positions": 3, "peak": 531.31, "dd_from_peak": 46.582, "dd_frac": 0.0877, "halt_at": 414.42, "runner_alive": true}
+{"utc": "2026-08-05T10:21:53.076758+00:00", "event": "ok", "equity": 484.7258, "cash": 411.2258, "open_positions": 3, "peak": 531.31, "dd_from_peak": 46.582, "dd_frac": 0.0877, "halt_at": 414.42, "runner_alive": true}
+{"utc": "2026-08-05T10:22:53.459029+00:00", "event": "ok", "equity": 484.7258, "cash": 411.2258, "open_positions": 3, "peak": 531.31, "dd_from_peak": 46.582, "dd_frac": 0.0877, "halt_at": 414.42, "runner_alive": true}
+{"utc": "2026-08-05T10:23:53.842145+00:00", "event": "ok", "equity": 484.7258, "cash": 411.2258, "open_positions": 3, "peak": 531.31, "dd_from_peak": 46.582, "dd_frac": 0.0877, "halt_at": 414.42, "runner_alive": true}
+{"utc": "2026-08-05T10:24:54.234128+00:00", "event": "ok", "equity": 484.7258, "cash": 411.2258, "open_positions": 3, "peak": 531.31, "dd_from_peak": 46.582, "dd_frac": 0.0877, "halt_at": 414.42, "runner_alive": true}
+{"utc": "2026-08-05T10:25:54.626733+00:00", "event": "ok", "equity": 484.7258, "cash": 411.2258, "open_positions": 3, "peak": 531.31, "dd_from_peak": 46.582, "dd_frac": 0.0877, "halt_at": 414.42, "runner_alive": true}
+{"utc": "2026-08-05T10:26:54.997739+00:00", "event": "ok", "equity": 484.7258, "cash": 411.2258, "open_positions": 3, "peak": 531.31, "dd_from_peak": 46.582, "dd_frac": 0.0877, "halt_at": 414.42, "runner_alive": true}
+{"utc": "2026-08-05T10:27:55.385766+00:00", "event": "ok", "equity": 484.7258, "cash": 411.2258, "open_positions": 3, "peak": 531.31, "dd_from_peak": 46.582, "dd_frac": 0.0877, "halt_at": 414.42, "runner_alive": true}
+{"utc": "2026-08-05T10:28:55.752932+00:00", "event": "ok", "equity": 484.7258, "cash": 411.2258, "open_positions": 3, "peak": 531.31, "dd_from_peak": 46.582, "dd_frac": 0.0877, "halt_at": 414.42, "runner_alive": true}
+{"utc": "2026-08-05T10:29:56.137303+00:00", "event": "ok", "equity": 484.7258, "cash": 411.2258, "open_positions": 3, "peak": 531.31, "dd_from_peak": 46.582, "dd_frac": 0.0877, "halt_at": 414.42, "runner_alive": true}
+{"utc": "2026-08-05T10:30:56.222894+00:00", "action": "HALTED", "reason": "drawdown_frac", "peak": 531.31, "equity": 411.23, "dd": 120.08, "dd_frac": 0.226, "envelope_floor": 371.92, "stop_at": 425.05, "watch_at": 414.42, "hwm_ok": true}
+{"utc": "2026-08-05T10:31:56.224160+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T10:32:56.225188+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T10:33:56.226016+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T10:34:56.226645+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T10:35:56.227630+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T10:36:56.228499+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T10:37:56.229408+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T10:38:56.230254+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T10:39:56.230847+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T10:40:56.231446+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T10:41:56.232013+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T10:42:56.232677+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T10:43:56.233403+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T10:44:56.234230+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T10:45:56.235229+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T10:46:56.236245+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T10:47:56.237228+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T10:48:56.238183+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T10:49:56.239029+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T10:50:56.240319+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T10:51:56.241208+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T10:52:56.241923+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T10:53:56.242561+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T10:54:56.243242+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T10:55:56.245873+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T10:56:56.247503+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T10:57:56.248117+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T10:58:56.248931+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T10:59:56.249603+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T11:00:56.250688+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T11:01:56.251207+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T11:02:56.251997+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T11:03:56.252690+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T11:04:56.253394+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T11:05:56.254166+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T11:06:56.254824+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T11:07:56.255892+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T11:08:56.256604+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T11:09:56.257463+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T11:10:56.258094+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T11:11:56.259071+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T11:12:56.260135+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T11:13:56.260782+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T11:14:56.261696+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T11:15:56.262776+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T11:16:56.263835+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T11:17:56.264479+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T11:18:56.265159+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T11:19:56.265890+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T11:20:56.266556+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T11:21:56.267303+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T11:22:56.267935+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T11:23:56.268782+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T11:24:56.269700+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T11:25:56.270558+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T11:26:56.271276+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T11:27:56.272254+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T11:28:56.273387+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T11:29:56.274210+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T11:30:56.274860+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T11:31:56.275544+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T11:32:56.276436+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T11:33:56.277099+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T11:34:56.277654+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T11:35:56.278356+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T11:36:56.279036+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T11:37:56.279811+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T11:38:56.280341+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T11:39:56.281079+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T11:40:56.282109+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T11:41:56.282874+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T11:42:56.284001+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T11:43:56.284639+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T11:44:56.285606+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T11:45:56.286183+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T11:46:56.287082+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T11:47:56.288104+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T11:48:56.288663+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T11:49:56.289303+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T11:50:56.290002+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T11:51:56.290997+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T11:52:56.291618+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T11:53:56.292467+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T11:54:56.293052+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T11:55:56.293871+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T11:56:56.295119+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T11:57:56.295882+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T11:58:56.297198+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T11:59:56.298411+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T12:00:56.299650+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T12:01:56.300281+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T12:02:56.301010+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T12:03:56.301789+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T12:04:56.302706+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T12:05:56.303287+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T12:06:56.304241+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T12:07:56.304923+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T12:08:56.305605+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T12:09:56.306590+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T12:10:56.307243+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T12:11:56.308296+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T12:12:56.308906+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T12:13:56.309720+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T12:14:56.310281+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T12:15:56.311177+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T12:16:56.312159+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T12:17:56.313276+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T12:18:56.313873+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T12:19:56.314863+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T12:20:56.315542+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T12:21:56.316181+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T12:22:56.316926+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T12:23:56.317626+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T12:24:56.318325+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T12:25:56.319031+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T12:26:56.319972+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T12:27:56.320924+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T12:28:56.321522+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T12:29:56.322196+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T12:30:56.322985+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T12:31:56.323683+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T12:32:56.324247+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T12:33:56.325181+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T12:34:56.325927+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T12:35:56.326738+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T12:36:56.327558+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T12:37:56.328190+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T12:38:56.328934+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T12:39:56.329772+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T12:40:56.330563+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T12:41:56.331279+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T12:42:56.331923+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T12:43:56.332576+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}
+{"utc": "2026-08-05T12:44:56.333461+00:00", "event": "kill_present", "msg": "halted, watchdog idling"}

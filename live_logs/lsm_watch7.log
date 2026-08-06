@@ -1,0 +1,11 @@
+{"utc": "2026-08-05T03:14:13.879953+00:00", "event": "watchdog_start", "baseline_equity": 338.8094, "cash": 279.6094, "open_positions": 2, "max_dd": 150.0, "cycle_s": 60}
+{"utc": "2026-08-05T03:15:14.336673+00:00", "event": "ok", "equity": 378.8094, "cash": 319.6094, "open_positions": 2, "dd_from_baseline": -40.0, "dd_from_peak": 0.0, "runner_alive": true}
+{"utc": "2026-08-05T03:16:14.856633+00:00", "event": "ok", "equity": 319.6094, "cash": 299.8094, "open_positions": 1, "dd_from_baseline": 19.2, "dd_from_peak": 59.2, "runner_alive": true}
+{"utc": "2026-08-05T03:17:15.286437+00:00", "event": "ok", "equity": 319.6094, "cash": 277.0094, "open_positions": 2, "dd_from_baseline": 19.2, "dd_from_peak": 59.2, "runner_alive": true}
+{"utc": "2026-08-05T03:18:15.748698+00:00", "event": "ok", "equity": 319.6094, "cash": 277.0094, "open_positions": 2, "dd_from_baseline": 19.2, "dd_from_peak": 59.2, "runner_alive": true}
+{"utc": "2026-08-05T03:19:16.299614+00:00", "event": "ok", "equity": 319.6094, "cash": 277.0094, "open_positions": 2, "dd_from_baseline": 19.2, "dd_from_peak": 59.2, "runner_alive": true}
+{"utc": "2026-08-05T03:20:16.889936+00:00", "event": "ok", "equity": 319.6094, "cash": 277.0094, "open_positions": 2, "dd_from_baseline": 19.2, "dd_from_peak": 59.2, "runner_alive": true}
+{"utc": "2026-08-05T03:21:17.410365+00:00", "event": "ok", "equity": 319.6094, "cash": 277.0094, "open_positions": 2, "dd_from_baseline": 19.2, "dd_from_peak": 59.2, "runner_alive": true}
+{"utc": "2026-08-05T03:22:17.908385+00:00", "event": "ok", "equity": 319.6094, "cash": 277.0094, "open_positions": 2, "dd_from_baseline": 19.2, "dd_from_peak": 59.2, "runner_alive": true}
+{"utc": "2026-08-05T03:23:18.341869+00:00", "event": "ok", "equity": 319.6094, "cash": 277.0094, "open_positions": 2, "dd_from_baseline": 19.2, "dd_from_peak": 59.2, "runner_alive": true}
+{"utc": "2026-08-05T03:24:18.915506+00:00", "event": "ok", "equity": 319.6094, "cash": 277.0094, "open_positions": 2, "dd_from_baseline": 19.2, "dd_from_peak": 59.2, "runner_alive": true}

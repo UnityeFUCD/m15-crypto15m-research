@@ -1,0 +1,588 @@
+resumed: 117 markets already entered, $21.32 deployed
+{"ev": "seeded_entered_from_exchange", "utc": "2026-08-05T14:51:26.930562+00:00", "added": 0, "total": 117}
+KILL FILE: C:\Users\fycin\m15-claude-independent\live\LSM_KILL
+MODE: *** LIVE ***  qty=15  band=(0.65, 0.85)  minutes_left=(8.0, 14.0)  MAX_GROSS=$110.0  stop=20% of peak $450.53 = $360.42
+VOLUME FILTER: market must have traded >= 2000 contracts
+NEVER CROSSES - post_only only, no taker path exists in this program
+{"ev": "start", "utc": "2026-08-05T14:51:26.931565+00:00", "dry_run": false, "qty": 15, "band": [0.65, 0.85], "min_left": [8.0, 14.0], "max_gross": 110.0, "max_loss": 50.0, "per_window": 3, "min_volume": 2000.0, "max_dd_frac": 0.3}
+{"ev": "start_equity", "utc": "2026-08-05T14:51:27.025043+00:00", "equity": 363.3058, "cash": 341.9858, "positions": 21.32}
+{"ev": "opportunity", "utc": "2026-08-05T14:51:27.457121+00:00", "ticker": "KXDOGE15M-26AUG051100-00", "side": "yes", "min_left": 8.55, "volume": 3952.87, "fav_bid": 0.66, "fav_ask": 0.6699999999999999, "spread_c": 1.0, "post_at": 0.66, "queue_ahead": 6.0, "qty": 13, "base_qty": 15, "others_px": 0.592, "frac_long": 0.5271, "expected_c": null}
+{"ev": "post", "utc": "2026-08-05T14:51:27.497291+00:00", "ticker": "KXDOGE15M-26AUG051100-00", "side": "yes", "price": 0.66, "qty": 13, "status": 201, "immediate_fill": "0.00", "resp": "{'client_order_id': 'lsm1785941487457', 'fill_count': '0.00', 'order_id': '857557e9-ae76-45e9-9a80-aefb3a7e8be8', 'remaining_count': '13.00', 'ts_ms': 1785941487962}"}
+{"ev": "heartbeat", "utc": "2026-08-05T14:51:27.498294+00:00", "resting": 1, "orders": 1, "entered": 118, "gross": 29.9, "deployed": 29.9, "realised": 0.0}
+{"ev": "deployed_reconciled", "utc": "2026-08-05T14:51:32.591361+00:00", "internal": 29.9, "exchange": 21.32, "drift": -8.58, "open_positions": 2}
+{"ev": "heartbeat", "utc": "2026-08-05T14:51:32.943765+00:00", "resting": 1, "orders": 1, "entered": 118, "gross": 29.9, "deployed": 21.32, "realised": 0.0}
+{"ev": "deployed_reconciled", "utc": "2026-08-05T14:51:38.079492+00:00", "internal": 21.32, "exchange": 29.9, "drift": 8.58, "open_positions": 3}
+{"ev": "resting_reconciled", "utc": "2026-08-05T14:51:38.120913+00:00", "removed": 1, "still_resting": 0, "note": "filled or cancelled; was double-counted"}
+{"ev": "heartbeat", "utc": "2026-08-05T14:51:38.506023+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 29.9, "deployed": 29.9, "realised": 0.0}
+{"ev": "heartbeat", "utc": "2026-08-05T14:51:43.904585+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 29.9, "deployed": 29.9, "realised": 0.0}
+{"ev": "heartbeat", "utc": "2026-08-05T14:51:49.372171+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 29.9, "deployed": 29.9, "realised": 0.0}
+{"ev": "heartbeat", "utc": "2026-08-05T14:51:54.867369+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 29.9, "deployed": 29.9, "realised": 0.0}
+{"ev": "heartbeat", "utc": "2026-08-05T14:52:00.267957+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 29.9, "deployed": 29.9, "realised": 0.0}
+{"ev": "heartbeat", "utc": "2026-08-05T14:52:05.744977+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 29.9, "deployed": 29.9, "realised": 0.0}
+{"ev": "heartbeat", "utc": "2026-08-05T14:52:11.280719+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 29.9, "deployed": 29.9, "realised": 0.0}
+{"ev": "heartbeat", "utc": "2026-08-05T14:52:16.675817+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 29.9, "deployed": 29.9, "realised": 0.0}
+{"ev": "heartbeat", "utc": "2026-08-05T14:52:22.079709+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 29.9, "deployed": 29.9, "realised": 0.0}
+{"ev": "heartbeat", "utc": "2026-08-05T14:52:27.524082+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 29.9, "deployed": 29.9, "realised": 0.0}
+{"ev": "heartbeat", "utc": "2026-08-05T14:52:33.105334+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 29.9, "deployed": 29.9, "realised": 0.0}
+{"ev": "heartbeat", "utc": "2026-08-05T14:52:38.493065+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 29.9, "deployed": 29.9, "realised": 0.0}
+{"ev": "heartbeat", "utc": "2026-08-05T14:52:43.938865+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 29.9, "deployed": 29.9, "realised": 0.0}
+{"ev": "heartbeat", "utc": "2026-08-05T14:52:49.338281+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 29.9, "deployed": 29.9, "realised": 0.0}
+{"ev": "heartbeat", "utc": "2026-08-05T14:52:54.857147+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 29.9, "deployed": 29.9, "realised": 0.0}
+{"ev": "heartbeat", "utc": "2026-08-05T14:53:00.271095+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 29.9, "deployed": 29.9, "realised": 0.0}
+{"ev": "heartbeat", "utc": "2026-08-05T14:53:05.472767+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 29.9, "deployed": 29.9, "realised": 0.0}
+{"ev": "heartbeat", "utc": "2026-08-05T14:53:10.800159+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 29.9, "deployed": 29.9, "realised": 0.0}
+{"ev": "heartbeat", "utc": "2026-08-05T14:53:15.987525+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 29.9, "deployed": 29.9, "realised": 0.0}
+{"ev": "heartbeat", "utc": "2026-08-05T14:53:21.201974+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 29.9, "deployed": 29.9, "realised": 0.0}
+{"ev": "heartbeat", "utc": "2026-08-05T14:53:26.373190+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 29.9, "deployed": 29.9, "realised": 0.0}
+{"ev": "heartbeat", "utc": "2026-08-05T14:53:31.531436+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 29.9, "deployed": 29.9, "realised": 0.0}
+{"ev": "heartbeat", "utc": "2026-08-05T14:53:36.683102+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 29.9, "deployed": 29.9, "realised": 0.0}
+{"ev": "heartbeat", "utc": "2026-08-05T14:53:41.845258+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 29.9, "deployed": 29.9, "realised": 0.0}
+{"ev": "heartbeat", "utc": "2026-08-05T14:53:46.999342+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 29.9, "deployed": 29.9, "realised": 0.0}
+{"ev": "heartbeat", "utc": "2026-08-05T14:53:52.149769+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 29.9, "deployed": 29.9, "realised": 0.0}
+{"ev": "heartbeat", "utc": "2026-08-05T14:53:57.298586+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 29.9, "deployed": 29.9, "realised": 0.0}
+{"ev": "heartbeat", "utc": "2026-08-05T14:54:02.447039+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 29.9, "deployed": 29.9, "realised": 0.0}
+{"ev": "heartbeat", "utc": "2026-08-05T14:54:07.675074+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 29.9, "deployed": 29.9, "realised": 0.0}
+{"ev": "heartbeat", "utc": "2026-08-05T14:54:12.843525+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 29.9, "deployed": 29.9, "realised": 0.0}
+{"ev": "heartbeat", "utc": "2026-08-05T14:54:17.994886+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 29.9, "deployed": 29.9, "realised": 0.0}
+{"ev": "heartbeat", "utc": "2026-08-05T14:54:23.145073+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 29.9, "deployed": 29.9, "realised": 0.0}
+{"ev": "heartbeat", "utc": "2026-08-05T14:54:28.293513+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 29.9, "deployed": 29.9, "realised": 0.0}
+{"ev": "heartbeat", "utc": "2026-08-05T14:54:33.436490+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 29.9, "deployed": 29.9, "realised": 0.0}
+{"ev": "heartbeat", "utc": "2026-08-05T14:54:38.585853+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 29.9, "deployed": 29.9, "realised": 0.0}
+{"ev": "heartbeat", "utc": "2026-08-05T14:54:43.739146+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 29.9, "deployed": 29.9, "realised": 0.0}
+{"ev": "heartbeat", "utc": "2026-08-05T14:54:48.922656+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 29.9, "deployed": 29.9, "realised": 0.0}
+{"ev": "heartbeat", "utc": "2026-08-05T14:54:54.066420+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 29.9, "deployed": 29.9, "realised": 0.0}
+{"ev": "heartbeat", "utc": "2026-08-05T14:54:59.213087+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 29.9, "deployed": 29.9, "realised": 0.0}
+{"ev": "heartbeat", "utc": "2026-08-05T14:55:04.361599+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 29.9, "deployed": 29.9, "realised": 0.0}
+{"ev": "heartbeat", "utc": "2026-08-05T14:55:09.645710+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 29.9, "deployed": 29.9, "realised": 0.0}
+{"ev": "heartbeat", "utc": "2026-08-05T14:55:14.799179+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 29.9, "deployed": 29.9, "realised": 0.0}
+{"ev": "heartbeat", "utc": "2026-08-05T14:55:19.978235+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 29.9, "deployed": 29.9, "realised": 0.0}
+{"ev": "heartbeat", "utc": "2026-08-05T14:55:25.196114+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 29.9, "deployed": 29.9, "realised": 0.0}
+{"ev": "heartbeat", "utc": "2026-08-05T14:55:30.396120+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 29.9, "deployed": 29.9, "realised": 0.0}
+{"ev": "heartbeat", "utc": "2026-08-05T14:55:35.646850+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 29.9, "deployed": 29.9, "realised": 0.0}
+{"ev": "heartbeat", "utc": "2026-08-05T14:55:40.851882+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 29.9, "deployed": 29.9, "realised": 0.0}
+{"ev": "heartbeat", "utc": "2026-08-05T14:55:46.105709+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 29.9, "deployed": 29.9, "realised": 0.0}
+{"ev": "heartbeat", "utc": "2026-08-05T14:55:51.286779+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 29.9, "deployed": 29.9, "realised": 0.0}
+{"ev": "heartbeat", "utc": "2026-08-05T14:55:56.434497+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 29.9, "deployed": 29.9, "realised": 0.0}
+{"ev": "heartbeat", "utc": "2026-08-05T14:56:01.627765+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 29.9, "deployed": 29.9, "realised": 0.0}
+{"ev": "heartbeat", "utc": "2026-08-05T14:56:06.776303+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 29.9, "deployed": 29.9, "realised": 0.0}
+{"ev": "heartbeat", "utc": "2026-08-05T14:56:12.001339+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 29.9, "deployed": 29.9, "realised": 0.0}
+{"ev": "heartbeat", "utc": "2026-08-05T14:56:17.150853+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 29.9, "deployed": 29.9, "realised": 0.0}
+{"ev": "heartbeat", "utc": "2026-08-05T14:56:22.295315+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 29.9, "deployed": 29.9, "realised": 0.0}
+{"ev": "heartbeat", "utc": "2026-08-05T14:56:27.440874+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 29.9, "deployed": 29.9, "realised": 0.0}
+{"ev": "heartbeat", "utc": "2026-08-05T14:56:32.636767+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 29.9, "deployed": 29.9, "realised": 0.0}
+{"ev": "heartbeat", "utc": "2026-08-05T14:56:37.795788+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 29.9, "deployed": 29.9, "realised": 0.0}
+{"ev": "heartbeat", "utc": "2026-08-05T14:56:42.986088+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 29.9, "deployed": 29.9, "realised": 0.0}
+{"ev": "heartbeat", "utc": "2026-08-05T14:56:48.131206+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 29.9, "deployed": 29.9, "realised": 0.0}
+{"ev": "heartbeat", "utc": "2026-08-05T14:56:53.280562+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 29.9, "deployed": 29.9, "realised": 0.0}
+{"ev": "heartbeat", "utc": "2026-08-05T14:56:58.425873+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 29.9, "deployed": 29.9, "realised": 0.0}
+{"ev": "heartbeat", "utc": "2026-08-05T14:57:03.656053+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 29.9, "deployed": 29.9, "realised": 0.0}
+{"ev": "heartbeat", "utc": "2026-08-05T14:57:08.940034+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 29.9, "deployed": 29.9, "realised": 0.0}
+{"ev": "heartbeat", "utc": "2026-08-05T14:57:14.094380+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 29.9, "deployed": 29.9, "realised": 0.0}
+{"ev": "heartbeat", "utc": "2026-08-05T14:57:19.251385+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 29.9, "deployed": 29.9, "realised": 0.0}
+{"ev": "heartbeat", "utc": "2026-08-05T14:57:24.400529+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 29.9, "deployed": 29.9, "realised": 0.0}
+{"ev": "heartbeat", "utc": "2026-08-05T14:57:29.621511+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 29.9, "deployed": 29.9, "realised": 0.0}
+{"ev": "heartbeat", "utc": "2026-08-05T14:57:34.782169+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 29.9, "deployed": 29.9, "realised": 0.0}
+{"ev": "heartbeat", "utc": "2026-08-05T14:57:39.980710+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 29.9, "deployed": 29.9, "realised": 0.0}
+{"ev": "heartbeat", "utc": "2026-08-05T14:57:45.128657+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 29.9, "deployed": 29.9, "realised": 0.0}
+{"ev": "heartbeat", "utc": "2026-08-05T14:57:50.281373+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 29.9, "deployed": 29.9, "realised": 0.0}
+{"ev": "heartbeat", "utc": "2026-08-05T14:57:55.437245+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 29.9, "deployed": 29.9, "realised": 0.0}
+{"ev": "heartbeat", "utc": "2026-08-05T14:58:00.588235+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 29.9, "deployed": 29.9, "realised": 0.0}
+{"ev": "heartbeat", "utc": "2026-08-05T14:58:05.816278+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 29.9, "deployed": 29.9, "realised": 0.0}
+{"ev": "heartbeat", "utc": "2026-08-05T14:58:11.047929+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 29.9, "deployed": 29.9, "realised": 0.0}
+{"ev": "heartbeat", "utc": "2026-08-05T14:58:16.193834+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 29.9, "deployed": 29.9, "realised": 0.0}
+{"ev": "heartbeat", "utc": "2026-08-05T14:58:21.477941+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 29.9, "deployed": 29.9, "realised": 0.0}
+{"ev": "heartbeat", "utc": "2026-08-05T14:58:26.630639+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 29.9, "deployed": 29.9, "realised": 0.0}
+{"ev": "heartbeat", "utc": "2026-08-05T14:58:31.778957+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 29.9, "deployed": 29.9, "realised": 0.0}
+{"ev": "heartbeat", "utc": "2026-08-05T14:58:36.931509+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 29.9, "deployed": 29.9, "realised": 0.0}
+{"ev": "heartbeat", "utc": "2026-08-05T14:58:42.074700+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 29.9, "deployed": 29.9, "realised": 0.0}
+{"ev": "heartbeat", "utc": "2026-08-05T14:58:47.217977+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 29.9, "deployed": 29.9, "realised": 0.0}
+{"ev": "heartbeat", "utc": "2026-08-05T14:58:52.496352+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 29.9, "deployed": 29.9, "realised": 0.0}
+{"ev": "heartbeat", "utc": "2026-08-05T14:58:57.718996+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 29.9, "deployed": 29.9, "realised": 0.0}
+{"ev": "heartbeat", "utc": "2026-08-05T14:59:02.862466+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 29.9, "deployed": 29.9, "realised": 0.0}
+{"ev": "heartbeat", "utc": "2026-08-05T14:59:08.090144+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 29.9, "deployed": 29.9, "realised": 0.0}
+{"ev": "heartbeat", "utc": "2026-08-05T14:59:13.249419+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 29.9, "deployed": 29.9, "realised": 0.0}
+{"ev": "heartbeat", "utc": "2026-08-05T14:59:18.404489+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 29.9, "deployed": 29.9, "realised": 0.0}
+{"ev": "heartbeat", "utc": "2026-08-05T14:59:23.717543+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 29.9, "deployed": 29.9, "realised": 0.0}
+{"ev": "heartbeat", "utc": "2026-08-05T14:59:28.867848+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 29.9, "deployed": 29.9, "realised": 0.0}
+{"ev": "heartbeat", "utc": "2026-08-05T14:59:34.013721+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 29.9, "deployed": 29.9, "realised": 0.0}
+{"ev": "heartbeat", "utc": "2026-08-05T14:59:39.175834+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 29.9, "deployed": 29.9, "realised": 0.0}
+{"ev": "heartbeat", "utc": "2026-08-05T14:59:44.321372+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 29.9, "deployed": 29.9, "realised": 0.0}
+{"ev": "heartbeat", "utc": "2026-08-05T14:59:49.466648+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 29.9, "deployed": 29.9, "realised": 0.0}
+{"ev": "heartbeat", "utc": "2026-08-05T14:59:54.691526+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 29.9, "deployed": 29.9, "realised": 0.0}
+{"ev": "heartbeat", "utc": "2026-08-05T14:59:59.848313+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 29.9, "deployed": 29.9, "realised": 0.0}
+{"ev": "heartbeat", "utc": "2026-08-05T15:00:05.001978+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 29.9, "deployed": 29.9, "realised": 0.0}
+{"ev": "heartbeat", "utc": "2026-08-05T15:00:10.347092+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 29.9, "deployed": 29.9, "realised": 0.0}
+{"ev": "heartbeat", "utc": "2026-08-05T15:00:15.549626+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 29.9, "deployed": 29.9, "realised": 43.0}
+{"ev": "deployed_reconciled", "utc": "2026-08-05T15:00:20.640470+00:00", "internal": 29.9, "exchange": 0.0, "drift": -29.9, "open_positions": 0}
+{"ev": "heartbeat", "utc": "2026-08-05T15:00:20.972165+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 0.0, "deployed": 0.0, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:00:26.449743+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 0.0, "deployed": 0.0, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:00:31.803897+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 0.0, "deployed": 0.0, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:00:37.146001+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 0.0, "deployed": 0.0, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:00:42.538368+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 0.0, "deployed": 0.0, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:00:47.931681+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 0.0, "deployed": 0.0, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:00:53.360119+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 0.0, "deployed": 0.0, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:00:58.805550+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 0.0, "deployed": 0.0, "realised": 13.1}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:01:04.220506+00:00", "ticker": "KXETH15M-26AUG051115-15", "volume": 1924.69, "required": 2000.0, "min_left": 13.94}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:01:04.220506+00:00", "ticker": "KXSOL15M-26AUG051115-15", "volume": 115.5, "required": 2000.0, "min_left": 13.94}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:01:04.221509+00:00", "ticker": "KXXRP15M-26AUG051115-15", "volume": 1685.86, "required": 2000.0, "min_left": 13.94}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:01:04.221509+00:00", "ticker": "KXDOGE15M-26AUG051115-15", "volume": 878.53, "required": 2000.0, "min_left": 13.94}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:01:04.221509+00:00", "ticker": "KXHYPE15M-26AUG051115-15", "volume": 33.45, "required": 2000.0, "min_left": 13.94}
+{"ev": "heartbeat", "utc": "2026-08-05T15:01:04.221509+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 0.0, "deployed": 0.0, "realised": 13.1}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:01:09.626263+00:00", "ticker": "KXETH15M-26AUG051115-15", "volume": 1924.69, "required": 2000.0, "min_left": 13.85}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:01:09.626263+00:00", "ticker": "KXSOL15M-26AUG051115-15", "volume": 115.5, "required": 2000.0, "min_left": 13.85}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:01:09.627358+00:00", "ticker": "KXXRP15M-26AUG051115-15", "volume": 1685.86, "required": 2000.0, "min_left": 13.85}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:01:09.627358+00:00", "ticker": "KXDOGE15M-26AUG051115-15", "volume": 878.53, "required": 2000.0, "min_left": 13.85}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:01:09.627358+00:00", "ticker": "KXHYPE15M-26AUG051115-15", "volume": 158.35, "required": 2000.0, "min_left": 13.85}
+{"ev": "heartbeat", "utc": "2026-08-05T15:01:09.627358+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 0.0, "deployed": 0.0, "realised": 13.1}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:01:15.030178+00:00", "ticker": "KXETH15M-26AUG051115-15", "volume": 1924.69, "required": 2000.0, "min_left": 13.76}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:01:15.031187+00:00", "ticker": "KXSOL15M-26AUG051115-15", "volume": 115.5, "required": 2000.0, "min_left": 13.76}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:01:15.031187+00:00", "ticker": "KXXRP15M-26AUG051115-15", "volume": 1685.86, "required": 2000.0, "min_left": 13.76}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:01:15.031187+00:00", "ticker": "KXDOGE15M-26AUG051115-15", "volume": 1670.98, "required": 2000.0, "min_left": 13.76}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:01:15.031187+00:00", "ticker": "KXHYPE15M-26AUG051115-15", "volume": 158.35, "required": 2000.0, "min_left": 13.76}
+{"ev": "heartbeat", "utc": "2026-08-05T15:01:15.032181+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 0.0, "deployed": 0.0, "realised": 13.1}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:01:20.492040+00:00", "ticker": "KXETH15M-26AUG051115-15", "volume": 1924.69, "required": 2000.0, "min_left": 13.67}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:01:20.493087+00:00", "ticker": "KXSOL15M-26AUG051115-15", "volume": 998.96, "required": 2000.0, "min_left": 13.67}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:01:20.493087+00:00", "ticker": "KXXRP15M-26AUG051115-15", "volume": 1685.86, "required": 2000.0, "min_left": 13.67}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:01:20.493087+00:00", "ticker": "KXDOGE15M-26AUG051115-15", "volume": 1670.98, "required": 2000.0, "min_left": 13.67}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:01:20.494091+00:00", "ticker": "KXHYPE15M-26AUG051115-15", "volume": 158.35, "required": 2000.0, "min_left": 13.67}
+{"ev": "heartbeat", "utc": "2026-08-05T15:01:20.494091+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 0.0, "deployed": 0.0, "realised": 13.1}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:01:25.992794+00:00", "ticker": "KXETH15M-26AUG051115-15", "volume": 1924.69, "required": 2000.0, "min_left": 13.58}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:01:25.992794+00:00", "ticker": "KXSOL15M-26AUG051115-15", "volume": 998.96, "required": 2000.0, "min_left": 13.58}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:01:25.992794+00:00", "ticker": "KXDOGE15M-26AUG051115-15", "volume": 1670.98, "required": 2000.0, "min_left": 13.58}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:01:25.993791+00:00", "ticker": "KXHYPE15M-26AUG051115-15", "volume": 158.35, "required": 2000.0, "min_left": 13.58}
+{"ev": "heartbeat", "utc": "2026-08-05T15:01:25.993791+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 0.0, "deployed": 0.0, "realised": 13.1}
+{"ev": "capital_released", "utc": "2026-08-05T15:01:30.994992+00:00", "freed": 29.9, "deployed": 0.0}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:01:31.490552+00:00", "ticker": "KXSOL15M-26AUG051115-15", "volume": 998.96, "required": 2000.0, "min_left": 13.48}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:01:31.490552+00:00", "ticker": "KXDOGE15M-26AUG051115-15", "volume": 1670.98, "required": 2000.0, "min_left": 13.48}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:01:31.490552+00:00", "ticker": "KXHYPE15M-26AUG051115-15", "volume": 158.35, "required": 2000.0, "min_left": 13.48}
+{"ev": "heartbeat", "utc": "2026-08-05T15:01:31.491612+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 0.0, "deployed": 0.0, "realised": 13.1}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:01:36.899885+00:00", "ticker": "KXSOL15M-26AUG051115-15", "volume": 998.96, "required": 2000.0, "min_left": 13.39}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:01:36.899885+00:00", "ticker": "KXDOGE15M-26AUG051115-15", "volume": 1670.98, "required": 2000.0, "min_left": 13.39}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:01:36.899885+00:00", "ticker": "KXHYPE15M-26AUG051115-15", "volume": 158.35, "required": 2000.0, "min_left": 13.39}
+{"ev": "heartbeat", "utc": "2026-08-05T15:01:36.901010+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 0.0, "deployed": 0.0, "realised": 13.1}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:01:42.380481+00:00", "ticker": "KXSOL15M-26AUG051115-15", "volume": 998.96, "required": 2000.0, "min_left": 13.3}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:01:42.381850+00:00", "ticker": "KXDOGE15M-26AUG051115-15", "volume": 1958.52, "required": 2000.0, "min_left": 13.3}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:01:42.381850+00:00", "ticker": "KXHYPE15M-26AUG051115-15", "volume": 822.15, "required": 2000.0, "min_left": 13.3}
+{"ev": "heartbeat", "utc": "2026-08-05T15:01:42.381850+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 0.0, "deployed": 0.0, "realised": 13.1}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:01:47.846454+00:00", "ticker": "KXSOL15M-26AUG051115-15", "volume": 998.96, "required": 2000.0, "min_left": 13.21}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:01:47.847513+00:00", "ticker": "KXDOGE15M-26AUG051115-15", "volume": 1958.52, "required": 2000.0, "min_left": 13.21}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:01:47.847513+00:00", "ticker": "KXHYPE15M-26AUG051115-15", "volume": 822.15, "required": 2000.0, "min_left": 13.21}
+{"ev": "heartbeat", "utc": "2026-08-05T15:01:47.847513+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 0.0, "deployed": 0.0, "realised": 13.1}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:01:53.240325+00:00", "ticker": "KXSOL15M-26AUG051115-15", "volume": 1166.76, "required": 2000.0, "min_left": 13.12}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:01:53.240325+00:00", "ticker": "KXDOGE15M-26AUG051115-15", "volume": 1958.52, "required": 2000.0, "min_left": 13.12}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:01:53.240325+00:00", "ticker": "KXHYPE15M-26AUG051115-15", "volume": 822.15, "required": 2000.0, "min_left": 13.12}
+{"ev": "heartbeat", "utc": "2026-08-05T15:01:53.241322+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 0.0, "deployed": 0.0, "realised": 13.1}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:01:58.633614+00:00", "ticker": "KXSOL15M-26AUG051115-15", "volume": 1166.76, "required": 2000.0, "min_left": 13.03}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:01:58.633614+00:00", "ticker": "KXDOGE15M-26AUG051115-15", "volume": 1958.52, "required": 2000.0, "min_left": 13.03}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:01:58.634644+00:00", "ticker": "KXHYPE15M-26AUG051115-15", "volume": 822.15, "required": 2000.0, "min_left": 13.03}
+{"ev": "heartbeat", "utc": "2026-08-05T15:01:58.634644+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 0.0, "deployed": 0.0, "realised": 13.1}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:02:04.048365+00:00", "ticker": "KXSOL15M-26AUG051115-15", "volume": 1166.76, "required": 2000.0, "min_left": 12.94}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:02:04.049369+00:00", "ticker": "KXDOGE15M-26AUG051115-15", "volume": 1958.52, "required": 2000.0, "min_left": 12.94}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:02:04.049369+00:00", "ticker": "KXHYPE15M-26AUG051115-15", "volume": 822.15, "required": 2000.0, "min_left": 12.94}
+{"ev": "heartbeat", "utc": "2026-08-05T15:02:04.049369+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 0.0, "deployed": 0.0, "realised": 13.1}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:02:09.460061+00:00", "ticker": "KXSOL15M-26AUG051115-15", "volume": 1166.76, "required": 2000.0, "min_left": 12.85}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:02:09.461111+00:00", "ticker": "KXDOGE15M-26AUG051115-15", "volume": 1958.52, "required": 2000.0, "min_left": 12.85}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:02:09.461111+00:00", "ticker": "KXHYPE15M-26AUG051115-15", "volume": 822.15, "required": 2000.0, "min_left": 12.85}
+{"ev": "heartbeat", "utc": "2026-08-05T15:02:09.461111+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 0.0, "deployed": 0.0, "realised": 13.1}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:02:14.913207+00:00", "ticker": "KXSOL15M-26AUG051115-15", "volume": 1166.76, "required": 2000.0, "min_left": 12.76}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:02:14.913207+00:00", "ticker": "KXDOGE15M-26AUG051115-15", "volume": 1958.52, "required": 2000.0, "min_left": 12.76}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:02:14.913207+00:00", "ticker": "KXHYPE15M-26AUG051115-15", "volume": 822.15, "required": 2000.0, "min_left": 12.76}
+{"ev": "heartbeat", "utc": "2026-08-05T15:02:14.914289+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 0.0, "deployed": 0.0, "realised": 13.1}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:02:20.379317+00:00", "ticker": "KXSOL15M-26AUG051115-15", "volume": 1166.76, "required": 2000.0, "min_left": 12.67}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:02:20.379317+00:00", "ticker": "KXDOGE15M-26AUG051115-15", "volume": 1958.52, "required": 2000.0, "min_left": 12.67}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:02:20.380352+00:00", "ticker": "KXHYPE15M-26AUG051115-15", "volume": 822.15, "required": 2000.0, "min_left": 12.67}
+{"ev": "heartbeat", "utc": "2026-08-05T15:02:20.380352+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 0.0, "deployed": 0.0, "realised": 13.1}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:02:25.905935+00:00", "ticker": "KXSOL15M-26AUG051115-15", "volume": 1166.76, "required": 2000.0, "min_left": 12.58}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:02:25.906944+00:00", "ticker": "KXDOGE15M-26AUG051115-15", "volume": 1958.52, "required": 2000.0, "min_left": 12.58}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:02:25.906944+00:00", "ticker": "KXHYPE15M-26AUG051115-15", "volume": 1140.07, "required": 2000.0, "min_left": 12.58}
+{"ev": "heartbeat", "utc": "2026-08-05T15:02:25.906944+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 0.0, "deployed": 0.0, "realised": 13.1}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:02:31.392606+00:00", "ticker": "KXSOL15M-26AUG051115-15", "volume": 1166.76, "required": 2000.0, "min_left": 12.48}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:02:31.393635+00:00", "ticker": "KXHYPE15M-26AUG051115-15", "volume": 1140.07, "required": 2000.0, "min_left": 12.48}
+{"ev": "heartbeat", "utc": "2026-08-05T15:02:31.393635+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 0.0, "deployed": 0.0, "realised": 13.1}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:02:36.803749+00:00", "ticker": "KXSOL15M-26AUG051115-15", "volume": 1358.19, "required": 2000.0, "min_left": 12.39}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:02:36.803749+00:00", "ticker": "KXHYPE15M-26AUG051115-15", "volume": 1140.07, "required": 2000.0, "min_left": 12.39}
+{"ev": "heartbeat", "utc": "2026-08-05T15:02:36.804754+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 0.0, "deployed": 0.0, "realised": 13.1}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:02:42.190328+00:00", "ticker": "KXSOL15M-26AUG051115-15", "volume": 1358.19, "required": 2000.0, "min_left": 12.3}
+{"ev": "dead_entry_skip", "utc": "2026-08-05T15:02:42.284642+00:00", "ticker": "KXXRP15M-26AUG051115-15", "others_px": 0.6, "n_peers": 5, "frac_long": 0.1701, "others_max": 0.71, "flong_max": 0.5046, "min_left": 12.3}
+{"ev": "dead_entry_skip", "utc": "2026-08-05T15:02:42.371956+00:00", "ticker": "KXDOGE15M-26AUG051115-15", "others_px": 0.6, "n_peers": 5, "frac_long": 0.2232, "others_max": 0.71, "flong_max": 0.5046, "min_left": 12.3}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:02:42.372987+00:00", "ticker": "KXHYPE15M-26AUG051115-15", "volume": 1140.07, "required": 2000.0, "min_left": 12.3}
+{"ev": "heartbeat", "utc": "2026-08-05T15:02:42.372987+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 0.0, "deployed": 0.0, "realised": 13.1}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:02:47.843078+00:00", "ticker": "KXSOL15M-26AUG051115-15", "volume": 1358.19, "required": 2000.0, "min_left": 12.21}
+{"ev": "dead_entry_skip", "utc": "2026-08-05T15:02:47.891559+00:00", "ticker": "KXXRP15M-26AUG051115-15", "others_px": 0.622, "n_peers": 5, "frac_long": 0.1622, "others_max": 0.71, "flong_max": 0.5046, "min_left": 12.21}
+{"ev": "dead_entry_skip", "utc": "2026-08-05T15:02:47.934951+00:00", "ticker": "KXDOGE15M-26AUG051115-15", "others_px": 0.622, "n_peers": 5, "frac_long": 0.2372, "others_max": 0.71, "flong_max": 0.5046, "min_left": 12.21}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:02:47.936084+00:00", "ticker": "KXHYPE15M-26AUG051115-15", "volume": 1140.07, "required": 2000.0, "min_left": 12.21}
+{"ev": "heartbeat", "utc": "2026-08-05T15:02:47.936084+00:00", "resting": 0, "orders": 1, "entered": 118, "gross": 0.0, "deployed": 0.0, "realised": 13.1}
+{"ev": "opportunity", "utc": "2026-08-05T15:02:53.523423+00:00", "ticker": "KXBTC15M-26AUG051115-15", "side": "yes", "min_left": 12.12, "volume": 247560.47, "fav_bid": 0.68, "fav_ask": 0.69, "spread_c": 1.0, "post_at": 0.68, "queue_ahead": 709.04, "qty": 22, "base_qty": 15, "others_px": 0.684, "frac_long": 0.646, "expected_c": null}
+{"ev": "post", "utc": "2026-08-05T15:02:53.563139+00:00", "ticker": "KXBTC15M-26AUG051115-15", "side": "yes", "price": 0.68, "qty": 22, "status": 201, "immediate_fill": "0.00", "resp": "{'client_order_id': 'lsm1785942173523', 'fill_count': '0.00', 'order_id': 'cd3a0da2-724d-4f24-9d55-e0c9786a3937', 'remaining_count': '22.00', 'ts_ms': 1785942174041}"}
+{"ev": "dead_entry_skip", "utc": "2026-08-05T15:02:53.659920+00:00", "ticker": "KXETH15M-26AUG051115-15", "others_px": 0.68, "n_peers": 5, "frac_long": 0.2358, "others_max": 0.71, "flong_max": 0.5046, "min_left": 12.12}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:02:53.659920+00:00", "ticker": "KXSOL15M-26AUG051115-15", "volume": 1358.19, "required": 2000.0, "min_left": 12.12}
+{"ev": "dead_entry_skip", "utc": "2026-08-05T15:02:53.705694+00:00", "ticker": "KXXRP15M-26AUG051115-15", "others_px": 0.676, "n_peers": 5, "frac_long": 0.1525, "others_max": 0.71, "flong_max": 0.5046, "min_left": 12.12}
+{"ev": "dead_entry_skip", "utc": "2026-08-05T15:02:53.748794+00:00", "ticker": "KXDOGE15M-26AUG051115-15", "others_px": 0.672, "n_peers": 5, "frac_long": 0.2357, "others_max": 0.71, "flong_max": 0.5046, "min_left": 12.12}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:02:53.749828+00:00", "ticker": "KXHYPE15M-26AUG051115-15", "volume": 1140.07, "required": 2000.0, "min_left": 12.12}
+{"ev": "heartbeat", "utc": "2026-08-05T15:02:53.749828+00:00", "resting": 1, "orders": 2, "entered": 119, "gross": 14.96, "deployed": 14.96, "realised": 13.1}
+{"ev": "resting_reconciled", "utc": "2026-08-05T15:02:58.878373+00:00", "removed": 1, "still_resting": 0, "note": "filled or cancelled; was double-counted"}
+{"ev": "dead_entry_skip", "utc": "2026-08-05T15:02:59.286131+00:00", "ticker": "KXETH15M-26AUG051115-15", "others_px": 0.632, "n_peers": 5, "frac_long": 0.2459, "others_max": 0.71, "flong_max": 0.5046, "min_left": 12.02}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:02:59.287128+00:00", "ticker": "KXSOL15M-26AUG051115-15", "volume": 1358.19, "required": 2000.0, "min_left": 12.02}
+{"ev": "dead_entry_skip", "utc": "2026-08-05T15:02:59.331288+00:00", "ticker": "KXXRP15M-26AUG051115-15", "others_px": 0.63, "n_peers": 5, "frac_long": 0.2221, "others_max": 0.71, "flong_max": 0.5046, "min_left": 12.02}
+{"ev": "dead_entry_skip", "utc": "2026-08-05T15:02:59.376794+00:00", "ticker": "KXDOGE15M-26AUG051115-15", "others_px": 0.622, "n_peers": 5, "frac_long": 0.2442, "others_max": 0.71, "flong_max": 0.5046, "min_left": 12.02}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:02:59.376794+00:00", "ticker": "KXHYPE15M-26AUG051115-15", "volume": 1382.82, "required": 2000.0, "min_left": 12.02}
+{"ev": "heartbeat", "utc": "2026-08-05T15:02:59.377830+00:00", "resting": 0, "orders": 2, "entered": 119, "gross": 14.96, "deployed": 14.96, "realised": 13.1}
+{"ev": "dead_entry_skip", "utc": "2026-08-05T15:03:04.898495+00:00", "ticker": "KXETH15M-26AUG051115-15", "others_px": 0.652, "n_peers": 5, "frac_long": 0.2616, "others_max": 0.71, "flong_max": 0.5046, "min_left": 11.93}
+{"ev": "opportunity", "utc": "2026-08-05T15:03:04.985601+00:00", "ticker": "KXSOL15M-26AUG051115-15", "side": "yes", "min_left": 11.93, "volume": 2238.71, "fav_bid": 0.7, "fav_ask": 0.71, "spread_c": 1.0, "post_at": 0.7, "queue_ahead": 1.0, "qty": 16, "base_qty": 15, "others_px": 0.648, "frac_long": 0.7167, "expected_c": null}
+{"ev": "post", "utc": "2026-08-05T15:03:05.025095+00:00", "ticker": "KXSOL15M-26AUG051115-15", "side": "yes", "price": 0.7, "qty": 16, "status": 201, "immediate_fill": "0.00", "resp": "{'client_order_id': 'lsm1785942184985', 'fill_count': '0.00', 'order_id': 'e537e0e4-544b-457a-8571-b9e03b8ff53d', 'remaining_count': '16.00', 'ts_ms': 1785942185503}"}
+{"ev": "dead_entry_skip", "utc": "2026-08-05T15:03:05.071993+00:00", "ticker": "KXXRP15M-26AUG051115-15", "others_px": 0.658, "n_peers": 5, "frac_long": 0.2552, "others_max": 0.71, "flong_max": 0.5046, "min_left": 11.93}
+{"ev": "dead_entry_skip", "utc": "2026-08-05T15:03:05.117558+00:00", "ticker": "KXDOGE15M-26AUG051115-15", "others_px": 0.644, "n_peers": 5, "frac_long": 0.2554, "others_max": 0.71, "flong_max": 0.5046, "min_left": 11.93}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:03:05.117558+00:00", "ticker": "KXHYPE15M-26AUG051115-15", "volume": 1382.82, "required": 2000.0, "min_left": 11.93}
+{"ev": "heartbeat", "utc": "2026-08-05T15:03:05.118583+00:00", "resting": 1, "orders": 3, "entered": 120, "gross": 26.16, "deployed": 26.16, "realised": 13.1}
+{"ev": "resting_reconciled", "utc": "2026-08-05T15:03:10.262878+00:00", "removed": 1, "still_resting": 0, "note": "filled or cancelled; was double-counted"}
+{"ev": "dead_entry_skip", "utc": "2026-08-05T15:03:10.668650+00:00", "ticker": "KXETH15M-26AUG051115-15", "others_px": 0.63, "n_peers": 5, "frac_long": 0.2637, "others_max": 0.71, "flong_max": 0.5046, "min_left": 11.83}
+{"ev": "dead_entry_skip", "utc": "2026-08-05T15:03:10.712812+00:00", "ticker": "KXDOGE15M-26AUG051115-15", "others_px": 0.614, "n_peers": 5, "frac_long": 0.2573, "others_max": 0.71, "flong_max": 0.5046, "min_left": 11.83}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:03:10.714098+00:00", "ticker": "KXHYPE15M-26AUG051115-15", "volume": 1382.82, "required": 2000.0, "min_left": 11.83}
+{"ev": "heartbeat", "utc": "2026-08-05T15:03:10.714098+00:00", "resting": 0, "orders": 3, "entered": 120, "gross": 26.16, "deployed": 26.16, "realised": 13.1}
+{"ev": "dead_entry_skip", "utc": "2026-08-05T15:03:16.271197+00:00", "ticker": "KXETH15M-26AUG051115-15", "others_px": 0.662, "n_peers": 5, "frac_long": 0.2761, "others_max": 0.71, "flong_max": 0.5046, "min_left": 11.74}
+{"ev": "dead_entry_skip", "utc": "2026-08-05T15:03:16.317845+00:00", "ticker": "KXXRP15M-26AUG051115-15", "others_px": 0.664, "n_peers": 5, "frac_long": 0.2654, "others_max": 0.71, "flong_max": 0.5046, "min_left": 11.74}
+{"ev": "dead_entry_skip", "utc": "2026-08-05T15:03:16.368878+00:00", "ticker": "KXDOGE15M-26AUG051115-15", "others_px": 0.648, "n_peers": 5, "frac_long": 0.2823, "others_max": 0.71, "flong_max": 0.5046, "min_left": 11.74}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:03:16.368878+00:00", "ticker": "KXHYPE15M-26AUG051115-15", "volume": 1382.82, "required": 2000.0, "min_left": 11.74}
+{"ev": "heartbeat", "utc": "2026-08-05T15:03:16.369923+00:00", "resting": 0, "orders": 3, "entered": 120, "gross": 26.16, "deployed": 26.16, "realised": 13.1}
+{"ev": "dead_entry_skip", "utc": "2026-08-05T15:03:21.897756+00:00", "ticker": "KXETH15M-26AUG051115-15", "others_px": 0.696, "n_peers": 5, "frac_long": 0.3005, "others_max": 0.71, "flong_max": 0.5046, "min_left": 11.64}
+{"ev": "dead_entry_skip", "utc": "2026-08-05T15:03:21.945115+00:00", "ticker": "KXXRP15M-26AUG051115-15", "others_px": 0.692, "n_peers": 5, "frac_long": 0.2755, "others_max": 0.71, "flong_max": 0.5046, "min_left": 11.64}
+{"ev": "dead_entry_skip", "utc": "2026-08-05T15:03:21.994071+00:00", "ticker": "KXDOGE15M-26AUG051115-15", "others_px": 0.678, "n_peers": 5, "frac_long": 0.29, "others_max": 0.71, "flong_max": 0.5046, "min_left": 11.64}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:03:21.994071+00:00", "ticker": "KXHYPE15M-26AUG051115-15", "volume": 1382.82, "required": 2000.0, "min_left": 11.64}
+{"ev": "heartbeat", "utc": "2026-08-05T15:03:21.995075+00:00", "resting": 0, "orders": 3, "entered": 120, "gross": 26.16, "deployed": 26.16, "realised": 13.1}
+{"ev": "dead_entry_skip", "utc": "2026-08-05T15:03:27.477808+00:00", "ticker": "KXETH15M-26AUG051115-15", "others_px": 0.702, "n_peers": 5, "frac_long": 0.3004, "others_max": 0.71, "flong_max": 0.5046, "min_left": 11.55}
+{"ev": "dead_entry_skip", "utc": "2026-08-05T15:03:27.525234+00:00", "ticker": "KXXRP15M-26AUG051115-15", "others_px": 0.698, "n_peers": 5, "frac_long": 0.2803, "others_max": 0.71, "flong_max": 0.5046, "min_left": 11.55}
+{"ev": "dead_entry_skip", "utc": "2026-08-05T15:03:27.573747+00:00", "ticker": "KXDOGE15M-26AUG051115-15", "others_px": 0.686, "n_peers": 5, "frac_long": 0.3161, "others_max": 0.71, "flong_max": 0.5046, "min_left": 11.55}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:03:27.574794+00:00", "ticker": "KXHYPE15M-26AUG051115-15", "volume": 1658.92, "required": 2000.0, "min_left": 11.55}
+{"ev": "heartbeat", "utc": "2026-08-05T15:03:27.574794+00:00", "resting": 0, "orders": 3, "entered": 120, "gross": 26.16, "deployed": 26.16, "realised": 13.1}
+{"ev": "dead_entry_skip", "utc": "2026-08-05T15:03:33.060249+00:00", "ticker": "KXETH15M-26AUG051115-15", "others_px": 0.666, "n_peers": 5, "frac_long": 0.3009, "others_max": 0.71, "flong_max": 0.5046, "min_left": 11.46}
+{"ev": "dead_entry_skip", "utc": "2026-08-05T15:03:33.169260+00:00", "ticker": "KXXRP15M-26AUG051115-15", "others_px": 0.666, "n_peers": 5, "frac_long": 0.2905, "others_max": 0.71, "flong_max": 0.5046, "min_left": 11.46}
+{"ev": "dead_entry_skip", "utc": "2026-08-05T15:03:33.215112+00:00", "ticker": "KXDOGE15M-26AUG051115-15", "others_px": 0.658, "n_peers": 5, "frac_long": 0.3371, "others_max": 0.71, "flong_max": 0.5046, "min_left": 11.46}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:03:33.215112+00:00", "ticker": "KXHYPE15M-26AUG051115-15", "volume": 1658.92, "required": 2000.0, "min_left": 11.46}
+{"ev": "heartbeat", "utc": "2026-08-05T15:03:33.216216+00:00", "resting": 0, "orders": 3, "entered": 120, "gross": 26.16, "deployed": 26.16, "realised": 13.1}
+{"ev": "dead_entry_skip", "utc": "2026-08-05T15:03:38.779234+00:00", "ticker": "KXETH15M-26AUG051115-15", "others_px": 0.684, "n_peers": 5, "frac_long": 0.3054, "others_max": 0.71, "flong_max": 0.5046, "min_left": 11.36}
+{"ev": "dead_entry_skip", "utc": "2026-08-05T15:03:38.824318+00:00", "ticker": "KXXRP15M-26AUG051115-15", "others_px": 0.682, "n_peers": 5, "frac_long": 0.2904, "others_max": 0.71, "flong_max": 0.5046, "min_left": 11.36}
+{"ev": "dead_entry_skip", "utc": "2026-08-05T15:03:38.869508+00:00", "ticker": "KXDOGE15M-26AUG051115-15", "others_px": 0.672, "n_peers": 5, "frac_long": 0.3651, "others_max": 0.71, "flong_max": 0.5046, "min_left": 11.36}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:03:38.870518+00:00", "ticker": "KXHYPE15M-26AUG051115-15", "volume": 1658.92, "required": 2000.0, "min_left": 11.36}
+{"ev": "heartbeat", "utc": "2026-08-05T15:03:38.870518+00:00", "resting": 0, "orders": 3, "entered": 120, "gross": 26.16, "deployed": 26.16, "realised": 13.1}
+{"ev": "dead_entry_skip", "utc": "2026-08-05T15:03:44.327716+00:00", "ticker": "KXETH15M-26AUG051115-15", "others_px": 0.706, "n_peers": 5, "frac_long": 0.3079, "others_max": 0.71, "flong_max": 0.5046, "min_left": 11.27}
+{"ev": "dead_entry_skip", "utc": "2026-08-05T15:03:44.375818+00:00", "ticker": "KXXRP15M-26AUG051115-15", "others_px": 0.706, "n_peers": 5, "frac_long": 0.2903, "others_max": 0.71, "flong_max": 0.5046, "min_left": 11.27}
+{"ev": "dead_entry_skip", "utc": "2026-08-05T15:03:44.447107+00:00", "ticker": "KXDOGE15M-26AUG051115-15", "others_px": 0.698, "n_peers": 5, "frac_long": 0.3884, "others_max": 0.71, "flong_max": 0.5046, "min_left": 11.27}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:03:44.448106+00:00", "ticker": "KXHYPE15M-26AUG051115-15", "volume": 1658.92, "required": 2000.0, "min_left": 11.27}
+{"ev": "heartbeat", "utc": "2026-08-05T15:03:44.448106+00:00", "resting": 0, "orders": 3, "entered": 120, "gross": 26.16, "deployed": 26.16, "realised": 13.1}
+{"ev": "dead_entry_skip", "utc": "2026-08-05T15:03:49.930351+00:00", "ticker": "KXETH15M-26AUG051115-15", "others_px": 0.704, "n_peers": 5, "frac_long": 0.2996, "others_max": 0.71, "flong_max": 0.5046, "min_left": 11.18}
+{"ev": "opportunity", "utc": "2026-08-05T15:03:50.035774+00:00", "ticker": "KXXRP15M-26AUG051115-15", "side": "yes", "min_left": 11.18, "volume": 4382.95, "fav_bid": 0.67, "fav_ask": 0.69, "spread_c": 2.0, "post_at": 0.67, "queue_ahead": 11.0, "qty": 16, "base_qty": 15, "others_px": 0.714, "frac_long": 0.3266, "expected_c": null}
+{"ev": "post", "utc": "2026-08-05T15:03:50.075434+00:00", "ticker": "KXXRP15M-26AUG051115-15", "side": "yes", "price": 0.67, "qty": 16, "status": 201, "immediate_fill": "0.00", "resp": "{'client_order_id': 'lsm1785942230036', 'fill_count': '0.00', 'order_id': 'a09831a6-3c6d-4cd2-a291-4db8fcedeebc', 'remaining_count': '16.00', 'ts_ms': 1785942230555}"}
+{"ev": "heartbeat", "utc": "2026-08-05T15:03:50.076467+00:00", "resting": 1, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "deployed_reconciled", "utc": "2026-08-05T15:03:55.169895+00:00", "internal": 36.88, "exchange": 26.16, "drift": -10.72, "open_positions": 2}
+{"ev": "heartbeat", "utc": "2026-08-05T15:03:55.514767+00:00", "resting": 1, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 26.16, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:04:01.019258+00:00", "resting": 1, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 26.16, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:04:06.494833+00:00", "resting": 1, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 26.16, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:04:11.932600+00:00", "resting": 1, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 26.16, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:04:17.387983+00:00", "resting": 1, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 26.16, "realised": 13.1}
+{"ev": "deployed_reconciled", "utc": "2026-08-05T15:04:22.475593+00:00", "internal": 26.16, "exchange": 36.88, "drift": 10.72, "open_positions": 3}
+{"ev": "resting_reconciled", "utc": "2026-08-05T15:04:22.517387+00:00", "removed": 1, "still_resting": 0, "note": "filled or cancelled; was double-counted"}
+{"ev": "heartbeat", "utc": "2026-08-05T15:04:22.816779+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:04:28.231119+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:04:33.696560+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:04:39.094416+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:04:44.485982+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:04:49.923226+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:04:55.334467+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:05:00.798854+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:05:06.308234+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:05:11.756693+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:05:17.135424+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:05:22.526681+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:05:27.923470+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:05:33.298607+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:05:38.748385+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:05:44.162329+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:05:49.550387+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:05:54.954700+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:06:00.374765+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:06:05.843184+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:06:11.302498+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:06:16.759296+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:06:22.163932+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:06:27.618390+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:06:33.106328+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:06:38.632630+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:06:44.025341+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:06:49.404292+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:06:54.793331+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:07:00.174084+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:07:05.624153+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:07:11.136349+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:07:16.608382+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:07:22.021870+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:07:27.431026+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:07:32.810955+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:07:38.204886+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:07:43.593810+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:07:49.054193+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:07:54.435602+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:07:59.846292+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:08:04.988434+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:08:10.150259+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:08:15.343972+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:08:20.485217+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:08:25.796791+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:08:30.944697+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:08:36.194651+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:08:41.452502+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:08:46.602382+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:08:51.894908+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:08:57.046229+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:09:02.244130+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:09:07.465972+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:09:12.692027+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:09:17.787479+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:09:22.934127+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:09:28.158034+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:09:33.302480+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:09:38.450778+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:09:43.679688+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:09:48.907524+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:09:54.137289+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:09:59.463621+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:10:04.666523+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:10:09.810882+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:10:15.067271+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:10:20.274347+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:10:25.435263+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:10:30.597688+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:10:35.740635+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:10:40.947964+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:10:46.222013+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:10:51.407343+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:10:56.548512+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:11:01.825925+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:11:07.164621+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:11:12.310218+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:11:17.533338+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:11:22.684303+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:11:27.871980+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:11:33.088366+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:11:38.230479+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:11:43.421840+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:11:48.729655+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:11:53.965922+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:11:59.114485+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:12:04.346005+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:12:09.492613+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:12:14.644075+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:12:19.785252+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:12:24.940987+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:12:30.082512+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:12:35.223417+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:12:40.371633+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:12:45.569244+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:12:50.715318+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:12:55.948289+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:13:01.095552+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:13:06.241534+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:13:11.399736+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:13:16.553929+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:13:21.794189+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:13:26.948346+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:13:32.147888+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:13:37.299703+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:13:42.467981+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:13:47.620296+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:13:52.768962+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:13:57.932589+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:14:03.082604+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:14:08.305117+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:14:13.506511+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:14:18.741270+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:14:23.890423+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:14:29.038250+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:14:34.196715+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:14:39.385017+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:14:44.533125+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:14:49.679284+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:14:54.906951+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:15:00.102158+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:15:05.249890+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:15:10.431573+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 36.88, "deployed": 36.88, "realised": 13.1}
+{"ev": "deployed_reconciled", "utc": "2026-08-05T15:15:15.521376+00:00", "internal": 36.88, "exchange": 0.0, "drift": -36.88, "open_positions": 0}
+{"ev": "heartbeat", "utc": "2026-08-05T15:15:15.624672+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 0.0, "deployed": 0.0, "realised": 14.22}
+{"ev": "heartbeat", "utc": "2026-08-05T15:15:20.872574+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 0.0, "deployed": 0.0, "realised": 14.22}
+{"ev": "heartbeat", "utc": "2026-08-05T15:15:26.362647+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 0.0, "deployed": 0.0, "realised": 14.22}
+{"ev": "heartbeat", "utc": "2026-08-05T15:15:31.830812+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 0.0, "deployed": 0.0, "realised": 14.22}
+{"ev": "heartbeat", "utc": "2026-08-05T15:15:37.297159+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 0.0, "deployed": 0.0, "realised": 14.22}
+{"ev": "heartbeat", "utc": "2026-08-05T15:15:42.737923+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 0.0, "deployed": 0.0, "realised": 14.22}
+{"ev": "heartbeat", "utc": "2026-08-05T15:15:48.118694+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 0.0, "deployed": 0.0, "realised": 14.22}
+{"ev": "heartbeat", "utc": "2026-08-05T15:15:53.570029+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 0.0, "deployed": 0.0, "realised": 14.22}
+{"ev": "heartbeat", "utc": "2026-08-05T15:15:58.954343+00:00", "resting": 0, "orders": 4, "entered": 121, "gross": 0.0, "deployed": 0.0, "realised": 14.22}
+{"ev": "opportunity", "utc": "2026-08-05T15:16:04.437781+00:00", "ticker": "KXBTC15M-26AUG051130-30", "side": "no", "min_left": 13.93, "volume": 110643.48, "fav_bid": 0.76, "fav_ask": 0.77, "spread_c": 1.0, "post_at": 0.76, "queue_ahead": 5926.8, "qty": 22, "base_qty": 15, "others_px": 0.7, "frac_long": 0.5614, "expected_c": null}
+{"ev": "post", "utc": "2026-08-05T15:16:04.477301+00:00", "ticker": "KXBTC15M-26AUG051130-30", "side": "no", "price": 0.76, "qty": 22, "status": 201, "immediate_fill": "0.00", "resp": "{'client_order_id': 'lsm1785942964437', 'fill_count': '0.00', 'order_id': '81d553c4-2fc5-4e21-8814-73066d44eb4c', 'remaining_count': '22.00', 'ts_ms': 1785942964971}"}
+{"ev": "dead_entry_skip", "utc": "2026-08-05T15:16:04.571466+00:00", "ticker": "KXETH15M-26AUG051130-30", "others_px": 0.698, "n_peers": 5, "frac_long": 0.5014, "others_max": 0.71, "flong_max": 0.5046, "min_left": 13.93}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:16:04.571466+00:00", "ticker": "KXSOL15M-26AUG051130-30", "volume": 284.81, "required": 2000.0, "min_left": 13.93}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:16:04.572504+00:00", "ticker": "KXXRP15M-26AUG051130-30", "volume": 1694.09, "required": 2000.0, "min_left": 13.93}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:16:04.572504+00:00", "ticker": "KXDOGE15M-26AUG051130-30", "volume": 467.1, "required": 2000.0, "min_left": 13.93}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:16:04.572504+00:00", "ticker": "KXHYPE15M-26AUG051130-30", "volume": 206.98, "required": 2000.0, "min_left": 13.93}
+{"ev": "heartbeat", "utc": "2026-08-05T15:16:04.572504+00:00", "resting": 1, "orders": 5, "entered": 122, "gross": 16.72, "deployed": 16.72, "realised": 14.22}
+{"ev": "deployed_reconciled", "utc": "2026-08-05T15:16:09.658208+00:00", "internal": 16.72, "exchange": 0.0, "drift": -16.72, "open_positions": 0}
+{"ev": "shadow_band", "utc": "2026-08-05T15:16:10.090332+00:00", "ticker": "KXETH15M-26AUG051130-30", "side": "no", "fav_bid": 0.84, "fav_ask": 0.85, "volume": 2288.54, "min_left": 13.84, "window": "2026-08-05T15:30:00Z", "live_hi": 0.8, "note": "evaluated, logged, NOT traded"}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:16:10.091374+00:00", "ticker": "KXSOL15M-26AUG051130-30", "volume": 284.81, "required": 2000.0, "min_left": 13.84}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:16:10.091374+00:00", "ticker": "KXXRP15M-26AUG051130-30", "volume": 1694.09, "required": 2000.0, "min_left": 13.84}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:16:10.091374+00:00", "ticker": "KXDOGE15M-26AUG051130-30", "volume": 467.1, "required": 2000.0, "min_left": 13.84}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:16:10.091374+00:00", "ticker": "KXHYPE15M-26AUG051130-30", "volume": 206.98, "required": 2000.0, "min_left": 13.84}
+{"ev": "heartbeat", "utc": "2026-08-05T15:16:10.091374+00:00", "resting": 1, "orders": 5, "entered": 122, "gross": 16.72, "deployed": 0.0, "realised": 14.22}
+{"ev": "shadow_band", "utc": "2026-08-05T15:16:15.585524+00:00", "ticker": "KXETH15M-26AUG051130-30", "side": "no", "fav_bid": 0.84, "fav_ask": 0.85, "volume": 2288.54, "min_left": 13.75, "window": "2026-08-05T15:30:00Z", "live_hi": 0.8, "note": "evaluated, logged, NOT traded"}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:16:15.586521+00:00", "ticker": "KXSOL15M-26AUG051130-30", "volume": 284.81, "required": 2000.0, "min_left": 13.75}
+{"ev": "shadow_band", "utc": "2026-08-05T15:16:15.586521+00:00", "ticker": "KXXRP15M-26AUG051130-30", "side": "no", "fav_bid": 0.81, "fav_ask": 0.8200000000000001, "volume": 3242.63, "min_left": 13.75, "window": "2026-08-05T15:30:00Z", "live_hi": 0.8, "note": "evaluated, logged, NOT traded"}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:16:15.586521+00:00", "ticker": "KXDOGE15M-26AUG051130-30", "volume": 467.1, "required": 2000.0, "min_left": 13.75}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:16:15.587519+00:00", "ticker": "KXHYPE15M-26AUG051130-30", "volume": 206.98, "required": 2000.0, "min_left": 13.75}
+{"ev": "heartbeat", "utc": "2026-08-05T15:16:15.587519+00:00", "resting": 1, "orders": 5, "entered": 122, "gross": 16.72, "deployed": 0.0, "realised": 14.22}
+{"ev": "shadow_band", "utc": "2026-08-05T15:16:21.018325+00:00", "ticker": "KXETH15M-26AUG051130-30", "side": "no", "fav_bid": 0.85, "fav_ask": 0.86, "volume": 2288.54, "min_left": 13.66, "window": "2026-08-05T15:30:00Z", "live_hi": 0.8, "note": "evaluated, logged, NOT traded"}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:16:21.018325+00:00", "ticker": "KXSOL15M-26AUG051130-30", "volume": 284.81, "required": 2000.0, "min_left": 13.66}
+{"ev": "shadow_band", "utc": "2026-08-05T15:16:21.018325+00:00", "ticker": "KXXRP15M-26AUG051130-30", "side": "no", "fav_bid": 0.81, "fav_ask": 0.8200000000000001, "volume": 3242.63, "min_left": 13.66, "window": "2026-08-05T15:30:00Z", "live_hi": 0.8, "note": "evaluated, logged, NOT traded"}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:16:21.019317+00:00", "ticker": "KXDOGE15M-26AUG051130-30", "volume": 467.1, "required": 2000.0, "min_left": 13.66}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:16:21.019317+00:00", "ticker": "KXHYPE15M-26AUG051130-30", "volume": 206.98, "required": 2000.0, "min_left": 13.66}
+{"ev": "heartbeat", "utc": "2026-08-05T15:16:21.019317+00:00", "resting": 1, "orders": 5, "entered": 122, "gross": 16.72, "deployed": 0.0, "realised": 14.22}
+{"ev": "shadow_band", "utc": "2026-08-05T15:16:26.644611+00:00", "ticker": "KXETH15M-26AUG051130-30", "side": "no", "fav_bid": 0.84, "fav_ask": 0.85, "volume": 2288.54, "min_left": 13.57, "window": "2026-08-05T15:30:00Z", "live_hi": 0.8, "note": "evaluated, logged, NOT traded"}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:16:26.644611+00:00", "ticker": "KXSOL15M-26AUG051130-30", "volume": 1513.92, "required": 2000.0, "min_left": 13.57}
+{"ev": "shadow_band", "utc": "2026-08-05T15:16:26.645716+00:00", "ticker": "KXXRP15M-26AUG051130-30", "side": "no", "fav_bid": 0.8, "fav_ask": 0.81, "volume": 3242.63, "min_left": 13.57, "window": "2026-08-05T15:30:00Z", "live_hi": 0.8, "note": "evaluated, logged, NOT traded"}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:16:26.645716+00:00", "ticker": "KXDOGE15M-26AUG051130-30", "volume": 930.68, "required": 2000.0, "min_left": 13.57}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:16:26.645716+00:00", "ticker": "KXHYPE15M-26AUG051130-30", "volume": 607.14, "required": 2000.0, "min_left": 13.57}
+{"ev": "heartbeat", "utc": "2026-08-05T15:16:26.645716+00:00", "resting": 1, "orders": 5, "entered": 122, "gross": 16.72, "deployed": 0.0, "realised": 14.22}
+{"ev": "capital_released", "utc": "2026-08-05T15:16:31.646956+00:00", "freed": 36.88, "deployed": 0.0}
+{"ev": "shadow_band", "utc": "2026-08-05T15:16:32.175240+00:00", "ticker": "KXETH15M-26AUG051130-30", "side": "no", "fav_bid": 0.82, "fav_ask": 0.83, "volume": 4485.68, "min_left": 13.47, "window": "2026-08-05T15:30:00Z", "live_hi": 0.8, "note": "evaluated, logged, NOT traded"}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:16:32.176269+00:00", "ticker": "KXSOL15M-26AUG051130-30", "volume": 1513.92, "required": 2000.0, "min_left": 13.47}
+{"ev": "opportunity", "utc": "2026-08-05T15:16:32.263204+00:00", "ticker": "KXXRP15M-26AUG051130-30", "side": "no", "min_left": 13.47, "volume": 3242.63, "fav_bid": 0.79, "fav_ask": 0.8, "spread_c": 1.0, "post_at": 0.79, "queue_ahead": 82.0, "qty": 22, "base_qty": 15, "others_px": 0.784, "frac_long": 0.8378, "expected_c": null}
+{"ev": "post", "utc": "2026-08-05T15:16:32.305272+00:00", "ticker": "KXXRP15M-26AUG051130-30", "side": "no", "price": 0.79, "qty": 22, "status": 201, "immediate_fill": "0.00", "resp": "{'client_order_id': 'lsm1785942992263', 'fill_count': '0.00', 'order_id': 'c10c3268-e325-4242-96ca-b099d6d7d6ec', 'remaining_count': '22.00', 'ts_ms': 1785942992797}"}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:16:32.305272+00:00", "ticker": "KXDOGE15M-26AUG051130-30", "volume": 930.68, "required": 2000.0, "min_left": 13.47}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:16:32.306305+00:00", "ticker": "KXHYPE15M-26AUG051130-30", "volume": 607.14, "required": 2000.0, "min_left": 13.47}
+{"ev": "heartbeat", "utc": "2026-08-05T15:16:32.306305+00:00", "resting": 2, "orders": 6, "entered": 123, "gross": 34.1, "deployed": 17.38, "realised": 14.22}
+{"ev": "deployed_reconciled", "utc": "2026-08-05T15:16:37.396766+00:00", "internal": 17.38, "exchange": 0.0, "drift": -17.38, "open_positions": 0}
+{"ev": "shadow_band", "utc": "2026-08-05T15:16:37.808254+00:00", "ticker": "KXETH15M-26AUG051130-30", "side": "no", "fav_bid": 0.85, "fav_ask": 0.86, "volume": 4485.68, "min_left": 13.38, "window": "2026-08-05T15:30:00Z", "live_hi": 0.8, "note": "evaluated, logged, NOT traded"}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:16:37.809283+00:00", "ticker": "KXSOL15M-26AUG051130-30", "volume": 1513.92, "required": 2000.0, "min_left": 13.38}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:16:37.809283+00:00", "ticker": "KXDOGE15M-26AUG051130-30", "volume": 930.68, "required": 2000.0, "min_left": 13.38}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:16:37.809283+00:00", "ticker": "KXHYPE15M-26AUG051130-30", "volume": 607.14, "required": 2000.0, "min_left": 13.38}
+{"ev": "heartbeat", "utc": "2026-08-05T15:16:37.810286+00:00", "resting": 2, "orders": 6, "entered": 123, "gross": 34.1, "deployed": 0.0, "realised": 14.22}
+{"ev": "deployed_reconciled", "utc": "2026-08-05T15:16:42.907099+00:00", "internal": 0.0, "exchange": 17.38, "drift": 17.38, "open_positions": 1}
+{"ev": "resting_reconciled", "utc": "2026-08-05T15:16:42.948179+00:00", "removed": 1, "still_resting": 1, "note": "filled or cancelled; was double-counted"}
+{"ev": "shadow_band", "utc": "2026-08-05T15:16:43.330534+00:00", "ticker": "KXETH15M-26AUG051130-30", "side": "no", "fav_bid": 0.8, "fav_ask": 0.81, "volume": 4485.68, "min_left": 13.29, "window": "2026-08-05T15:30:00Z", "live_hi": 0.8, "note": "evaluated, logged, NOT traded"}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:16:43.330534+00:00", "ticker": "KXSOL15M-26AUG051130-30", "volume": 1513.92, "required": 2000.0, "min_left": 13.29}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:16:43.330534+00:00", "ticker": "KXDOGE15M-26AUG051130-30", "volume": 930.68, "required": 2000.0, "min_left": 13.29}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:16:43.331538+00:00", "ticker": "KXHYPE15M-26AUG051130-30", "volume": 607.14, "required": 2000.0, "min_left": 13.29}
+{"ev": "heartbeat", "utc": "2026-08-05T15:16:43.331538+00:00", "resting": 1, "orders": 6, "entered": 123, "gross": 34.1, "deployed": 17.38, "realised": 14.22}
+{"ev": "shadow_band", "utc": "2026-08-05T15:16:48.764037+00:00", "ticker": "KXETH15M-26AUG051130-30", "side": "no", "fav_bid": 0.8, "fav_ask": 0.81, "volume": 4485.68, "min_left": 13.19, "window": "2026-08-05T15:30:00Z", "live_hi": 0.8, "note": "evaluated, logged, NOT traded"}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:16:48.764037+00:00", "ticker": "KXSOL15M-26AUG051130-30", "volume": 1513.92, "required": 2000.0, "min_left": 13.19}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:16:48.764037+00:00", "ticker": "KXDOGE15M-26AUG051130-30", "volume": 930.68, "required": 2000.0, "min_left": 13.19}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:16:48.765034+00:00", "ticker": "KXHYPE15M-26AUG051130-30", "volume": 607.14, "required": 2000.0, "min_left": 13.19}
+{"ev": "heartbeat", "utc": "2026-08-05T15:16:48.765034+00:00", "resting": 1, "orders": 6, "entered": 123, "gross": 34.1, "deployed": 17.38, "realised": 14.22}
+{"ev": "shadow_band", "utc": "2026-08-05T15:16:54.294069+00:00", "ticker": "KXETH15M-26AUG051130-30", "side": "no", "fav_bid": 0.8, "fav_ask": 0.81, "volume": 4485.68, "min_left": 13.1, "window": "2026-08-05T15:30:00Z", "live_hi": 0.8, "note": "evaluated, logged, NOT traded"}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:16:54.294069+00:00", "ticker": "KXSOL15M-26AUG051130-30", "volume": 1853.07, "required": 2000.0, "min_left": 13.1}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:16:54.295120+00:00", "ticker": "KXDOGE15M-26AUG051130-30", "volume": 930.68, "required": 2000.0, "min_left": 13.1}
+{"ev": "volume_filter_skip", "utc": "2026-08-05T15:16:54.295120+00:00", "ticker": "KXHYPE15M-26AUG051130-30", "volume": 607.14, "required": 2000.0, "min_left": 13.1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:16:54.295120+00:00", "resting": 1, "orders": 6, "entered": 123, "gross": 34.1, "deployed": 17.38, "realised": 14.22}
+{"ev": "opportunity", "utc": "2026-08-05T15:16:59.808033+00:00", "ticker": "KXETH15M-26AUG051130-30", "side": "no", "min_left": 13.01, "volume": 4485.68, "fav_bid": 0.77, "fav_ask": 0.78, "spread_c": 1.0, "post_at": 0.77, "queue_ahead": 121.0, "qty": 22, "base_qty": 15, "others_px": 0.708, "frac_long": 0.5817, "expected_c": null}
+{"ev": "post", "utc": "2026-08-05T15:16:59.848556+00:00", "ticker": "KXETH15M-26AUG051130-30", "side": "no", "price": 0.77, "qty": 22, "status": 201, "immediate_fill": "0.00", "resp": "{'client_order_id': 'lsm1785943019809', 'fill_count': '0.00', 'order_id': '89a50993-57ff-451d-8930-aa50e7323b3b', 'remaining_count': '22.00', 'ts_ms': 1785943020343}"}
+{"ev": "heartbeat", "utc": "2026-08-05T15:16:59.848556+00:00", "resting": 2, "orders": 7, "entered": 124, "gross": 51.04, "deployed": 34.32, "realised": 14.22}
+{"ev": "deployed_reconciled", "utc": "2026-08-05T15:17:04.944769+00:00", "internal": 34.32, "exchange": 17.38, "drift": -16.94, "open_positions": 1}
+{"ev": "heartbeat", "utc": "2026-08-05T15:17:05.277720+00:00", "resting": 2, "orders": 7, "entered": 124, "gross": 51.04, "deployed": 17.38, "realised": 14.22}
+{"ev": "heartbeat", "utc": "2026-08-05T15:17:10.792185+00:00", "resting": 2, "orders": 7, "entered": 124, "gross": 51.04, "deployed": 17.38, "realised": 14.22}
+{"ev": "heartbeat", "utc": "2026-08-05T15:17:16.324051+00:00", "resting": 2, "orders": 7, "entered": 124, "gross": 51.04, "deployed": 17.38, "realised": 14.22}
+{"ev": "heartbeat", "utc": "2026-08-05T15:17:21.766682+00:00", "resting": 2, "orders": 7, "entered": 124, "gross": 51.04, "deployed": 17.38, "realised": 14.22}
+{"ev": "heartbeat", "utc": "2026-08-05T15:17:27.311525+00:00", "resting": 2, "orders": 7, "entered": 124, "gross": 51.04, "deployed": 17.38, "realised": 14.22}
+{"ev": "deployed_reconciled", "utc": "2026-08-05T15:17:32.407708+00:00", "internal": 17.38, "exchange": 34.32, "drift": 16.94, "open_positions": 2}
+{"ev": "resting_reconciled", "utc": "2026-08-05T15:17:32.448554+00:00", "removed": 1, "still_resting": 1, "note": "filled or cancelled; was double-counted"}
+{"ev": "heartbeat", "utc": "2026-08-05T15:17:32.748876+00:00", "resting": 1, "orders": 7, "entered": 124, "gross": 51.04, "deployed": 34.32, "realised": 14.22}
+{"ev": "heartbeat", "utc": "2026-08-05T15:17:38.201034+00:00", "resting": 1, "orders": 7, "entered": 124, "gross": 51.04, "deployed": 34.32, "realised": 14.22}
+{"ev": "heartbeat", "utc": "2026-08-05T15:17:43.699794+00:00", "resting": 1, "orders": 7, "entered": 124, "gross": 51.04, "deployed": 34.32, "realised": 14.22}
+{"ev": "heartbeat", "utc": "2026-08-05T15:17:49.246209+00:00", "resting": 1, "orders": 7, "entered": 124, "gross": 51.04, "deployed": 34.32, "realised": 14.22}
+{"ev": "heartbeat", "utc": "2026-08-05T15:17:54.792406+00:00", "resting": 1, "orders": 7, "entered": 124, "gross": 51.04, "deployed": 34.32, "realised": 14.22}
+{"ev": "heartbeat", "utc": "2026-08-05T15:18:00.215754+00:00", "resting": 1, "orders": 7, "entered": 124, "gross": 51.04, "deployed": 34.32, "realised": 14.22}
+{"ev": "heartbeat", "utc": "2026-08-05T15:18:05.644928+00:00", "resting": 1, "orders": 7, "entered": 124, "gross": 51.04, "deployed": 34.32, "realised": 14.22}
+{"ev": "heartbeat", "utc": "2026-08-05T15:18:11.175840+00:00", "resting": 1, "orders": 7, "entered": 124, "gross": 51.04, "deployed": 34.32, "realised": 14.22}
+{"ev": "heartbeat", "utc": "2026-08-05T15:18:16.627970+00:00", "resting": 1, "orders": 7, "entered": 124, "gross": 51.04, "deployed": 34.32, "realised": 14.22}
+{"ev": "heartbeat", "utc": "2026-08-05T15:18:22.174484+00:00", "resting": 1, "orders": 7, "entered": 124, "gross": 51.04, "deployed": 34.32, "realised": 14.22}
+{"ev": "heartbeat", "utc": "2026-08-05T15:18:27.640950+00:00", "resting": 1, "orders": 7, "entered": 124, "gross": 51.04, "deployed": 34.32, "realised": 14.22}
+{"ev": "heartbeat", "utc": "2026-08-05T15:18:33.064180+00:00", "resting": 1, "orders": 7, "entered": 124, "gross": 51.04, "deployed": 34.32, "realised": 14.22}
+{"ev": "heartbeat", "utc": "2026-08-05T15:18:38.492602+00:00", "resting": 1, "orders": 7, "entered": 124, "gross": 51.04, "deployed": 34.32, "realised": 14.22}
+{"ev": "heartbeat", "utc": "2026-08-05T15:18:43.981541+00:00", "resting": 1, "orders": 7, "entered": 124, "gross": 51.04, "deployed": 34.32, "realised": 14.22}
+{"ev": "heartbeat", "utc": "2026-08-05T15:18:49.485499+00:00", "resting": 1, "orders": 7, "entered": 124, "gross": 51.04, "deployed": 34.32, "realised": 14.22}
+{"ev": "heartbeat", "utc": "2026-08-05T15:18:54.927797+00:00", "resting": 1, "orders": 7, "entered": 124, "gross": 51.04, "deployed": 34.32, "realised": 14.22}
+{"ev": "heartbeat", "utc": "2026-08-05T15:19:00.362339+00:00", "resting": 1, "orders": 7, "entered": 124, "gross": 51.04, "deployed": 34.32, "realised": 14.22}
+{"ev": "heartbeat", "utc": "2026-08-05T15:19:05.807959+00:00", "resting": 1, "orders": 7, "entered": 124, "gross": 51.04, "deployed": 34.32, "realised": 14.22}
+{"ev": "heartbeat", "utc": "2026-08-05T15:19:11.375933+00:00", "resting": 1, "orders": 7, "entered": 124, "gross": 51.04, "deployed": 34.32, "realised": 14.22}
+{"ev": "heartbeat", "utc": "2026-08-05T15:19:16.892480+00:00", "resting": 1, "orders": 7, "entered": 124, "gross": 51.04, "deployed": 34.32, "realised": 14.22}
+{"ev": "heartbeat", "utc": "2026-08-05T15:19:22.361964+00:00", "resting": 1, "orders": 7, "entered": 124, "gross": 51.04, "deployed": 34.32, "realised": 14.22}
+{"ev": "deployed_reconciled", "utc": "2026-08-05T15:19:27.459895+00:00", "internal": 34.32, "exchange": 51.04, "drift": 16.72, "open_positions": 3}
+{"ev": "resting_reconciled", "utc": "2026-08-05T15:19:27.502530+00:00", "removed": 1, "still_resting": 0, "note": "filled or cancelled; was double-counted"}
+{"ev": "heartbeat", "utc": "2026-08-05T15:19:27.980996+00:00", "resting": 0, "orders": 7, "entered": 124, "gross": 51.04, "deployed": 51.04, "realised": 14.22}
+{"ev": "heartbeat", "utc": "2026-08-05T15:19:33.393147+00:00", "resting": 0, "orders": 7, "entered": 124, "gross": 51.04, "deployed": 51.04, "realised": 14.22}
+{"ev": "heartbeat", "utc": "2026-08-05T15:19:38.781582+00:00", "resting": 0, "orders": 7, "entered": 124, "gross": 51.04, "deployed": 51.04, "realised": 14.22}
+{"ev": "heartbeat", "utc": "2026-08-05T15:19:44.167177+00:00", "resting": 0, "orders": 7, "entered": 124, "gross": 51.04, "deployed": 51.04, "realised": 14.22}
+{"ev": "heartbeat", "utc": "2026-08-05T15:19:49.630043+00:00", "resting": 0, "orders": 7, "entered": 124, "gross": 51.04, "deployed": 51.04, "realised": 14.22}
+{"ev": "heartbeat", "utc": "2026-08-05T15:19:55.106733+00:00", "resting": 0, "orders": 7, "entered": 124, "gross": 51.04, "deployed": 51.04, "realised": 14.22}
+{"ev": "heartbeat", "utc": "2026-08-05T15:20:00.501601+00:00", "resting": 0, "orders": 7, "entered": 124, "gross": 51.04, "deployed": 51.04, "realised": 14.22}
+{"ev": "heartbeat", "utc": "2026-08-05T15:20:05.911375+00:00", "resting": 0, "orders": 7, "entered": 124, "gross": 51.04, "deployed": 51.04, "realised": 14.22}
+{"ev": "heartbeat", "utc": "2026-08-05T15:20:11.302726+00:00", "resting": 0, "orders": 7, "entered": 124, "gross": 51.04, "deployed": 51.04, "realised": 14.22}
+{"ev": "heartbeat", "utc": "2026-08-05T15:20:16.780502+00:00", "resting": 0, "orders": 7, "entered": 124, "gross": 51.04, "deployed": 51.04, "realised": 14.22}
+{"ev": "heartbeat", "utc": "2026-08-05T15:20:22.178660+00:00", "resting": 0, "orders": 7, "entered": 124, "gross": 51.04, "deployed": 51.04, "realised": 14.22}
+{"ev": "heartbeat", "utc": "2026-08-05T15:20:27.617370+00:00", "resting": 0, "orders": 7, "entered": 124, "gross": 51.04, "deployed": 51.04, "realised": 14.22}
+{"ev": "heartbeat", "utc": "2026-08-05T15:20:33.005046+00:00", "resting": 0, "orders": 7, "entered": 124, "gross": 51.04, "deployed": 51.04, "realised": 14.22}
+{"ev": "heartbeat", "utc": "2026-08-05T15:20:38.403913+00:00", "resting": 0, "orders": 7, "entered": 124, "gross": 51.04, "deployed": 51.04, "realised": 14.22}
+{"ev": "heartbeat", "utc": "2026-08-05T15:20:43.797748+00:00", "resting": 0, "orders": 7, "entered": 124, "gross": 51.04, "deployed": 51.04, "realised": 14.22}
+{"ev": "heartbeat", "utc": "2026-08-05T15:20:49.208747+00:00", "resting": 0, "orders": 7, "entered": 124, "gross": 51.04, "deployed": 51.04, "realised": 14.22}
+{"ev": "heartbeat", "utc": "2026-08-05T15:20:54.694764+00:00", "resting": 0, "orders": 7, "entered": 124, "gross": 51.04, "deployed": 51.04, "realised": 14.22}
+{"ev": "heartbeat", "utc": "2026-08-05T15:21:00.102229+00:00", "resting": 0, "orders": 7, "entered": 124, "gross": 51.04, "deployed": 51.04, "realised": 14.22}
+{"ev": "heartbeat", "utc": "2026-08-05T15:21:05.486409+00:00", "resting": 0, "orders": 7, "entered": 124, "gross": 51.04, "deployed": 51.04, "realised": 14.22}
+{"ev": "heartbeat", "utc": "2026-08-05T15:21:10.979689+00:00", "resting": 0, "orders": 7, "entered": 124, "gross": 51.04, "deployed": 51.04, "realised": 14.22}
+{"ev": "heartbeat", "utc": "2026-08-05T15:21:16.369054+00:00", "resting": 0, "orders": 7, "entered": 124, "gross": 51.04, "deployed": 51.04, "realised": 14.22}
+{"ev": "heartbeat", "utc": "2026-08-05T15:21:21.761025+00:00", "resting": 0, "orders": 7, "entered": 124, "gross": 51.04, "deployed": 51.04, "realised": 14.22}
+{"ev": "heartbeat", "utc": "2026-08-05T15:21:27.161882+00:00", "resting": 0, "orders": 7, "entered": 124, "gross": 51.04, "deployed": 51.04, "realised": 14.22}
+{"ev": "heartbeat", "utc": "2026-08-05T15:21:32.734100+00:00", "resting": 0, "orders": 7, "entered": 124, "gross": 51.04, "deployed": 51.04, "realised": 14.22}
+{"ev": "heartbeat", "utc": "2026-08-05T15:21:38.121757+00:00", "resting": 0, "orders": 7, "entered": 124, "gross": 51.04, "deployed": 51.04, "realised": 14.22}
+{"ev": "heartbeat", "utc": "2026-08-05T15:21:43.526014+00:00", "resting": 0, "orders": 7, "entered": 124, "gross": 51.04, "deployed": 51.04, "realised": 14.22}
+{"ev": "heartbeat", "utc": "2026-08-05T15:21:49.039979+00:00", "resting": 0, "orders": 7, "entered": 124, "gross": 51.04, "deployed": 51.04, "realised": 14.22}
+{"ev": "heartbeat", "utc": "2026-08-05T15:21:54.431716+00:00", "resting": 0, "orders": 7, "entered": 124, "gross": 51.04, "deployed": 51.04, "realised": 14.22}
+{"ev": "heartbeat", "utc": "2026-08-05T15:21:59.829238+00:00", "resting": 0, "orders": 7, "entered": 124, "gross": 51.04, "deployed": 51.04, "realised": 14.22}
+{"ev": "heartbeat", "utc": "2026-08-05T15:22:05.229295+00:00", "resting": 0, "orders": 7, "entered": 124, "gross": 51.04, "deployed": 51.04, "realised": 14.22}
+{"ev": "heartbeat", "utc": "2026-08-05T15:22:10.618882+00:00", "resting": 0, "orders": 7, "entered": 124, "gross": 51.04, "deployed": 51.04, "realised": 14.22}
+{"ev": "heartbeat", "utc": "2026-08-05T15:22:16.002310+00:00", "resting": 0, "orders": 7, "entered": 124, "gross": 51.04, "deployed": 51.04, "realised": 14.22}
+{"ev": "heartbeat", "utc": "2026-08-05T15:22:21.405040+00:00", "resting": 0, "orders": 7, "entered": 124, "gross": 51.04, "deployed": 51.04, "realised": 14.22}
+{"ev": "heartbeat", "utc": "2026-08-05T15:22:26.802015+00:00", "resting": 0, "orders": 7, "entered": 124, "gross": 51.04, "deployed": 51.04, "realised": 14.22}
+{"ev": "heartbeat", "utc": "2026-08-05T15:22:32.231542+00:00", "resting": 0, "orders": 7, "entered": 124, "gross": 51.04, "deployed": 51.04, "realised": 14.22}
+{"ev": "heartbeat", "utc": "2026-08-05T15:22:37.677405+00:00", "resting": 0, "orders": 7, "entered": 124, "gross": 51.04, "deployed": 51.04, "realised": 14.22}
+{"ev": "heartbeat", "utc": "2026-08-05T15:22:43.145389+00:00", "resting": 0, "orders": 7, "entered": 124, "gross": 51.04, "deployed": 51.04, "realised": 14.22}
+{"ev": "heartbeat", "utc": "2026-08-05T15:22:48.528837+00:00", "resting": 0, "orders": 7, "entered": 124, "gross": 51.04, "deployed": 51.04, "realised": 14.22}
+{"ev": "heartbeat", "utc": "2026-08-05T15:22:53.995210+00:00", "resting": 0, "orders": 7, "entered": 124, "gross": 51.04, "deployed": 51.04, "realised": 14.22}
+{"ev": "heartbeat", "utc": "2026-08-05T15:22:59.399347+00:00", "resting": 0, "orders": 7, "entered": 124, "gross": 51.04, "deployed": 51.04, "realised": 14.22}
+{"ev": "heartbeat", "utc": "2026-08-05T15:23:04.585433+00:00", "resting": 0, "orders": 7, "entered": 124, "gross": 51.04, "deployed": 51.04, "realised": 14.22}
+{"ev": "heartbeat", "utc": "2026-08-05T15:23:09.806858+00:00", "resting": 0, "orders": 7, "entered": 124, "gross": 51.04, "deployed": 51.04, "realised": 14.22}
+{"ev": "heartbeat", "utc": "2026-08-05T15:23:14.999444+00:00", "resting": 0, "orders": 7, "entered": 124, "gross": 51.04, "deployed": 51.04, "realised": 14.22}
+{"ev": "heartbeat", "utc": "2026-08-05T15:23:20.145368+00:00", "resting": 0, "orders": 7, "entered": 124, "gross": 51.04, "deployed": 51.04, "realised": 14.22}
+{"ev": "heartbeat", "utc": "2026-08-05T15:23:25.346148+00:00", "resting": 0, "orders": 7, "entered": 124, "gross": 51.04, "deployed": 51.04, "realised": 14.22}
+{"ev": "heartbeat", "utc": "2026-08-05T15:23:30.497702+00:00", "resting": 0, "orders": 7, "entered": 124, "gross": 51.04, "deployed": 51.04, "realised": 14.22}
+{"ev": "heartbeat", "utc": "2026-08-05T15:23:35.649535+00:00", "resting": 0, "orders": 7, "entered": 124, "gross": 51.04, "deployed": 51.04, "realised": 14.22}
+{"ev": "heartbeat", "utc": "2026-08-05T15:23:40.815436+00:00", "resting": 0, "orders": 7, "entered": 124, "gross": 51.04, "deployed": 51.04, "realised": 14.22}
+{"ev": "heartbeat", "utc": "2026-08-05T15:23:45.975251+00:00", "resting": 0, "orders": 7, "entered": 124, "gross": 51.04, "deployed": 51.04, "realised": 14.22}
+{"ev": "heartbeat", "utc": "2026-08-05T15:23:51.126051+00:00", "resting": 0, "orders": 7, "entered": 124, "gross": 51.04, "deployed": 51.04, "realised": 14.22}
+{"ev": "heartbeat", "utc": "2026-08-05T15:23:56.267715+00:00", "resting": 0, "orders": 7, "entered": 124, "gross": 51.04, "deployed": 51.04, "realised": 14.22}
+{"ev": "heartbeat", "utc": "2026-08-05T15:24:01.436415+00:00", "resting": 0, "orders": 7, "entered": 124, "gross": 51.04, "deployed": 51.04, "realised": 14.22}
+{"ev": "heartbeat", "utc": "2026-08-05T15:24:06.592345+00:00", "resting": 0, "orders": 7, "entered": 124, "gross": 51.04, "deployed": 51.04, "realised": 14.22}
+{"ev": "heartbeat", "utc": "2026-08-05T15:24:11.871748+00:00", "resting": 0, "orders": 7, "entered": 124, "gross": 51.04, "deployed": 51.04, "realised": 14.22}
+{"ev": "heartbeat", "utc": "2026-08-05T15:24:17.114772+00:00", "resting": 0, "orders": 7, "entered": 124, "gross": 51.04, "deployed": 51.04, "realised": 14.22}
+{"ev": "heartbeat", "utc": "2026-08-05T15:24:22.315935+00:00", "resting": 0, "orders": 7, "entered": 124, "gross": 51.04, "deployed": 51.04, "realised": 14.22}
+{"ev": "heartbeat", "utc": "2026-08-05T15:24:27.522663+00:00", "resting": 0, "orders": 7, "entered": 124, "gross": 51.04, "deployed": 51.04, "realised": 14.22}
+{"ev": "heartbeat", "utc": "2026-08-05T15:24:32.720938+00:00", "resting": 0, "orders": 7, "entered": 124, "gross": 51.04, "deployed": 51.04, "realised": 14.22}
+{"ev": "heartbeat", "utc": "2026-08-05T15:24:37.982403+00:00", "resting": 0, "orders": 7, "entered": 124, "gross": 51.04, "deployed": 51.04, "realised": 14.22}
+{"ev": "heartbeat", "utc": "2026-08-05T15:24:43.152161+00:00", "resting": 0, "orders": 7, "entered": 124, "gross": 51.04, "deployed": 51.04, "realised": 14.22}
+{"ev": "heartbeat", "utc": "2026-08-05T15:24:48.297487+00:00", "resting": 0, "orders": 7, "entered": 124, "gross": 51.04, "deployed": 51.04, "realised": 14.22}
+{"ev": "heartbeat", "utc": "2026-08-05T15:24:53.449386+00:00", "resting": 0, "orders": 7, "entered": 124, "gross": 51.04, "deployed": 51.04, "realised": 14.22}
+{"ev": "heartbeat", "utc": "2026-08-05T15:24:58.604590+00:00", "resting": 0, "orders": 7, "entered": 124, "gross": 51.04, "deployed": 51.04, "realised": 14.22}
+{"ev": "heartbeat", "utc": "2026-08-05T15:25:03.826827+00:00", "resting": 0, "orders": 7, "entered": 124, "gross": 51.04, "deployed": 51.04, "realised": 14.22}
+{"ev": "heartbeat", "utc": "2026-08-05T15:25:08.980685+00:00", "resting": 0, "orders": 7, "entered": 124, "gross": 51.04, "deployed": 51.04, "realised": 14.22}
+{"ev": "heartbeat", "utc": "2026-08-05T15:25:14.140950+00:00", "resting": 0, "orders": 7, "entered": 124, "gross": 51.04, "deployed": 51.04, "realised": 14.22}
+{"ev": "heartbeat", "utc": "2026-08-05T15:25:19.283642+00:00", "resting": 0, "orders": 7, "entered": 124, "gross": 51.04, "deployed": 51.04, "realised": 14.22}
+{"ev": "heartbeat", "utc": "2026-08-05T15:25:24.508721+00:00", "resting": 0, "orders": 7, "entered": 124, "gross": 51.04, "deployed": 51.04, "realised": 14.22}
+{"ev": "heartbeat", "utc": "2026-08-05T15:25:29.664040+00:00", "resting": 0, "orders": 7, "entered": 124, "gross": 51.04, "deployed": 51.04, "realised": 14.22}
+{"ev": "heartbeat", "utc": "2026-08-05T15:25:34.810788+00:00", "resting": 0, "orders": 7, "entered": 124, "gross": 51.04, "deployed": 51.04, "realised": 14.22}
+{"ev": "heartbeat", "utc": "2026-08-05T15:25:40.158352+00:00", "resting": 0, "orders": 7, "entered": 124, "gross": 51.04, "deployed": 51.04, "realised": 14.22}
+{"ev": "heartbeat", "utc": "2026-08-05T15:25:45.325072+00:00", "resting": 0, "orders": 7, "entered": 124, "gross": 51.04, "deployed": 51.04, "realised": 14.22}
+{"ev": "heartbeat", "utc": "2026-08-05T15:25:50.480428+00:00", "resting": 0, "orders": 7, "entered": 124, "gross": 51.04, "deployed": 51.04, "realised": 14.22}

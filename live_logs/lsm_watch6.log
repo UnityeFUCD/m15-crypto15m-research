@@ -1,0 +1,18 @@
+{"utc": "2026-08-05T02:57:20.641424+00:00", "event": "watchdog_start", "baseline_equity": 380.8094, "cash": 338.8094, "open_positions": 2, "max_dd": 150.0, "cycle_s": 60}
+{"utc": "2026-08-05T02:58:21.164682+00:00", "event": "ok", "equity": 380.8094, "cash": 338.8094, "open_positions": 2, "dd_from_baseline": 0.0, "dd_from_peak": 0.0, "runner_alive": true}
+{"utc": "2026-08-05T02:59:21.605476+00:00", "event": "ok", "equity": 380.8094, "cash": 338.8094, "open_positions": 2, "dd_from_baseline": 0.0, "dd_from_peak": 0.0, "runner_alive": true}
+{"utc": "2026-08-05T03:00:22.158522+00:00", "event": "runner_dead", "action": "restarting", "n": 1}
+{"utc": "2026-08-05T03:00:22.165662+00:00", "event": "ok", "equity": 338.8094, "cash": 338.8094, "open_positions": 0, "dd_from_baseline": 42.0, "dd_from_peak": 42.0, "runner_alive": false}
+{"utc": "2026-08-05T03:01:22.653162+00:00", "event": "ok", "equity": 338.8094, "cash": 279.6094, "open_positions": 2, "dd_from_baseline": 42.0, "dd_from_peak": 42.0, "runner_alive": true}
+{"utc": "2026-08-05T03:02:23.088862+00:00", "event": "ok", "equity": 338.8094, "cash": 279.6094, "open_positions": 2, "dd_from_baseline": 42.0, "dd_from_peak": 42.0, "runner_alive": true}
+{"utc": "2026-08-05T03:03:23.577478+00:00", "event": "ok", "equity": 338.8094, "cash": 279.6094, "open_positions": 2, "dd_from_baseline": 42.0, "dd_from_peak": 42.0, "runner_alive": true}
+{"utc": "2026-08-05T03:04:24.041638+00:00", "event": "ok", "equity": 338.8094, "cash": 279.6094, "open_positions": 2, "dd_from_baseline": 42.0, "dd_from_peak": 42.0, "runner_alive": true}
+{"utc": "2026-08-05T03:05:24.476517+00:00", "event": "ok", "equity": 338.8094, "cash": 279.6094, "open_positions": 2, "dd_from_baseline": 42.0, "dd_from_peak": 42.0, "runner_alive": true}
+{"utc": "2026-08-05T03:06:24.943941+00:00", "event": "ok", "equity": 338.8094, "cash": 279.6094, "open_positions": 2, "dd_from_baseline": 42.0, "dd_from_peak": 42.0, "runner_alive": true}
+{"utc": "2026-08-05T03:07:25.378655+00:00", "event": "ok", "equity": 338.8094, "cash": 279.6094, "open_positions": 2, "dd_from_baseline": 42.0, "dd_from_peak": 42.0, "runner_alive": true}
+{"utc": "2026-08-05T03:08:25.891187+00:00", "event": "ok", "equity": 338.8094, "cash": 279.6094, "open_positions": 2, "dd_from_baseline": 42.0, "dd_from_peak": 42.0, "runner_alive": true}
+{"utc": "2026-08-05T03:09:26.403677+00:00", "event": "ok", "equity": 338.8094, "cash": 279.6094, "open_positions": 2, "dd_from_baseline": 42.0, "dd_from_peak": 42.0, "runner_alive": true}
+{"utc": "2026-08-05T03:10:26.928599+00:00", "event": "ok", "equity": 338.8094, "cash": 279.6094, "open_positions": 2, "dd_from_baseline": 42.0, "dd_from_peak": 42.0, "runner_alive": true}
+{"utc": "2026-08-05T03:11:27.498444+00:00", "event": "ok", "equity": 338.8094, "cash": 279.6094, "open_positions": 2, "dd_from_baseline": 42.0, "dd_from_peak": 42.0, "runner_alive": true}
+{"utc": "2026-08-05T03:12:28.003133+00:00", "event": "ok", "equity": 338.8094, "cash": 279.6094, "open_positions": 2, "dd_from_baseline": 42.0, "dd_from_peak": 42.0, "runner_alive": true}
+{"utc": "2026-08-05T03:13:28.508638+00:00", "event": "ok", "equity": 338.8094, "cash": 279.6094, "open_positions": 2, "dd_from_baseline": 42.0, "dd_from_peak": 42.0, "runner_alive": true}

@@ -1,0 +1,31 @@
+{
+  "generated_utc": "2026-08-06T02:23:30.332508+00:00",
+  "source": "measured on live orders, cross-checked on 73 days of book data",
+  "n_live_orders": 120,
+  "model": {
+    "p_fill_given_loser": 0.962,
+    "p_fill_given_winner": 0.843,
+    "derivation": "Reachability split on 120 resolved live orders: 53 markets whose price returned to our bid filled 51/53 = 0.962 and won 0.5472; 67 whose price ran away filled 53/67 = 0.791 and won 1.0000. P(reachable|won) = 53*0.5472/(53*0.5472+67) = 0.302, P(reachable|lost) = 1.0. Hence P(fill|win) = 0.302*0.962 + 0.698*0.791 = 0.843.",
+    "validation": "Predicts a realised win rate of 0.736*0.894/0.922 = 0.714 against 0.7063 observed on 269 settled fills."
+  },
+  "consequences": {
+    "backtest_overstatement_preshift": 0.276,
+    "backtest_overstatement_postshift": 0.589,
+    "note": "Any backtest assuming 100% fill overstates edge by these fractions. Population +3.65c becomes realised +1.54c."
+  },
+  "ladder": {
+    "note": "fill|LOSE is 1.0000 at EVERY posting price tested. The loss side is fully adversely selected and pricing cannot change it; price only alters how many winners are caught.",
+    "fill_given_winner_by_offset_ticks": {
+      "0": 0.8562,
+      "1": 0.9031,
+      "2": 0.9531,
+      "3": 0.9843
+    },
+    "source": "quote_ladder2.py over 73 days, wide-spread subset"
+  },
+  "caveats": [
+    "Estimated from 120 orders; P(fill|win) 95% CI is [0.7703, 0.9100].",
+    "All 608 historical orders used ONE policy (join the bid), so this model is only identified at that policy. Other prices are simulated from candle touches, not observed.",
+    "queue_position_fp was never recorded; queue here is displayed size."
+  ]
+}
