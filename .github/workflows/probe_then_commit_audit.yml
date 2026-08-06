@@ -35,22 +35,40 @@ jobs:
           pip install -r requirements.txt
           pip install tabulate
 
-      - name: Run clean-room audit
-        run: python research/probe_then_commit_audit.py
+      - name: Run clean-room audit and preserve log
+        id: audit
+        shell: bash
+        run: |
+          set +e
+          mkdir -p research/results
+          python research/probe_then_commit_audit.py > research/results/probe_then_commit_run.log 2>&1
+          status=$?
+          echo "exit_code=$status" >> "$GITHUB_OUTPUT"
+          cat research/results/probe_then_commit_run.log
+          exit 0
 
-      - name: Commit generated evidence
+      - name: Commit generated evidence or failure log
+        shell: bash
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add research/results/probe_then_commit_report.md \
-                  research/results/probe_then_commit_summary.json \
-                  research/results/probe_fill_horizons.csv \
-                  research/results/fr2_full_population.csv \
-                  research/results/ptc_sensitivity.csv \
-                  research/results/reversal_hazard.csv
+          git add -f research/results/probe_then_commit_run.log
+          for f in \
+            research/results/probe_then_commit_report.md \
+            research/results/probe_then_commit_summary.json \
+            research/results/probe_fill_horizons.csv \
+            research/results/fr2_full_population.csv \
+            research/results/ptc_sensitivity.csv \
+            research/results/reversal_hazard.csv; do
+              if [ -f "$f" ]; then git add -f "$f"; fi
+          done
           if git diff --cached --quiet; then
             echo "No generated changes"
-            exit 0
+          else
+            git commit -m "Probe-then-commit audit results [skip audit]"
+            git push origin HEAD:codex/probe-then-commit-audit
           fi
-          git commit -m "Probe-then-commit audit results [skip audit]"
-          git push origin HEAD:codex/probe-then-commit-audit
+
+      - name: Fail workflow if audit failed
+        if: ${{ steps.audit.outputs.exit_code != '0' }}
+        run: exit 1
