@@ -1,0 +1,143 @@
+{
+  "data": {
+    "population_in_band": 8187,
+    "population_days": 73,
+    "live_orders": 303,
+    "live_winners": 217,
+    "live_losers": 86
+  },
+  "fr2_no_volume": {
+    "n": 2214,
+    "pnl": 174.6414000000006,
+    "edge_per_contract": 0.003944024390243916,
+    "mean_day": 2.392347945205485,
+    "sd_day": 47.27603577937567,
+    "max_drawdown": 306.8023999999999,
+    "worst_window": -16.224,
+    "win_rate": 0.7131887985546522,
+    "avg_price": 0.694643179765131,
+    "volume_filter": false,
+    "splits": {
+      "train": {
+        "n": 1082,
+        "pnl": 58.199800000000266,
+        "edge_per_contract": 0.002689454713493543,
+        "mean_day": 1.6166611111111162,
+        "sd_day": 52.13425371257381,
+        "max_drawdown": 306.8023999999999,
+        "worst_window": -16.224,
+        "win_rate": 0.7134935304990758,
+        "avg_price": 0.6962476894639555
+      },
+      "valid": {
+        "n": 573,
+        "pnl": 179.47200000000015,
+        "edge_per_contract": 0.015660732984293206,
+        "mean_day": 9.970666666666675,
+        "sd_day": 43.40533027436906,
+        "max_drawdown": 126.22860000000003,
+        "worst_window": -16.224,
+        "win_rate": 0.7242582897033158,
+        "avg_price": 0.693979057591623
+      },
+      "test": {
+        "n": 559,
+        "pnl": -63.03039999999987,
+        "edge_per_contract": -0.005637781753130579,
+        "mean_day": -3.3173894736842047,
+        "sd_day": 42.22239915339691,
+        "max_drawdown": 217.21540000000002,
+        "worst_window": -16.224,
+        "win_rate": 0.7012522361359571,
+        "avg_price": 0.6922182468694097
+      }
+    }
+  },
+  "fr2_volume_ge_2000": {
+    "n": 1052,
+    "pnl": 90.47870000000022,
+    "edge_per_contract": 0.004300318441064649,
+    "mean_day": 1.2394342465753445,
+    "sd_day": 37.0532175389939,
+    "max_drawdown": 290.80139999999994,
+    "worst_window": -16.224,
+    "win_rate": 0.7243346007604563,
+    "avg_price": 0.7057319391634981,
+    "volume_filter": true,
+    "splits": {
+      "train": {
+        "n": 436,
+        "pnl": 111.25090000000007,
+        "edge_per_contract": 0.012758130733944963,
+        "mean_day": 3.0903027777777794,
+        "sd_day": 32.12448809468285,
+        "max_drawdown": 186.7258,
+        "worst_window": -16.224,
+        "win_rate": 0.7362385321100917,
+        "avg_price": 0.7092889908256881
+      },
+      "valid": {
+        "n": 288,
+        "pnl": -4.298399999999937,
+        "edge_per_contract": -0.000746249999999989,
+        "mean_day": -0.23879999999999532,
+        "sd_day": 40.1119349063123,
+        "max_drawdown": 218.2821,
+        "worst_window": -16.0323,
+        "win_rate": 0.71875,
+        "avg_price": 0.7051736111111111
+      },
+      "test": {
+        "n": 328,
+        "pnl": -16.473799999999954,
+        "edge_per_contract": -0.002511249999999993,
+        "mean_day": -0.8670421052631555,
+        "sd_day": 44.179520297849876,
+        "max_drawdown": 243.77969999999988,
+        "worst_window": -16.224,
+        "win_rate": 0.7134146341463414,
+        "avg_price": 0.7014939024390244
+      }
+    }
+  },
+  "primary_ptc": {
+    "wait_seconds": 60,
+    "delay_minutes": 1,
+    "ask_ceiling": 0.8,
+    "probe_qty": 1,
+    "commit_qty": 15,
+    "volume_filter": true,
+    "eligible_markets": 2568,
+    "calendar_days": 73,
+    "live_fill_rate_win": 0.8433179723502304,
+    "live_fill_rate_lose": 0.9418604651162791,
+    "live_nofill_win_rate": 0.8717948717948718,
+    "mean_commits": 219.48625,
+    "mean_probe_fills": 2225.2505,
+    "mean_total_pnl": 417.88805260000004,
+    "mean_pnl_per_day": 5.724493871232877,
+    "pnl_day_ci_lo": 0.7272117465753435,
+    "pnl_day_ci_hi": 10.046431232876715,
+    "p_mean_day_nonpositive": 0.01225,
+    "median_max_drawdown": 39.1972,
+    "max_drawdown_p95": 93.23672499999998,
+    "median_worst_window": -12.744200000000003,
+    "p_hit_211_over_history": 0.0085
+  },
+  "primary_probe": {
+    "fill_rate_win": 0.8433179723502304,
+    "fill_rate_lose": 0.9418604651162791,
+    "p_win_if_no_fill": 0.8717948717948718,
+    "p_win_if_fill": 0.6931818181818182,
+    "break_even_all_in_price": 0.8630000000000003
+  },
+  "minute_level_cancel_bound": {
+    "losing_orders": 86,
+    "losses_filled_by_1s": 0.29069767441860467,
+    "losses_filled_by_5s": 0.627906976744186,
+    "losses_filled_by_30s": 0.8837209302325582,
+    "losses_filled_by_60s": 0.9418604651162791,
+    "losses_filled_by_120s": 0.9651162790697675
+  }
+}
+wrote /home/runner/work/m15-crypto15m-research/m15-crypto15m-research/research/results/probe_then_commit_report.md
