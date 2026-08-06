@@ -7,6 +7,8 @@ on:
     paths:
       - "research/reward_adjusted_commodity15m.py"
       - "research/reward_adjusted_commodity15m_onesided.py"
+      - "research/commodity15m_reward_data_fast.py"
+      - "research/run_onesided_fast.py"
       - ".github/workflows/reward_adjusted_commodity15m_onesided.yml"
 
 permissions:
@@ -39,7 +41,7 @@ jobs:
         run: |
           set +e
           mkdir -p research/results
-          python research/reward_adjusted_commodity15m_onesided.py > research/results/commodity15m_onesided_run.log 2>&1
+          python research/run_onesided_fast.py > research/results/commodity15m_onesided_run.log 2>&1
           status=$?
           echo "exit_code=$status" >> "$GITHUB_OUTPUT"
           tail -300 research/results/commodity15m_onesided_run.log
