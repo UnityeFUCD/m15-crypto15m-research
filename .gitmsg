@@ -1,56 +1,39 @@
-The probe signal replicates on 73 days - and is already priced
+Survival analysis: zero mean, 42% ruin, and an unmeasurable edge
 
-Two questions answered: does the unfilled-probe signal survive outside the two
-live days, and can it be used defensively to avoid losses rather than to buy.
+Tests the only remaining case for PTC - that its 9x variance reduction is
+worth something even when the mean is indistinguishable from zero.
 
-1. THE SIGNAL REPLICATES. This is the first result in this project to do so.
+METHOD. The edge is not assumed. Each simulated account draws its own true
+per-contract edge from the measured posterior (N(+0.02c, 0.80c), from the
+day-clustered population CI of [-1.57, +1.62]) and trades under it, so the
+uncertainty propagates into the answer instead of hiding behind a point
+estimate. 40,000 paths per cell, streamed in chunks.
 
-paths_full.parquet has no record of our own orders, so a fill proxy was built
-(the favourite's bid falls to or below our resting price) and VALIDATED
-against the 303 orders where the real fill outcome is known before being used.
+RESULT at $700 over 90 days:
 
-  wait 120s   population 8,201 mkts / 73 days   gap +21.0pp  CI [+18.2,+23.4]
-              303 live orders, REAL fills       gap +21.6pp
-  wait  60s   population                        gap +16.2pp  CI [+13.7,+18.7]
-              303 live orders, REAL fills       gap +17.9pp
-              P(<=0) = 0.0000 on both
+  CONTROL   P(ruin) 0.4188   median $702.69   5th pct  -$385.22
+  PTC       P(ruin) 0.0000   median $700.02   5th pct  +$586.29
 
-Real fills and modelled fills agree to within 0.6pp on independent samples.
-An unfilled probe genuinely predicts a winner.
+Both medians land on the starting equity, which is what a zero mean looks
+like. CONTROL reaches that median while dying 42% of the time. PTC survives,
+but stakes so much less that nothing happens in either direction.
 
-2. IT IS ALREADY PRICED. Buying the no-fill branch at the displayed ask:
+Variance reduction here is not free performance - it is a smaller bet. PTC is
+not a way to make the strategy profitable; it is a way to stay solvent long
+enough to find out whether it is.
 
-  wait 120s  1,174 commitable markets  taker edge +0.82c  P(<=0) 0.2607
-  wait  60s  2,453 commitable markets  taker edge -0.52c  P(<=0) 0.7047
+THE FINISHER - how long until the edge is measurable at all:
 
-The unfilled cohort is worth +15.35c at the BID and +0.82c at the ASK. The
-spread is the entire edge - roughly 6-7c to cross against a signal worth
-roughly 6-7c.
+  detect +0.5c/contract   CONTROL  9,988 days   PTC  55,739 days
+  detect +1.0c/contract   CONTROL  2,497 days   PTC  13,935 days
 
-3. THE DEFENSIVE USE DOES NOT WORK EITHER, AND A CLAIM IS WITHDRAWN.
+Neither policy resolves a half-cent edge on any sane horizon, and PTC is worse
+precisely because it stakes less. The edge is not merely unproven, it is
+UNMEASURABLE at this account size under either execution.
 
-An intermediate calculation reported that capping the filled cohort at q1
-saves $54.61/day. That was an artifact of the proxy and is WITHDRAWN. The
-proxy only calls a fill when the bid visibly fell, so its "filled" bucket is
-the worst 25% rather than the real 89%:
-
-  filled-cohort maker edge   REAL +0.08c   PROXY -5.55c
-  fill rate                  REAL 0.8911   PROXY 0.6253
-
-On real exchange fills the filled cohort is +0.08c - break-even, not a loss.
-There is nothing to avoid. What looks like a loss is an opportunity cost: a
-+21.70c cohort exists and is systematically not owned.
-
-CONSEQUENCE FOR PTC. All three doors close for the same reason. Buying the
-signal nets +0.82c; avoiding it saves nothing because the owned cohort is
-already break-even; and holding it at the bid is impossible by definition.
-The exchange's ask already contains the information the probe reveals.
-
-This does not overturn the PTC FAIL verdict - it explains it. PTC's mechanism
-is real and now replicated at n=8,201, and its dollar value is ~zero because
-the market prices the same information.
-
-Adds research/probe_signal_population.py, research/ptc_show_me_the_money.py
-and data/probe_signal_population.parquet.
+This closes the loop with the priced-signal result in fa2927c. The probe
+signal is real (+21pp, replicated at n=8,201, P=0.0000) and already priced, so
+there is no edge to collect; and the variance reduction that remains cannot
+manufacture one, only postpone the outcome.
 
 Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
