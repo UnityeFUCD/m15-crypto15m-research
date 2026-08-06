@@ -7,9 +7,11 @@ The public liquidity-program rules impose a $1.00 minimum payout and round
 payments down to the nearest cent. This runner applies that rule per incentive
 program before any policy is evaluated. Earlier fractional-reward runs are not
 valid for a production claim.
+
+This revision also serves as the pull-request synchronization trigger for the
+isolated audit workflow.
 """
 from pathlib import Path
-import math
 import sys
 
 import numpy as np
