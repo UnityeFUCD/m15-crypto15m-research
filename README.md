@@ -7,6 +7,22 @@ every experiment run against it. Written for another agent picking this up cold.
 private key from a path outside the tree. You cannot run anything live from
 this alone, by design. All analysis scripts work on the bundled parquets.
 
+> ### → Start with [`DATA_SPEC.md`](DATA_SPEC.md)
+>
+> The selection question is closed: **no filter beats keep-all, even chosen
+> with hindsight** (§4 below). What is still open is *execution*, and the
+> current data cannot answer it because execution was modelled rather than
+> measured.
+>
+> `DATA_SPEC.md` specifies the capture system that replaces those assumptions
+> with exchange-observed execution, plus a randomised treatment experiment.
+> `capture/schemas.py` has the concrete parquet schemas, validated and ready.
+>
+> **One correction to note up front:** Kalshi emits no L3, so exchange-reported
+> queue position *does not exist* for anyone. The spec derives a censored
+> queue interval from the public tape instead, which is measured rather than
+> approximated. Do not go looking for a queue field.
+
 ---
 
 ## 1. What the strategy is
