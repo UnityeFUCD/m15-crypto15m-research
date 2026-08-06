@@ -40,8 +40,12 @@ import pandas as pd
 from pathlib import Path
 
 DATA = Path(__file__).resolve().parents[1] / "data"
-POP_RAW_MAKER = 3.99      # cents, population, assumes every order fills
-POP_CORRECTED = 1.36      # cents, population, fill-corrected
+# CORRECTED 2026-08-06. The previous values (3.99 / 1.36) came from
+# ladder_paths, a 28.6% subset that ran 1.43 SD hot; a random draw of that
+# size reaches +3.99c 7.5% of the time (research/reconcile_edge.py). These
+# are the UNSAMPLED population values from data/book_full.parquet.
+POP_RAW_MAKER = 2.29      # cents, population, assumes every order fills
+POP_CORRECTED = -0.43     # cents, population, fill-corrected (NEGATIVE)
 P_FILL_LOSE, P_FILL_WIN = 0.962, 0.843
 
 print("=" * 78)
@@ -135,16 +139,25 @@ f = lsm[lsm.did_fill].copy()
 f["pnl_ct"] = np.where(f.would_win, 1.0 - f.px, -f.px)
 realized = (f.pnl_ct * f.filled).sum() / f.filled.sum() * 100
 print(f"  filled orders {len(f)}   contracts {f.filled.sum():,.0f}")
-print(f"  realized edge          {realized:+.2f}c per contract")
+print(f"  realized edge          {realized:+.2f}c per FILLED contract")
 print(f"  population raw maker   {POP_RAW_MAKER:+.2f}c   "
       f"(what a full-fill backtest would claim)")
 print(f"  population corrected   {POP_CORRECTED:+.2f}c   (what the model says)")
 d_raw, d_corr = abs(realized - POP_RAW_MAKER), abs(realized - POP_CORRECTED)
-print(f"  |realized - raw| {d_raw:.2f}c   vs   |realized - corrected| "
-      f"{d_corr:.2f}c")
+print(f"  distance to corrected  {d_corr:.2f}c")
+print(f"  distance to raw        {d_raw:.2f}c")
 print("  VERDICT: " + ("closer to CORRECTED - model supported"
                        if d_corr < d_raw else
                        "closer to RAW - fill correction not supported here"))
+print()
+print("  NOTE ON SIGN. Both benchmarks moved when the population figures were")
+print("  corrected, and the corrected benchmark is now NEGATIVE (-0.43c) while")
+print("  the realized result is slightly POSITIVE (+0.15c). P2 therefore says")
+print("  the fill-corrected model is the better predictor of realized")
+print("  execution - it is 0.58c away against the raw benchmark's 2.14c - but")
+print("  it does NOT say the strategy made money. Realized +0.15c over 2 days")
+print("  on 277 filled orders is inside noise either way; see P4 for the")
+print("  dollar result and the power check for what this sample can resolve.")
 
 print("\n" + "-" * 78)
 print("P3  canceled orders skew toward eventual WINNERS")
