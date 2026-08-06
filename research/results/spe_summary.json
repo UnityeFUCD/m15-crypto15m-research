@@ -1,0 +1,201 @@
+{
+  "data": {
+    "panel_rows": 255621,
+    "markets": 38070,
+    "days": 73,
+    "horizons": [
+      13,
+      12,
+      10,
+      8,
+      6,
+      4,
+      2
+    ]
+  },
+  "validation_winner": {
+    "model": "struct",
+    "horizon": 12,
+    "threshold": 0.05,
+    "split": "valid",
+    "n": 82,
+    "days": 18,
+    "total_pnl": 68.24269999999997,
+    "mean_day": 3.791261111111111,
+    "sd_day": 11.40084189172727,
+    "t_stat": 1.410857092682314,
+    "edge_per_contract": 0.05548186991869916,
+    "win_rate": 0.573170731707317,
+    "avg_price": 0.5010975609756098,
+    "max_drawdown": 34.13999999999999,
+    "worst_window": -11.8802,
+    "positive_day_fraction": 0.6111111111111112,
+    "objective": 1.8327672446314636
+  },
+  "chosen_regularization": {
+    "market": {
+      "13": 10.0,
+      "12": 10.0,
+      "10": 10.0,
+      "8": 0.1,
+      "6": 0.1,
+      "4": 0.1,
+      "2": 0.1
+    },
+    "blend": {
+      "13": 10.0,
+      "12": 10.0,
+      "10": 10.0,
+      "8": 10.0,
+      "6": 0.1,
+      "4": 0.1,
+      "2": 0.1
+    },
+    "struct": {
+      "13": 0.01,
+      "12": 1.0,
+      "10": 10.0,
+      "8": 1.0,
+      "6": 0.1,
+      "4": 0.1,
+      "2": 10.0
+    }
+  },
+  "test_probability_metrics": [
+    {
+      "horizon": 12,
+      "model": "market",
+      "split": "test",
+      "c": 10.0,
+      "n": 8296,
+      "log_loss": 0.6074361802287748,
+      "brier": 0.21012869129417844,
+      "auc": 0.7296914818173363,
+      "calibration_intercept": 0.08244971694173787,
+      "calibration_slope": 1.0128158933303815
+    },
+    {
+      "horizon": 12,
+      "model": "blend",
+      "split": "test",
+      "c": 10.0,
+      "n": 8296,
+      "log_loss": 0.6075485881820396,
+      "brier": 0.21016845440520424,
+      "auc": 0.7296026320684523,
+      "calibration_intercept": 0.08275593523046322,
+      "calibration_slope": 1.0234564026916242
+    },
+    {
+      "horizon": 12,
+      "model": "struct",
+      "split": "test",
+      "c": 1.0,
+      "n": 8296,
+      "log_loss": 0.6078206690567337,
+      "brier": 0.21043260449666767,
+      "auc": 0.7286207798549107,
+      "calibration_intercept": 0.09866484423543488,
+      "calibration_slope": 0.9964487452407629
+    },
+    {
+      "horizon": 12,
+      "model": "raw_mid",
+      "split": "test",
+      "c": NaN,
+      "n": 8296,
+      "log_loss": 0.6064562345547453,
+      "brier": 0.20970255174180327,
+      "auc": 0.7306213960193452,
+      "calibration_intercept": 0.0471730849373219,
+      "calibration_slope": 1.053196506932467
+    },
+    {
+      "horizon": 12,
+      "model": "physical",
+      "split": "test",
+      "c": NaN,
+      "n": 8296,
+      "log_loss": 0.6371505155937356,
+      "brier": 0.22283163580457677,
+      "auc": 0.7099241129557291,
+      "calibration_intercept": 0.06463594873940623,
+      "calibration_slope": 1.6634458787486834
+    }
+  ],
+  "model_increment": {
+    "log_loss_vs_raw_mid": 0.0013644345019884208,
+    "brier_vs_raw_mid": 0.000730052754864402,
+    "log_loss_vs_market_calibrator": 0.0003844888279589398,
+    "brier_vs_market_calibrator": 0.0003039132024892366
+  },
+  "test_policy": {
+    "model": "struct",
+    "horizon": 12,
+    "threshold": 0.05,
+    "split": "test",
+    "n": 92,
+    "days": 20,
+    "total_pnl": -73.65840000000001,
+    "mean_day": -3.6829200000000015,
+    "sd_day": 15.085442639480375,
+    "t_stat": -1.091815423982441,
+    "edge_per_contract": -0.05337565217391305,
+    "win_rate": 0.4673913043478261,
+    "avg_price": 0.5040217391304347,
+    "max_drawdown": 108.78820000000006,
+    "worst_window": -10.5746,
+    "positive_day_fraction": 0.4
+  },
+  "day_bootstrap": {
+    "observed_mean_day": -3.6829200000000015,
+    "ci_lo": -9.976285500000001,
+    "ci_hi": 2.856587749999996,
+    "p_nonpositive": 0.87175
+  },
+  "block_bootstrap": [
+    {
+      "block_minutes": 15,
+      "n_blocks": 92,
+      "observed_total": -73.65840000000001,
+      "ci_lo": -206.10041250000003,
+      "ci_hi": 65.28927749999983,
+      "p_nonpositive": 0.8481666666666666
+    },
+    {
+      "block_minutes": 30,
+      "n_blocks": 88,
+      "observed_total": -73.65840000000004,
+      "ci_lo": -216.10555250000002,
+      "ci_hi": 66.53694749999987,
+      "p_nonpositive": 0.8450833333333333
+    },
+    {
+      "block_minutes": 60,
+      "n_blocks": 85,
+      "observed_total": -73.65840000000001,
+      "ci_lo": -216.10162250000002,
+      "ci_hi": 70.68742249999993,
+      "p_nonpositive": 0.8375
+    },
+    {
+      "block_minutes": 90,
+      "n_blocks": 81,
+      "observed_total": -73.65840000000004,
+      "ci_lo": -216.37592250000006,
+      "ci_hi": 69.20084749999991,
+      "p_nonpositive": 0.8435833333333334
+    }
+  ],
+  "leave_one_coin_all_positive": false,
+  "leave_one_week_all_positive": false,
+  "hard_pass": false,
+  "pass_components": {
+    "probability_increment": false,
+    "positive_test_economics_and_n_ge_50": false,
+    "positive_day_ci": false,
+    "positive_all_block_cis": false,
+    "leave_one_coin": false,
+    "leave_one_week": false
+  }
+}
