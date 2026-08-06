@@ -1,0 +1,21 @@
+"""Seven-day rapid discovery pass for Reward-Funded Hedged Liquidity.
+
+This is intentionally a discovery pass. The 21-day audit remains the formal
+confirmation run.
+"""
+from pathlib import Path
+import sys
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+
+from research import reward_hedged_liquidity as audit
+from research import commodity15m_reward_data_fast as data
+
+data.LOOKBACK_DAYS = 7
+
+audit.load_programs = data.load_programs
+audit.fetch_markets = data.fetch_markets
+audit.fetch_candles = data.fetch_candles
+
+if __name__ == "__main__":
+    audit.main()
