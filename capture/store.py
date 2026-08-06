@@ -50,6 +50,8 @@ _UNIQUE = {
     "capture_heartbeats": "(ts_ms, component)",
     "api_errors": "(ts_ms, path, seq_hint)",
     "reconciliation_runs": "(run_id)",
+    "virtual_orders": "(vo_id)",
+    "virtual_queue": "(vo_id, ts_ms)",
 }
 
 _DDL = """
