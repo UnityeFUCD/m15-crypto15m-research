@@ -1,0 +1,282 @@
+{
+  "primary_config": {
+    "delay": 2,
+    "bid_move_c": 2.0,
+    "ask_ceiling": 0.85,
+    "spread_widen_limit_c": 1.0,
+    "volume_filter": true
+  },
+  "selected_config": {
+    "delay": 2,
+    "bid_move_c": 1.0,
+    "ask_ceiling": 0.9,
+    "spread_widen_limit_c": 0.0,
+    "volume_filter": false
+  },
+  "primary": {
+    "config": {
+      "delay": 2,
+      "bid_move_c": 2.0,
+      "ask_ceiling": 0.85,
+      "spread_widen_limit_c": 1.0,
+      "volume_filter": true
+    },
+    "splits": {
+      "train": {
+        "config": "d2_move2c_ask0.85_widen1c_vol2k",
+        "split": "train",
+        "n": 321,
+        "days": 36,
+        "total_pnl": 165.4292,
+        "mean_day": 4.595255555555555,
+        "sd_day": 16.430138068012948,
+        "t_stat": 1.678107220961888,
+        "edge_per_contract": 0.03435705088265836,
+        "win_rate": 0.8286604361370716,
+        "mean_ask": 0.7825233644859813,
+        "mean_bid_move_c": 8.105919003115268,
+        "max_drawdown": 72.52490000000003,
+        "worst_window": -12.8839,
+        "positive_day_fraction": 0.6388888888888888
+      },
+      "valid": {
+        "config": "d2_move2c_ask0.85_widen1c_vol2k",
+        "split": "valid",
+        "n": 198,
+        "days": 18,
+        "total_pnl": 88.11049999999997,
+        "mean_day": 4.895027777777778,
+        "sd_day": 18.63579764822675,
+        "t_stat": 1.1144059624705798,
+        "edge_per_contract": 0.029666835016835005,
+        "win_rate": 0.8282828282828283,
+        "mean_ask": 0.7870202020202022,
+        "mean_bid_move_c": 8.727272727272728,
+        "max_drawdown": 52.45279999999999,
+        "worst_window": -12.8839,
+        "positive_day_fraction": 0.6111111111111112
+      },
+      "test": {
+        "config": "d2_move2c_ask0.85_widen1c_vol2k",
+        "split": "test",
+        "n": 227,
+        "days": 20,
+        "total_pnl": 86.20390000000002,
+        "mean_day": 4.310195,
+        "sd_day": 20.378391138951056,
+        "t_stat": 0.9458930246812214,
+        "edge_per_contract": 0.025316857562408226,
+        "win_rate": 0.8193832599118943,
+        "mean_ask": 0.7822907488986783,
+        "mean_bid_move_c": 8.321585903083701,
+        "max_drawdown": 72.24010000000001,
+        "worst_window": -12.7412,
+        "positive_day_fraction": 0.55
+      }
+    },
+    "test_uncertainty": {
+      "day": {
+        "observed_mean_day": 4.310195,
+        "ci_lo": -4.444707125,
+        "ci_hi": 13.031991625000002,
+        "p_nonpositive": 0.16835
+      },
+      "blocks": [
+        {
+          "block_minutes": 15,
+          "n_blocks": 227,
+          "observed_total": 86.20390000000002,
+          "ci_lo": -85.51179499999995,
+          "ci_hi": 250.41927249999975,
+          "p_nonpositive": 0.1567
+        },
+        {
+          "block_minutes": 30,
+          "n_blocks": 216,
+          "observed_total": 86.2039,
+          "ci_lo": -82.64938749999996,
+          "ci_hi": 247.26509249999995,
+          "p_nonpositive": 0.15315
+        },
+        {
+          "block_minutes": 60,
+          "n_blocks": 190,
+          "observed_total": 86.2039,
+          "ci_lo": -82.6782775,
+          "ci_hi": 248.65590249999983,
+          "p_nonpositive": 0.15525
+        },
+        {
+          "block_minutes": 90,
+          "n_blocks": 168,
+          "observed_total": 86.2039,
+          "ci_lo": -88.41089749999998,
+          "ci_hi": 253.5428775,
+          "p_nonpositive": 0.1611
+        }
+      ]
+    },
+    "matched_confirmation_lift": {
+      "train": {
+        "strata": 35,
+        "matched_n_effective": 37.5,
+        "win_rate_lift": 0.0088888888888889,
+        "edge_lift": 0.007003437037037034
+      },
+      "valid": {
+        "strata": 24,
+        "matched_n_effective": 27.5,
+        "win_rate_lift": -0.21818181818181817,
+        "edge_lift": -0.2205309090909091
+      },
+      "test": {
+        "strata": 24,
+        "matched_n_effective": 29.366666666666667,
+        "win_rate_lift": 0.04880817253121452,
+        "edge_lift": 0.04814294362466894
+      }
+    },
+    "pass_components": {
+      "train_valid_test_positive": true,
+      "test_day_ci_positive": false,
+      "test_all_block_cis_positive": false,
+      "leave_one_group_positive": true,
+      "matched_edge_lift_positive_all_splits": false,
+      "test_n_ge_50": true
+    },
+    "hard_pass": false
+  },
+  "selected": {
+    "config": {
+      "delay": 2,
+      "bid_move_c": 1.0,
+      "ask_ceiling": 0.9,
+      "spread_widen_limit_c": 0.0,
+      "volume_filter": false
+    },
+    "splits": {
+      "train": {
+        "config": "d2_move1c_ask0.90_widen0c_volall",
+        "split": "train",
+        "n": 736,
+        "days": 36,
+        "total_pnl": 326.2607,
+        "mean_day": 9.062797222222223,
+        "sd_day": 21.673497705242106,
+        "t_stat": 2.508906687460113,
+        "edge_per_contract": 0.029552599637681157,
+        "win_rate": 0.845108695652174,
+        "mean_ask": 0.8048097826086955,
+        "mean_bid_move_c": 10.177989130434783,
+        "max_drawdown": 102.10960000000009,
+        "worst_window": -13.5945,
+        "positive_day_fraction": 0.6388888888888888
+      },
+      "valid": {
+        "config": "d2_move1c_ask0.90_widen0c_volall",
+        "split": "valid",
+        "n": 442,
+        "days": 18,
+        "total_pnl": 286.11269999999996,
+        "mean_day": 15.895149999999997,
+        "sd_day": 26.000491976256008,
+        "t_stat": 2.593697464626778,
+        "edge_per_contract": 0.04315425339366515,
+        "win_rate": 0.8597285067873304,
+        "mean_ask": 0.8058597285067872,
+        "mean_bid_move_c": 10.312217194570136,
+        "max_drawdown": 67.41690000000003,
+        "worst_window": -13.5945,
+        "positive_day_fraction": 0.7222222222222222
+      },
+      "test": {
+        "config": "d2_move1c_ask0.90_widen0c_volall",
+        "split": "test",
+        "n": 428,
+        "days": 20,
+        "total_pnl": 76.73680000000003,
+        "mean_day": 3.836840000000001,
+        "sd_day": 26.764052950796756,
+        "t_stat": 0.6411162819445019,
+        "edge_per_contract": 0.011952772585669787,
+        "win_rate": 0.822429906542056,
+        "mean_ask": 0.7995093457943925,
+        "mean_bid_move_c": 9.964953271028037,
+        "max_drawdown": 139.90220000000008,
+        "worst_window": -13.3109,
+        "positive_day_fraction": 0.5
+      }
+    },
+    "test_uncertainty": {
+      "day": {
+        "observed_mean_day": 3.836840000000001,
+        "ci_lo": -7.530303999999998,
+        "ci_hi": 14.99030174999996,
+        "p_nonpositive": 0.2579
+      },
+      "blocks": [
+        {
+          "block_minutes": 15,
+          "n_blocks": 428,
+          "observed_total": 76.73680000000003,
+          "ci_lo": -153.04490249999998,
+          "ci_hi": 302.82180249999993,
+          "p_nonpositive": 0.248
+        },
+        {
+          "block_minutes": 30,
+          "n_blocks": 378,
+          "observed_total": 76.73680000000004,
+          "ci_lo": -152.53667749999997,
+          "ci_hi": 302.73914499999995,
+          "p_nonpositive": 0.25365
+        },
+        {
+          "block_minutes": 60,
+          "n_blocks": 301,
+          "observed_total": 76.73680000000002,
+          "ci_lo": -156.89269249999995,
+          "ci_hi": 298.69820500000003,
+          "p_nonpositive": 0.25855
+        },
+        {
+          "block_minutes": 90,
+          "n_blocks": 243,
+          "observed_total": 76.7368,
+          "ci_lo": -146.93323999999996,
+          "ci_hi": 297.52761,
+          "p_nonpositive": 0.2437
+        }
+      ]
+    },
+    "matched_confirmation_lift": {
+      "train": {
+        "strata": 53,
+        "matched_n_effective": 57.66666666666667,
+        "win_rate_lift": 0.04624277456647399,
+        "edge_lift": 0.04398102119460499
+      },
+      "valid": {
+        "strata": 36,
+        "matched_n_effective": 41.0,
+        "win_rate_lift": -0.06910569105691056,
+        "edge_lift": -0.07084119241192413
+      },
+      "test": {
+        "strata": 36,
+        "matched_n_effective": 41.266666666666666,
+        "win_rate_lift": 0.07592891760904684,
+        "edge_lift": 0.0758977167474421
+      }
+    },
+    "pass_components": {
+      "train_valid_test_positive": true,
+      "test_day_ci_positive": false,
+      "test_all_block_cis_positive": false,
+      "leave_one_group_positive": false,
+      "matched_edge_lift_positive_all_splits": false,
+      "test_n_ge_50": true
+    },
+    "hard_pass": false
+  }
+}
