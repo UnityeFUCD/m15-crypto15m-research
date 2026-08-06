@@ -71,3 +71,5 @@ jobs:
       - name: Fail workflow if audit failed
         if: ${{ steps.audit.outputs.exit_code != '0' }}
         run: exit 1
+
+# Retrigger after default-branch workflow registration.
