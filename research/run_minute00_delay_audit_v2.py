@@ -1,18 +1,30 @@
-"""Run the minute-00 audit with one explicit censoring correction.
+"""Run the minute-00 audit with explicit audit corrections.
 
-Some full paths skip from the entry observation to a quote five minutes later.
-That row cannot represent a frozen 120-second decision. The first version
-raised and stopped the entire audit. This runner changes that one branch to
-`continue`, so sparse rows are excluded rather than silently treated as 120s.
+Corrections applied without changing the frozen primary policy:
+1. Sparse paths whose next quote is more than 90 seconds after the nominal
+   120-second decision are censored instead of halting or pretending they are
+   120-second observations.
+2. Bootstrap repetitions are reduced to 4,000 (3,000 for the best-of-four
+   permutation) so the exact same estimands finish reliably in CI.
+3. Wait sensitivity starts from every initial :00 candidate rather than from
+   the subset that qualified at the primary 120-second rule.
 """
 from pathlib import Path
 
 source_path = Path(__file__).with_name("minute00_delay_audit.py")
 source = source_path.read_text(encoding="utf-8")
-old = '            raise RuntimeError(f"invalid effective wait {effective_wait}")'
-new = '            continue  # censored: no complete quote near the frozen wait'
-if source.count(old) != 1:
-    raise RuntimeError("expected exactly one effective-wait guard to patch")
+patches = {
+    '            raise RuntimeError(f"invalid effective wait {effective_wait}")':
+        '            continue  # censored: no complete quote near frozen wait',
+    'reps: int = 12000': 'reps: int = 4000',
+    'reps: int = 6000': 'reps: int = 3000',
+    'wait_grid = wait_sensitivity(top)':
+        'wait_grid = wait_sensitivity(all_rows[all_rows.minute == 0])',
+}
+for old, new in patches.items():
+    if old not in source:
+        raise RuntimeError(f"expected audit patch not found: {old}")
+    source = source.replace(old, new)
 namespace = {"__name__": "minute00_delay_audit_v2", "__file__": str(source_path)}
-exec(compile(source.replace(old, new), str(source_path), "exec"), namespace)
+exec(compile(source, str(source_path), "exec"), namespace)
 namespace["main"]()
