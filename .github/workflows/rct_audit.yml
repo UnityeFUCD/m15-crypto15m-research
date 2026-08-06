@@ -10,6 +10,13 @@ on:
       - "data/**"
       - "requirements.txt"
       - ".github/workflows/rct_audit.yml"
+  pull_request:
+    branches:
+      - master
+    paths:
+      - "research/bootstrap_rct.py"
+      - "research/runaway_confirmation.py"
+      - ".github/workflows/rct_audit.yml"
 
 permissions:
   contents: write
@@ -50,6 +57,7 @@ jobs:
           exit 0
 
       - name: Commit readable source, evidence, or failure log
+        if: ${{ github.event_name == 'push' }}
         shell: bash
         run: |
           git config user.name "github-actions[bot]"
