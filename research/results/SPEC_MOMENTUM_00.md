@@ -4,6 +4,31 @@
 it is built on.** The momentum condition, which is the headline idea, is inert.
 What carries the result is `:00` plus the ask ceiling.
 
+
+> ## ⚠️ UPDATE — the held-out picture is much weaker than the headline
+>
+> The +7.81c / P=0.0021 figure below is a **full-sample** number and therefore
+> includes the training period. Splitting it properly
+> (`research/spec_optimize.py`):
+>
+> ```
+> train  n=175  win 0.8629   +9.56c   P(<=0) 0.0001
+> valid  n= 92  win 0.8261   +5.70c   P(<=0) 0.0956
+> test   n= 93  win 0.7634   -0.15c   P(<=0) 0.5229
+>
+> HELD OUT (valid+test)  n=185  +2.76c  95% CI [-2.73, +8.33]  P(<=0) 0.1718
+> ```
+>
+> **On data never used to build or choose anything, the edge is +2.76c and not
+> significant. In the test period alone it is zero.** The monotone decay
+> flagged below is confirmed and is the dominant fact about this strategy.
+>
+> A train-only grid search over 243 configurations was also run. The frozen
+> winner gained **−0.10c out of sample** against the plain version: the
+> optimisation fitted train noise and added nothing.
+>
+> Liquidity, by contrast, is NOT a problem — see the tape test below.
+
 Implementation: `research/spec_momentum_00.py`. Close derived from the ticker,
 never from `expected_expiration_time`. Favourite side frozen at entry and never
 redefined. `won` verified against `underlying.parquet` at **1.000000**
@@ -122,3 +147,63 @@ test-period figure (+2.47c ≈ $1.80/day), not the full-sample one.
 3. **Mean ask is 78.60c.** At that price a loss costs 3.7× what a win pays;
    the 87% win rate is doing all the work and a small drop in it is expensive.
 4. **The account is $136.27 against a $211 floor** and cannot trade this yet.
+
+---
+
+## Tape execution test — Aug 4–5 real trades
+
+`research/spec_tape_execution.py` against `trades_lsm.parquet` (2,114,639 real
+prints). The backtest assumes a q15 IOC fills at the displayed ask; the tape
+tests it.
+
+```
+7 signals with real tape coverage
+  with prints in the 60s window     7 / 7
+  with depth at our price           6 / 7
+  median depth                    770 contracts
+  25th / 75th percentile     139 / 14,042
+  share with depth >= 15          71.4%
+  median time to first print       0.0s
+  fill ratio at q15               0.7771
+  backtest +$5.56  ->  realistic +$4.35
+```
+
+**Liquidity is not the binding constraint.** Median depth at or better than
+our price is ~770 contracts against a q15 order, and size scales:
+
+| qty | fill ratio | per contract |
+|---|---|---|
+| q5 | 0.857 | +6.32c |
+| q15 | 0.777 | +5.33c |
+| q30 | 0.746 | +4.88c |
+
+Two caveats, both real: the VWAP measure averages in prints *better* than our
+limit so it flatters execution, and **n=7** — the tape only covers markets LSM
+actually traded on those two days. It supports a liquidity conclusion, not a
+P&L one.
+
+### A timestamp bug caught here, not published
+
+The first run of this test returned zero prints in every window. The cause was
+`trades_lsm.ts` being treated as milliseconds when it is **seconds** — the
+compaction step did `.astype("int64") // 10**6` assuming `datetime64[ns]`,
+while this pandas stores `datetime64[us]`, so the division had already produced
+seconds. `DATA.md` documented it wrongly and is corrected.
+
+This is the same unit-confusion class that invalidated PTC v1. It was caught
+because `ml` came out as 29,734,390 minutes — roughly 56 years — rather than a
+plausible number.
+
+## Revised bottom line
+
+| claim | status |
+|---|---|
+| liquidity supports q15 | **holds** — median 770 contracts available |
+| momentum / volume / spread filters add value | **refuted** — all inert |
+| the 2-minute wait is load-bearing | **refuted** — P=0.1664 vs 1 minute |
+| grid optimisation improves it | **refuted** — −0.10c out of sample |
+| the `:00` effect is exploitable | **unresolved** — +2.76c held out, P=0.1718, test period 0.00c |
+
+The strategy is executable and its components are now understood. What is not
+established is that the edge persists: it is strong in train, halved in valid,
+and gone in test.

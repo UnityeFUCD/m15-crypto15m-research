@@ -82,7 +82,7 @@ measured result from +$143.38 to +$9.38. Recovered in
 ### `trades_lsm.parquet` — public trade tape, 2,114,639 trades / 301 markets
 `ticker, ts, count, yes_c, taker_book_side, taker_outcome_side`
 
-- `ts` — epoch **milliseconds** (not seconds)
+- `ts` — epoch **seconds** (an earlier revision of this file said milliseconds; that was wrong — the compaction assumed datetime64[ns] while pandas stored datetime64[us], so `//10**6` already yielded seconds. Verified: trades land 0–15 min before each close.)
 - `yes_c` — trade price on the **YES scale, in integer cents**
 - `trade_id` was dropped after dedup; the file is zstd-compressed (93MB → 5.8MB)
 

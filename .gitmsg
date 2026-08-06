@@ -1,68 +1,63 @@
-Test the specified :00 momentum strategy: it works, momentum does not
+Optimise and tape-test the :00 strategy: liquidity fine, edge decays to zero
 
-Implemented exactly as written - close from the ticker, side frozen at entry,
-first complete quote at 8-14 min, exactly two minutes of wait. The derived
-`won` was verified against underlying.parquet at 1.000000 agreement on 1,878
-markets before any result was computed.
+Two follow-ups: optimise the strategy, and test it against the real Aug 4-5
+tape rather than displayed quotes.
 
-SPEC AS WRITTEN
+1. THE HEADLINE +7.81c WAS A FULL-SAMPLE NUMBER
 
-  161 trades / 66 days   win 87.58%   mean ask 78.60c
-  +$188.66 at q15, fees $28.09
-  +7.81c per contract   95% CI [+2.61, +12.65]   P(<=0) 0.0021
-  train +9.53c / valid +5.60c / test +7.31c - positive in all three
-  leave-one-coin-out and leave-one-week-out all positive
-  dropping the best 5 trades still leaves +7.15c
+Splitting it properly, with the grid searched on TRAIN ONLY and valid/test
+never consulted:
 
-Permutation over the ENTIRE search - shuffle outcomes within day, re-run every
-configuration, take the best each time - gives a permuted best of -1.38c
-(p95 +1.60c) against the observed +7.81c: P = 0.0000. This is not a search
-artifact. Bonferroni over ~20 variants also passes, though only just
-(0.0021 < 0.0025).
+  train  n=175  win 0.8629   +9.56c  P(<=0) 0.0001
+  valid  n= 92  win 0.8261   +5.70c  P(<=0) 0.0956
+  test   n= 93  win 0.7634   -0.15c  P(<=0) 0.5229
+  HELD OUT       n=185       +2.76c  95% CI [-2.73, +8.33]  P(<=0) 0.1718
 
-BUT THREE OF THE FOUR DELAYED CONDITIONS ARE INERT
+On data never used to build or choose anything the edge is +2.76c and NOT
+significant; in the test period alone it is zero. The monotone decay flagged
+in the previous commit is confirmed and is now the dominant fact about this
+strategy. The full-sample figure remains correct but must not be read as an
+expectation.
 
-Removing one condition at a time and keeping the rest:
+2. OPTIMISATION ADDS NOTHING
 
-  full spec                161  +7.81c  $2.86/day
-  - momentum (rise >= 2c)  182  +8.52c  $3.37/day   BETTER without it
-  - volume (>= 2000)       325  +7.75c  $5.17/day   same edge, 2x frequency
-  - spread widen (<= 1c)   181  +8.10c  $3.23/day   no effect
-  - ask ceiling            203  +5.54c  $2.44/day   this one is real
+A 243-configuration grid over entry band, wait and ask band, searched on train
+only and frozen, gained -0.10c per contract out of sample against the plain
+version (+2.76c vs +2.86c). The search fitted train noise. Its train winner
+does pass a best-of-grid permutation (P=0.0000 against a permuted best of
++0.49c) - which shows the TRAIN effect is real, not that it generalises.
 
-The momentum filter is the headline idea and it is doing nothing - removing it
-improves the edge on more trades. Volume costs $2.31/day for an identical
-edge. Only the ask ceiling earns its place.
+3. LIQUIDITY IS NOT THE CONSTRAINT
 
-THE 2-MINUTE WAIT IS A NOISE PEAK
+Tested against trades_lsm.parquet, 2,114,639 real prints:
 
-  wait 1  +2.10c   wait 2  +7.81c   wait 3  +1.08c   wait 4  +2.20c
+  7 signals with tape coverage, 7/7 had prints, 6/7 had depth at our price
+  median depth 770 contracts, 71.4% had >= 15
+  fill ratio at q15 0.7771, backtest +$5.56 -> realistic +$4.35
+  q5 0.857 fill / q15 0.777 / q30 0.746
 
-A sharp peak at exactly the specified value is a warning sign, so it was
-tested directly: wait-2 minus wait-1, day-paired on 62 shared days, is +3.13c
-with 95% CI [-2.94, +9.72], P(<=0) 0.1664. Not significant. The choice of two
-minutes should not be treated as load-bearing.
+Caveats stated in the report: the VWAP measure averages in prints better than
+our limit so it flatters execution, and n=7 - the tape only covers markets LSM
+actually traded. It supports a liquidity conclusion, not a P&L one.
 
-HIGHEST-EARNING CONFIGURATION - drop volume and momentum:
+4. A TIMESTAMP BUG CAUGHT BEFORE PUBLICATION
 
-  362 trades  win 87.02%  +7.52c/contract  $5.59/day at q15
-  95% CI [+4.13, +10.84]  P(<=0) 0.0000, all leave-one-outs positive
+The first tape run returned zero prints in every window. trades_lsm.ts is
+epoch SECONDS, not milliseconds: the compaction did .astype("int64") // 10**6
+assuming datetime64[ns] while this pandas stores datetime64[us], so the
+division had already produced seconds. DATA.md documented it wrongly and is
+corrected.
 
-WARNING - CHRONOLOGICAL DECAY in that configuration:
+Same unit-confusion class that invalidated PTC v1. Caught because `ml` came
+out as 29,734,390 minutes - about 56 years - instead of a plausible number.
 
-  train n=160 win 0.9062 +11.26c
-  valid n=105 win 0.8667  +6.48c
-  test  n= 97 win 0.8144  +2.47c
+REVISED STATUS
+  liquidity supports q15                     holds
+  momentum / volume / spread filters         refuted, all inert
+  the 2-minute wait is load-bearing          refuted, P=0.1664 vs 1 minute
+  grid optimisation improves it              refuted, -0.10c out of sample
+  the :00 effect is exploitable              UNRESOLVED, +2.76c held out
 
-Monotone decline, 9 points of win rate from train to test. Either the effect
-is being priced away or n~100 per split is simply small; this data cannot
-separate them. The full spec does not show the same pattern, which argues for
-noise, but the magnitude should be planned around the TEST figure (+2.47c,
-~$1.80/day) rather than the full-sample one.
-
-Also noted: mean ask 78.60c means a loss costs 3.7x what a win pays, so the
-87% win rate is carrying everything and is expensive to lose.
-
-139 tests still pass.
+139 tests pass.
 
 Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
