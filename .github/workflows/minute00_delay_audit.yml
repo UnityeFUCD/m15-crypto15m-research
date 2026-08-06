@@ -6,6 +6,7 @@ on:
       - codex/settlement-probability-engine
     paths:
       - "research/minute00_delay_audit.py"
+      - "research/run_minute00_delay_audit_v2.py"
       - ".github/workflows/minute00_delay_audit.yml"
       - "data/**"
 
@@ -37,7 +38,7 @@ jobs:
         run: |
           set +e
           mkdir -p research/results
-          python research/minute00_delay_audit.py > research/results/minute00_run.log 2>&1
+          python research/run_minute00_delay_audit_v2.py > research/results/minute00_run.log 2>&1
           status=$?
           echo "exit_code=$status" >> "$GITHUB_OUTPUT"
           cat research/results/minute00_run.log
