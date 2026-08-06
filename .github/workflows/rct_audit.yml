@@ -65,7 +65,7 @@ jobs:
         shell: bash
         run: |
           set +e
-          python research/bootstrap_rct_minute00.py > research/results/rct_minute00_run.log 2>&1
+          PYTHONPATH=. python research/bootstrap_rct_minute00.py > research/results/rct_minute00_run.log 2>&1
           status=$?
           echo "exit_code=$status" >> "$GITHUB_OUTPUT"
           cat research/results/rct_minute00_run.log
