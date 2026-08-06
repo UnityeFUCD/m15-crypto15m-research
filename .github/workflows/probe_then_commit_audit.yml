@@ -3,6 +3,7 @@ name: Probe Then Commit Audit
 on:
   push:
     branches:
+      - master
       - codex/probe-then-commit-audit
     paths:
       - "research/probe_then_commit_audit.py"
@@ -22,7 +23,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          ref: codex/probe-then-commit-audit
+          ref: ${{ github.ref_name }}
 
       - uses: actions/setup-python@v5
         with:
@@ -66,7 +67,7 @@ jobs:
             echo "No generated changes"
           else
             git commit -m "Probe-then-commit audit results [skip audit]"
-            git push origin HEAD:codex/probe-then-commit-audit
+            git push origin "HEAD:${GITHUB_REF_NAME}"
           fi
 
       - name: Fail workflow if audit failed
