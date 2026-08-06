@@ -70,8 +70,8 @@
       "n": 8296,
       "log_loss": 0.6074361802287748,
       "brier": 0.21012869129417844,
-      "auc": 0.7296914818173363,
-      "calibration_intercept": 0.08244971694173787,
+      "auc": 0.7296916271391368,
+      "calibration_intercept": 0.08244971694173783,
       "calibration_slope": 1.0128158933303815
     },
     {
@@ -83,7 +83,7 @@
       "log_loss": 0.6075485881820396,
       "brier": 0.21016845440520424,
       "auc": 0.7296026320684523,
-      "calibration_intercept": 0.08275593523046322,
+      "calibration_intercept": 0.08275593523046308,
       "calibration_slope": 1.0234564026916242
     },
     {
@@ -92,11 +92,11 @@
       "split": "test",
       "c": 1.0,
       "n": 8296,
-      "log_loss": 0.6078206690567337,
-      "brier": 0.21043260449666767,
-      "auc": 0.7286207798549107,
-      "calibration_intercept": 0.09866484423543488,
-      "calibration_slope": 0.9964487452407629
+      "log_loss": 0.6078207019603075,
+      "brier": 0.21043261835090077,
+      "auc": 0.7286207217261905,
+      "calibration_intercept": 0.09866656307614304,
+      "calibration_slope": 0.9964487224373046
     },
     {
       "horizon": 12,
@@ -108,7 +108,7 @@
       "brier": 0.20970255174180327,
       "auc": 0.7306213960193452,
       "calibration_intercept": 0.0471730849373219,
-      "calibration_slope": 1.053196506932467
+      "calibration_slope": 1.0531965069324671
     },
     {
       "horizon": 12,
@@ -119,15 +119,15 @@
       "log_loss": 0.6371505155937356,
       "brier": 0.22283163580457677,
       "auc": 0.7099241129557291,
-      "calibration_intercept": 0.06463594873940623,
+      "calibration_intercept": 0.06463594873940624,
       "calibration_slope": 1.6634458787486834
     }
   ],
   "model_increment": {
-    "log_loss_vs_raw_mid": 0.0013644345019884208,
-    "brier_vs_raw_mid": 0.000730052754864402,
-    "log_loss_vs_market_calibrator": 0.0003844888279589398,
-    "brier_vs_market_calibrator": 0.0003039132024892366
+    "log_loss_vs_raw_mid": 0.0013644674055621753,
+    "brier_vs_raw_mid": 0.0007300666090974961,
+    "log_loss_vs_market_calibrator": 0.0003845217315326943,
+    "brier_vs_market_calibrator": 0.00030392705672233067
   },
   "test_policy": {
     "model": "struct",

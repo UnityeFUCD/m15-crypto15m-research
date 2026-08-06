@@ -37,7 +37,7 @@ slice. The final test slice was evaluated once.
 
 - Δ log loss vs raw midpoint: +0.001364
 - Δ Brier vs raw midpoint: +0.000730
-- Δ log loss vs market-only calibrator: +0.000384
+- Δ log loss vs market-only calibrator: +0.000385
 
 Negative deltas are improvements.
 
