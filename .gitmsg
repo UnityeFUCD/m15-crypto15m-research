@@ -1,85 +1,67 @@
-Cross-finding analysis: adverse selection is constant, the close minute is not
+Test the specified :00 momentum strategy: it works, momentum does not
 
-Autonomous study of how every finding in this project interlocks, whether any
-are orthogonal, and whether any combination beats its parts.
+Implemented exactly as written - close from the ticker, side frozen at entry,
+first complete quote at 8-14 min, exactly two minutes of wait. The derived
+`won` was verified against underlying.parquet at 1.000000 agreement on 1,878
+markets before any result was computed.
 
-1. ALMOST EVERYTHING IS ONE FINDING
+SPEC AS WRITTEN
 
-Pairwise correlation across 8,200 in-band markets is ~0 for every signal
-(max 0.181). Only two carry an effect:
+  161 trades / 66 days   win 87.58%   mean ask 78.60c
+  +$188.66 at q15, fees $28.09
+  +7.81c per contract   95% CI [+2.61, +12.65]   P(<=0) 0.0021
+  train +9.53c / valid +5.60c / test +7.31c - positive in all three
+  leave-one-coin-out and leave-one-week-out all positive
+  dropping the best 5 trades still leaves +7.15c
 
-  no-fill      +20.96pp standalone
-  minute :00    +3.25pp standalone,  +3.37pp conditional on no-fill
-  calm / tight / cheap / side   noise
+Permutation over the ENTIRE search - shuffle outcomes within day, re-run every
+configuration, take the best each time - gives a permuted best of -1.38c
+(p95 +1.60c) against the observed +7.81c: P = 0.0000. This is not a search
+artifact. Bonferroni over ~20 variants also passes, though only just
+(0.0021 < 0.0025).
 
-no-fill and :00 are uncorrelated (r = -0.003) and each survives conditioning
-on the other. That orthogonality is the only reason a combination is worth
-anything.
+BUT THREE OF THE FOUR DELAYED CONDITIONS ARE INERT
 
-2. THE BIG NEGATIVE - FILL BIAS DOES NOT VARY
+Removing one condition at a time and keeping the rest:
 
-Tested whether adverse selection - the binding constraint on everything - is
-weaker anywhere. Searched on TRAIN only, froze the winner, evaluated held-out.
+  full spec                161  +7.81c  $2.86/day
+  - momentum (rise >= 2c)  182  +8.52c  $3.37/day   BETTER without it
+  - volume (>= 2000)       325  +7.75c  $5.17/day   same edge, 2x frequency
+  - spread widen (<= 1c)   181  +8.10c  $3.23/day   no effect
+  - ask ceiling            203  +5.54c  $2.44/day   this one is real
 
-  filled-cohort edge across every dimension:  -2.24c to -7.88c
-  no-fill gap across every dimension:         +16.0pp to +24.4pp
-  best train cell (XRP, -2.24c) -> valid -6.78c, test -6.87c
-  held out CI [-12.31, -1.34]  P(<=0) 0.9918
+The momentum filter is the headline idea and it is doing nothing - removing it
+improves the edge on more trades. Volume costs $2.31/day for an identical
+edge. Only the ask ceiling earns its place.
 
-It reverses completely out of sample. There is no regime where the
-counterparty knows less. This EXPLAINS the thirteen prior failures rather than
-merely adding a fourteenth: they all searched inside a space where the binding
-constraint is constant, so anything they found was noise around a fixed drag.
+THE 2-MINUTE WAIT IS A NOISE PEAK
 
-3. THE SURVIVING PATTERN - THE MARKET DOES NOT PRICE THE CLOSE MINUTE
+  wait 1  +2.10c   wait 2  +7.81c   wait 3  +1.08c   wait 4  +2.20c
 
-  minute   n    mean ask   win rate   implied-actual
-   :00    277    0.7615     0.8448       +8.32pp
-   :15    329    0.7605     0.7477       -1.28pp
-   :30    278    0.7551     0.7698       +1.47pp
-   :45    290    0.7613     0.7966       +3.53pp
+A sharp peak at exactly the specified value is a warning sign, so it was
+tested directly: wait-2 minus wait-1, day-paired on 62 shared days, is +3.13c
+with 95% CI [-2.94, +9.72], P(<=0) 0.1664. Not significant. The choice of two
+minutes should not be treated as load-bearing.
 
-The ask is identical across minutes. The win rate is not. That is a pricing
-failure, not a cheaper price.
+HIGHEST-EARNING CONFIGURATION - drop volume and momentum:
 
-  :00 AND no-fill   n= 277  +6.32c  CI [+2.33, +10.33]  P(<=0) 0.0013
-  :00 regardless    n= 963  +3.37c  CI [+0.03,  +6.80]  P(<=0) 0.0244
-  other minutes     n=3095  -1.49c  CI [-3.78,  +0.77]  P(<=0) 0.9024
+  362 trades  win 87.02%  +7.52c/contract  $5.59/day at q15
+  95% CI [+4.13, +10.84]  P(<=0) 0.0000, all leave-one-outs positive
 
-The probe adds +4.14c at :00 against +0.86c elsewhere - a real interaction of
-+3.28c, not two effects summed.
+WARNING - CHRONOLOGICAL DECAY in that configuration:
 
-SURVIVED: held-out only +5.43c P=0.0240 (lower bound above zero); day-matched
-within-day +9.71c P=0.0003; selection correction over the four minutes
-P=0.0158; leave-one-coin-out and leave-one-week-out all positive; dropping the
-best five markets still +5.89c; proxy accuracy comparable across minutes
-(0.7250-0.7632) so the contrast is not a classification artifact.
+  train n=160 win 0.9062 +11.26c
+  valid n=105 win 0.8667  +6.48c
+  test  n= 97 win 0.8144  +2.47c
 
-FAILED: hostile proxy stress. If the fill proxy is wrong on the best 25% the
-(A) edge goes to -0.07c.
+Monotone decline, 9 points of win rate from train to test. Either the effect
+is being priced away or n~100 per split is simply small; this data cannot
+separate them. The full spec does not show the same pattern, which argues for
+noise, but the magnitude should be planned around the TEST figure (+2.47c,
+~$1.80/day) rather than the full-sample one.
 
-4. THE PROXY-FREE VERSION IS THE IMPORTANT ONE
-
-(C) ":00 regardless of fill state" needs no probe, no fill model and no proxy.
-+3.37c, P=0.0244, 13.1 commits/day held-out, ~$4.30/day at q15 - more per day
-than the probe version despite being weaker per contract, and resting on far
-less inference.
-
-5. THIS SOFTENS THE EARLIER VERDICT
-
-"No measurable edge anywhere" was too strong. It was reached by testing
-POLICIES rather than testing PRICING. The right question was the one the
-market answers badly: it quotes all four close minutes identically when they
-do not behave identically.
-
-NOT GLOSSED: the (C) lower bound is +0.03c, clearing zero by a hair; :00 has
-been revisited several times so these tests are not mutually independent; no
-mechanism is established, only a story about the top of the hour; and the
-account must still be funded above $211.
-
-NEXT TEST IS NOT MORE HISTORY. Run (C) forward at q5 on :00 only - one
-eligibility line, no new architecture. 13 commits/day gives ~390 out-of-sample
-observations in a month.
+Also noted: mean ask 78.60c means a loss costs 3.7x what a win pays, so the
+87% win rate is carrying everything and is expensive to lose.
 
 139 tests still pass.
 
