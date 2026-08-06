@@ -1,0 +1,155 @@
+# Re-run after repairing the embedded meta-audit payload.
+name: Runaway Confirmation Audit
+
+on:
+  push:
+    branches:
+      - codex/runaway-confirmation
+    paths:
+      - "research/bootstrap_rct.py"
+      - "research/runaway_confirmation.py"
+      - "research/bootstrap_rct_minute00.py"
+      - "research/rct_minute00_audit.py"
+      - "research/bootstrap_rct_minute00_meta.py"
+      - "research/rct_minute00_meta.py"
+      - "data/**"
+      - "requirements.txt"
+      - ".github/workflows/rct_audit.yml"
+  pull_request:
+    branches:
+      - master
+    paths:
+      - "research/bootstrap_rct.py"
+      - "research/runaway_confirmation.py"
+      - "research/bootstrap_rct_minute00.py"
+      - "research/rct_minute00_audit.py"
+      - "research/bootstrap_rct_minute00_meta.py"
+      - "research/rct_minute00_meta.py"
+      - ".github/workflows/rct_audit.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  audit:
+    if: ${{ !contains(github.event.head_commit.message, '[skip rct]') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: codex/runaway-confirmation
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install scipy tabulate
+
+      - name: Run clean-room RCT audit and preserve log
+        id: audit
+        shell: bash
+        run: |
+          set +e
+          mkdir -p research/results
+          python research/bootstrap_rct.py > research/results/rct_run.log 2>&1
+          status=$?
+          echo "exit_code=$status" >> "$GITHUB_OUTPUT"
+          cat research/results/rct_run.log
+          exit 0
+
+      - name: Run frozen RCT x minute-zero audit
+        id: minute00
+        shell: bash
+        run: |
+          set +e
+          PYTHONPATH=. python research/bootstrap_rct_minute00.py > research/results/rct_minute00_run.log 2>&1
+          status=$?
+          echo "exit_code=$status" >> "$GITHUB_OUTPUT"
+          cat research/results/rct_minute00_run.log
+          exit 0
+
+      - name: Run convergent minute-zero RCT meta-audit
+        id: meta
+        shell: bash
+        run: |
+          set +e
+          PYTHONPATH=. python research/bootstrap_rct_minute00_meta.py > research/results/rct_minute00_meta_run.log 2>&1
+          status=$?
+          echo "exit_code=$status" >> "$GITHUB_OUTPUT"
+          cat research/results/rct_minute00_meta_run.log
+          exit 0
+
+      - name: Commit readable source, evidence, or failure logs
+        if: ${{ github.event_name == 'push' }}
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f \
+            research/runaway_confirmation.py \
+            research/rct_minute00_audit.py \
+            research/rct_minute00_meta.py \
+            research/results/rct_run.log \
+            research/results/rct_minute00_run.log \
+            research/results/rct_minute00_meta_run.log
+          for f in \
+            research/results/rct_report.md \
+            research/results/rct_summary.json \
+            research/results/rct_train_grid.csv \
+            research/results/rct_validation_survivors.csv \
+            research/results/rct_train_movement_surface.csv \
+            research/results/rct_valid_movement_surface.csv \
+            research/results/rct_test_movement_surface.csv \
+            research/results/rct_primary_leave_one_coin.csv \
+            research/results/rct_primary_leave_one_week.csv \
+            research/results/rct_primary_leave_one_minute.csv \
+            research/results/rct_primary_leave_one_hour.csv \
+            research/results/rct_primary_test_baselines.csv \
+            research/results/rct_primary_test_trades.parquet \
+            research/results/rct_selected_leave_one_coin.csv \
+            research/results/rct_selected_leave_one_week.csv \
+            research/results/rct_selected_leave_one_minute.csv \
+            research/results/rct_selected_leave_one_hour.csv \
+            research/results/rct_selected_test_baselines.csv \
+            research/results/rct_selected_test_trades.parquet \
+            research/results/rct_minute00_report.md \
+            research/results/rct_minute00_summary.json \
+            research/results/rct_minute00_all_minutes.csv \
+            research/results/rct_minute00_test_by_coin.csv \
+            research/results/rct_minute00_test_by_week.csv \
+            research/results/rct_minute00_test_by_hour.csv \
+            research/results/rct_minute00_leave_one_coin.csv \
+            research/results/rct_minute00_leave_one_week.csv \
+            research/results/rct_minute00_leave_one_hour.csv \
+            research/results/rct_minute00_test_trades.parquet \
+            research/results/rct_minute00_meta_report.md \
+            research/results/rct_minute00_meta_summary.json \
+            research/results/rct_minute00_meta_splits.csv \
+            research/results/rct_minute00_meta_ranks.csv \
+            research/results/rct_minute00_meta_caps.csv \
+            research/results/rct_minute00_meta_risk.csv \
+            research/results/rct_minute00_meta_rct_daily_by_minute.csv \
+            research/results/rct_minute00_meta_control_daily_by_minute.csv \
+            research/results/rct_minute00_meta_leave_one_coin.csv \
+            research/results/rct_minute00_meta_leave_one_week.csv \
+            research/results/rct_minute00_meta_leave_one_hour.csv; do
+              if [ -f "$f" ]; then git add -f "$f"; fi
+          done
+          if git diff --cached --quiet; then
+            echo "No generated changes"
+          else
+            git commit -m "Runaway confirmation convergent evidence [skip rct]"
+            git push origin HEAD:codex/runaway-confirmation
+          fi
+
+      - name: Fail workflow if an audit failed
+        if: ${{ steps.audit.outputs.exit_code != '0' || steps.minute00.outputs.exit_code != '0' || steps.meta.outputs.exit_code != '0' }}
+        run: exit 1
