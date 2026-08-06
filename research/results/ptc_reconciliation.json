@@ -1,0 +1,18 @@
+{
+  "orders": 303,
+  "resolved": 303,
+  "path_coverage": 303,
+  "duplicate_order_ids": 0,
+  "duplicate_fill_ids": 0,
+  "unmatched_fills": 0,
+  "actual_pnl": 9.381399999999985,
+  "held_side_agreement": 1.0,
+  "naive_side_agreement": 0.47653429602888087,
+  "recovered_market_orders": 17,
+  "failures": [],
+  "notes": [
+    "recovered-market orders carried into the ledger: 17",
+    "expected_expiration_time sits +5.0 min from the ticker close on 76.92% of comparable rows - confirming it must NOT be used as close",
+    "using the RAW orders-table `side` instead would agree only 0.4765 of the time - the action=sell inversion is real"
+  ]
+}

@@ -1,3 +1,13 @@
+> # ⛔ SUPERSEDED — DO NOT USE
+>
+> Computed on **220 of 303** LSM orders, where path availability was a proxy
+> for the outcome (+$153.78 matched vs -$144.40 unmatched). That cohort is now
+> complete and the numbers below did not survive it — in particular the
+> control arm was **+$140.41** here and is **+$2.96** on the full ledger, so
+> "PTC minus control = -$119.70" was the survivorship gap, not PTC.
+>
+> **Authoritative: [research/results/results/PTC_FINAL.md](results/PTC_FINAL.md) — verdict FAIL.**
+
 # PTC status — authoritative as of the timestamp-corrected audit
 
 ## Verdict

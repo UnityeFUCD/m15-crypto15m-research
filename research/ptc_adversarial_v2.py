@@ -1,4 +1,10 @@
-"""PTC adversarial audit v2 — fixes timestamp units and path-selection bias.
+"""SUPERSEDED by research/ptc_v3.py - see research/results/PTC_FINAL.md.
+
+This ran on 220 of 303 orders with outcome-correlated missingness, and it
+merged the decision clock with the observation clock (a 60s design scored
+fills at a mean 99.4s). Kept for reproducibility only.
+
+PTC adversarial audit v2 — fixes timestamp units and path-selection bias.
 
 The first direct PTC audit accidentally converted pandas microsecond datetimes
 as if they were nanoseconds.  That made the effective wait roughly 1.8 billion

@@ -1,0 +1,99 @@
+{
+  "spec_version": "ptc-frozen-v1",
+  "frozen_at": "2026-08-06",
+  "status": "FAIL - not authorised for live execution; see research/results/PTC_FINAL.md",
+  "enabled_by_default": false,
+  "environment_flags": { "PTC_ENABLED": 0, "PTC_LIVE_ENABLED": 0 },
+
+  "eligibility": {
+    "favourite_bid_min": 0.65,
+    "favourite_bid_max_exclusive": 0.80,
+    "first_complete_observation_minutes_to_close": [8, 14],
+    "coins": ["BTC", "ETH", "SOL", "XRP", "DOGE", "HYPE"],
+    "preserve_original_favourite_side": true,
+    "additional_filters": [],
+    "record_skipped_and_risk_blocked": true
+  },
+
+  "probe": {
+    "quantity": 1,
+    "type": "limit",
+    "post_only": true,
+    "price": "favourite_bid_at_entry",
+    "clock_source": "exchange_created_time",
+    "persist_treatment_before_send": true
+  },
+
+  "fill_branch": {
+    "hold_probe_only": true,
+    "submit_commitment": false,
+    "reverse_replace_retry_chase": false
+  },
+
+  "no_fill_branch": {
+    "cancel_at_seconds": [60, 120],
+    "require_authoritative_cancel_confirmation": true,
+    "require_confirmed_filled_qty_zero": true,
+    "refresh_book_after_confirmation": true,
+    "commit_ask_min": 0.60,
+    "commit_ask_max": 0.80,
+    "max_commitments_per_close_window": 1,
+    "order_type": "ioc",
+    "retry": false,
+    "chase": false,
+    "accept_partial_fills": true,
+    "hold_to_settlement": true
+  },
+
+  "arms": {
+    "CONTROL": "existing full-size maker execution at the validation quantity",
+    "PROBE_ONLY_60": "q1 probe, cancel-confirm at 60s, never commit",
+    "PTC_60": "q1 probe, cancel-confirm at 60s, bounded IOC",
+    "PTC_120": "q1 probe, cancel-confirm at 120s, bounded IOC"
+  },
+  "arm_selection_note": "60s and 120s remain frozen prospective arms. The two-day history must not be used to choose between them.",
+
+  "risk_limits": {
+    "window_risk_frac": 0.06,
+    "total_risk_frac": 0.12,
+    "max_commit_qty": 20,
+    "static_floor_dollars": 211.0,
+    "hwm_floor_frac": 0.80,
+    "throttle_day_loss": 0.06,
+    "halt_day_loss": 0.10,
+    "halt_giveback_from_intraday_high": 0.08,
+    "max_scale_step": 1.20,
+    "quantity_may_rise_only_at_utc_day_boundary": true,
+    "manual_restart_required_after_kill": true,
+    "martingale_or_loss_chasing": false
+  },
+
+  "scaling_gates": {
+    "paths_required": 100000,
+    "p_hard_floor_30d_max": 0.01,
+    "p_hard_floor_90d_max": 0.05,
+    "p_drawdown_20pct_30d_max": 0.05
+  },
+
+  "prospective_minimums": {
+    "assigned_close_windows_per_arm": 300,
+    "calendar_days": 15,
+    "adverse_directional_episodes": 1,
+    "no_single_coin_or_week_carries_result": true,
+    "interim_tuning": false,
+    "early_stopping_on_favourable_result": false
+  },
+
+  "fee_model": {
+    "taker": "ceil(0.07 * C * p * (1-p) * 1e4) / 1e4",
+    "maker": 0.0
+  },
+
+  "integrity_kill_triggers": [
+    "side_semantics_disagree_with_fills_table",
+    "timestamp_unit_or_range_violation",
+    "duplicate_runner_process",
+    "unmanaged_order_or_position",
+    "ledger_fails_to_reconcile"
+  ]
+}

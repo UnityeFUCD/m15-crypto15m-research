@@ -1,37 +1,102 @@
-RACE: corrected LSM ledger, policy replay, and nine self-corrections
+PTC: complete the 303-order ledger, build the architecture, verdict FAIL
 
-LEDGER (authoritative, reconciles exactly)
-  1,802 account orders -> 303 LSM -> 277 filled / 26 never filled
-  432 fills, 275 markets (258 in snapshot + 17 recovered, 0 unresolved)
-  6,096 contracts, SUM OF EXCHANGE FILL P&L = +9.38 dollars
-  0 unmatched fills, 0 duplicate fill_ids, 2 duplicate same-ticker orders
-  elapsed time from the EXCHANGE created_time, not a local clock
+PART 2 - THE DATA GATE IS CLOSED
 
-VALIDATED
-  - actual LSM P&L is +9.38, not the +143.38 previously published
-  - the missing -134 is real settlement loss across 6 consecutive close
-    windows (18:00-19:15): a sustained directional regime
-  - those losers began filling in 0.4-15.9s; a 2s cancel recovers only 27.40,
-    refuting the claim that RACE explains the giveback
+All 82 missing markets (83 orders) fetched. research/ptc_reconcile.py exits
+zero on 13 hard assertions: 303 orders, 303 outcomes, 303/303 path coverage,
+0 duplicate order/fill IDs, 0 unmatched fills, ledger +$9.3814, all 17
+late-close markets carried, held-side agreement 1.0000 (naive 0.4765), close
+derived from the ticker, every epoch in seconds and every order-to-close in
+0-900s.
 
-MECHANISM SUPPORTED
-  fill fraction by outcome (all 303 orders, unfilled = 0 percent):
-    2s   winners 42.42 vs losers 38.29  (+4.1pp)
-    full winners 87.68 vs losers 98.26  (-10.6pp)
-  the 26 never-filled orders won 96.15 percent at the same average posted
-  price as filled orders (69.58c vs 69.15c)
+Missingness was outcome-correlated (+$153.78 matched vs -$144.40 unmatched)
+and is now empty. Two structural causes: paths_full filtered on
+result.isin(yes/no) against a truncated snapshot, dropping all 17 late-close
+markets; and an 8<=ml<=14 entry gate dropped 65 more. That gate is correct for
+defining eligibility but wrong for recovery - the PTC audit reads only `path`
+and takes the held side from the ORDER - so it is relaxed and flagged.
 
-NOT ESTABLISHED
-  close-window bootstrap over 7 seeds P(<=0) 0.053-0.064; moving-block
-  bootstrap 0.059-0.072 at 30/60/90 min. No multiple-comparison correction for
-  the ~15 policies examined. One close window carries 56 percent of the 2s
-  effect. Adding 0.25s of cancel latency IMPROVES all policies, which a real
-  monotone mechanism cannot do. The runner 5s loop cannot execute a 2s cancel.
+Also fixed: fetch_missing_lsm_paths.py had no sys.path insert and could not
+import capture.kalshi at all.
 
-NINE CORRECTIONS, every one of which had inflated a result:
-  pooled strategies; 17 missing markets; microsecond timestamps; per-fill vs
-  per-market; policy A dropping rank 3; fill fractions excluding never-filled;
-  orders-table side inverted vs fills; rank on filled-only; single-seed p-value
+PART 3 - COMPLETE DOUBLE TEST, AND A CORRECTION v2 STILL NEEDED
+
+v2 merged two clocks: probe_filled used the first COMPLETE one-minute candle
+after the nominal wait, a mean 99.4s for a 60s design, so a probe filling at
+75s scored as filled though the frozen rule cancels at 60s. v3 separates the
+DECISION clock (wait + latency) from the OBSERVATION clock (first candle at or
+after it, where the IOC is priced). Four orders reclassify.
+
+  arm             submitted  fills  no-fill  commits  total    $/assigned
+  CONTROL              4545    277       26        0  +$2.96      0.0098
+  PROBE_ONLY_60         303    264       39        0  +$0.58      0.0019
+  PTC_60                513    264       39       14  +$2.87      0.0095
+  PTC_120               393    270       33        6  +$8.88      0.0293
+
+CONTROL was +$140.41 on the 220-order cohort and is +$2.96 on the full
+ledger, so the retracted "PTC minus control = -$119.70" was the survivorship
+gap, not a property of PTC.
+
+MECHANISM CONFIRMED, MONEY NOT. The no-fill branch wins 87.18% (60s) and
+90.91% (120s) against 69.3% filled - the adverse selection really is
+information, and it survives the complete ledger. But every comparison spans
+zero across 5 fixed seeds: PTC_60-PROBE_ONLY P(<=0) 0.432-0.473,
+PTC_120-PROBE_ONLY 0.234-0.252, PTC_60-CONTROL 0.505-0.613.
+
+Concentration is disqualifying: dropping PTC_60's single best commitment turns
+its IOC branch NEGATIVE (-$1.41). PTC_60 also fails leave-one-coin-out
+(min -8.37) and leave-one-window-cluster-out (min -4.96).
+
+PART 4 - INCOHERENCE FOUND AND DIAGNOSED
+
+Adding 2s of cancel latency IMPROVES PTC_60 from +$2.87 to +$13.27. Isolated
+to one order: KXETH15M-26AUG050415-15 fills at 61.69s, so a longer cancel race
+catches it as a probe fill and deletes a commitment that lost -$11.16.
+
+Slippage is non-monotone because cost is added BEFORE the 60-80c eligibility
+test, silently deselecting trades. Holding the trade set fixed restores
+monotonicity and shows PTC_60 goes negative at 2c: +2.87, +0.85, -0.52,
+-2.22, -6.01.
+
+PARTS 5-6 - ARCHITECTURE BUILT AND TESTED
+
+capture/ptc.py: 16-state lifecycle manager, disabled by default
+(PTC_ENABLED=0, PTC_LIVE_ENABLED=0), shadow/test mode needs no credentials.
+139 tests pass, written before the implementation. Cancel timer starts from
+exchange created_time; commit_allowed() fails closed without an affirmative
+CANCEL_CONFIRMED at filled_qty==0; a fill inside the cancel race suppresses
+the commitment; client_order_id is a pure function of (opportunity, phase) so
+a crash between POST and persist adopts rather than resubmits; integer micros
+only; every skip/block/error stays in the denominator. Fault injection covers
+ten scenarios and none produces duplicate or excess exposure. Deterministic
+replay of all 303 orders is byte-identical.
+
+PARTS 7 & 9 - TRIAL SIZE AND RISK
+
+  PTC_120 - PROBE_ONLY    2,272 windows/arm     ~95 days
+  PTC_60  - PROBE_ONLY   98,088 windows/arm  ~4,087 days
+  PTC_60  - CONTROL       2.1 billion         unreachable
+
+PTC vs control is unmeasurable because the difference is ~zero against
+CONTROL's $13.10/window dispersion. PTC's one clearly measurable effect is a
+9x DISPERSION REDUCTION ($13.10 -> $1.49), not a higher mean.
+
+Risk simulator: 100,000 chronological block-bootstrap paths per cell. Only q5
+clears every stress scenario; q10/q15 fail adverse_blocks and q20 also fails
+zero_edge. The first version allocated the full 100,000 x 2,160 matrix per
+cell (~7 GB across 112 cells) and paged to disk; it now streams 5,000-path
+chunks at ~740 MB peak for identical output.
+
+PART 8 - VERDICT: FAIL
+
+Gates 1, 8 pass; 10 passes at q5 only; 9 not run; gates 2,3,4,5,6,7 FAIL.
+This is a mechanism PASS and a money FAIL and the two must not be conflated.
+Only the prospective trial can settle it: PTC_120 vs probe-only, q5, ~95 days.
+
+Account is $136.27 against a $211 floor; commit_quantity() returns 0 and the
+machine reports KILL. Nothing here weakens that.
+
+ptc_v2_report.md, PTC_STATUS.md and ptc_adversarial_v2.py are marked
+SUPERSEDED with the reason and a pointer to research/results/PTC_FINAL.md.
 
 Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
-Claude-Session: https://claude.ai/code/session_01MULPTPesuHizZ3SPWTP5EV

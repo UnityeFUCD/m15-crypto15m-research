@@ -16,15 +16,18 @@ the paths_full schema, and never places an order.
 from __future__ import annotations
 
 import json
+import sys
 import time
 from pathlib import Path
 
 import numpy as np
 import pandas as pd
 
-from capture.kalshi import KalshiClient
-
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
+
+from capture.kalshi import KalshiClient  # noqa: E402
+
 DATA = ROOT / "data"
 PATHS = DATA / "paths_full.parquet"
 
@@ -92,14 +95,31 @@ def fetch_path(api: KalshiClient, ticker: str, result: str) -> dict | None:
                 }
             )
     path.sort(key=lambda p: -p["ml"])
-    entry = next((p for p in path if 8 <= p["ml"] <= 14), None)
-    if entry is None or len(path) < 2:
+    if len(path) < 2:
         return None
 
-    favorite_yes = entry["yb"] >= 0.5
+    # The original build required an observation in [8,14] and returned None
+    # otherwise.  That gate is correct for defining POPULATION eligibility but
+    # is over-strict for RECOVERY, and it is one reason the missing cohort is
+    # outcome-correlated: a market whose 8-14 minute candle is absent is
+    # dropped even though its later path is fully observed.
+    #
+    # The PTC audit never reads the side/bid/ask columns of paths_full - it
+    # takes the held side from the ORDER and re-derives quotes from `path`
+    # (see ptc_adversarial_v2.parse_path, which is passed r.held).  Only
+    # `ticker`, `close_ts` and `path` are consumed.  So a row without an entry
+    # candle is still fully usable, and dropping it would preserve exactly the
+    # survivorship bias this fetch exists to remove.
+    #
+    # Rows without an entry candle are kept, flagged with entry_ml = NaN, and
+    # counted separately in the reconciliation report.
+    entry = next((p for p in path if 8 <= p["ml"] <= 14), None)
+    anchor = entry if entry is not None else path[0]
+
+    favorite_yes = anchor["yb"] >= 0.5
     side = "yes" if favorite_yes else "no"
-    bid = entry["yb"] if favorite_yes else 1.0 - entry["ya"]
-    ask = entry["ya"] if favorite_yes else 1.0 - entry["yb"]
+    bid = anchor["yb"] if favorite_yes else 1.0 - anchor["ya"]
+    ask = anchor["ya"] if favorite_yes else 1.0 - anchor["yb"]
     return {
         "ticker": ticker,
         "coin": coin,
@@ -108,7 +128,7 @@ def fetch_path(api: KalshiClient, ticker: str, result: str) -> dict | None:
         "side": side,
         "bid": bid,
         "ask": ask,
-        "entry_ml": entry["ml"],
+        "entry_ml": float(entry["ml"]) if entry is not None else float("nan"),
         "n_pts": len(path),
         "won": int(side == result),
         "path": json.dumps(path),
