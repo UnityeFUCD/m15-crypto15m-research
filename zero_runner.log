@@ -1,0 +1,10 @@
+==========================================================================
+MINUTE-:00 RUNNER
+==========================================================================
+  ZERO_ENABLED = 1
+  ZERO_LIVE    = 1   *** LIVE ORDERS WILL BE SENT ***
+  ZERO_QTY     = 3 (hard cap 5)
+  log          = C:\Users\fycin\m15-export\data\zero_runner_log.jsonl
+
+  polling every 20s. Ctrl-C to stop.
+
