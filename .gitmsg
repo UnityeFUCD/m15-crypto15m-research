@@ -1,47 +1,56 @@
-Report the PTC backtest as money instead of p-values
+The probe signal replicates on 73 days - and is already priced
 
-The backtest was run and reported, but as significance tests, which failed to
-answer the actual question: would this have made money? Adding
-research/ptc_show_me_the_money.py, which reports the identical replay - 303
-real orders, real fill timestamps, real prices, real settlements - in dollars,
-trade by trade.
+Two questions answered: does the unfilled-probe signal survive outside the two
+live days, and can it be used defensively to avoid losses rather than to buy.
 
-THE ANSWER, Aug 4-5, q15:
+1. THE SIGNAL REPLICATES. This is the first result in this project to do so.
 
-  arm                  Aug 4     Aug 5     TOTAL
-  CONTROL            +101.28    -98.32     +2.96
-  PROBE_ONLY_60        +7.59     -7.01     +0.58
-  PTC_60               +9.63     -6.76     +2.87
-  PTC_120             +13.83     -4.95     +8.88
+paths_full.parquet has no record of our own orders, so a fill proxy was built
+(the favourite's bid falls to or below our resting price) and VALIDATED
+against the 303 orders where the real fill outcome is known before being used.
 
-PTC_120 beat the existing strategy 3x on the two live days. That should have
-been the headline and was not.
+  wait 120s   population 8,201 mkts / 73 days   gap +21.0pp  CI [+18.2,+23.4]
+              303 live orders, REAL fills       gap +21.6pp
+  wait  60s   population                        gap +16.2pp  CI [+13.7,+18.7]
+              303 live orders, REAL fills       gap +17.9pp
+              P(<=0) = 0.0000 on both
 
-HOW it won matters more than that it won. Control beat PTC badly on Aug 4
-(+101 vs +14) and collapsed on Aug 5 (-98 vs -5). PTC's daily range was $18
-against control's $200. It won by not losing on the bad day, not by earning
-on the good one - a risk property, not an edge. On a different pair of days
-where the good day is larger, control wins.
+Real fills and modelled fills agree to within 0.6pp on independent samples.
+An unfilled probe genuinely predicts a winner.
 
-WHY IT IS STILL NOT PROVEN. The same replay with one rule changed:
+2. IT IS ALREADY PRICED. Buying the no-fill branch at the displayed ask:
 
-  as run                          +8.88
-  ask ceiling 78c instead of 80c  +3.08
-  ask ceiling 82c instead of 80c +11.43
-  wait 60s instead of 120s        +2.87
-  IOC only half-fills             +4.26
+  wait 120s  1,174 commitable markets  taker edge +0.82c  P(<=0) 0.2607
+  wait  60s  2,453 commitable markets  taker edge -0.52c  P(<=0) 0.7047
 
-Range +2.87 to +11.43. A two-cent change to one threshold moves the answer 4x,
-because six commitments cannot hold it still. The problem is not that the
-backtest was skipped; it is that this sample cannot price the branch.
+The unfilled cohort is worth +15.35c at the BID and +0.82c at the ASK. The
+spread is the entire edge - roughly 6-7c to cross against a signal worth
+roughly 6-7c.
 
-WHAT THE TWO DAYS DO ESTABLISH, on 303 orders rather than 6:
+3. THE DEFENSIVE USE DOES NOT WORK EITHER, AND A CLAIM IS WITHDRAWN.
 
-  cancel 60s   filled n=264 win 69.32%   not filled n=39 win 87.18%  (+17.9pp)
-  cancel 120s  filled n=270 win 69.26%   not filled n=33 win 90.91%  (+21.6pp)
+An intermediate calculation reported that capping the filled cohort at q1
+saves $54.61/day. That was an artifact of the proxy and is WITHDRAWN. The
+proxy only calls a fill when the bid visibly fell, so its "filled" bucket is
+the worst 25% rather than the real 89%:
 
-The signal is measured and solid. Its dollar value is not. Those are different
-questions with different sample sizes, and conflating them is what made the
-earlier reporting unreadable.
+  filled-cohort maker edge   REAL +0.08c   PROXY -5.55c
+  fill rate                  REAL 0.8911   PROXY 0.6253
+
+On real exchange fills the filled cohort is +0.08c - break-even, not a loss.
+There is nothing to avoid. What looks like a loss is an opportunity cost: a
++21.70c cohort exists and is systematically not owned.
+
+CONSEQUENCE FOR PTC. All three doors close for the same reason. Buying the
+signal nets +0.82c; avoiding it saves nothing because the owned cohort is
+already break-even; and holding it at the bid is impossible by definition.
+The exchange's ask already contains the information the probe reveals.
+
+This does not overturn the PTC FAIL verdict - it explains it. PTC's mechanism
+is real and now replicated at n=8,201, and its dollar value is ~zero because
+the market prices the same information.
+
+Adds research/probe_signal_population.py, research/ptc_show_me_the_money.py
+and data/probe_signal_population.parquet.
 
 Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
