@@ -1,39 +1,86 @@
-Survival analysis: zero mean, 42% ruin, and an unmeasurable edge
+Cross-finding analysis: adverse selection is constant, the close minute is not
 
-Tests the only remaining case for PTC - that its 9x variance reduction is
-worth something even when the mean is indistinguishable from zero.
+Autonomous study of how every finding in this project interlocks, whether any
+are orthogonal, and whether any combination beats its parts.
 
-METHOD. The edge is not assumed. Each simulated account draws its own true
-per-contract edge from the measured posterior (N(+0.02c, 0.80c), from the
-day-clustered population CI of [-1.57, +1.62]) and trades under it, so the
-uncertainty propagates into the answer instead of hiding behind a point
-estimate. 40,000 paths per cell, streamed in chunks.
+1. ALMOST EVERYTHING IS ONE FINDING
 
-RESULT at $700 over 90 days:
+Pairwise correlation across 8,200 in-band markets is ~0 for every signal
+(max 0.181). Only two carry an effect:
 
-  CONTROL   P(ruin) 0.4188   median $702.69   5th pct  -$385.22
-  PTC       P(ruin) 0.0000   median $700.02   5th pct  +$586.29
+  no-fill      +20.96pp standalone
+  minute :00    +3.25pp standalone,  +3.37pp conditional on no-fill
+  calm / tight / cheap / side   noise
 
-Both medians land on the starting equity, which is what a zero mean looks
-like. CONTROL reaches that median while dying 42% of the time. PTC survives,
-but stakes so much less that nothing happens in either direction.
+no-fill and :00 are uncorrelated (r = -0.003) and each survives conditioning
+on the other. That orthogonality is the only reason a combination is worth
+anything.
 
-Variance reduction here is not free performance - it is a smaller bet. PTC is
-not a way to make the strategy profitable; it is a way to stay solvent long
-enough to find out whether it is.
+2. THE BIG NEGATIVE - FILL BIAS DOES NOT VARY
 
-THE FINISHER - how long until the edge is measurable at all:
+Tested whether adverse selection - the binding constraint on everything - is
+weaker anywhere. Searched on TRAIN only, froze the winner, evaluated held-out.
 
-  detect +0.5c/contract   CONTROL  9,988 days   PTC  55,739 days
-  detect +1.0c/contract   CONTROL  2,497 days   PTC  13,935 days
+  filled-cohort edge across every dimension:  -2.24c to -7.88c
+  no-fill gap across every dimension:         +16.0pp to +24.4pp
+  best train cell (XRP, -2.24c) -> valid -6.78c, test -6.87c
+  held out CI [-12.31, -1.34]  P(<=0) 0.9918
 
-Neither policy resolves a half-cent edge on any sane horizon, and PTC is worse
-precisely because it stakes less. The edge is not merely unproven, it is
-UNMEASURABLE at this account size under either execution.
+It reverses completely out of sample. There is no regime where the
+counterparty knows less. This EXPLAINS the thirteen prior failures rather than
+merely adding a fourteenth: they all searched inside a space where the binding
+constraint is constant, so anything they found was noise around a fixed drag.
 
-This closes the loop with the priced-signal result in fa2927c. The probe
-signal is real (+21pp, replicated at n=8,201, P=0.0000) and already priced, so
-there is no edge to collect; and the variance reduction that remains cannot
-manufacture one, only postpone the outcome.
+3. THE SURVIVING PATTERN - THE MARKET DOES NOT PRICE THE CLOSE MINUTE
+
+  minute   n    mean ask   win rate   implied-actual
+   :00    277    0.7615     0.8448       +8.32pp
+   :15    329    0.7605     0.7477       -1.28pp
+   :30    278    0.7551     0.7698       +1.47pp
+   :45    290    0.7613     0.7966       +3.53pp
+
+The ask is identical across minutes. The win rate is not. That is a pricing
+failure, not a cheaper price.
+
+  :00 AND no-fill   n= 277  +6.32c  CI [+2.33, +10.33]  P(<=0) 0.0013
+  :00 regardless    n= 963  +3.37c  CI [+0.03,  +6.80]  P(<=0) 0.0244
+  other minutes     n=3095  -1.49c  CI [-3.78,  +0.77]  P(<=0) 0.9024
+
+The probe adds +4.14c at :00 against +0.86c elsewhere - a real interaction of
++3.28c, not two effects summed.
+
+SURVIVED: held-out only +5.43c P=0.0240 (lower bound above zero); day-matched
+within-day +9.71c P=0.0003; selection correction over the four minutes
+P=0.0158; leave-one-coin-out and leave-one-week-out all positive; dropping the
+best five markets still +5.89c; proxy accuracy comparable across minutes
+(0.7250-0.7632) so the contrast is not a classification artifact.
+
+FAILED: hostile proxy stress. If the fill proxy is wrong on the best 25% the
+(A) edge goes to -0.07c.
+
+4. THE PROXY-FREE VERSION IS THE IMPORTANT ONE
+
+(C) ":00 regardless of fill state" needs no probe, no fill model and no proxy.
++3.37c, P=0.0244, 13.1 commits/day held-out, ~$4.30/day at q15 - more per day
+than the probe version despite being weaker per contract, and resting on far
+less inference.
+
+5. THIS SOFTENS THE EARLIER VERDICT
+
+"No measurable edge anywhere" was too strong. It was reached by testing
+POLICIES rather than testing PRICING. The right question was the one the
+market answers badly: it quotes all four close minutes identically when they
+do not behave identically.
+
+NOT GLOSSED: the (C) lower bound is +0.03c, clearing zero by a hair; :00 has
+been revisited several times so these tests are not mutually independent; no
+mechanism is established, only a story about the top of the hour; and the
+account must still be funded above $211.
+
+NEXT TEST IS NOT MORE HISTORY. Run (C) forward at q5 on :00 only - one
+eligibility line, no new architecture. 13 commits/day gives ~390 out-of-sample
+observations in a month.
+
+139 tests still pass.
 
 Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
