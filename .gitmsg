@@ -1,35 +1,47 @@
-Correct the population edge: -0.43c was the old fill model, not the answer
+Report the PTC backtest as money instead of p-values
 
-Prompted by a direct question about whether the strategy is profitable, which
-exposed an inconsistency in my own reporting.
+The backtest was run and reported, but as significance tests, which failed to
+answer the actual question: would this have made money? Adding
+research/ptc_show_me_the_money.py, which reports the identical replay - 303
+real orders, real fill timestamps, real prices, real settlements - in dollars,
+trade by trade.
 
-I have been quoting -0.43c as the fill-corrected population edge and calling
-the strategy "below zero". That figure used the OLD fill model (0.843/0.962),
-estimated on 286 orders BEFORE the 17 late-closing outcomes were recovered -
-the same survivorship-biased cohort this project has corrected twice already.
-It was also computed per FILLED contract while the comparison number was per
-SUBMITTED, so two different denominators were being set against each other.
+THE ANSWER, Aug 4-5, q15:
 
-  fill model                 E[maker|FILLED]   EV per SUBMITTED
-  0.843/0.962   (old)             -0.43c            -0.37c
-  0.8848/0.9884 (corrected)       +0.02c            +0.02c
+  arm                  Aug 4     Aug 5     TOTAL
+  CONTROL            +101.28    -98.32     +2.96
+  PROBE_ONLY_60        +7.59     -7.01     +0.58
+  PTC_60               +9.63     -6.76     +2.87
+  PTC_120             +13.83     -4.95     +8.88
 
-On 8,187 in-band markets over 73 days, day-clustered, the corrected model
-gives +0.02c per submitted contract, 95% CI [-1.57, +1.62], P(<=0) 0.4920.
+PTC_120 beat the existing strategy 3x on the two live days. That should have
+been the headline and was not.
 
-The defensible claim is therefore INDISTINGUISHABLE FROM ZERO, not negative.
-"Every band is below zero after fill correction" and "the strategy is past its
-structural limit - it is below zero" both overstate the evidence. The raw edge
-(+2.29c) is real and maker fill bias consumes essentially all of it; what
-remains is unmeasurable on 73 days, in either direction.
+HOW it won matters more than that it won. Control beat PTC badly on Aug 4
+(+101 vs +14) and collapsed on Aug 5 (-98 vs -5). PTC's daily range was $18
+against control's $200. It won by not losing on the bad day, not by earning
+on the good one - a risk property, not an edge. On a different pair of days
+where the good day is larger, control wins.
 
-This does not change the PTC verdict, which remains FAIL for its own reasons:
-six commitments over two days, one order carrying 59% of the result, every
-comparison interval spanning zero, and a 2s latency handicap that improves the
-result 4.6x. It does change the framing of the base strategy PTC would replace.
+WHY IT IS STILL NOT PROVEN. The same replay with one rule changed:
 
-SYNTHESIS.md and research/results/PTC_FINAL.md now carry the correction at the
-top rather than silently edited figures, so the earlier claim and its
-retraction are both visible.
+  as run                          +8.88
+  ask ceiling 78c instead of 80c  +3.08
+  ask ceiling 82c instead of 80c +11.43
+  wait 60s instead of 120s        +2.87
+  IOC only half-fills             +4.26
+
+Range +2.87 to +11.43. A two-cent change to one threshold moves the answer 4x,
+because six commitments cannot hold it still. The problem is not that the
+backtest was skipped; it is that this sample cannot price the branch.
+
+WHAT THE TWO DAYS DO ESTABLISH, on 303 orders rather than 6:
+
+  cancel 60s   filled n=264 win 69.32%   not filled n=39 win 87.18%  (+17.9pp)
+  cancel 120s  filled n=270 win 69.26%   not filled n=33 win 90.91%  (+21.6pp)
+
+The signal is measured and solid. Its dollar value is not. Those are different
+questions with different sample sizes, and conflating them is what made the
+earlier reporting unreadable.
 
 Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
