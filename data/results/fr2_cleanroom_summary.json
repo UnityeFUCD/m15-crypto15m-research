@@ -1,0 +1,63 @@
+{
+  "candidate": "FR2_CANDIDATE_V0",
+  "classification": "strong_historical_candidate_not_yet_proven_live",
+  "source": {
+    "path": "data_csv/ladder_paths.csv",
+    "sha256": "12838bf13fa94629a9779f6e0c886e7c29d4836734ed46151d1ef1badf66a831",
+    "source_markets": 5624,
+    "coverage": "random sampled :00/:30 close slots over 73 days"
+  },
+  "rule": {
+    "initial_favorite_bid": "0.65 <= bid < 0.80",
+    "delay_minutes": 2,
+    "retain_original_side": true,
+    "delayed_ask": "0.60 <= ask <= 0.80",
+    "max_positions_per_close_window": 1,
+    "quantity": 20,
+    "execution_model": "IOC at displayed delayed ask, no retry or chase"
+  },
+  "result": {
+    "initial_in_band_markets": 1091,
+    "unique_close_windows": 804,
+    "selected_markets": 444,
+    "calendar_days": 73,
+    "win_rate": 0.7792792792792793,
+    "average_delayed_ask": 0.7119144144144145,
+    "average_fee_per_contract": 0.014124504504504507,
+    "net_edge_per_contract": 0.05324036036036037,
+    "total_pnl_q20": 472.7744000000001,
+    "daily_mean_q20": 6.476361643835617,
+    "daily_sd_q20": 15.843535871396593,
+    "daily_mean_ci95_q20": [2.9221722945205486, 10.070053698630133],
+    "p_daily_mean_nonpositive": 0.0002,
+    "positive_day_fraction": 0.6712328767123288,
+    "max_drawdown_q20": 88.40700000000004,
+    "worst_close_window_q20": -16.224,
+    "best_close_window_q20": 7.664
+  },
+  "chronological": {
+    "train": {
+      "selected": 231,
+      "net_edge_per_contract": 0.05224348484848485,
+      "pnl_q20": 241.36490000000003
+    },
+    "validation": {
+      "selected": 105,
+      "net_edge_per_contract": 0.01747266666666668,
+      "pnl_q20": 36.69260000000003
+    },
+    "test": {
+      "selected": 108,
+      "net_edge_per_contract": 0.09014671296296296,
+      "pnl_q20": 194.7169
+    }
+  },
+  "required_before_material_live_deployment": [
+    "frozen-rule replication on independently fetched :15/:45 paths",
+    "complete unsampled all-minute reconstruction",
+    "decision-time volume and displayed-depth analysis",
+    "prospective IOC no-fill and partial-fill accounting",
+    "randomized q10/q20/q30 capacity comparison",
+    "block-bootstrap risk recalculation on complete opportunity stream"
+  ]
+}
