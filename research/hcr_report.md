@@ -1,148 +1,131 @@
-# HCR — final verdict: **NOT ESTABLISHED**
+# HCR — final verdict: **FAILS** on the unsampled population
 
-**This file previously carried a PASS verdict. That verdict was wrong and is
-retracted.** It was computed on a dataset that could not support it. The
-history of the error is kept below on purpose, because the way it failed is
-more useful than the conclusion it replaced.
+This file has carried three earlier verdicts — PASS, then FAIL, then NOT
+ESTABLISHED — each computed on a sampled book. On the **complete unsampled
+population** the answer is settled, and it is negative.
 
-Superseded by `hcr_final_audit.py` (taker), `hcr_maker_audit.py` (maker),
-`hcr_minute_daymatched.py` (minute confound). Previous revision of this file:
-`git log -- research/hcr_report.md`.
+Evidence: `research/audit_unsampled.py`. Population: `data/book_full.parquet`,
+39,428 markets with a valid quote at 8–14 min, **all four close minutes, all
+24 hours, exactly six coins**. In-band with a valid signal: **7,504 markets,
+1,556 HCR, 73 days** — 2.8x the sampled population every earlier verdict used.
 
 ---
 
-## The number that decides it
+## The finding that ends it: SOL is the entire effect
 
-Calendar-balanced population: **2,941 in-band markets, 525 HCR, 73 days, all
-four close minutes, all 24 hours.** The production design is post-only maker,
-so maker is the metric that counts. Fill correction uses the measured
-P(fill|winner)=0.843 / P(fill|loser)=0.962.
+```
+population        n       HCR     non-HCR      lift
+all six coins   7504    +1.11c     -0.51c    +1.62c
+drop SOL        6207    +0.16c     -0.49c    +0.65c   <- collapses
+drop BTC        6114    +1.54c     -0.51c    +2.05c
+drop XRP        6270    +1.55c     -0.84c    +2.39c
+drop HYPE       6362    +1.34c     -0.47c    +1.81c
+drop DOGE       6353    +0.93c     -0.46c    +1.39c
+drop ETH        6214    +1.18c     -0.27c    +1.45c
 
-| cohort | n | win | maker | fill-corrected |
-|---|---|---|---|---|
-| HCR | 525 | 0.7314 | +3.53c | **+0.88c** |
-| non-HCR | 2,416 | 0.7148 | +1.64c | **−1.10c** |
+day-clustered HCR lift EXCLUDING SOL:
+  -0.40c   95% CI [-5.16, +4.07]   P(<=0) 0.5467
+```
 
-Fill-corrected lift **+1.99c**. At q15, on the observed 7.2 HCR firings/day,
-that is **+$0.83/day.**
+Removing any of the other five coins leaves the effect intact or strengthens
+it. Removing **SOL** takes HCR's own edge from +1.11c to +0.16c and the lift
+to nothing. Excluding SOL the lift is **negative**.
 
-Even granting the signal in full, it earns about a dollar a day.
+A signal built on a six-coin common factor that only works in one of the six
+coins is not a common-factor signal. It is one coin's run.
 
-## Why it is not established
+## The effect shrank as the data grew
+
+```
+sampled    2,941 markets /   525 HCR : matched-control lift +2.43c  P=0.195
+unsampled  7,504 markets / 1,556 HCR : matched-control lift +1.32c  P=0.181
+```
+
+**2.8x the data, and the effect fell 46%.** Regression toward zero under more
+data is the signature of a spurious finding. A real effect holds its point
+estimate and tightens its interval.
+
+## Every other test, on the full population
 
 | test | result | verdict |
 |---|---|---|
-| matched controls (coin × week × 2c bucket × side) | +2.43c, 95% CI [−3.32, +8.20], **P=0.195** | fails |
-| day-clustered HCR cohort alone | +3.53c, CI [−1.85, +8.78], **P=0.098** | fails |
-| permutation (shuffle r_common within day) | **P=0.085** | fails |
-| chronological **train** | **−0.15c lift** on the largest slice (304 markets) | fails |
-| chronological valid / test | +1.98c / +7.50c | passes |
-| per coin | BTC −1.51c, XRP −2.44c; other four positive | mixed |
+| matched controls (coin × week × 2c bucket × side) | +1.32c, 95% CI [−1.50, +4.18], **P=0.181** | fails |
+| permutation (shuffle r_common within day) | **P=0.093** | fails |
+| day-clustered HCR against zero | +1.11c, CI [−2.34, +4.47], **P=0.264** | fails |
+| chronological train | **−0.50c** (n=760, the largest slice) | fails |
+| chronological valid / test | +3.12c / +3.60c | passes |
+| per coin | BTC −0.32c, XRP −2.12c negative; **SOL +6.44c dominates** | fails |
+| leave-SOL-out | **−0.40c, P=0.547** | fails |
 
-Nothing clears 5%. Three independent tests land in 0.09–0.20 — the region
-where an effect is neither present nor excluded.
+## Two things that do NOT explain it away
 
-**Correction — the chronological argument is weaker than first stated here.**
-An earlier revision called the train null "disqualifying". Tested directly
-(`hcr_why_not_trade.py`), the train-vs-test gap is +7.65c with 95% CI
-[−2.95, +17.77], **P=0.076** — itself inside noise. The data cannot tell the
-two periods apart, so "absent in train" is **uninformative, not disproving**.
-It remains suggestive, because it is the same shape DRC-15 showed, but it is
-not evidence the signal is fake.
+**Coin selection is not the cause.** Dropping the two coins the live strategy
+trades least (HYPE 4% of orders, DOGE 11.6%) barely moves the result:
++1.62c → +1.57c. The result does not depend on including them.
 
-The real objection is in the next section.
-
-## The minute-:00 filter is wrong and should stay dropped
-
-The original brief conditioned on minute :00. Day-matched, within-day — the
-only comparison not confounded by calendar:
+**The fill model is not the cause.** The lift is stable across every fill
+assumption, including none at all:
 
 ```
-all minutes      days 69  taker lift +3.67c  P(<=0) 0.0755  win +3.23pp
-minute :00 only  days 49  taker lift -0.57c  P(<=0) 0.5305  win -0.89pp
-excluding :00    days 68  taker lift +4.36c  P(<=0) 0.0776  win +3.81pp
+0.843 / 0.962  (original estimate)   lift +1.62c
+0.8848 / 0.9884 (corrected on 303)   lift +1.61c
+1.000 / 1.000  (no bias at all)      lift +1.54c
 ```
 
-HCR is **stronger without** :00 than with it. `capture/hcr.py` accepts
-`close_minute` and deliberately ignores it; `test_hcr_has_no_minute_filter`
-pins that behaviour.
+## The minute filter is noise, confirmed
 
-## How the PASS happened — the actual failure
-
-Three compounding data faults, each of which alone inverted the answer.
-
-**1. `premium_history2` is minute-:00 only, and covers 8 of 24 hours.**
-Every figure in the retracted version above (+9.18c, +10.69pp, matched-control
-P=0.0002) came from it. Conditioning the test on the same minute the
-hypothesis names guarantees the hypothesis looks right.
-
-**2. My fix sampled the wrong markets.** Fetching :15/:45 I wrote
-`todo.sort_values("close_utc")`, which took the earliest 18 days against
-:00/:30's 73. That produced the FAIL — equally invalid, because it compared
-minutes across different calendars. Fixed to
-`todo.sample(LIMIT, random_state=...)`, `fetch_missing_minutes.py:57`.
-
-**3. Only after both fixes** does the population support a verdict, and the
-verdict is neither PASS nor FAIL.
-
-Sequence: PASS (biased minute) → FAIL (biased calendar) → NOT ESTABLISHED
-(balanced). Two of my three verdicts were artifacts of my own sampling, not
-findings about the market.
-
-## The real objection: the edge is unmeasurable, not absent
-
-"HCR is more positive than non-HCR" is true. It is also not sufficient.
+With a balanced population the per-minute lifts are:
 
 ```
-HCR's own edge   +0.88c   95% CI [-4.93, +6.46]   P(<=0) 0.36
-at q15           +$0.95/day mean, SD $16.38/day
-days to distinguish +0.88c from 0.00c at 80% power:  2,321  (6.4 years)
+:00  -0.05c    :15  -5.59c    :30  +4.50c    :45  +6.52c
 ```
 
-The uncertainty on +0.88c is **seven times the estimate**, and there is a 36%
-chance the true value is zero or negative. Daily noise is 17x daily signal.
-No amount of live trading resolves this on a useful horizon.
+An 12-cent spread across four minutes with no mechanism that distinguishes
+them, and a pattern that does not match the sampled data's pattern. This is
+noise being sliced. `capture/hcr.py` ignores `close_minute`; that stays.
 
-## What IS worth keeping — and it is bigger than the edge
+## The larger finding: no price band survives fill correction
 
-| policy | per contract | $/day at q15 |
-|---|---|---|
-| trade everything | −0.75c | **−$3.97** |
-| HCR only | +0.88c | **+$0.83** |
-| non-HCR only | −1.10c | −$4.81 |
+Band sensitivity is testable for the first time, because `book_full.parquet`
+applies **no band filter at fetch time**:
 
-Day-matched within-day, HCR-only vs trade-everything: **+3.35c, P=0.078.**
+| band | n | win | maker | fill-corrected | taker |
+|---|---|---|---|---|---|
+| 0.55–0.65 | 15,346 | 0.6146 | +2.47c | **−0.69c** | −1.74c |
+| 0.60–0.70 | 10,625 | 0.6680 | +2.99c | **+0.01c** | −1.04c |
+| **0.65–0.80** (current) | 7,504 | 0.7224 | +2.54c | **−0.17c** | −1.30c |
+| 0.70–0.80 | 3,324 | 0.7512 | +1.77c | **−0.77c** | −1.97c |
+| 0.80–0.90 | 577 | 0.8423 | +1.46c | **−0.37c** | −1.48c |
 
-> The value of HCR is **~$4.80/day in losses avoided**, not $0.95/day in edge
-> earned. An earlier revision of this file said "worth about a dollar a day" —
-> that was the wrong quantity. The non-HCR cohort loses money, and HCR's job
-> is to decline it.
+**Every band is at or below zero after fill correction.** The current band is
+not badly chosen — no band is good. 0.60–0.70 is nominally best at +0.01c,
+which is zero.
 
-This is consistent with everything else established in this repo: population
-edge ~+3.5c, realized +1.54c, the gap entirely maker fill bias. HCR's role is
-not *adding* edge but *declining* the markets where fill bias eats it.
-
-That is a reason to trade **less**, not a reason to trade. Fill-corrected, the
-base strategy is underwater at −0.75c; HCR moves it to roughly **break-even**.
-Break-even does not compound.
+This is a bigger result than HCR. The strategy has no profitable price region
+once realistic fills are applied, and no signal tested in this project changes
+that.
 
 ## Recommendation
 
-Do not size on HCR. `capture/hcr.py` is correct as specified and fully covered
-(56/56 tests passing) — keep it, run it in **shadow**, and let it accumulate
-an out-of-sample record. The training-period null is the thing to watch: if
-the signal is real, forward data will look like valid/test; if it was a search
-artifact, forward data will look like train.
+**Do not deploy HCR.** Not as a signal, and not as the filter the previous
+revision suggested — the filter's apparent value was SOL.
 
-About 300 more HCR firings — roughly six weeks — separates those two.
+`capture/hcr.py` is correct as specified and covered by 70 passing tests. Keep
+it as reference; do not size on it.
 
-## Comparison with the other candidates
+The one question worth working remains **maker fill bias**, quantified
+prospectively in `research/prospective_execution.py`: it cost **$186.58 of
+$195.96** — 95% of theoretical profit — across two live days.
 
-| candidate | matched controls | permutation | train period | verdict |
-|---|---|---|---|---|
-| HCR | +2.43c, P=0.195 | P=0.085 | **−0.15c** | not established |
-| DRC | ~0pp win lift, price only | not run | effect late-only | not established |
-| RACE | n/a (execution) | n/a | n/a | mechanism yes, parameters no |
+## All four verdicts, and why they differed
 
-Three candidates, three non-results. The base strategy remains at its
-structural limit, and the limit is maker fill bias.
+| verdict | dataset | why it was wrong |
+|---|---|---|
+| PASS | `premium_history2` | minute-:00 only, 8 of 24 hours |
+| FAIL | + earliest 18 days at :15/:45 | `sort_values` instead of random sample |
+| NOT ESTABLISHED | 2,941 sampled, all minutes | correct but underpowered, and `nc>=4` not `nc==6` |
+| **FAILS** | **7,504 unsampled, exactly 6 coins** | **definitive** |
+
+Three of four were artifacts of sampling. The lesson is in `SYNTHESIS.md`
+Part 7: a sampled dataset lies about the thing it was sampled on, and the only
+cure is to stop sampling.

@@ -142,23 +142,52 @@ None addressed fill bias. That's why they all failed.
 
 ---
 
-## Part 6 — What is UNRESOLVED
+## Part 5b — No price band survives fill correction
 
-Genuinely uncertain. Not proven, not refuted.
+Measured on the **unsampled** population (39,428 markets, all minutes, no band
+filter applied at fetch time — so this is testable for the first time):
+
+| band | n | win | maker | **fill-corrected** | taker |
+|---|---|---|---|---|---|
+| 0.55–0.65 | 15,346 | 0.6146 | +2.47c | **−0.69c** | −1.74c |
+| 0.60–0.70 | 10,625 | 0.6680 | +2.99c | **+0.01c** | −1.04c |
+| **0.65–0.80** (current) | 7,504 | 0.7224 | +2.54c | **−0.17c** | −1.30c |
+| 0.70–0.80 | 3,324 | 0.7512 | +1.77c | **−0.77c** | −1.97c |
+| 0.80–0.90 | 577 | 0.8423 | +1.46c | **−0.37c** | −1.48c |
+
+**Every band is at or below zero after fill correction.** The current band is
+not badly chosen — no band is good. The best, 0.60–0.70, is +0.01c, which is
+zero.
+
+This is the largest single result in the project. It says the strategy has no
+profitable price region once realistic fills are applied, and that no amount
+of band tuning changes it.
+
+## Part 6 — What is DEAD, second wave (the signal candidates)
+
+All three candidates are now refuted on the unsampled population.
 
 **HCR** — fade the favourite when it opposes a common 6-coin move in a calm
-tape. Full write-up in `research/hcr_report.md`.
+tape. Full write-up in `research/hcr_report.md`. **SOL is the entire effect:**
 
 ```
-HCR      +0.88c fill-corrected   95% CI [-4.93, +6.46]   P(<=0) 0.36
-non-HCR  -1.10c fill-corrected
-matched controls P=0.195   permutation P=0.085   day-clustered P=0.098
+all six coins   HCR +1.11c   lift +1.62c
+drop SOL        HCR +0.16c   lift +0.65c
+day-clustered excluding SOL:  -0.40c  95% CI [-5.16, +4.07]  P(<=0) 0.5467
 ```
 
-Nothing clears 5%. Its real value is as a **filter, not a signal**: trading
-everything is −$3.97/day, HCR-only is +$0.83/day, so it's worth **~$4.80/day
-in losses avoided**, not in edge earned. But **6.4 years** of trading are
-needed to distinguish +0.88c from zero at 80% power. Shadow only.
+Removing any of the other five leaves it intact or strengthens it. Removing
+SOL kills it. A six-coin common-factor signal that works in one of six coins
+is not a common-factor signal.
+
+It also **shrank as the data grew** — matched-control lift +2.43c on 2,941
+markets became +1.32c on 7,504. Regression toward zero under more data is what
+a spurious effect does. Nothing clears 5%: matched controls P=0.181,
+permutation P=0.093, day-clustered P=0.264, train −0.50c.
+
+Not coin selection (dropping HYPE+DOGE moves it +1.62c → +1.57c) and not the
+fill model (lift is +1.62 / +1.61 / +1.54c across all three assumptions,
+including no bias at all).
 
 **DRC-15** — same shape: effect concentrated late, ~0pp win-rate lift, the
 advantage is a 0.88c price difference rather than better prediction.
@@ -168,6 +197,24 @@ just fill bias restated. The specific timeout parameters are unvalidated.
 
 **Rank-3 removal** — 2 days of live data says drop it, 73 days of population
 data says keep it. Unresolved, and 2 days can't settle it.
+
+## Part 6b — What the live record PROVED (prospective, held separate)
+
+`research/prospective_execution.py`. Four predictions registered before
+computing anything, each derived from the fill-bias model, each able to fail.
+A power check ran first: 303 orders resolve 10.7pp at 80% power against a
+predicted 11.9pp effect, so a null would have meant something.
+
+| prediction | result |
+|---|---|
+| P1 fill bias exists | `P(fill\|lose)` **0.9884** vs `P(fill\|win)` **0.8848** = **+10.4pp**, CI [+5.5, +15.2], **P=0.0001** |
+| P2 realized ≈ fill-corrected, not raw | realized **+0.15c**; 1.21c from corrected, 3.84c from raw |
+| P3 the ones that got away were winners | never-filled orders **96.15% winners** vs **71.62%** base rate |
+| P4 full-fill overstates | actual **+$9.38** vs **+$195.96** if all filled — **fill bias cost $186.58** |
+
+All four hold. **This is the only hypothesis in the project that survived a
+pre-registered test.** Fill bias destroyed 95% of theoretical profit in two
+days.
 
 ---
 
@@ -210,10 +257,11 @@ looking for a better filter. Ten dead ends in Part 5 is the cost of that.
 
 ## Part 8 — Where this actually stands
 
-The strategy is **at its structural limit**. Population edge +3.99c, realized
-+1.36c, and the gap is fill bias. Three independent signal candidates returned
-three non-results. The dead-end list is ten deep and every entry attacked the
-wrong constraint.
+The strategy is **past its structural limit — it is below zero.** On the
+unsampled population every price band is at or under zero after fill
+correction, and the in-band figure is **−0.17c/contract**. Three independent
+signal candidates returned three refutations. The dead-end list is ten deep
+and every entry attacked the wrong constraint.
 
 The account is at **$136.27** against a kill floor of **$398.25** (75% of the
 $531 strategy high-water mark). `capture/hcr.py` sizes it to 0 and returns

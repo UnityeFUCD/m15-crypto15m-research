@@ -223,3 +223,42 @@ for lbl, g in (("HCR", h), ("non-HCR", r), ("all", BB)):
         for _ in range(4000)]))
     print("  %-8s corrected %+6.2fc  95%% CI [%+6.2f, %+6.2f]  P(<=0) %.4f"
           % (lbl, corr(g), b[100], b[3899], (b <= 0).mean()))
+
+print("\n" + "=" * 78)
+print("TEST 6b - COIN-SUBSET ROBUSTNESS")
+print("=" * 78)
+print("  Does the result depend on including the two coins the live strategy")
+print("  trades least? HYPE is 4%% of live orders and has the WEAKEST absolute")
+print("  edge; DOGE is 11.6%% and among the strongest. Dropping coins by their")
+print("  observed results would be selection on the outcome, so this is a")
+print("  robustness check, not a filtering decision.")
+print("  %-22s %7s %11s %11s %11s"
+      % ("population", "n", "HCR", "non-HCR", "lift"))
+for lbl, keep in (("all six coins", None),
+                  ("drop HYPE", ["HYPE"]),
+                  ("drop DOGE", ["DOGE"]),
+                  ("drop HYPE + DOGE", ["HYPE", "DOGE"]),
+                  ("live top-4 only", ["HYPE", "DOGE"])):
+    sub = BB if keep is None else BB[~BB.coin.isin(keep)]
+    a, b = sub[sub.HCR], sub[~sub.HCR]
+    if len(a) < 20:
+        continue
+    print("  %-22s %7d %+10.2fc %+10.2fc %+10.2fc"
+          % (lbl, len(sub), corr(a), corr(b), corr(a) - corr(b)))
+
+print("\n" + "=" * 78)
+print("TEST 7 - FILL-MODEL SENSITIVITY")
+print("=" * 78)
+print("  The 0.843/0.962 constants were estimated on 286 orders BEFORE the 17")
+print("  late-closing outcomes were recovered. prospective_execution.py, run")
+print("  on the corrected 303, measures 0.8848/0.9884. Both are shown so the")
+print("  conclusion does not depend on which is used.")
+print("  %-26s %11s %11s %11s" % ("fill model", "HCR", "non-HCR", "lift"))
+for lbl, pw, pl in (("0.843 / 0.962 (old)", 0.843, 0.962),
+                    ("0.8848 / 0.9884 (corrected)", 0.8848, 0.9884),
+                    ("1.000 / 1.000 (no bias)", 1.0, 1.0)):
+    def c2(g, pw=pw, pl=pl):
+        pf = np.where(g.won == 1, pw, pl)
+        return (g.maker * pf).sum() / pf.sum() * 100
+    print("  %-26s %+10.2fc %+10.2fc %+10.2fc"
+          % (lbl, c2(h), c2(r), c2(h) - c2(r)))
