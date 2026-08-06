@@ -1,3 +1,4 @@
+# Re-run after repairing the embedded meta-audit payload.
 name: Runaway Confirmation Audit
 
 on:
