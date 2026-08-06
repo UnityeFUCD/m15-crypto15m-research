@@ -1,0 +1,26 @@
+{
+  "git_commit": "2e29718",
+  "inputs": {
+    "underlying.parquet": "5ea107c6c34e436e"
+  },
+  "rows_with_signal": 40804,
+  "drc_windows_4coins": 4882,
+  "p_no_given_drc": 0.5192544039328144,
+  "p_no_given_rest": 0.5024193548387097,
+  "diff_pp": 1.6835049094104715,
+  "ci_pp": [
+    -0.33900773854366184,
+    3.678981571082196
+  ],
+  "params": {
+    "coins": [
+      "DOGE",
+      "ETH",
+      "SOL",
+      "XRP"
+    ],
+    "z": 1.0,
+    "vol_lookback": 4,
+    "eps": 1e-12
+  }
+}
