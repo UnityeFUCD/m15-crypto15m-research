@@ -11,6 +11,16 @@ on:
       - "research/commodity15m_reward_data_fast.py"
       - "research/run_rfhl_quick.py"
       - ".github/workflows/rfhl_quick.yml"
+  pull_request:
+    branches:
+      - master
+    paths:
+      - "research/reward_adjusted_commodity15m.py"
+      - "research/reward_adjusted_commodity15m_onesided.py"
+      - "research/reward_hedged_liquidity.py"
+      - "research/commodity15m_reward_data_fast.py"
+      - "research/run_rfhl_quick.py"
+      - ".github/workflows/rfhl_quick.yml"
 
 permissions:
   contents: write
