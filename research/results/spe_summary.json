@@ -1,8 +1,8 @@
 {
   "data": {
     "panel_rows": 255621,
-    "markets": 38070,
-    "days": 73,
+    "unique_markets": 38070,
+    "calendar_days": 73,
     "horizons": [
       13,
       12,
@@ -14,23 +14,22 @@
     ]
   },
   "validation_winner": {
-    "model": "struct",
+    "model": "full",
     "horizon": 12,
-    "threshold": 0.05,
+    "threshold": 0.03,
     "split": "valid",
-    "n": 82,
+    "n": 283,
     "days": 18,
-    "total_pnl": 68.24269999999997,
-    "mean_day": 3.791261111111111,
-    "sd_day": 11.40084189172727,
-    "t_stat": 1.410857092682314,
-    "edge_per_contract": 0.05548186991869916,
-    "win_rate": 0.573170731707317,
-    "avg_price": 0.5010975609756098,
-    "max_drawdown": 34.13999999999999,
-    "worst_window": -11.8802,
-    "positive_day_fraction": 0.6111111111111112,
-    "objective": 1.8327672446314636
+    "total_pnl": 213.67489999999995,
+    "mean_day": 11.870827777777777,
+    "sd_day": 24.75995244628156,
+    "t_stat": 2.0340772878725537,
+    "edge_per_contract": 0.050335665488810355,
+    "win_rate": 0.5795053003533569,
+    "average_price": 0.5133886925795054,
+    "max_drawdown": 70.64640000000003,
+    "worst_window": -12.0242,
+    "positive_day_fraction": 0.6666666666666666
   },
   "chosen_regularization": {
     "market": {
@@ -43,20 +42,20 @@
       "2": 0.1
     },
     "blend": {
-      "13": 10.0,
+      "13": 0.1,
       "12": 10.0,
       "10": 10.0,
       "8": 10.0,
       "6": 0.1,
       "4": 0.1,
-      "2": 0.1
+      "2": 1.0
     },
-    "struct": {
+    "full": {
       "13": 0.01,
       "12": 1.0,
       "10": 10.0,
-      "8": 1.0,
-      "6": 0.1,
+      "8": 0.1,
+      "6": 1.0,
       "4": 0.1,
       "2": 10.0
     }
@@ -80,23 +79,23 @@
       "split": "test",
       "c": 10.0,
       "n": 8296,
-      "log_loss": 0.6075485881820396,
-      "brier": 0.21016845440520424,
-      "auc": 0.7296026320684523,
-      "calibration_intercept": 0.08275593523046308,
-      "calibration_slope": 1.0234564026916242
+      "log_loss": 0.6077023599957604,
+      "brier": 0.21022763827312485,
+      "auc": 0.7296234130859375,
+      "calibration_intercept": 0.09281929115809197,
+      "calibration_slope": 1.0330965663017033
     },
     {
       "horizon": 12,
-      "model": "struct",
+      "model": "full",
       "split": "test",
       "c": 1.0,
       "n": 8296,
-      "log_loss": 0.6078207019603075,
-      "brier": 0.21043261835090077,
-      "auc": 0.7286207217261905,
-      "calibration_intercept": 0.09866656307614304,
-      "calibration_slope": 0.9964487224373046
+      "log_loss": 0.6081639029933936,
+      "brier": 0.21047857483191623,
+      "auc": 0.728712681361607,
+      "calibration_intercept": 0.09948351308539724,
+      "calibration_slope": 0.9966879683821844
     },
     {
       "horizon": 12,
@@ -116,86 +115,85 @@
       "split": "test",
       "c": NaN,
       "n": 8296,
-      "log_loss": 0.6371505155937356,
-      "brier": 0.22283163580457677,
-      "auc": 0.7099241129557291,
-      "calibration_intercept": 0.06463594873940624,
-      "calibration_slope": 1.6634458787486834
+      "log_loss": 0.6242746292181166,
+      "brier": 0.2169693272819311,
+      "auc": 0.7115650867280506,
+      "calibration_intercept": 0.09072914805574128,
+      "calibration_slope": 1.0679615067867225
     }
   ],
-  "model_increment": {
-    "log_loss_vs_raw_mid": 0.0013644674055621753,
-    "brier_vs_raw_mid": 0.0007300666090974961,
-    "log_loss_vs_market_calibrator": 0.0003845217315326943,
-    "brier_vs_market_calibrator": 0.00030392705672233067
+  "probability_increment": {
+    "log_loss_vs_raw_mid": 0.0017076684386483354,
+    "brier_vs_raw_mid": 0.0007760230901129594,
+    "log_loss_vs_market_calibrator": 0.0007277227646188544,
+    "brier_vs_market_calibrator": 0.000349883537737794
   },
   "test_policy": {
-    "model": "struct",
+    "model": "full",
     "horizon": 12,
-    "threshold": 0.05,
+    "threshold": 0.03,
     "split": "test",
-    "n": 92,
+    "n": 275,
     "days": 20,
-    "total_pnl": -73.65840000000001,
-    "mean_day": -3.6829200000000015,
-    "sd_day": 15.085442639480375,
-    "t_stat": -1.091815423982441,
-    "edge_per_contract": -0.05337565217391305,
-    "win_rate": 0.4673913043478261,
-    "avg_price": 0.5040217391304347,
-    "max_drawdown": 108.78820000000006,
-    "worst_window": -10.5746,
-    "positive_day_fraction": 0.4
+    "total_pnl": -143.7697,
+    "mean_day": -7.188485000000002,
+    "sd_day": 31.651946302263024,
+    "t_stat": -1.015668418095878,
+    "edge_per_contract": -0.03485326060606061,
+    "win_rate": 0.49454545454545457,
+    "average_price": 0.5133454545454545,
+    "max_drawdown": 301.8639999999998,
+    "worst_window": -13.3109,
+    "positive_day_fraction": 0.35
   },
   "day_bootstrap": {
-    "observed_mean_day": -3.6829200000000015,
-    "ci_lo": -9.976285500000001,
-    "ci_hi": 2.856587749999996,
-    "p_nonpositive": 0.87175
+    "observed_mean_day": -7.188485000000002,
+    "ci_lo": -20.641347125000003,
+    "ci_hi": 6.043796749999988,
+    "p_nonpositive": 0.8455833333333334
   },
   "block_bootstrap": [
     {
       "block_minutes": 15,
-      "n_blocks": 92,
-      "observed_total": -73.65840000000001,
-      "ci_lo": -206.10041250000003,
-      "ci_hi": 65.28927749999983,
-      "p_nonpositive": 0.8481666666666666
+      "n_blocks": 275,
+      "observed_total": -143.7697,
+      "ci_lo": -383.21170500000005,
+      "ci_hi": 93.44662749999993,
+      "p_nonpositive": 0.8806666666666667
     },
     {
       "block_minutes": 30,
-      "n_blocks": 88,
-      "observed_total": -73.65840000000004,
-      "ci_lo": -216.10555250000002,
-      "ci_hi": 66.53694749999987,
-      "p_nonpositive": 0.8450833333333333
+      "n_blocks": 244,
+      "observed_total": -143.7697000000001,
+      "ci_lo": -384.0891025,
+      "ci_hi": 92.71897749999997,
+      "p_nonpositive": 0.87725
     },
     {
       "block_minutes": 60,
-      "n_blocks": 85,
-      "observed_total": -73.65840000000001,
-      "ci_lo": -216.10162250000002,
-      "ci_hi": 70.68742249999993,
-      "p_nonpositive": 0.8375
+      "n_blocks": 211,
+      "observed_total": -143.76970000000006,
+      "ci_lo": -389.7418425,
+      "ci_hi": 106.74557249999984,
+      "p_nonpositive": 0.8695833333333334
     },
     {
       "block_minutes": 90,
-      "n_blocks": 81,
-      "observed_total": -73.65840000000004,
-      "ci_lo": -216.37592250000006,
-      "ci_hi": 69.20084749999991,
-      "p_nonpositive": 0.8435833333333334
+      "n_blocks": 181,
+      "observed_total": -143.7697,
+      "ci_lo": -388.0063075,
+      "ci_hi": 105.47368499999996,
+      "p_nonpositive": 0.8730833333333333
     }
   ],
-  "leave_one_coin_all_positive": false,
-  "leave_one_week_all_positive": false,
-  "hard_pass": false,
   "pass_components": {
-    "probability_increment": false,
+    "physical_information_beyond_market": false,
     "positive_test_economics_and_n_ge_50": false,
     "positive_day_ci": false,
     "positive_all_block_cis": false,
-    "leave_one_coin": false,
-    "leave_one_week": false
-  }
+    "leave_one_coin_all_positive": false,
+    "leave_one_week_all_positive": false,
+    "leave_one_hour_all_positive": false
+  },
+  "hard_pass": false
 }
