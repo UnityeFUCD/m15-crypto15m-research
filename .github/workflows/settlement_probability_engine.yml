@@ -74,3 +74,5 @@ jobs:
       - name: Fail workflow if audit failed
         if: ${{ steps.spe.outputs.exit_code != '0' }}
         run: exit 1
+
+# Triggered after the workflow was registered on the default branch.
