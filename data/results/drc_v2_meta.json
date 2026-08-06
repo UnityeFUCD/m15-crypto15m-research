@@ -1,0 +1,158 @@
+{
+  "git_commit": "bcf2174",
+  "inputs": {
+    "underlying.parquet": "5ea107c6c34e436e",
+    "ladder_paths.parquet": "6a080e78875f6493",
+    "premium_history2.parquet": "5f568e2c50735155"
+  },
+  "params": {
+    "coins": [
+      "DOGE",
+      "ETH",
+      "SOL",
+      "XRP"
+    ],
+    "z": 1.0,
+    "lookback": 4,
+    "band": [
+      0.65,
+      0.8
+    ],
+    "splits": {
+      "train": [
+        "2026-05-25",
+        "2026-06-30"
+      ],
+      "valid": [
+        "2026-06-30",
+        "2026-07-18"
+      ],
+      "test": [
+        "2026-07-18",
+        "2026-08-07"
+      ]
+    },
+    "eps": 1e-12
+  },
+  "signal_waterfall": {
+    "raw_markets": 41334,
+    "valid_settled": 41334,
+    "four_coins": 27557,
+    "has_z_included": 27273,
+    "has_z_background": 27202
+  },
+  "results": {
+    "DRC_INCLUDED|ladder_paths": {
+      "waterfall": {
+        "1_book_rows": 5624,
+        "2_joined_to_signal": 3729,
+        "3_four_coins": 3729,
+        "4_valid_contiguous_history": 3696,
+        "5_no_favourite": 1965,
+        "6_bid_in_65_80": 358,
+        "7_z_ge_threshold": 94,
+        "8_valid_ask": 94,
+        "9_final_candidates": 94
+      },
+      "drc": {
+        "n": 94,
+        "win": 0.7872340425531915,
+        "avg_bid": 0.6927659574468084,
+        "avg_ask": 0.7122340425531913,
+        "fee": 0.02,
+        "taker_edge": 0.05500000000000002,
+        "maker_edge": 0.09446808510638299
+      },
+      "base": {
+        "n": 264,
+        "win": 0.7083333333333334,
+        "avg_bid": 0.6963257575757575,
+        "avg_ask": 0.7168939393939393,
+        "fee": 0.019924242424242424,
+        "taker_edge": -0.028484848484848474,
+        "maker_edge": 0.012007575757575788
+      }
+    },
+    "DRC_INCLUDED|premium_history2": {
+      "waterfall": {
+        "1_book_rows": 2780,
+        "2_joined_to_signal": 1834,
+        "3_four_coins": 1834,
+        "4_valid_contiguous_history": 1821,
+        "5_no_favourite": 889,
+        "6_bid_in_65_80": 889,
+        "7_z_ge_threshold": 192,
+        "8_valid_ask": 192,
+        "9_final_candidates": 192
+      },
+      "drc": {
+        "n": 192,
+        "win": 0.8020833333333334,
+        "avg_bid": 0.7025520833333333,
+        "maker_edge": 0.09953125000000003
+      },
+      "base": {
+        "n": 697,
+        "win": 0.7001434720229556,
+        "avg_bid": 0.6960114777618365,
+        "maker_edge": 0.004131994261119113
+      }
+    },
+    "DRC_BACKGROUND|ladder_paths": {
+      "waterfall": {
+        "1_book_rows": 5624,
+        "2_joined_to_signal": 3729,
+        "3_four_coins": 3729,
+        "4_valid_contiguous_history": 3690,
+        "5_no_favourite": 1961,
+        "6_bid_in_65_80": 358,
+        "7_z_ge_threshold": 91,
+        "8_valid_ask": 91,
+        "9_final_candidates": 91
+      },
+      "drc": {
+        "n": 91,
+        "win": 0.7692307692307693,
+        "avg_bid": 0.6942857142857143,
+        "avg_ask": 0.7136263736263737,
+        "fee": 0.019999999999999997,
+        "taker_edge": 0.035604395604395614,
+        "maker_edge": 0.07494505494505499
+      },
+      "base": {
+        "n": 267,
+        "win": 0.7153558052434457,
+        "avg_bid": 0.6957677902621723,
+        "avg_ask": 0.7163670411985019,
+        "fee": 0.0199250936329588,
+        "taker_edge": -0.02093632958801497,
+        "maker_edge": 0.01958801498127344
+      }
+    },
+    "DRC_BACKGROUND|premium_history2": {
+      "waterfall": {
+        "1_book_rows": 2780,
+        "2_joined_to_signal": 1834,
+        "3_four_coins": 1834,
+        "4_valid_contiguous_history": 1821,
+        "5_no_favourite": 889,
+        "6_bid_in_65_80": 889,
+        "7_z_ge_threshold": 176,
+        "8_valid_ask": 176,
+        "9_final_candidates": 176
+      },
+      "drc": {
+        "n": 176,
+        "win": 0.7670454545454546,
+        "avg_bid": 0.69875,
+        "maker_edge": 0.06829545454545459
+      },
+      "base": {
+        "n": 713,
+        "win": 0.7110799438990182,
+        "avg_bid": 0.6970967741935483,
+        "maker_edge": 0.013983169705469879
+      }
+    }
+  }
+}
