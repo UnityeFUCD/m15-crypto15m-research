@@ -11,13 +11,20 @@ on:
       - "research/run_minute00_delay_audit_v2.py"
       - "data/**"
       - ".github/workflows/spe_audit.yml"
+  pull_request:
+    branches:
+      - codex/settlement-probability-engine
+    paths:
+      - "research/minute00_pr_trigger.txt"
+      - "research/minute00_delay_audit.py"
+      - "research/run_minute00_delay_audit_v2.py"
+      - ".github/workflows/spe_audit.yml"
 
 permissions:
   contents: write
 
 jobs:
   audit:
-    if: ${{ !contains(github.event.head_commit.message, '[skip combined-audit]') }}
     runs-on: ubuntu-latest
     timeout-minutes: 90
 
