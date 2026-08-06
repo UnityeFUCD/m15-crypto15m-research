@@ -1,0 +1,17 @@
+{
+  "fetched_at": "2026-08-06T13:02:06.192662+00:00",
+  "program_counts_all_exchange": {
+    "active": 3793,
+    "upcoming": 219
+  },
+  "crypto15m_programs": 0,
+  "crypto15m_active": 0,
+  "active_liquidity": 0,
+  "active_volume": 0,
+  "series_with_active_program": [],
+  "base_fill_corrected_ev_per_submitted_contract_dollars": -0.0043,
+  "official_volume_reward_cap_per_contract_dollars": 0.005,
+  "best_case_volume_adjusted_ev_dollars": 0.0007000000000000001,
+  "volume_cap_can_theoretically_offset_base_leak": true,
+  "liquidity_bounds_generated": 0
+}
