@@ -50,6 +50,15 @@ print("  you is the one who just saw the index move against your side.")
 print("\n" + "=" * 78)
 print("4. POPULATION vs REALIZED EDGE")
 print("=" * 78)
+print("  *** CORRECTION ***")
+print("  The figures below are computed on ladder_paths, a 28.6% SUBSET of")
+print("  the :00/:30 population. They ran hot: +3.99c against a true")
+print("  population value of +2.37c, a 1.43 SD fluctuation that a random")
+print("  draw of that size reproduces 7.5% of the time. See")
+print("  research/reconcile_edge.py. The correct population figures are")
+print("  maker +2.29c and FILL-CORRECTED -0.43c, i.e. NEGATIVE.")
+print("  Kept here only so the old number remains reproducible.")
+print()
 
 
 def fee1(p):

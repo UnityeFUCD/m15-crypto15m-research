@@ -34,16 +34,25 @@ market is a coin flip and correctly priced as one. But conditional on a
 favourite having emerged at 65–80c, that favourite wins **~73%** of the time,
 which is more than 65–80c implies. That gap is the edge.
 
-**Why it barely works:**
+**Why it does not work.** On the **unsampled** population, 39,428 markets:
 
 | | per contract |
 |---|---|
-| maker edge, if every order filled | **+3.99c** |
-| maker edge, fill-corrected | **+1.36c** |
-| taker edge, real ask + real fee | **+0.15c** |
+| maker edge, if every order filled | **+2.29c** |
+| maker edge, fill-corrected | **−0.43c** |
+| taker edge, real ask + real fee | **−1.55c** |
 
-The first line is the backtest. The second is reality. **The gap between them
-is the entire problem**, and Part 3 explains it.
+> **CORRECTION.** An earlier revision gave +3.99c / +1.36c / +0.15c and called
+> the strategy marginally profitable. Those came from `ladder_paths`, a 28.6%
+> subset, and were a **1.43σ fluctuation** — a random draw of that size
+> reaches +3.99c **7.5%** of the time (`research/reconcile_edge.py`). The two
+> files agree *exactly* where they overlap; the subset simply ran hot.
+> **The strategy is not profitable after realistic fills.**
+
+The gap between the first two lines is fill bias (Part 3). But the second line
+is now **negative**, which is a different claim than the earlier revision made.
+
+The one exception is **minute :00** — see Part 6c and `research/minute_zero.md`.
 
 ---
 
@@ -91,9 +100,9 @@ counterparty who lifts your bid is disproportionately someone who just saw the
 index move against your side. You get filled on the markets you'd rather skip
 and miss the ones you want.
 
-Arithmetically it converts **+3.99c into +1.36c** — it removes about two
-thirds of the edge. Every backtest in this repo that assumes 100% fill is
-overstated by 27.6% pre-shift and 58.9% post-shift.
+Arithmetically it converts **+2.29c into −0.43c** — it removes the entire edge
+and then some, pushing the strategy below zero. Every backtest in this repo
+that assumes 100% fill is overstated by 27.6% pre-shift and 58.9% post-shift.
 
 **This is the binding constraint on the entire strategy.** Not signal quality,
 not timing, not coin selection. Everything in Part 5 failed because it tried
@@ -135,10 +144,16 @@ Tested and refuted. **Do not revisit these without new information.**
 | **drop the worst coin** | in-sample selection; doesn't hold out |
 | **filter by hour of day** | no stable pattern once multiple-comparison corrected |
 | **shift the price band** | edge is flat across the band; shifting trades size for nothing |
-| **minute-:00 filter (HCR)** | affirmatively wrong — HCR is **stronger without it** (+4.36c vs −0.57c) |
+| **minute-:00 as an HCR filter** | HCR's *lift* is not concentrated at :00 — see the note below |
 
 The pattern: every one of these tried to find a *better subset* of markets.
 None addressed fill bias. That's why they all failed.
+
+> **Do not confuse the last row with Part 6c.** Two different quantities share
+> the word "minute". HCR's *lift* is not concentrated at :00 — that filter is
+> dead, and `capture/hcr.py` correctly ignores `close_minute`. But the
+> *absolute edge* at :00 is the strongest result in the project. The first is
+> about HCR; the second is about the base strategy. Both are true.
 
 ---
 
@@ -197,6 +212,62 @@ just fill bias restated. The specific timeout parameters are unvalidated.
 
 **Rank-3 removal** — 2 days of live data says drop it, 73 days of population
 data says keep it. Unresolved, and 2 days can't settle it.
+
+## Part 6c — Minute :00, the one positive result
+
+Full write-up: `research/minute_zero.md`. Two claims, only one established.
+
+**ESTABLISHED — minute is a real discriminator.**
+
+```
+day-matched :00 vs the other three, within day
+  +4.27c   95% CI [+0.75, +7.80]   P(<=0) 0.0090
+
+selection-corrected permutation (shuffle the minute LABEL within day and
+record the BEST of four, because :00 was CHOSEN as best-of-four):
+  observed +4.27c   permuted best-of-four mean +1.58c   p95 +2.92c
+  P = 0.0020        Bonferroni 0.0090 x 4 = 0.036
+```
+
+**NOT ESTABLISHED — that :00 is profitable in absolute terms.**
+
+```
+:00 fill-corrected  +2.37c   95% CI [-0.97, +5.69]   P(<=0) 0.0833
+:00 taker           +1.04c   95% CI [-2.14, +4.18]   P(<=0) 0.2585
+```
+
+Reliably better than a losing alternative is not the same as making money.
+
+**Why this is not another HCR:**
+
+| test | HCR | minute :00 |
+|---|---|---|
+| chronological **train** | **−0.50c** | **+3.33c** |
+| valid / test | +3.12c / +3.60c | +3.11c / +4.70c |
+| leave-one-coin-out | collapses without SOL (+1.62c → +0.65c) | +1.85c to +2.75c, stable |
+| per coin | BTC, XRP negative | **all six positive** |
+
+Full per-minute picture:
+
+```
+minute    n     win    maker  fill-corrected   taker    day-clustered P(<=0)
+  :00   1874  0.7444   +4.95c    +2.37c       +1.04c         0.0833
+  :15   2268  0.7244   +2.63c    -0.05c       -1.16c         0.5047
+  :30   1942  0.6957   -0.12c    -2.97c       -3.96c         0.9652
+  :45   2103  0.7161   +1.78c    -0.95c       -2.06c         0.7548
+```
+
+**The immediately actionable part needs no further validation: stop trading
+`:30`.** It is −2.97c fill-corrected with P(≤0)=0.965 — the most confidently
+negative cohort found anywhere in this project, and dropping it does not
+depend on the :00 result being real.
+
+**No mechanism is identified.** `:00` coincides with the top of the hour where
+other instruments settle and roll, which plausibly changes who is quoting —
+but that is a story, not evidence. A finding without a mechanism that survives
+selection correction is worth forward-testing, not sizing up on.
+
+At q15 and 25.7 in-band `:00` markets/day, +2.37c is **+$9.11/day** — if real.
 
 ## Part 6b — What the live record PROVED (prospective, held separate)
 
@@ -267,10 +338,17 @@ The account is at **$136.27** against a kill floor of **$398.25** (75% of the
 $531 strategy high-water mark). `capture/hcr.py` sizes it to 0 and returns
 KILL, which is correct — it should not trade here.
 
-**The only question worth working on is fill bias**, because it is the only
-thing standing between +1.36c and +3.99c. Tripling realized edge does not
-require a new signal — it requires collecting the edge already measured. Two
-approaches have not been tried:
+**Two questions are worth working on.**
+
+**(a) Minute :00** — the only cohort that is positive, the only result in the
+project to clear 5% after selection correction, and the only one that holds in
+the training period. See `research/minute_zero.md`. The immediately actionable
+part needs no further validation: **stop trading :30**, which is −2.97c
+fill-corrected with P(≤0)=0.965.
+
+**(b) Fill bias**, because it is what stands between +2.29c and −0.43c.
+Recovering it does not require a new signal — it requires collecting edge
+already measured. Two approaches have not been tried:
 
 1. **Queue position is available via the API** and has never been used. If
    adverse fills correlate with queue position at fill time, that is directly
