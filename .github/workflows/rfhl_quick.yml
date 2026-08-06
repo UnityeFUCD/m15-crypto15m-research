@@ -3,23 +3,9 @@ name: RFHL Seven-Day Discovery Audit
 on:
   push:
     branches:
-      - codex/rfhl-quick
+      - codex/rfhl-quick-clean
     paths:
-      - "research/reward_adjusted_commodity15m.py"
-      - "research/reward_adjusted_commodity15m_onesided.py"
-      - "research/reward_hedged_liquidity.py"
-      - "research/commodity15m_reward_data_fast.py"
-      - "research/run_rfhl_quick.py"
-      - ".github/workflows/rfhl_quick.yml"
-  pull_request:
-    branches:
-      - master
-    paths:
-      - "research/reward_adjusted_commodity15m.py"
-      - "research/reward_adjusted_commodity15m_onesided.py"
-      - "research/reward_hedged_liquidity.py"
-      - "research/commodity15m_reward_data_fast.py"
-      - "research/run_rfhl_quick.py"
+      - "research/rfhl_quick_standalone.py"
       - ".github/workflows/rfhl_quick.yml"
 
 permissions:
@@ -27,14 +13,14 @@ permissions:
 
 jobs:
   audit:
-    if: ${{ !contains(github.event.head_commit.message, '[skip rfhl-quick]') }}
+    if: ${{ !contains(github.event.head_commit.message, '[skip rfhl-clean]') }}
     runs-on: ubuntu-latest
     timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          ref: codex/rfhl-quick
+          ref: codex/rfhl-quick-clean
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
@@ -43,32 +29,34 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-      - name: Run rapid RFHL audit
+      - name: Run standalone RFHL discovery audit
         id: audit
         shell: bash
         run: |
           set +e
           mkdir -p research/results
-          python research/run_rfhl_quick.py > research/results/rfhl_quick_run.log 2>&1
+          python research/rfhl_quick_standalone.py > research/results/rfhl_clean_run.log 2>&1
           status=$?
           echo "exit_code=$status" >> "$GITHUB_OUTPUT"
-          tail -300 research/results/rfhl_quick_run.log
+          tail -300 research/results/rfhl_clean_run.log
           exit 0
       - name: Commit evidence
         shell: bash
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -f research/results/rfhl_quick_run.log
-          for f in research/results/rfhl_report.md research/results/rfhl_summary.json research/results/rfhl_validation_grid.csv research/results/rfhl_leave_one_strict.csv research/results/rfhl_leave_one_touch.csv; do
-            if [ -f "$f" ]; then git add -f "$f"; fi
-          done
-          for f in research/results/rfhl_test_*.parquet; do
-            if [ -f "$f" ]; then git add -f "$f"; fi
+          git add -f research/results/rfhl_clean_run.log
+          for f in \
+            research/results/rfhl_clean_report.md \
+            research/results/rfhl_clean_summary.json \
+            research/results/rfhl_clean_validation_grid.csv \
+            research/results/rfhl_clean_test_sensitivity.csv \
+            research/results/rfhl_clean_leave_one_series.csv; do
+              if [ -f "$f" ]; then git add -f "$f"; fi
           done
           if ! git diff --cached --quiet; then
-            git commit -m "RFHL seven-day discovery results [skip rfhl-quick]"
-            git push origin HEAD:codex/rfhl-quick
+            git commit -m "RFHL clean discovery results [skip rfhl-clean]"
+            git push origin HEAD:codex/rfhl-quick-clean
           fi
       - name: Fail workflow if audit failed
         if: ${{ steps.audit.outputs.exit_code != '0' }}
