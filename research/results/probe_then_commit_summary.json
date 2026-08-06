@@ -1,21 +1,21 @@
 {
   "data": {
-    "population_in_band": 8187,
+    "population_in_band": 8201,
     "population_days": 73,
     "live_orders": 303,
     "live_winners": 217,
     "live_losers": 86
   },
   "fr2_no_volume": {
-    "n": 2214,
-    "pnl": 174.6414000000006,
-    "edge_per_contract": 0.003944024390243916,
-    "mean_day": 2.392347945205485,
-    "sd_day": 47.27603577937567,
+    "n": 2219,
+    "pnl": 180.2763000000006,
+    "edge_per_contract": 0.004062106804867071,
+    "mean_day": 2.469538356164389,
+    "sd_day": 47.2085043299393,
     "max_drawdown": 306.8023999999999,
     "worst_window": -16.224,
-    "win_rate": 0.7131887985546522,
-    "avg_price": 0.694643179765131,
+    "win_rate": 0.7133844073907165,
+    "avg_price": 0.6947228481297881,
     "volume_filter": false,
     "splits": {
       "train": {
@@ -41,28 +41,28 @@
         "avg_price": 0.693979057591623
       },
       "test": {
-        "n": 559,
-        "pnl": -63.03039999999987,
-        "edge_per_contract": -0.005637781753130579,
-        "mean_day": -3.3173894736842047,
-        "sd_day": 42.22239915339691,
+        "n": 564,
+        "pnl": -57.39549999999987,
+        "edge_per_contract": -0.0050882535460992796,
+        "mean_day": -3.0208157894736787,
+        "sd_day": 41.96086828416928,
         "max_drawdown": 217.21540000000002,
         "worst_window": -16.224,
-        "win_rate": 0.7012522361359571,
-        "avg_price": 0.6922182468694097
+        "win_rate": 0.7021276595744681,
+        "avg_price": 0.6925531914893618
       }
     }
   },
   "fr2_volume_ge_2000": {
-    "n": 1052,
-    "pnl": 90.47870000000022,
-    "edge_per_contract": 0.004300318441064649,
-    "mean_day": 1.2394342465753445,
-    "sd_day": 37.0532175389939,
+    "n": 1056,
+    "pnl": 90.79590000000027,
+    "edge_per_contract": 0.004299048295454558,
+    "mean_day": 1.2437794520547965,
+    "sd_day": 37.05248635547642,
     "max_drawdown": 290.80139999999994,
     "worst_window": -16.224,
-    "win_rate": 0.7243346007604563,
-    "avg_price": 0.7057319391634981,
+    "win_rate": 0.7244318181818182,
+    "avg_price": 0.7058333333333333,
     "volume_filter": true,
     "splits": {
       "train": {
@@ -88,15 +88,15 @@
         "avg_price": 0.7051736111111111
       },
       "test": {
-        "n": 328,
-        "pnl": -16.473799999999954,
-        "edge_per_contract": -0.002511249999999993,
-        "mean_day": -0.8670421052631555,
-        "sd_day": 44.179520297849876,
+        "n": 332,
+        "pnl": -16.15659999999994,
+        "edge_per_contract": -0.0024332228915662562,
+        "mean_day": -0.8503473684210501,
+        "sd_day": 44.177905091049105,
         "max_drawdown": 243.77969999999988,
         "worst_window": -16.224,
-        "win_rate": 0.7134146341463414,
-        "avg_price": 0.7014939024390244
+        "win_rate": 0.713855421686747,
+        "avg_price": 0.7018674698795181
       }
     }
   },
@@ -107,22 +107,22 @@
     "probe_qty": 1,
     "commit_qty": 15,
     "volume_filter": true,
-    "eligible_markets": 2568,
+    "eligible_markets": 2578,
     "calendar_days": 73,
     "live_fill_rate_win": 0.8433179723502304,
     "live_fill_rate_lose": 0.9418604651162791,
     "live_nofill_win_rate": 0.8717948717948718,
-    "mean_commits": 219.48625,
-    "mean_probe_fills": 2225.2505,
-    "mean_total_pnl": 417.88805260000004,
-    "mean_pnl_per_day": 5.724493871232877,
-    "pnl_day_ci_lo": 0.7272117465753435,
-    "pnl_day_ci_hi": 10.046431232876715,
-    "p_mean_day_nonpositive": 0.01225,
-    "median_max_drawdown": 39.1972,
-    "max_drawdown_p95": 93.23672499999998,
+    "mean_commits": 221.139,
+    "mean_probe_fills": 2232.409,
+    "mean_total_pnl": 419.52331710000004,
+    "mean_pnl_per_day": 5.746894754794521,
+    "pnl_day_ci_lo": 0.7147467465753436,
+    "pnl_day_ci_hi": 10.139928219178083,
+    "p_mean_day_nonpositive": 0.0155,
+    "median_max_drawdown": 38.929849999999874,
+    "max_drawdown_p95": 91.4189750000001,
     "median_worst_window": -12.744200000000003,
-    "p_hit_211_over_history": 0.0085
+    "p_hit_211_over_history": 0.00975
   },
   "primary_probe": {
     "fill_rate_win": 0.8433179723502304,
