@@ -1,0 +1,39 @@
+{
+  "name": "FR2_CANDIDATE_V0",
+  "status": "strong_historical_candidate_requires_independent_odd_slot_and_live_execution_confirmation",
+  "signal": {
+    "initial_observation": "first complete minute with 8-14 minutes remaining",
+    "initial_favorite_bid_min": 0.65,
+    "initial_favorite_bid_max_exclusive": 0.8,
+    "retain_original_side": true,
+    "delay_minutes": 2,
+    "delayed_ask_min": 0.6,
+    "delayed_ask_max": 0.8
+  },
+  "portfolio": {
+    "max_positions_per_close_window": 1,
+    "selection_order": [
+      "BTC",
+      "ETH",
+      "SOL",
+      "XRP",
+      "DOGE",
+      "HYPE"
+    ]
+  },
+  "execution_candidate": {
+    "time_in_force": "immediate_or_cancel",
+    "limit": "current displayed ask; never chase",
+    "target_quantity": 20,
+    "partial_fills_allowed": true,
+    "retry": false,
+    "cancel_order_on_pause": true
+  },
+  "unresolved_before_material_live_size": [
+    "independent :15/:45 full-path replication",
+    "complete unsampled all-minute reconstruction",
+    "decision-time volume interaction",
+    "displayed ask depth and IOC fill selection",
+    "latency between book snapshot and order acknowledgement"
+  ]
+}
