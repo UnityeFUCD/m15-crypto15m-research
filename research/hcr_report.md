@@ -42,14 +42,15 @@ Even granting the signal in full, it earns about a dollar a day.
 Nothing clears 5%. Three independent tests land in 0.09–0.20 — the region
 where an effect is neither present nor excluded.
 
-**The chronological split is the disqualifying one.** In the training period —
-the *largest* slice, 304 HCR markets — the lift is −0.15c. Zero. The entire
-effect sits in valid and test.
+**Correction — the chronological argument is weaker than first stated here.**
+An earlier revision called the train null "disqualifying". Tested directly
+(`hcr_why_not_trade.py`), the train-vs-test gap is +7.65c with 95% CI
+[−2.95, +17.77], **P=0.076** — itself inside noise. The data cannot tell the
+two periods apart, so "absent in train" is **uninformative, not disproving**.
+It remains suggestive, because it is the same shape DRC-15 showed, but it is
+not evidence the signal is fake.
 
-That is the same shape DRC-15 showed: nothing early, everything late. Two
-independent candidates failing the same way is a property of the search, not
-of the market. Both were found by looking at recent data, and recent data is
-where both work.
+The real objection is in the next section.
 
 ## The minute-:00 filter is wrong and should stay dropped
 
@@ -88,18 +89,42 @@ Sequence: PASS (biased minute) → FAIL (biased calendar) → NOT ESTABLISHED
 (balanced). Two of my three verdicts were artifacts of my own sampling, not
 findings about the market.
 
-## What is actually true, and worth keeping
+## The real objection: the edge is unmeasurable, not absent
 
-The fill-corrected numbers say something the significance tests do not:
+"HCR is more positive than non-HCR" is true. It is also not sufficient.
 
-> **non-HCR is −1.10c/contract. Trading everything in the band loses money
-> once fill bias is applied.** HCR is the only slice above water.
+```
+HCR's own edge   +0.88c   95% CI [-4.93, +6.46]   P(<=0) 0.36
+at q15           +$0.95/day mean, SD $16.38/day
+days to distinguish +0.88c from 0.00c at 80% power:  2,321  (6.4 years)
+```
 
-That is consistent with everything else established in this repo: population
-edge ~+3.5c, realized +1.54c, the gap entirely maker fill bias. HCR's
-plausible role is not *adding* edge but *declining* the markets where fill
-bias eats it. That is a real hypothesis. It is not proven, and it is worth
-about a dollar a day.
+The uncertainty on +0.88c is **seven times the estimate**, and there is a 36%
+chance the true value is zero or negative. Daily noise is 17x daily signal.
+No amount of live trading resolves this on a useful horizon.
+
+## What IS worth keeping — and it is bigger than the edge
+
+| policy | per contract | $/day at q15 |
+|---|---|---|
+| trade everything | −0.75c | **−$3.97** |
+| HCR only | +0.88c | **+$0.83** |
+| non-HCR only | −1.10c | −$4.81 |
+
+Day-matched within-day, HCR-only vs trade-everything: **+3.35c, P=0.078.**
+
+> The value of HCR is **~$4.80/day in losses avoided**, not $0.95/day in edge
+> earned. An earlier revision of this file said "worth about a dollar a day" —
+> that was the wrong quantity. The non-HCR cohort loses money, and HCR's job
+> is to decline it.
+
+This is consistent with everything else established in this repo: population
+edge ~+3.5c, realized +1.54c, the gap entirely maker fill bias. HCR's role is
+not *adding* edge but *declining* the markets where fill bias eats it.
+
+That is a reason to trade **less**, not a reason to trade. Fill-corrected, the
+base strategy is underwater at −0.75c; HCR moves it to roughly **break-even**.
+Break-even does not compound.
 
 ## Recommendation
 
