@@ -1,0 +1,11 @@
+{
+  "fetched_at": "2026-08-06T13:06:04.860692+00:00",
+  "active_liquidity_programs": 3793,
+  "valid_terms": 3793,
+  "enriched_top_terms": 300,
+  "open_two_sided_quote_rows": 1582,
+  "hard_candidate_rows": 25,
+  "hard_candidate_markets": 5,
+  "max_lower_reward_to_one_leg_risk": 9.1124822021832,
+  "max_current_reward_to_one_leg_risk": 27.023433954853438
+}
