@@ -1,0 +1,71 @@
+name: Liquidity Incentive Frontier Audit
+
+on:
+  push:
+    branches:
+      - codex/incentive-frontier
+    paths:
+      - "research/incentive_frontier.py"
+      - ".github/workflows/incentive_frontier.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  audit:
+    if: ${{ !contains(github.event.head_commit.message, '[skip frontier]') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: codex/incentive-frontier
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run current liquidity frontier audit
+        id: audit
+        shell: bash
+        run: |
+          set +e
+          mkdir -p research/results
+          python research/incentive_frontier.py > research/results/incentive_frontier_run.log 2>&1
+          status=$?
+          echo "exit_code=$status" >> "$GITHUB_OUTPUT"
+          tail -200 research/results/incentive_frontier_run.log
+          exit 0
+
+      - name: Commit evidence or failure log
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f research/results/incentive_frontier_run.log
+          for f in \
+            research/results/incentive_frontier_report.md \
+            research/results/incentive_frontier_summary.json \
+            research/results/incentive_frontier_all_terms.csv \
+            research/results/incentive_frontier_enriched.csv \
+            research/results/incentive_frontier_quote_bounds.csv \
+            research/results/incentive_frontier_candidates.csv; do
+              if [ -f "$f" ]; then git add -f "$f"; fi
+          done
+          if git diff --cached --quiet; then
+            echo "No generated changes"
+          else
+            git commit -m "Liquidity incentive frontier results [skip frontier]"
+            git push origin HEAD:codex/incentive-frontier
+          fi
+
+      - name: Fail workflow if audit failed
+        if: ${{ steps.audit.outputs.exit_code != '0' }}
+        run: exit 1
