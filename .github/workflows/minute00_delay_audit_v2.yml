@@ -1,0 +1,61 @@
+name: Top-of-Hour Delayed Taker Audit v2
+
+on:
+  push:
+    branches:
+      - codex/settlement-probability-engine
+    paths:
+      - "research/run_minute00_delay_audit_v2.py"
+      - "research/minute00_delay_audit.py"
+      - ".github/workflows/minute00_delay_audit_v2.yml"
+      - "data/**"
+
+permissions:
+  contents: write
+
+jobs:
+  audit:
+    if: ${{ !contains(github.event.head_commit.message, '[skip minute00-v2]') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: codex/settlement-probability-engine
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install scipy scikit-learn
+      - name: Run corrected audit
+        id: audit
+        shell: bash
+        run: |
+          set +e
+          mkdir -p research/results
+          python research/run_minute00_delay_audit_v2.py > research/results/minute00_v2_run.log 2>&1
+          status=$?
+          echo "exit_code=$status" >> "$GITHUB_OUTPUT"
+          cat research/results/minute00_v2_run.log
+          exit 0
+      - name: Commit evidence
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f research/results/minute00_v2_run.log
+          for f in research/results/minute00_report.md research/results/minute00_summary.json research/results/minute00_wait_sensitivity.csv research/results/minute00_leave_one_coin.csv research/results/minute00_leave_one_week.csv research/results/minute00_cap_one_trades.parquet; do
+            if [ -f "$f" ]; then git add -f "$f"; fi
+          done
+          if ! git diff --cached --quiet; then
+            git commit -m "Top-of-hour delayed-taker v2 results [skip minute00-v2]"
+            git push origin HEAD:codex/settlement-probability-engine
+          fi
+      - name: Fail workflow if audit failed
+        if: ${{ steps.audit.outputs.exit_code != '0' }}
+        run: exit 1
