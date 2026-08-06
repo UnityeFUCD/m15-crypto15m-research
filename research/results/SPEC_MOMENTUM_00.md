@@ -207,3 +207,90 @@ plausible number.
 The strategy is executable and its components are now understood. What is not
 established is that the edge persists: it is strong in train, halved in valid,
 and gone in test.
+
+---
+
+# Is the decay real, and is 73 days enough? — both tested
+
+Prompted by a direct challenge: I asserted decay from three bins without
+testing it, and never asked whether 73 days can resolve anything at this
+dispersion. `research/spec_is_decay_real.py`.
+
+## The decay is real, and it is specific to `:00`
+
+Four independent checks, all agreeing:
+
+| test | result |
+|---|---|
+| trend slope, day-clustered | **−0.1395c/day** (−10.18c over 73 days), CI [−0.3069, +0.0154], P(≥0) = **0.0377** |
+| **constant-edge simulation** | under a constant edge, P(monotone decline this steep) = **0.0116** |
+| split-point robustness | equal-trade thirds **+8.49c** drop, equal-calendar thirds **+8.49c**, halves **+6.46c** |
+| rolling 21-day window | monotone, no step |
+
+```
+window start    n        edge      win
+2026-05-25    126      +8.82c   0.8810  #########
+2026-06-01    125      +9.46c   0.8880  #########
+2026-06-08    121     +11.00c   0.9008  ###########
+2026-06-15    127      +7.58c   0.8740  ########
+2026-06-22    131      +8.62c   0.8855  #########
+2026-06-29    142      +5.15c   0.8521  #####
+2026-07-06    143      +1.99c   0.8112  ##
+2026-07-13    132      -0.98c   0.7803  .
+2026-07-20    101      -0.77c   0.7822  .
+2026-07-27     54      +1.91c   0.8148  ##
+```
+
+The **win rate** falls from 88–90% to 78–81%. It is the outcome changing, not
+the price.
+
+### It is not the market — it is this edge
+
+| series | slope over 73 days |
+|---|---|
+| **`:00` strategy edge** | **−0.1395 c/day** |
+| other-minute taker edge | **+0.0541 c/day** (slightly rising) |
+| all-market maker edge | +0.0086 c/day (flat) |
+
+```
+:00 slope minus other-minute slope: -0.1936 c/day
+95% CI [-0.3444, -0.0561]   P(>=0) 0.0040
+```
+
+The rest of the market did not change. `:00` decayed against it, at
+P = 0.0040. **That is what an edge being arbitraged away looks like.**
+
+## Is 73 days enough? Almost exactly, and that is the problem
+
+```
+per-trade SD 35.6c   per-DAY SD 16.7c   6.2 trades/day
+SE of the mean, day-clustered: 1.95c on 73 days
+smallest edge resolvable at 80% power:  5.47c
+observed full-sample edge:             +5.47c
+```
+
+The observed edge sits **exactly on the detection threshold**. So 73 days is
+just barely enough to have seen the original effect — and not close to enough
+to measure what remains:
+
+| to confirm | days needed | |
+|---|---|---|
+| +7.50c | 39 | 1.3 months |
+| +5.00c | 87 | 2.9 months |
+| **+2.76c** (the held-out level) | **286** | **9.5 months** |
+
+Detecting the decay itself needed ~53 days split across periods — which is why
+it is visible while the residual level is not.
+
+## The complete answer
+
+**The `:00` edge was real and large — roughly +9 to +11c through late May and
+June, at an 88–90% win rate. It decayed monotonically through July to about
+zero, and it decayed specifically, against a market that was flat.**
+
+73 days was enough to catch that arc and is not enough to measure the tail of
+it. So the strategy is not wrong, and the backtest is not broken — the edge
+was there and is now largely gone.
+
+Anything built on the full-sample +5.47c is priced off the part that has
+already disappeared.

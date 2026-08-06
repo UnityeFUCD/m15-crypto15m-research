@@ -1,63 +1,59 @@
-Optimise and tape-test the :00 strategy: liquidity fine, edge decays to zero
+The :00 decay is real, specific, and 73 days sits exactly on the threshold
 
-Two follow-ups: optimise the strategy, and test it against the real Aug 4-5
-tape rather than displayed quotes.
+Prompted by a challenge: I asserted decay from three bins without testing it,
+and never asked whether 73 days can resolve anything at this dispersion. Both
+now tested.
 
-1. THE HEADLINE +7.81c WAS A FULL-SAMPLE NUMBER
+1. THE DECAY IS REAL - four independent checks agree
 
-Splitting it properly, with the grid searched on TRAIN ONLY and valid/test
-never consulted:
+  trend slope, day-clustered   -0.1395 c/day, CI [-0.3069, +0.0154], P 0.0377
+  constant-edge simulation     P(monotone decline this steep) = 0.0116
+  split-point robustness       equal-trade thirds -8.49c, calendar thirds
+                               -8.49c, halves -6.46c
+  rolling 21-day window        monotone, no step
 
-  train  n=175  win 0.8629   +9.56c  P(<=0) 0.0001
-  valid  n= 92  win 0.8261   +5.70c  P(<=0) 0.0956
-  test   n= 93  win 0.7634   -0.15c  P(<=0) 0.5229
-  HELD OUT       n=185       +2.76c  95% CI [-2.73, +8.33]  P(<=0) 0.1718
+  2026-05-25  +8.82c win 0.8810      2026-07-06  +1.99c win 0.8112
+  2026-06-08 +11.00c win 0.9008      2026-07-13  -0.98c win 0.7803
+  2026-06-22  +8.62c win 0.8855      2026-07-20  -0.77c win 0.7822
 
-On data never used to build or choose anything the edge is +2.76c and NOT
-significant; in the test period alone it is zero. The monotone decay flagged
-in the previous commit is confirmed and is now the dominant fact about this
-strategy. The full-sample figure remains correct but must not be read as an
-expectation.
+The win rate falls from 88-90% to 78-81%: the outcome is changing, not the
+price.
 
-2. OPTIMISATION ADDS NOTHING
+2. IT IS SPECIFIC TO :00, NOT A MARKET-WIDE DRIFT
 
-A 243-configuration grid over entry band, wait and ask band, searched on train
-only and frozen, gained -0.10c per contract out of sample against the plain
-version (+2.76c vs +2.86c). The search fitted train noise. Its train winner
-does pass a best-of-grid permutation (P=0.0000 against a permuted best of
-+0.49c) - which shows the TRAIN effect is real, not that it generalises.
+  :00 strategy edge      -0.1395 c/day
+  other-minute taker     +0.0541 c/day   (slightly RISING)
+  all-market maker       +0.0086 c/day   (flat)
 
-3. LIQUIDITY IS NOT THE CONSTRAINT
+  :00 minus other-minute slope: -0.1936 c/day
+  95% CI [-0.3444, -0.0561]   P(>=0) 0.0040
 
-Tested against trades_lsm.parquet, 2,114,639 real prints:
+The rest of the market did not change. :00 decayed against it. That is the
+signature of an edge being arbitraged away, not of a regime shift.
 
-  7 signals with tape coverage, 7/7 had prints, 6/7 had depth at our price
-  median depth 770 contracts, 71.4% had >= 15
-  fill ratio at q15 0.7771, backtest +$5.56 -> realistic +$4.35
-  q5 0.857 fill / q15 0.777 / q30 0.746
+3. IS 73 DAYS ENOUGH? EXACTLY, WHICH IS THE PROBLEM
 
-Caveats stated in the report: the VWAP measure averages in prints better than
-our limit so it flatters execution, and n=7 - the tape only covers markets LSM
-actually traded. It supports a liquidity conclusion, not a P&L one.
+  per-trade SD 35.6c   per-DAY SD 16.7c   6.2 trades/day
+  SE of the mean, day-clustered: 1.95c over 73 days
+  smallest edge resolvable at 80% power:  5.47c
+  observed full-sample edge:             +5.47c
 
-4. A TIMESTAMP BUG CAUGHT BEFORE PUBLICATION
+The observed edge sits exactly on the detection threshold. 73 days was just
+enough to catch the original effect and nowhere near enough to measure the
+residual:
 
-The first tape run returned zero prints in every window. trades_lsm.ts is
-epoch SECONDS, not milliseconds: the compaction did .astype("int64") // 10**6
-assuming datetime64[ns] while this pandas stores datetime64[us], so the
-division had already produced seconds. DATA.md documented it wrongly and is
-corrected.
+  confirm +7.50c    39 days
+  confirm +5.00c    87 days
+  confirm +2.76c   286 days (9.5 months)
 
-Same unit-confusion class that invalidated PTC v1. Caught because `ml` came
-out as 29,734,390 minutes - about 56 years - instead of a plausible number.
+Detecting the decay itself needed ~53 days split across periods, which is why
+the arc is visible while the current level is not.
 
-REVISED STATUS
-  liquidity supports q15                     holds
-  momentum / volume / spread filters         refuted, all inert
-  the 2-minute wait is load-bearing          refuted, P=0.1664 vs 1 minute
-  grid optimisation improves it              refuted, -0.10c out of sample
-  the :00 effect is exploitable              UNRESOLVED, +2.76c held out
-
-139 tests pass.
+CONCLUSION. The :00 edge was real and large - about +9 to +11c through late
+May and June at an 88-90% win rate - and decayed monotonically through July to
+roughly zero, specifically, against a flat market. The strategy is not wrong
+and the backtest is not broken; the edge was there and is now largely gone.
+Anything priced off the full-sample +5.47c is priced off the part that has
+already disappeared.
 
 Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
