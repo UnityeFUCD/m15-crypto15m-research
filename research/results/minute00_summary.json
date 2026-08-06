@@ -1,0 +1,639 @@
+{
+  "definition": {
+    "wait_seconds": 120,
+    "ask_floor": 0.6,
+    "ask_ceiling": 0.8,
+    "quantity": 15,
+    "close_minute": 0
+  },
+  "population": {
+    "initial_in_band": 8186,
+    "delayed_ask_in_band": 4051,
+    "top_of_hour": 959,
+    "top_of_hour_cap_one": 533,
+    "days": 73
+  },
+  "per_minute": [
+    {
+      "minute": 0,
+      "n": 959,
+      "days": 73,
+      "mean_ask": 0.713420229405631,
+      "win_rate": 0.7664233576642335,
+      "edge_per_contract": 0.038914028501911724,
+      "total_pnl": 559.7783000000001,
+      "mean_pnl_per_active_day": 7.668195890410961,
+      "sd_active_day": 29.538234137552024,
+      "max_drawdown": 149.07529999999986,
+      "worst_window": -65.91329999999999,
+      "bootstrap": {
+        "mean": 0.038914028501911724,
+        "ci_lo": 0.0045792202592463815,
+        "ci_hi": 0.07224552535460499,
+        "p_nonpositive": 0.013,
+        "days": 73
+      }
+    },
+    {
+      "minute": 15,
+      "n": 1114,
+      "days": 73,
+      "mean_ask": 0.7112298025134649,
+      "win_rate": 0.7154398563734291,
+      "edge_per_contract": -0.009920885697187309,
+      "total_pnl": -165.77799999999996,
+      "mean_pnl_per_active_day": -2.270931506849313,
+      "sd_active_day": 39.09058644861487,
+      "max_drawdown": 334.6552999999999,
+      "worst_window": -55.7667,
+      "bootstrap": {
+        "mean": -0.009920885697187309,
+        "ci_lo": -0.049440994784177426,
+        "ci_hi": 0.028722142423914254,
+        "p_nonpositive": 0.6755,
+        "days": 73
+      }
+    },
+    {
+      "minute": 30,
+      "n": 939,
+      "days": 73,
+      "mean_ask": 0.7097337593184239,
+      "win_rate": 0.7177848775292864,
+      "edge_per_contract": -0.006133858714944971,
+      "total_pnl": -86.39539999999997,
+      "mean_pnl_per_active_day": -1.1834986301369843,
+      "sd_active_day": 33.88405201442484,
+      "max_drawdown": 364.7893000000001,
+      "worst_window": -52.2292,
+      "bootstrap": {
+        "mean": -0.006133858714944971,
+        "ci_lo": -0.046905139272450526,
+        "ci_hi": 0.03354786912336515,
+        "p_nonpositive": 0.62275,
+        "days": 73
+      }
+    },
+    {
+      "minute": 45,
+      "n": 1039,
+      "days": 73,
+      "mean_ask": 0.7134071222329162,
+      "win_rate": 0.7179980750721848,
+      "edge_per_contract": -0.009491613731151743,
+      "total_pnl": -147.92679999999993,
+      "mean_pnl_per_active_day": -2.0263945205479437,
+      "sd_active_day": 31.535935522370043,
+      "max_drawdown": 331.4780999999999,
+      "worst_window": -57.518299999999996,
+      "bootstrap": {
+        "mean": -0.009491613731151743,
+        "ci_lo": -0.04422102867824066,
+        "ci_hi": 0.02379624482331711,
+        "p_nonpositive": 0.712,
+        "days": 73
+      }
+    }
+  ],
+  "top_of_hour_all": {
+    "n": 959,
+    "days": 73,
+    "mean_ask": 0.713420229405631,
+    "win_rate": 0.7664233576642335,
+    "edge_per_contract": 0.038914028501911724,
+    "total_pnl": 559.7783000000001,
+    "mean_pnl_per_active_day": 7.668195890410961,
+    "sd_active_day": 29.538234137552024,
+    "max_drawdown": 149.07529999999986,
+    "worst_window": -65.91329999999999
+  },
+  "top_of_hour_cap_one": {
+    "n": 533,
+    "days": 73,
+    "mean_ask": 0.6972045028142589,
+    "win_rate": 0.7504690431519699,
+    "edge_per_contract": 0.03873283302063791,
+    "total_pnl": 309.66900000000004,
+    "mean_pnl_per_active_day": 4.242041095890412,
+    "sd_active_day": 14.061794165998121,
+    "max_drawdown": 84.78529999999989,
+    "worst_window": -12.168
+  },
+  "chronological_all": [
+    {
+      "split": "train",
+      "n": 477,
+      "days": 36,
+      "mean_ask": 0.7119077568134172,
+      "win_rate": 0.7777777777777778,
+      "edge_per_contract": 0.0517443745632425,
+      "total_pnl": 370.23100000000005,
+      "mean_pnl_per_active_day": 10.284194444444445,
+      "sd_active_day": 29.163185584646605,
+      "max_drawdown": 120.01669999999996,
+      "worst_window": -65.91329999999999,
+      "bootstrap": {
+        "mean": 0.0517443745632425,
+        "ci_lo": 0.003075797767632525,
+        "ci_hi": 0.1007294213761367,
+        "p_nonpositive": 0.018,
+        "days": 36
+      }
+    },
+    {
+      "split": "valid",
+      "n": 268,
+      "days": 18,
+      "mean_ask": 0.714141791044776,
+      "win_rate": 0.7574626865671642,
+      "edge_per_contract": 0.029259800995024888,
+      "total_pnl": 117.62440000000002,
+      "mean_pnl_per_active_day": 6.5346888888888905,
+      "sd_active_day": 33.95178152267417,
+      "max_drawdown": 146.88800000000003,
+      "worst_window": -48.577999999999996,
+      "bootstrap": {
+        "mean": 0.029259800995024888,
+        "ci_lo": -0.04330405557828209,
+        "ci_hi": 0.08410394577625574,
+        "p_nonpositive": 0.18775,
+        "days": 18
+      }
+    },
+    {
+      "split": "test",
+      "n": 214,
+      "days": 19,
+      "mean_ask": 0.7158878504672896,
+      "win_rate": 0.7523364485981309,
+      "edge_per_contract": 0.022405887850467297,
+      "total_pnl": 71.92290000000004,
+      "mean_pnl_per_active_day": 3.7854157894736855,
+      "sd_active_day": 26.77176296289439,
+      "max_drawdown": 125.2972,
+      "worst_window": -53.5999,
+      "bootstrap": {
+        "mean": 0.022405887850467297,
+        "ci_lo": -0.050011689613971996,
+        "ci_hi": 0.08931741859645415,
+        "p_nonpositive": 0.25825,
+        "days": 19
+      }
+    },
+    {
+      "split": "heldout",
+      "n": 482,
+      "days": 37,
+      "mean_ask": 0.7149170124481329,
+      "win_rate": 0.7551867219917012,
+      "edge_per_contract": 0.026216777316735836,
+      "total_pnl": 189.5473000000001,
+      "mean_pnl_per_active_day": 5.122900000000001,
+      "sd_active_day": 30.077333336094735,
+      "max_drawdown": 149.07529999999994,
+      "worst_window": -53.5999,
+      "bootstrap": {
+        "mean": 0.026216777316735836,
+        "ci_lo": -0.02594493022219212,
+        "ci_hi": 0.06960268931250736,
+        "p_nonpositive": 0.1585,
+        "days": 37
+      }
+    }
+  ],
+  "chronological_cap_one": [
+    {
+      "split": "train",
+      "n": 269,
+      "days": 36,
+      "mean_ask": 0.6956877323420075,
+      "win_rate": 0.7546468401486989,
+      "edge_per_contract": 0.044388550185873614,
+      "total_pnl": 179.10780000000005,
+      "mean_pnl_per_active_day": 4.975216666666667,
+      "sd_active_day": 14.692707888327266,
+      "max_drawdown": 52.31430000000002,
+      "worst_window": -12.168,
+      "bootstrap": {
+        "mean": 0.044388550185873614,
+        "ci_lo": 0.000936541722442868,
+        "ci_hi": 0.08933293696077031,
+        "p_nonpositive": 0.02125,
+        "days": 36
+      }
+    },
+    {
+      "split": "valid",
+      "n": 137,
+      "days": 18,
+      "mean_ask": 0.6930656934306568,
+      "win_rate": 0.7372262773722628,
+      "edge_per_contract": 0.029526763990267654,
+      "total_pnl": 60.67750000000001,
+      "mean_pnl_per_active_day": 3.370972222222224,
+      "sd_active_day": 15.384728060140588,
+      "max_drawdown": 64.92479999999999,
+      "worst_window": -12.024200000000002,
+      "bootstrap": {
+        "mean": 0.029526763990267654,
+        "ci_lo": -0.032385117290270535,
+        "ci_hi": 0.08586404274891776,
+        "p_nonpositive": 0.16575,
+        "days": 18
+      }
+    },
+    {
+      "split": "test",
+      "n": 127,
+      "days": 19,
+      "mean_ask": 0.7048818897637796,
+      "win_rate": 0.7559055118110236,
+      "edge_per_contract": 0.03668435695538059,
+      "total_pnl": 69.88370000000002,
+      "mean_pnl_per_active_day": 3.678089473684211,
+      "sd_active_day": 12.06101147554451,
+      "max_drawdown": 41.1797,
+      "worst_window": -12.168,
+      "bootstrap": {
+        "mean": 0.03668435695538059,
+        "ci_lo": -0.013478435670261933,
+        "ci_hi": 0.0902217149054312,
+        "p_nonpositive": 0.0785,
+        "days": 19
+      }
+    },
+    {
+      "split": "heldout",
+      "n": 264,
+      "days": 37,
+      "mean_ask": 0.6987499999999999,
+      "win_rate": 0.7462121212121212,
+      "edge_per_contract": 0.032970000000000006,
+      "total_pnl": 130.5612,
+      "mean_pnl_per_active_day": 3.528681081081082,
+      "sd_active_day": 13.584124077062203,
+      "max_drawdown": 84.78529999999998,
+      "worst_window": -12.168,
+      "bootstrap": {
+        "mean": 0.032970000000000006,
+        "ci_lo": -0.006276662875190211,
+        "ci_hi": 0.0710751232906091,
+        "p_nonpositive": 0.0555,
+        "days": 37
+      }
+    }
+  ],
+  "heldout_all_bootstrap": {
+    "mean": 0.026216777316735836,
+    "ci_lo": -0.02592799341183842,
+    "ci_hi": 0.07005602106324779,
+    "p_nonpositive": 0.151,
+    "days": 37
+  },
+  "heldout_cap_one_bootstrap": {
+    "mean": 0.032970000000000006,
+    "ci_lo": -0.005791925915872696,
+    "ci_hi": 0.07161980155456055,
+    "p_nonpositive": 0.04875,
+    "days": 37
+  },
+  "day_matched_difference": {
+    "n_days": 73,
+    "mean_difference": 0.05473825684910145,
+    "ci_lo": 0.0177232351372457,
+    "ci_hi": 0.09279071392789516,
+    "p_nonpositive": 0.001
+  },
+  "best_of_four_permutation": {
+    "observed": 0.038914028501911724,
+    "permuted_best_mean": 0.016469990179245386,
+    "permuted_best_p95": 0.029076900541594983,
+    "p_value": 0.004666666666666667
+  },
+  "leave_one_coin": [
+    {
+      "excluded_coin": "BTC",
+      "n": 785,
+      "edge_per_contract": 0.037421095541401286,
+      "total_pnl": 440.63340000000017
+    },
+    {
+      "excluded_coin": "DOGE",
+      "n": 817,
+      "edge_per_contract": 0.04094565483476133,
+      "total_pnl": 501.78900000000016
+    },
+    {
+      "excluded_coin": "ETH",
+      "n": 794,
+      "edge_per_contract": 0.037495608732157855,
+      "total_pnl": 446.5727000000001
+    },
+    {
+      "excluded_coin": "HYPE",
+      "n": 807,
+      "edge_per_contract": 0.04282721189591079,
+      "total_pnl": 518.4234000000001
+    },
+    {
+      "excluded_coin": "SOL",
+      "n": 807,
+      "edge_per_contract": 0.03603685254027262,
+      "total_pnl": 436.2261000000001
+    },
+    {
+      "excluded_coin": "XRP",
+      "n": 785,
+      "edge_per_contract": 0.038662157112526546,
+      "total_pnl": 455.2469000000001
+    }
+  ],
+  "leave_one_week": [
+    {
+      "excluded_week": "2026-22",
+      "n": 851,
+      "edge_per_contract": 0.027936874265569928,
+      "total_pnl": 356.6142000000001
+    },
+    {
+      "excluded_week": "2026-23",
+      "n": 858,
+      "edge_per_contract": 0.037017062937062944,
+      "total_pnl": 476.40960000000007
+    },
+    {
+      "excluded_week": "2026-24",
+      "n": 882,
+      "edge_per_contract": 0.031451186696900994,
+      "total_pnl": 416.0992000000001
+    },
+    {
+      "excluded_week": "2026-25",
+      "n": 872,
+      "edge_per_contract": 0.04459407492354742,
+      "total_pnl": 583.2905000000001
+    },
+    {
+      "excluded_week": "2026-26",
+      "n": 862,
+      "edge_per_contract": 0.046978406805877816,
+      "total_pnl": 607.4308000000001
+    },
+    {
+      "excluded_week": "2026-27",
+      "n": 855,
+      "edge_per_contract": 0.03652268226120859,
+      "total_pnl": 468.40340000000003
+    },
+    {
+      "excluded_week": "2026-28",
+      "n": 863,
+      "edge_per_contract": 0.03863686365392044,
+      "total_pnl": 500.15420000000006
+    },
+    {
+      "excluded_week": "2026-29",
+      "n": 854,
+      "edge_per_contract": 0.046645589383294314,
+      "total_pnl": 597.5300000000002
+    },
+    {
+      "excluded_week": "2026-30",
+      "n": 871,
+      "edge_per_contract": 0.042516670493685425,
+      "total_pnl": 555.4803
+    },
+    {
+      "excluded_week": "2026-31",
+      "n": 894,
+      "edge_per_contract": 0.04215047725577928,
+      "total_pnl": 565.2379000000001
+    },
+    {
+      "excluded_week": "2026-32",
+      "n": 928,
+      "edge_per_contract": 0.03384575431034484,
+      "total_pnl": 471.1329000000001
+    }
+  ],
+  "leave_one_hour": [
+    {
+      "excluded_hour": "0",
+      "n": 912,
+      "edge_per_contract": 0.035104751461988305,
+      "total_pnl": 480.2330000000001
+    },
+    {
+      "excluded_hour": "1",
+      "n": 911,
+      "edge_per_contract": 0.03740771313574827,
+      "total_pnl": 511.17640000000017
+    },
+    {
+      "excluded_hour": "2",
+      "n": 924,
+      "edge_per_contract": 0.034584350649350656,
+      "total_pnl": 479.3391000000001
+    },
+    {
+      "excluded_hour": "3",
+      "n": 923,
+      "edge_per_contract": 0.036678786565547135,
+      "total_pnl": 507.81780000000015
+    },
+    {
+      "excluded_hour": "4",
+      "n": 927,
+      "edge_per_contract": 0.04183697950377563,
+      "total_pnl": 581.7432000000001
+    },
+    {
+      "excluded_hour": "5",
+      "n": 918,
+      "edge_per_contract": 0.04024162672476399,
+      "total_pnl": 554.1272
+    },
+    {
+      "excluded_hour": "6",
+      "n": 918,
+      "edge_per_contract": 0.04837698620188818,
+      "total_pnl": 666.1511
+    },
+    {
+      "excluded_hour": "7",
+      "n": 922,
+      "edge_per_contract": 0.035819891540130155,
+      "total_pnl": 495.3891000000001
+    },
+    {
+      "excluded_hour": "8",
+      "n": 923,
+      "edge_per_contract": 0.03737297219212713,
+      "total_pnl": 517.4288000000001
+    },
+    {
+      "excluded_hour": "9",
+      "n": 933,
+      "edge_per_contract": 0.03682952483029654,
+      "total_pnl": 515.4292
+    },
+    {
+      "excluded_hour": "10",
+      "n": 923,
+      "edge_per_contract": 0.03631997110870351,
+      "total_pnl": 502.85000000000014
+    },
+    {
+      "excluded_hour": "11",
+      "n": 934,
+      "edge_per_contract": 0.036876566738044264,
+      "total_pnl": 516.6407000000002
+    },
+    {
+      "excluded_hour": "12",
+      "n": 922,
+      "edge_per_contract": 0.04094537237888649,
+      "total_pnl": 566.2745000000001
+    },
+    {
+      "excluded_hour": "13",
+      "n": 930,
+      "edge_per_contract": 0.038070272401433694,
+      "total_pnl": 531.0803000000001
+    },
+    {
+      "excluded_hour": "14",
+      "n": 910,
+      "edge_per_contract": 0.0394542783882784,
+      "total_pnl": 538.5509000000002
+    },
+    {
+      "excluded_hour": "15",
+      "n": 921,
+      "edge_per_contract": 0.04440490047050309,
+      "total_pnl": 613.4537
+    },
+    {
+      "excluded_hour": "16",
+      "n": 918,
+      "edge_per_contract": 0.04222122004357299,
+      "total_pnl": 581.3862000000001
+    },
+    {
+      "excluded_hour": "17",
+      "n": 917,
+      "edge_per_contract": 0.044993631406761186,
+      "total_pnl": 618.8874000000001
+    },
+    {
+      "excluded_hour": "18",
+      "n": 913,
+      "edge_per_contract": 0.034666966046002196,
+      "total_pnl": 474.7641000000001
+    },
+    {
+      "excluded_hour": "19",
+      "n": 913,
+      "edge_per_contract": 0.03444227090178898,
+      "total_pnl": 471.6869000000001
+    },
+    {
+      "excluded_hour": "20",
+      "n": 914,
+      "edge_per_contract": 0.046327665937272076,
+      "total_pnl": 635.1523000000002
+    },
+    {
+      "excluded_hour": "21",
+      "n": 900,
+      "edge_per_contract": 0.03513677777777779,
+      "total_pnl": 474.3465000000001
+    },
+    {
+      "excluded_hour": "22",
+      "n": 928,
+      "edge_per_contract": 0.03392860632183909,
+      "total_pnl": 472.2862000000001
+    },
+    {
+      "excluded_hour": "23",
+      "n": 903,
+      "edge_per_contract": 0.04198643779992619,
+      "total_pnl": 568.7063
+    }
+  ],
+  "calibration": {
+    "n_train": 2007,
+    "n_heldout": 2044,
+    "base_log_loss": 0.5758038536225235,
+    "minute_log_loss": 0.5761651563375456,
+    "delta_log_loss": 0.00036130271502210487,
+    "base_brier": 0.19429346563737931,
+    "minute_brier": 0.1943672319352057,
+    "delta_brier": 7.376629782637756e-05
+  },
+  "wait_sensitivity": [
+    {
+      "wait_seconds": 60,
+      "n": 631,
+      "days": 73,
+      "mean_ask": 0.6914580031695721,
+      "win_rate": 0.7242472266244057,
+      "edge_per_contract": 0.018074506075013215,
+      "total_pnl": 171.07520000000008,
+      "mean_pnl_per_active_day": 2.3434958904109595,
+      "sd_active_day": 16.74522347106646,
+      "max_drawdown": 135.97290000000004,
+      "worst_window": -12.168
+    },
+    {
+      "wait_seconds": 120,
+      "n": 533,
+      "days": 73,
+      "mean_ask": 0.6972045028142589,
+      "win_rate": 0.7504690431519699,
+      "edge_per_contract": 0.03873283302063791,
+      "total_pnl": 309.66900000000004,
+      "mean_pnl_per_active_day": 4.242041095890412,
+      "sd_active_day": 14.061794165998121,
+      "max_drawdown": 84.78529999999989,
+      "worst_window": -12.168
+    },
+    {
+      "wait_seconds": 180,
+      "n": 478,
+      "days": 73,
+      "mean_ask": 0.6939121338912135,
+      "win_rate": 0.7552301255230126,
+      "edge_per_contract": 0.046705829846582995,
+      "total_pnl": 334.8808,
+      "mean_pnl_per_active_day": 4.587408219178083,
+      "sd_active_day": 13.287133610572647,
+      "max_drawdown": 88.25979999999987,
+      "worst_window": -12.168
+    },
+    {
+      "wait_seconds": 300,
+      "n": 367,
+      "days": 73,
+      "mean_ask": 0.6923705722070845,
+      "win_rate": 0.7193460490463215,
+      "edge_per_contract": 0.012327211625794733,
+      "total_pnl": 67.8613,
+      "mean_pnl_per_active_day": 0.9296068493150691,
+      "sd_active_day": 12.90680195579844,
+      "max_drawdown": 146.61690000000004,
+      "worst_window": -12.168
+    }
+  ],
+  "gates": {
+    "heldout_all_lower_bound_positive": false,
+    "heldout_cap_one_lower_bound_positive": false,
+    "train_valid_test_all_positive": true,
+    "best_of_four_p_below_005": true,
+    "minute_improves_heldout_logloss_and_brier": false,
+    "leave_one_coin_positive": true,
+    "leave_one_week_positive": true
+  },
+  "hard_pass": false
+}
