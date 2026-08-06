@@ -1,4 +1,4 @@
-name: Settlement Probability Engine Audit
+name: Settlement Probability and Minute-Zero Audit
 
 on:
   push:
@@ -7,6 +7,8 @@ on:
     paths:
       - "research/spe_*.py"
       - "research/run_settlement_probability_engine.py"
+      - "research/minute00_delay_audit.py"
+      - "research/run_minute00_delay_audit_v2.py"
       - "data/**"
       - ".github/workflows/spe_audit.yml"
 
@@ -15,7 +17,7 @@ permissions:
 
 jobs:
   audit:
-    if: ${{ !contains(github.event.head_commit.message, '[skip spe]') }}
+    if: ${{ !contains(github.event.head_commit.message, '[skip combined-audit]') }}
     runs-on: ubuntu-latest
     timeout-minutes: 90
 
@@ -36,16 +38,16 @@ jobs:
           pip install -r requirements.txt
           pip install scipy scikit-learn
 
-      - name: Run clean-room SPE audit
+      - name: Run proxy-free top-of-hour audit
         id: audit
         shell: bash
         run: |
           set +e
           mkdir -p research/results
-          python research/run_settlement_probability_engine.py > research/results/spe_run.log 2>&1
+          python research/run_minute00_delay_audit_v2.py > research/results/minute00_combined_run.log 2>&1
           status=$?
           echo "exit_code=$status" >> "$GITHUB_OUTPUT"
-          cat research/results/spe_run.log
+          cat research/results/minute00_combined_run.log
           exit 0
 
       - name: Commit evidence or failure log
@@ -53,14 +55,14 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -f research/results/spe_run.log
-          for f in research/results/spe_report.md research/results/spe_summary.json research/results/spe_probability_metrics.csv research/results/spe_validation_policy_grid.csv research/results/spe_test_leave_one_coin.csv research/results/spe_test_leave_one_week.csv research/results/spe_test_leave_one_hour.csv research/results/spe_test_residual_deciles.csv research/results/spe_test_selected_trades.parquet; do
+          git add -f research/results/minute00_combined_run.log
+          for f in research/results/minute00_report.md research/results/minute00_summary.json research/results/minute00_wait_sensitivity.csv research/results/minute00_leave_one_coin.csv research/results/minute00_leave_one_week.csv research/results/minute00_cap_one_trades.parquet; do
             if [ -f "$f" ]; then git add -f "$f"; fi
           done
           if git diff --cached --quiet; then
             echo "No generated changes"
           else
-            git commit -m "Settlement probability engine audit results [skip spe]"
+            git commit -m "Proxy-free minute-zero audit results [skip combined-audit]"
             git push origin HEAD:codex/settlement-probability-engine
           fi
 
