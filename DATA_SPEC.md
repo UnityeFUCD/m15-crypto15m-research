@@ -11,36 +11,35 @@ error. This document specifies what replaces them.
 
 ---
 
-## 0. What the exchange actually provides — read this first
+## 0. What the exchange actually provides -- read this first
 
-Three of the requirements below are constrained by what Kalshi exposes. Verified
-against the live API on 2026-08-06:
+Verified against the live API on 2026-08-06.
 
-| requirement | status | notes |
+| capability | status | endpoint / field |
 |---|---|---|
-| `client_order_id` | **available** | present on every order object; use it |
-| maker/taker flag per fill | **available** | `is_taker` on `/portfolio/fills` |
-| per-fill fee | **available** | `fee_cost` |
-| public tape with aggressor | **available** | `/markets/trades` → `taker_side`, `taker_book_side`, `taker_outcome_side`, `count_fp`, `created_time` |
-| order book | **L2 only** | `/markets/{t}/orderbook` returns `[price, aggregate_size]` per level |
-| **exchange-reported queue position** | **DOES NOT EXIST** | Kalshi never emits L3. No queue field on any endpoint, for anyone |
+| **authoritative queue position (single)** | **AVAILABLE** | `GET /portfolio/orders/{order_id}/queue_position` -> `{"queue_position_fp": "0.00"}` |
+| **authoritative queue position (batch)** | **AVAILABLE** | `GET /portfolio/orders/queue_positions?market_tickers=<csv>` or `?event_ticker=<t>` |
+| `client_order_id` | available | on every order object |
+| maker/taker per fill | available | `is_taker` on `/portfolio/fills` |
+| per-fill fee | available | `fee_cost` |
+| public tape with aggressor | available | `/markets/trades` -> `taker_side`, `taker_book_side`, `count_fp` |
+| order book | **L2 only** | `[price, aggregate_size]` per level, no per-order breakdown |
 
-**§3 as originally written is not implementable.** There is no queue position to
-read. Do not spend time looking for it — the runner's own header has said so
-since it was written.
+**Correction to an earlier revision of this document.** It claimed
+exchange-reported queue position does not exist. **That was wrong.** The claim
+was inferred from the L2 book shape and from a comment in `live/lsm_runner.py`
+("Kalshi never emits L3, so queue position is unobservable") instead of being
+probed. That comment is true of the *order book* and false of the *portfolio*
+endpoints.
 
-**What replaces it — and it is better than displayed size.** We join the back of
-the queue at a known price `P` at a known timestamp. From that moment, the
-public tape tells us exactly how much volume trades *at* `P` on our side. So:
+The batch form **requires** `market_tickers` or `event_ticker`; passing
+`order_ids` returns
+`400 {"details": "Need to specify market_tickers or event_ticker"}`.
 
-- if we fill after `V` contracts have traded at `P`, our true queue position was **≤ V**
-- if we cancel unfilled after `V` traded, our true queue position was **> V**
-
-That is a **censored observation of true queue position** on every single order —
-left-censored on fills, right-censored on cancels. It is measured, not assumed,
-and it is exactly the input a survival model needs to estimate
-`P(fill | queue, state, action)`. Displayed size at submission is retained as a
-covariate (an upper bound on queue ahead), never as the queue itself.
+**Not yet validated:** every order in the account is `executed`, so all reads
+return `0.00`. A non-zero value cannot be confirmed until an order rests.
+Capture must record `queue_read_ok` separately from the value, and treat
+`0.00` on a *resting* order as suspicious rather than authoritative.
 
 ---
 
@@ -113,27 +112,62 @@ intent, submit, and only update exposure on a confirmed ack.
 
 ---
 
-## 3. Queue — `queue_snapshots.parquet`
+## 3. Queue -- `queue_snapshots`
 
-Not exchange-reported (see §0). Reconstructed by differencing the public tape.
+Three **distinct** concepts. Never conflate them; never name cumulative traded
+volume "queue position".
+
+### 3a. Authoritative queue position -- the primary measurement
 
 ```
-client_order_id         str
-ts_ms                   int64
-displayed_ahead_at_post  float64   size at our price when we joined (upper bound)
-cum_traded_at_our_px    float64   volume traded AT our price since submission, our side
-cum_traded_all_px       float64   total volume in the market since submission
-book_size_at_our_px     float64   current displayed size at our level
-inferred_ahead_lower    float64   0 if filled, else cum_traded_at_our_px
-inferred_ahead_upper    float64   cum_traded_at_our_px if filled, else +inf
-event                   str       "periodic" | "pre_fill" | "pre_cancel" | "at_expiry"
+client_order_id, order_id
+queue_position_fp     the exchange's own number: raw string AND parsed int
+ts_request_ms         when WE sent the read
+ts_response_ms        when the response arrived
+queue_read_ok         bool; false on any non-200 or transport failure
+source_endpoint       "single" | "batch"
+http_status, error_body
 ```
 
-Snapshot at least every 5 s while resting, and always immediately before a
-fill, before a cancel, and at expiry. `inferred_ahead_lower/upper` is the
-censored interval — feed it to a survival model, not to a point estimate.
+Request and response timestamps are stored separately because the true queue at
+the moment of a fill lies somewhere inside that interval, and the width of the
+interval is the measurement uncertainty.
 
----
+### 3b. Queue-flow state -- supporting variables, never a substitute
+
+```
+displayed_size_at_our_px    book size at our level
+book_at_submission          full depth when we joined
+book_during_resting         full depth at each snapshot
+cum_traded_at_our_px        volume traded at exactly our price, our side
+cum_traded_all_px           total market volume since submission
+trade_count_at_our_px
+signed_aggressor_flow       buy-initiated minus sell-initiated
+displayed_size_delta        change since the previous snapshot
+est_cancellations_ahead     displayed_size_delta MINUS traded-at-price
+```
+
+`est_cancellations_ahead` is the one genuinely inferable decomposition: the
+queue shrinks either because volume traded through it or because orders ahead
+were pulled. Differencing the two separates them.
+
+### 3c. Censored fallback -- only when 3a fails
+
+```
+inferred_ahead_lower, inferred_ahead_upper
+inferred_basis = "tape_censored"
+```
+
+Used **only** when `queue_read_ok` is false, and always labelled as inferred.
+
+### Snapshot triggers
+
+immediately after acceptance; periodically while resting; after any trade at
+our price; after a material book change; before cancel request; after cancel
+response; immediately before/after each partial fill; at expiry; during startup
+reconciliation.
+
+Each row also carries `order_remaining_qty`, `order_state` and `reason`.
 
 ## 4. Order lifecycle — `order_events.parquet`
 
@@ -219,8 +253,8 @@ state  = queue interval, spread, price, secs_remaining, cum_volume, coin, quanti
 action = price offset, quantity, cancellation policy
 ```
 
-Fit as a **survival model with censoring** (the queue observations in §3 are
-interval-censored), not a logistic on fill/no-fill — a cancelled order is not a
+Fit as a **survival model**. Queue is observed directly (3a); only failed
+reads fall back to interval-censored bounds (3c), not a logistic on fill/no-fill — a cancelled order is not a
 "no fill", it is an observation truncated at the cancel time.
 
 ## 9. Objective
