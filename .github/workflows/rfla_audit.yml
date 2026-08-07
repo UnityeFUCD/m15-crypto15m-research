@@ -39,6 +39,7 @@ jobs:
           touch .rfla_vendor/research/__init__.py
           git show origin/codex/reward-adjusted-commodity15m:research/reward_adjusted_commodity15m.py > .rfla_vendor/research/reward_adjusted_commodity15m.py
           git show origin/codex/reward-adjusted-commodity15m:research/commodity15m_reward_data_fast.py > .rfla_vendor/research/commodity15m_reward_data_fast.py
+          git show origin/codex/reward-adjusted-commodity15m:research/reward_adjusted_commodity15m_onesided.py > .rfla_vendor/research/reward_adjusted_commodity15m_onesided.py
           git show origin/codex/reward-adjusted-commodity15m:research/reward_adjusted_commodity15m_priority.py > .rfla_vendor/research/reward_adjusted_commodity15m_priority.py
 
       - name: Run preregistered audit
