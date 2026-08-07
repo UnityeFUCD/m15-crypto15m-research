@@ -7,22 +7,9 @@
 Traceback (most recent call last):
   File "/home/runner/work/m15-crypto15m-research/m15-crypto15m-research/research/cross_market_quote_lag.py", line 735, in <module>
     main()
-  File "/home/runner/work/m15-crypto15m-research/m15-crypto15m-research/research/cross_market_quote_lag.py", line 557, in main
-    valid_econ[model_name] = add_economics(valid, predictions[model_name]["valid"])
-                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/runner/work/m15-crypto15m-research/m15-crypto15m-research/research/cross_market_quote_lag.py", line 310, in add_economics
-    out["pred_p_yes"] = np.clip(p_yes, EPS, 1.0 - EPS)
-                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/numpy/_core/fromnumeric.py", line 2296, in clip
-    return _wrapfunc(a, 'clip', a_min, a_max, out=out, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/numpy/_core/fromnumeric.py", line 51, in _wrapfunc
-    return _wrapit(obj, method, *args, **kwds)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/numpy/_core/fromnumeric.py", line 43, in _wrapit
-    result = getattr(arr, method)(*args, **kwds)
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/numpy/_core/_methods.py", line 113, in _clip
-    return um.clip(a, min, max, out=out, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-TypeError: '>=' not supported between instances of 'dict' and 'float'
+  File "/home/runner/work/m15-crypto15m-research/m15-crypto15m-research/research/cross_market_quote_lag.py", line 559, in main
+    config, grid = choose_config(valid_econ[model_name], valid_dates)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/m15-crypto15m-research/m15-crypto15m-research/research/cross_market_quote_lag.py", line 418, in choose_config
+    raise RuntimeError("no validation configuration with >=40 trades")
+RuntimeError: no validation configuration with >=40 trades
