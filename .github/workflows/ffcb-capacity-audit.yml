@@ -18,10 +18,14 @@ jobs:
         run: python -m pip install --disable-pip-version-check pandas numpy pyarrow requests
       - name: Run read-only FFCB capacity audit
         run: python research/ffcb_capacity_ci.py
-      - name: Upload machine-readable result
+      - name: Run public combo discovery
+        run: python research/mve_public_discovery_ci.py
+      - name: Upload machine-readable results
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: ffcb-capacity-results
-          path: ffcb_capacity_results.json
+          name: research-results
+          path: |
+            ffcb_capacity_results.json
+            mve_public_discovery.json
           if-no-files-found: ignore
