@@ -1,0 +1,141 @@
+{
+  "programs": 322,
+  "markets": 322,
+  "paths": 292,
+  "state_rows": 2920,
+  "hard_pass": false,
+  "results": {
+    "strict_1.00": {
+      "n": 0,
+      "blocks": [
+        {
+          "minutes": 15,
+          "ci_lo": 0.0,
+          "ci_hi": 0.0,
+          "p_nonpositive": 1.0,
+          "n_blocks": 0
+        },
+        {
+          "minutes": 30,
+          "ci_lo": 0.0,
+          "ci_hi": 0.0,
+          "p_nonpositive": 1.0,
+          "n_blocks": 0
+        },
+        {
+          "minutes": 60,
+          "ci_lo": 0.0,
+          "ci_hi": 0.0,
+          "p_nonpositive": 1.0,
+          "n_blocks": 0
+        },
+        {
+          "minutes": 90,
+          "ci_lo": 0.0,
+          "ci_hi": 0.0,
+          "p_nonpositive": 1.0,
+          "n_blocks": 0
+        }
+      ]
+    },
+    "strict_0.75": {
+      "n": 0,
+      "blocks": [
+        {
+          "minutes": 15,
+          "ci_lo": 0.0,
+          "ci_hi": 0.0,
+          "p_nonpositive": 1.0,
+          "n_blocks": 0
+        },
+        {
+          "minutes": 30,
+          "ci_lo": 0.0,
+          "ci_hi": 0.0,
+          "p_nonpositive": 1.0,
+          "n_blocks": 0
+        },
+        {
+          "minutes": 60,
+          "ci_lo": 0.0,
+          "ci_hi": 0.0,
+          "p_nonpositive": 1.0,
+          "n_blocks": 0
+        },
+        {
+          "minutes": 90,
+          "ci_lo": 0.0,
+          "ci_hi": 0.0,
+          "p_nonpositive": 1.0,
+          "n_blocks": 0
+        }
+      ]
+    },
+    "touch_1.00": {
+      "n": 0,
+      "blocks": [
+        {
+          "minutes": 15,
+          "ci_lo": 0.0,
+          "ci_hi": 0.0,
+          "p_nonpositive": 1.0,
+          "n_blocks": 0
+        },
+        {
+          "minutes": 30,
+          "ci_lo": 0.0,
+          "ci_hi": 0.0,
+          "p_nonpositive": 1.0,
+          "n_blocks": 0
+        },
+        {
+          "minutes": 60,
+          "ci_lo": 0.0,
+          "ci_hi": 0.0,
+          "p_nonpositive": 1.0,
+          "n_blocks": 0
+        },
+        {
+          "minutes": 90,
+          "ci_lo": 0.0,
+          "ci_hi": 0.0,
+          "p_nonpositive": 1.0,
+          "n_blocks": 0
+        }
+      ]
+    },
+    "touch_0.75": {
+      "n": 0,
+      "blocks": [
+        {
+          "minutes": 15,
+          "ci_lo": 0.0,
+          "ci_hi": 0.0,
+          "p_nonpositive": 1.0,
+          "n_blocks": 0
+        },
+        {
+          "minutes": 30,
+          "ci_lo": 0.0,
+          "ci_hi": 0.0,
+          "p_nonpositive": 1.0,
+          "n_blocks": 0
+        },
+        {
+          "minutes": 60,
+          "ci_lo": 0.0,
+          "ci_hi": 0.0,
+          "p_nonpositive": 1.0,
+          "n_blocks": 0
+        },
+        {
+          "minutes": 90,
+          "ci_lo": 0.0,
+          "ci_hi": 0.0,
+          "p_nonpositive": 1.0,
+          "n_blocks": 0
+        }
+      ]
+    }
+  }
+}

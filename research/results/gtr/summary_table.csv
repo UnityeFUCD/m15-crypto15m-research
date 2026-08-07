@@ -1,0 +1,5 @@
+fill_model,score_stress,n,block15_lo,block30_lo,block60_lo,block90_lo,block15_p,block30_p,block60_p,block90_p
+strict,1.0,0,0.0,0.0,0.0,0.0,1.0,1.0,1.0,1.0
+strict,0.75,0,0.0,0.0,0.0,0.0,1.0,1.0,1.0,1.0
+touch,1.0,0,0.0,0.0,0.0,0.0,1.0,1.0,1.0,1.0
+touch,0.75,0,0.0,0.0,0.0,0.0,1.0,1.0,1.0,1.0

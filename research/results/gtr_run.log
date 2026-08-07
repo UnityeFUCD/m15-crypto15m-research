@@ -1,0 +1,15 @@
+paths 250/322; kept 232; 1.7/s
+Traceback (most recent call last):
+  File "/home/runner/work/m15-crypto15m-research/m15-crypto15m-research/research/gold_tail_reward_audit.py", line 172, in <module>
+    main()
+  File "/home/runner/work/m15-crypto15m-research/m15-crypto15m-research/research/gold_tail_reward_audit.py", line 164, in main
+    table[cols].to_markdown(index=False, floatfmt=".5f"), "",
+    ~~~~~^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/pandas/core/frame.py", line 4384, in __getitem__
+    indexer = self.columns._get_indexer_strict(key, "columns")[1]
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/pandas/core/indexes/base.py", line 6302, in _get_indexer_strict
+    self._raise_if_missing(keyarr, indexer, axis_name)
+  File "/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/pandas/core/indexes/base.py", line 6355, in _raise_if_missing
+    raise KeyError(f"{not_found} not in index")
+KeyError: "['fills', 'fill_rate', 'fill_win_rate', 'trading_pnl', 'reward_pnl', 'combined_pnl', 'paid_program_fraction', 'mean_day', 'max_drawdown', 'worst_window', 'leave_one_day_min'] not in index"
