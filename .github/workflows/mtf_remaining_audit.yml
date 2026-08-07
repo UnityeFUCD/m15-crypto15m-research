@@ -1,0 +1,42 @@
+name: MTF Remaining-Time Audit
+
+on:
+  push:
+    branches: [codex/genuine-breakthrough-search]
+    paths:
+      - "research/mtf_remaining_time_audit.py"
+      - "research/mtf_remaining_time_preregistration.md"
+      - ".github/workflows/mtf_remaining_audit.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: codex/genuine-breakthrough-search
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install pandas requests tabulate
+      - name: Run current necessary-condition screen
+        env:
+          PYTHONIOENCODING: utf-8
+        run: |
+          set -o pipefail
+          python research/mtf_remaining_time_audit.py 2>&1 | tee research/results/mtf_remaining_run.log
+      - name: Commit evidence
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add research/results/mtf_remaining research/results/mtf_remaining_run.log || true
+          if ! git diff --cached --quiet; then
+            git commit -m "MTF remaining-time results [skip ci]"
+            git push origin HEAD:codex/genuine-breakthrough-search
+          fi
