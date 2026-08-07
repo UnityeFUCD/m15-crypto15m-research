@@ -35,7 +35,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt scikit-learn scipy tabulate
 
-      - name: Apply narrow runner fix
+      - name: Apply narrow runner fixes
         run: |
           python - <<'PY'
           from pathlib import Path
@@ -48,6 +48,10 @@ jobs:
           s = s.replace(
               'add_economics(test, predictions[model_name]["test"])',
               'add_economics(test, predictions[model_name]["test"]["p_yes"])',
+          )
+          s = s.replace(
+              '    if best is None:\n        raise RuntimeError("no validation configuration with >=40 trades")\n    return best[1], grid\n',
+              '    if best is None:\n        # This is a registered hard failure, not a software error. Return the\n        # most active frozen-grid cell so the sealed report can complete.\n        fallback = grid.sort_values(["n", "mean_day"], ascending=[False, False]).iloc[0]\n        return {"ml": int(fallback["ml"]), "threshold": float(fallback["threshold"]), "validation_n_gate_failed": True}, grid\n    return best[1], grid\n',
           )
           p.write_text(s, encoding='utf-8')
           PY
