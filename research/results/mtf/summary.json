@@ -1,0 +1,12 @@
+{
+  "fetched_at": "2026-08-07T01:11:33.269083+00:00",
+  "active_programs": 3745,
+  "normalized_programs": 3745,
+  "enriched_programs": 1200,
+  "one_sided_rows": 759,
+  "two_sided_rows": 279,
+  "one_sided_arithmetic_cover": 34,
+  "one_sided_strong": 6,
+  "two_sided_arithmetic_cover": 1,
+  "two_sided_strong": 0
+}
