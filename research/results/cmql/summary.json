@@ -1,0 +1,112 @@
+{
+  "panel_rows": 114138,
+  "synchronized_windows": 19023,
+  "split_meta": {
+    "dates": 73,
+    "train": [
+      "2026-05-25",
+      "2026-06-29",
+      36
+    ],
+    "valid": [
+      "2026-06-30",
+      "2026-07-17",
+      18
+    ],
+    "test": [
+      "2026-07-18",
+      "2026-08-05",
+      19
+    ]
+  },
+  "configs": {
+    "market": {
+      "ml": 12,
+      "threshold": 0.02,
+      "validation_n_gate_failed": true,
+      "model": "market"
+    },
+    "own": {
+      "ml": 12,
+      "threshold": 0.02,
+      "model": "own"
+    },
+    "peer": {
+      "ml": 12,
+      "threshold": 0.02,
+      "model": "peer"
+    }
+  },
+  "information_pass": false,
+  "economic_pass": false,
+  "pair_pass": false,
+  "peer_vs_baseline_pass": false,
+  "peer_block_pass": false,
+  "peer_leave_one_pass": false,
+  "peer_decile_pass": false,
+  "peer_decile_spearman": -0.04242424242424241,
+  "test_summaries": [
+    {
+      "model": "market",
+      "ml": 12,
+      "threshold": 0.02,
+      "validation_n_gate_failed": true,
+      "n": 0,
+      "days": 19,
+      "total_pnl": 0.0,
+      "mean_day": 0.0,
+      "sd_day": 0.0,
+      "edge_per_contract": NaN,
+      "win_rate": NaN,
+      "mean_ask": NaN,
+      "ci_lo": 0.0,
+      "ci_hi": 0.0,
+      "p_nonpositive": 1.0,
+      "max_drawdown": 0.0,
+      "worst_window": 0.0
+    },
+    {
+      "model": "own",
+      "ml": 12,
+      "threshold": 0.02,
+      "n": 55,
+      "days": 19,
+      "total_pnl": -96.5816,
+      "mean_day": -5.0832421052631585,
+      "sd_day": 12.72987238293874,
+      "edge_per_contract": -0.11706860606060605,
+      "win_rate": 0.4,
+      "mean_ask": 0.5009090909090907,
+      "ci_lo": -10.483941184210527,
+      "ci_hi": 0.6331955263157888,
+      "p_nonpositive": 0.96105,
+      "max_drawdown": 88.07170000000002,
+      "worst_window": -9.9889
+    },
+    {
+      "model": "peer",
+      "ml": 12,
+      "threshold": 0.02,
+      "n": 52,
+      "days": 19,
+      "total_pnl": -68.26389999999999,
+      "mean_day": -3.5928368421052634,
+      "sd_day": 11.799411241112862,
+      "edge_per_contract": -0.0875178205128205,
+      "win_rate": 0.4230769230769231,
+      "mean_ask": 0.4946153846153845,
+      "ci_lo": -8.633687631578947,
+      "ci_hi": 1.708431973684199,
+      "p_nonpositive": 0.90745,
+      "max_drawdown": 59.754000000000005,
+      "worst_window": -9.9889
+    }
+  ],
+  "pair_summary": {
+    "config": {
+      "ml": 12,
+      "threshold": 0.08
+    },
+    "n": 0
+  }
+}
