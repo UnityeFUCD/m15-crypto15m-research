@@ -1,5 +1,6 @@
 name: RFLA Audit
 
+# Explicit rerun after the complete vendor dependency set was loaded.
 on:
   push:
     branches: [codex/genuine-breakthrough-search]
