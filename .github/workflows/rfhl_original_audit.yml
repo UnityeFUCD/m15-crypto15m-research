@@ -1,0 +1,48 @@
+name: RFHL Original Audit
+
+on:
+  push:
+    branches: [codex/genuine-breakthrough-search]
+    paths:
+      - ".github/workflows/rfhl_original_audit.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: codex/genuine-breakthrough-search
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install pandas numpy pyarrow requests tabulate
+      - name: Load frozen RFHL code into temporary current-tree modules
+        run: |
+          git fetch origin codex/reward-adjusted-commodity15m
+          git show origin/codex/reward-adjusted-commodity15m:research/reward_adjusted_commodity15m.py > research/reward_adjusted_commodity15m.py
+          git show origin/codex/reward-adjusted-commodity15m:research/commodity15m_reward_data_fast.py > research/commodity15m_reward_data_fast.py
+          git show origin/codex/reward-adjusted-commodity15m:research/reward_adjusted_commodity15m_onesided.py > research/reward_adjusted_commodity15m_onesided.py
+          git show origin/codex/reward-adjusted-commodity15m:research/reward_hedged_liquidity.py > research/reward_hedged_liquidity.py
+      - name: Run RFHL
+        env:
+          PYTHONIOENCODING: utf-8
+        run: |
+          set -o pipefail
+          python research/reward_hedged_liquidity.py 2>&1 | tee research/results/rfhl_original_run.log
+      - name: Commit evidence only
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add research/results/rfhl_* research/results/commodity15m_* || true
+          if ! git diff --cached --quiet; then
+            git commit -m "RFHL original audit results [skip ci]"
+            git push origin HEAD:codex/genuine-breakthrough-search
+          fi
