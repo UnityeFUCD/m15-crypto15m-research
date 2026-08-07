@@ -1,0 +1,42 @@
+name: MTF Incentive Audit
+
+on:
+  push:
+    branches: [codex/genuine-breakthrough-search]
+    paths:
+      - "research/mtf_incentive_audit.py"
+      - "research/mtf_incentive_preregistration.md"
+      - ".github/workflows/mtf_incentive_audit.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: codex/genuine-breakthrough-search
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install pandas requests tabulate
+      - name: Run current public incentive screen
+        env:
+          PYTHONIOENCODING: utf-8
+        run: |
+          set -o pipefail
+          python research/mtf_incentive_audit.py 2>&1 | tee research/results/mtf_run.log
+      - name: Commit evidence
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add research/results/mtf research/results/mtf_run.log || true
+          if ! git diff --cached --quiet; then
+            git commit -m "MTF incentive screen results [skip ci]"
+            git push origin HEAD:codex/genuine-breakthrough-search
+          fi
