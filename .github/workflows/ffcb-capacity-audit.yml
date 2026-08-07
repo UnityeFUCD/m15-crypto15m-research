@@ -8,7 +8,7 @@ permissions:
 jobs:
   audit:
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -16,12 +16,12 @@ jobs:
           python-version: '3.12'
       - name: Install requests
         run: python -m pip install --disable-pip-version-check requests
-      - name: Fetch targeted crypto combo series history
-        run: python research/mve_crypto_series_history_ci.py
+      - name: Fetch MVE crypto by creation window
+        run: python research/mve_crypto_by_created_ci.py
       - name: Upload result
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: research-results
-          path: mve_crypto_series_history.json
+          path: mve_crypto_by_created.json
           if-no-files-found: ignore
