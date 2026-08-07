@@ -35,6 +35,23 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt scikit-learn scipy tabulate
 
+      - name: Apply narrow runner fix
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('research/cross_market_quote_lag.py')
+          s = p.read_text(encoding='utf-8')
+          s = s.replace(
+              'add_economics(valid, predictions[model_name]["valid"])',
+              'add_economics(valid, predictions[model_name]["valid"]["p_yes"])',
+          )
+          s = s.replace(
+              'add_economics(test, predictions[model_name]["test"])',
+              'add_economics(test, predictions[model_name]["test"]["p_yes"])',
+          )
+          p.write_text(s, encoding='utf-8')
+          PY
+
       - name: Run preregistered audit
         env:
           PYTHONIOENCODING: utf-8
