@@ -8,7 +8,7 @@ permissions:
 jobs:
   audit:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -16,12 +16,12 @@ jobs:
           python-version: '3.12'
       - name: Install requests
         run: python -m pip install --disable-pip-version-check requests
-      - name: Fetch MVE crypto by creation window
-        run: python research/mve_crypto_by_created_ci.py
+      - name: Run inventory-backed dominance RFQ lock audit
+        run: python research/ibdr_lock_ci.py
       - name: Upload result
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: research-results
-          path: mve_crypto_by_created.json
+          path: ibdr_lock.json
           if-no-files-found: ignore
