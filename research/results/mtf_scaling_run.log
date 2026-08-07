@@ -1,0 +1,32 @@
+# MTF-S — Target-Frontier Scaling Audit
+
+Scalable arithmetic-cover candidate markets: **11**.
+
+| ticker                                  | series           | side   |   frontier_bid |   distance_c |   rest_fraction |   guaranteed_capacity |   min_qty_for_1usd |   modeled_reward |   worst_one_fill_loss |   reward_to_loss | fits_frontier   | arithmetic_cover   | scalable_candidate   |
+|:----------------------------------------|:-----------------|:-------|---------------:|-------------:|----------------:|----------------------:|-------------------:|-----------------:|----------------------:|-----------------:|:----------------|:-------------------|:---------------------|
+| KXAPRPOTUS-26AUG07-39.9                 | KXAPRPOTUS       | yes    |        0.01000 |      0.00000 |         0.25000 |                    41 |                 20 |          1.03306 |               0.20000 |          5.16529 | True            | True               | True                 |
+| KXAAAGASD-26AUG07-4.030                 | KXAAAGASD        | no     |        0.01000 |      0.00000 |         0.25000 |                   998 |                 81 |          1.00235 |               0.81000 |          1.23747 | True            | True               | True                 |
+| KXRAIN-26AUG06-BOS                      | KXRAIN           | yes    |        0.01000 |      0.00000 |         0.25000 |                   528 |                 81 |          1.00235 |               0.81000 |          1.23747 | True            | True               | True                 |
+| KXAPRPOTUS-26AUG07-39.9                 | KXAPRPOTUS       | yes    |        0.01000 |      0.00000 |         0.50000 |                    41 |                 10 |          1.03306 |               0.10000 |         10.33058 | True            | True               | True                 |
+| KXAAAGASD-26AUG07-4.030                 | KXAAAGASD        | no     |        0.01000 |      0.00000 |         0.50000 |                   998 |                 41 |          1.01460 |               0.41000 |          2.47463 | True            | True               | True                 |
+| KXRAIN-26AUG06-BOS                      | KXRAIN           | yes    |        0.01000 |      0.00000 |         0.50000 |                   528 |                 41 |          1.01460 |               0.41000 |          2.47463 | True            | True               | True                 |
+| KXCHINAAI-26AUG17-MOON                  | KXCHINAAI        | yes    |        0.02000 |      0.00000 |         0.50000 |                   975 |                 30 |          1.00496 |               0.60000 |          1.67494 | True            | True               | True                 |
+| KXGOLD15M-26AUG062115-15                | KXGOLD15M        | no     |        0.01000 |      0.00000 |         0.50000 |                   262 |                 64 |          1.01266 |               0.64000 |          1.58228 | True            | True               | True                 |
+| KXMAXSHIPSHORMUZ-26AUG31-AL100          | KXMAXSHIPSHORMUZ | yes    |        0.02000 |      0.00000 |         0.50000 |                   152 |                 33 |          1.02281 |               0.66000 |          1.54971 | True            | True               | True                 |
+| KXRAIN-26AUG07-AUS                      | KXRAIN           | yes    |        0.02000 |      0.00000 |         0.50000 |                   756 |                 41 |          1.01460 |               0.82000 |          1.23732 | True            | True               | True                 |
+| KXRAIN-26AUG07-LV                       | KXRAIN           | yes    |        0.02000 |      0.00000 |         0.50000 |                   429 |                 41 |          1.01460 |               0.82000 |          1.23732 | True            | True               | True                 |
+| KXVOTEPRIMARY-FLPRIMARY25D26OLAROLAR-50 | KXVOTEPRIMARY    | yes    |        0.02000 |      0.00000 |         0.50000 |                   200 |                 45 |          1.00124 |               0.90000 |          1.11248 | True            | True               | True                 |
+| KXMAXSHIPSHORMUZ-26AUG31-AL90           | KXMAXSHIPSHORMUZ | yes    |        0.03000 |      0.00000 |         0.50000 |                   975 |                 33 |          1.02281 |               0.99000 |          1.03314 | True            | True               | True                 |
+| KXTRUMPACT-26AUG02-T10                  | KXTRUMPACT       | yes    |        0.02000 |      2.00000 |         0.50000 |                    80 |                 49 |          1.01052 |               0.98000 |          1.03114 | True            | True               | True                 |
+
+```json
+{
+  "source_rows": 759,
+  "scenario_rows": 3036,
+  "candidate_rows": 14,
+  "candidate_markets": 11
+}
+```
+
+The calculation assumes the $1 minimum applies per program and
+does not prove actual credited reward, rest time, or future frontier stability.
