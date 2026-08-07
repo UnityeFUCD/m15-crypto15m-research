@@ -1,5 +1,6 @@
 name: FOP Audit
 
+# Explicit trigger revision after the preregistration and implementation landed.
 on:
   push:
     branches: [codex/genuine-breakthrough-search]
