@@ -8,27 +8,20 @@ permissions:
 jobs:
   audit:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Install analysis dependencies
-        run: python -m pip install --disable-pip-version-check pandas numpy pyarrow requests
-      - name: Run read-only FFCB capacity audit
-        run: python research/ffcb_capacity_ci.py
-      - name: Run public combo discovery
-        run: python research/mve_public_discovery_ci.py
-      - name: Run deterministic combo lag scanner
-        run: python research/mve_deterministic_lag_ci.py
-      - name: Upload machine-readable results
+      - name: Install requests
+        run: python -m pip install --disable-pip-version-check requests
+      - name: Fetch repeated-component event metadata
+        run: python research/mve_repeat_event_meta_ci.py
+      - name: Upload result
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: research-results
-          path: |
-            ffcb_capacity_results.json
-            mve_public_discovery.json
-            mve_deterministic_lag.json
+          path: mve_repeat_event_meta.json
           if-no-files-found: ignore
