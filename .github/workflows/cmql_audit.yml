@@ -1,0 +1,54 @@
+name: CMQL Audit
+
+on:
+  push:
+    branches:
+      - codex/genuine-breakthrough-search
+    paths:
+      - "research/cmql_preregistration.md"
+      - "research/cross_market_quote_lag.py"
+      - ".github/workflows/cmql_audit.yml"
+      - "data/paths_full.parquet"
+      - "requirements.txt"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: codex/genuine-breakthrough-search
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt scikit-learn scipy tabulate
+
+      - name: Run preregistered audit
+        env:
+          PYTHONIOENCODING: utf-8
+        run: |
+          set -o pipefail
+          python -W error::RuntimeWarning research/cross_market_quote_lag.py 2>&1 | tee research/results/cmql_run.log
+
+      - name: Commit evidence
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add research/results/cmql research/results/cmql_run.log || true
+          if ! git diff --cached --quiet; then
+            git commit -m "CMQL preregistered audit results [skip ci]"
+            git push origin HEAD:codex/genuine-breakthrough-search
+          fi
