@@ -32,9 +32,11 @@ jobs:
           p = Path("research/ac_drc_postcutoff.py")
           s = p.read_text(encoding="utf-8")
           old = '        groups[(str(m["series_ticker"]), m["true_close"].date().isoformat())].append(m)'
-          new = '''        tc = m["true_close"]
-        block = tc.replace(hour=(tc.hour // 4) * 4, minute=0, second=0, microsecond=0)
-        groups[(str(m["series_ticker"]), block.isoformat())].append(m)'''
+          new = "\n".join([
+              '        tc = m["true_close"]',
+              '        block = tc.replace(hour=(tc.hour // 4) * 4, minute=0, second=0, microsecond=0)',
+              '        groups[(str(m["series_ticker"]), block.isoformat())].append(m)',
+          ])
           if old not in s:
               raise SystemExit("Expected batching source line not found; fail closed")
           s = s.replace(old, new, 1)
