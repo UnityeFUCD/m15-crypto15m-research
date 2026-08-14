@@ -1,0 +1,48 @@
+name: HBCD Series Diagnostic
+
+on:
+  push:
+    branches:
+      - research/gpt56-hedge-before-confirm
+    paths:
+      - "research/hbcd_series_diagnostic.py"
+      - ".github/workflows/hbcd-series-diagnostic.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  diagnostic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    env:
+      HBCD_START: "2026-07-31"
+      HBCD_MAX_PAGES_PER_DAY: "75"
+      HBCD_MAX_CANDLE_AGE_SECONDS: "90"
+      HBCD_HTTP_SLEEP: "0.04"
+      HBCD_DIAGNOSTIC_SERIES: "KXMVECROSSCATEGORY,KXMVESPORTSMULTIGAMEEXTENDED"
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: research/gpt56-hedge-before-confirm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run frozen series diagnostic
+        run: |
+          mkdir -p research/results/hbcd_series_diagnostic
+          python research/hbcd_series_diagnostic.py | tee research/results/hbcd_series_diagnostic/run.log
+      - name: Upload diagnostic evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: hbcd-series-diagnostic
+          path: research/results/hbcd_series_diagnostic/**
+          if-no-files-found: warn
+          retention-days: 30
