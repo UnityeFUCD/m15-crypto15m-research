@@ -1,0 +1,67 @@
+name: Dynamic Pair Completion Data Audit
+
+on:
+  push:
+    branches:
+      - codex/dynamic-pair-completion
+    paths:
+      - "research/inspect_dynamic_pair_data.py"
+      - "capture/**"
+      - "data/**"
+      - ".github/workflows/dynamic_pair_completion.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  audit:
+    if: ${{ !contains(github.event.head_commit.message, '[skip dpc]') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: codex/dynamic-pair-completion
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run fail-closed data audit
+        id: audit
+        shell: bash
+        run: |
+          set +e
+          mkdir -p research/results
+          python research/inspect_dynamic_pair_data.py > research/results/dpc_data_audit.log 2>&1
+          status=$?
+          echo "exit_code=$status" >> "$GITHUB_OUTPUT"
+          cat research/results/dpc_data_audit.log
+          exit 0
+
+      - name: Commit evidence
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f \
+            research/results/dpc_data_audit.log \
+            research/results/dpc_data_audit.md \
+            research/results/dpc_data_audit.json
+          if git diff --cached --quiet; then
+            echo "No generated changes"
+          else
+            git commit -m "Dynamic pair data audit results [skip dpc]"
+            git push origin HEAD:codex/dynamic-pair-completion
+          fi
+
+      - name: Fail workflow if audit failed
+        if: ${{ steps.audit.outputs.exit_code != '0' }}
+        run: exit 1
