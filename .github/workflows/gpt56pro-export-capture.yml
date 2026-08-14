@@ -1,0 +1,81 @@
+name: GPT56Pro Capture DB Export
+
+on:
+  push:
+    branches:
+      - research/gpt56pro-capture-audit-20260813
+    paths:
+      - ".github/workflows/gpt56pro-export-capture.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify and export SQLite capture
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p capture_export/tables
+          python - <<'PY'
+          import csv, hashlib, json, sqlite3
+          from pathlib import Path
+
+          db_path = Path('capture/capture.db')
+          out = Path('capture_export')
+          raw = db_path.read_bytes()
+          con = sqlite3.connect(f'file:{db_path}?mode=ro', uri=True)
+          con.row_factory = sqlite3.Row
+
+          integrity = con.execute('PRAGMA integrity_check').fetchall()
+          tables = [r[0] for r in con.execute(
+              "SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite_%' ORDER BY name"
+          )]
+          manifest = {
+              'db_path': str(db_path),
+              'size_bytes': len(raw),
+              'sha256': hashlib.sha256(raw).hexdigest(),
+              'integrity_check': [r[0] for r in integrity],
+              'tables': {},
+          }
+
+          schema_rows = con.execute(
+              "SELECT type, name, tbl_name, sql FROM sqlite_master ORDER BY type, name"
+          ).fetchall()
+          with (out / 'schema.sql').open('w', encoding='utf-8') as f:
+              for row in schema_rows:
+                  if row['sql']:
+                      f.write(row['sql'].rstrip(';') + ';\n\n')
+
+          for table in tables:
+              quoted = '"' + table.replace('"', '""') + '"'
+              count = con.execute(f'SELECT COUNT(*) FROM {quoted}').fetchone()[0]
+              cols = [r[1] for r in con.execute(f'PRAGMA table_info({quoted})')]
+              manifest['tables'][table] = {'rows': count, 'columns': cols}
+              csv_path = out / 'tables' / f'{table}.csv'
+              cur = con.execute(f'SELECT * FROM {quoted}')
+              with csv_path.open('w', newline='', encoding='utf-8') as f:
+                  writer = csv.writer(f)
+                  writer.writerow(cols)
+                  for row in cur:
+                      writer.writerow(list(row))
+
+          (out / 'manifest.json').write_text(
+              json.dumps(manifest, indent=2, sort_keys=True), encoding='utf-8'
+          )
+          con.close()
+          print(json.dumps(manifest, indent=2, sort_keys=True))
+          PY
+          cp capture/capture.db capture_export/capture.db
+      - name: Upload capture database and normalized export
+        uses: actions/upload-artifact@v4
+        with:
+          name: gpt56pro-capture-export
+          path: capture_export/**
+          if-no-files-found: error
+          retention-days: 7
