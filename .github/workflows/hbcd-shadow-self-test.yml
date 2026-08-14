@@ -1,0 +1,35 @@
+name: HBCD Shadow Collector Self-Test
+
+on:
+  push:
+    branches:
+      - research/gpt56-hedge-before-confirm
+    paths:
+      - "research/hbcd_tier_a_collector.py"
+      - ".github/workflows/hbcd-shadow-self-test.yml"
+      - "requirements.txt"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  self-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: research/gpt56-hedge-before-confirm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Compile and run built-in tests
+        run: |
+          python -m py_compile research/hbcd_tier_a_collector.py
+          python research/hbcd_tier_a_collector.py --self-test
