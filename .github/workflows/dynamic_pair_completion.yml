@@ -19,12 +19,13 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           fetch-depth: 0
           ref: codex/dynamic-pair-completion
+          persist-credentials: true
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.11"
           cache: pip
@@ -48,7 +49,10 @@ jobs:
 
       - name: Commit evidence
         shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
+          set -euxo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -f \
@@ -59,7 +63,8 @@ jobs:
             echo "No generated changes"
           else
             git commit -m "Dynamic pair data audit results [skip dpc]"
-            git push origin HEAD:codex/dynamic-pair-completion
+            git push "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" \
+              HEAD:codex/dynamic-pair-completion
           fi
 
       - name: Fail workflow if audit failed
