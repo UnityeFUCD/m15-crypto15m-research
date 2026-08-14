@@ -1,0 +1,138 @@
+name: GPT56Pro Independent BTC15 Corpus Export
+
+on:
+  push:
+    branches:
+      - research/gpt56pro-capture-audit-20260813
+    paths:
+      - ".github/workflows/gpt56pro-hf-btc15-export.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install download dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install "huggingface_hub>=0.34" pyarrow pandas
+      - name: Download independent decision and execution tables
+        env:
+          HF_HUB_DISABLE_XET: "1"
+        run: |
+          set -euo pipefail
+          mkdir -p hf_btc15_export
+          python - <<'PY'
+          from __future__ import annotations
+          import json, os, shutil
+          from pathlib import Path
+          from huggingface_hub import HfApi, hf_hub_download
+
+          repo_id = "huthvincent/btc15-dataset"
+          out = Path("hf_btc15_export")
+          api = HfApi()
+          wanted_roots = {
+              "orders", "trades", "predictions", "runs",
+              "strategies", "settlements", "equity"
+          }
+          manifest = {"repo_id": repo_id, "attempts": [], "files": []}
+
+          def export_revision(revision: str) -> int:
+              count = 0
+              tree = list(api.list_repo_tree(
+                  repo_id=repo_id,
+                  repo_type="dataset",
+                  revision=revision,
+                  recursive=True,
+                  expand=True,
+              ))
+              manifest["attempts"].append({
+                  "revision": revision,
+                  "entries": len(tree),
+              })
+              for entry in tree:
+                  path = getattr(entry, "path", "")
+                  size = getattr(entry, "size", None)
+                  if not path or "/" not in path:
+                      continue
+                  root = path.split("/", 1)[0]
+                  if root not in wanted_roots:
+                      continue
+                  if size is not None and size > 50_000_000:
+                      continue
+                  local = hf_hub_download(
+                      repo_id=repo_id,
+                      repo_type="dataset",
+                      revision=revision,
+                      filename=path,
+                  )
+                  dest = out / revision.replace("/", "__") / path
+                  dest.parent.mkdir(parents=True, exist_ok=True)
+                  shutil.copy2(local, dest)
+                  manifest["files"].append({
+                      "revision": revision,
+                      "path": path,
+                      "size": size,
+                      "dest": str(dest),
+                  })
+                  count += 1
+              return count
+
+          total = 0
+          errors = []
+          for revision in ("refs/convert/parquet", "main"):
+              try:
+                  total += export_revision(revision)
+              except Exception as exc:
+                  errors.append({"revision": revision, "error": repr(exc)})
+
+          manifest["errors"] = errors
+          manifest["downloaded_count"] = total
+          (out / "manifest.json").write_text(
+              json.dumps(manifest, indent=2, sort_keys=True), encoding="utf-8"
+          )
+          print(json.dumps(manifest, indent=2, sort_keys=True))
+          if total == 0:
+              raise SystemExit("No eligible files were downloaded")
+          PY
+      - name: Normalize parquet tables and emit diagnostics
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          import pandas as pd
+          import pyarrow.parquet as pq
+
+          root = Path("hf_btc15_export")
+          report = {"parquet": []}
+          for path in sorted(root.rglob("*.parquet")):
+              table = pq.read_table(path)
+              df = table.to_pandas()
+              item = {
+                  "path": str(path),
+                  "rows": len(df),
+                  "columns": list(df.columns),
+              }
+              report["parquet"].append(item)
+              csv_path = path.with_suffix(".csv")
+              df.to_csv(csv_path, index=False)
+          (root / "diagnostics.json").write_text(
+              json.dumps(report, indent=2, default=str), encoding="utf-8"
+          )
+          print(json.dumps(report, indent=2, default=str))
+          PY
+      - name: Upload independent corpus
+        uses: actions/upload-artifact@v4
+        with:
+          name: gpt56pro-independent-btc15-corpus
+          path: hf_btc15_export/**
+          if-no-files-found: error
+          retention-days: 7
