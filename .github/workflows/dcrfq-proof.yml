@@ -1,0 +1,36 @@
+name: DCRFQ Mechanical Proof
+
+on:
+  push:
+    branches:
+      - research/gpt56-hedge-before-confirm
+    paths:
+      - "research/DCRFQ_FROZEN_SPEC.md"
+      - "research/dcrfq_proof.py"
+      - ".github/workflows/dcrfq-proof.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  proof:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: research/gpt56-hedge-before-confirm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Compile and verify payoff identities
+        run: |
+          python -m py_compile research/dcrfq_proof.py
+          python research/dcrfq_proof.py | tee dcrfq_proof_result.json
+      - name: Upload proof result
+        uses: actions/upload-artifact@v4
+        with:
+          name: dcrfq-proof-result
+          path: dcrfq_proof_result.json
+          retention-days: 30
