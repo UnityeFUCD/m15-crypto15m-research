@@ -25,6 +25,26 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install "numpy==2.3.2" "pandas==2.3.1" "requests==2.32.4"
+      - name: Apply API-safe four-hour candle batching
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p = Path("research/ac_drc_postcutoff.py")
+          s = p.read_text(encoding="utf-8")
+          old = '        groups[(str(m["series_ticker"]), m["true_close"].date().isoformat())].append(m)'
+          new = '''        tc = m["true_close"]
+        block = tc.replace(hour=(tc.hour // 4) * 4, minute=0, second=0, microsecond=0)
+        groups[(str(m["series_ticker"]), block.isoformat())].append(m)'''
+          if old not in s:
+              raise SystemExit("Expected batching source line not found; fail closed")
+          s = s.replace(old, new, 1)
+          s = s.replace(
+              '"""Batch by series/day so each response remains far below 10k candles."""',
+              '"""Batch by series/four-hour block so requested candle cells stay below 10k."""',
+              1,
+          )
+          p.write_text(s, encoding="utf-8")
+          PY
       - name: Query official Kalshi post-cutoff data and evaluate frozen rule
         run: |
           set -euo pipefail
@@ -32,6 +52,7 @@ jobs:
             --output-dir ac_drc_postcutoff \
             --fetch-start 2026-08-02T00:00:00Z \
             --evaluation-start 2026-08-06T00:00:00Z
+          cp research/ac_drc_postcutoff.py ac_drc_postcutoff/evaluator_executed.py
       - name: Upload immutable audit bundle
         uses: actions/upload-artifact@v4
         with:
