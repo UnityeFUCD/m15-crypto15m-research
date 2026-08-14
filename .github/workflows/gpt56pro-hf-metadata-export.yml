@@ -1,0 +1,64 @@
+name: GPT56Pro Independent BTC15 Metadata Export
+
+on:
+  push:
+    branches:
+      - research/gpt56pro-capture-audit-20260813
+    paths:
+      - ".github/workflows/gpt56pro-hf-metadata-export.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install Hugging Face client
+        run: pip install "huggingface_hub>=0.34"
+      - name: Download every small non-tick repository file
+        env:
+          HF_HUB_DISABLE_XET: "1"
+        run: |
+          set -euo pipefail
+          mkdir -p hf_btc15_metadata
+          python - <<'PY'
+          import json, shutil
+          from pathlib import Path
+          from huggingface_hub import HfApi, hf_hub_download
+
+          repo_id = "huthvincent/btc15-dataset"
+          out = Path("hf_btc15_metadata")
+          api = HfApi()
+          records=[]
+          for entry in api.list_repo_tree(repo_id=repo_id, repo_type="dataset", revision="main", recursive=True, expand=True):
+              path=getattr(entry,"path","")
+              size=getattr(entry,"size",None)
+              if not path or path.startswith("market_ticks/"):
+                  continue
+              if size is not None and size > 10_000_000:
+                  continue
+              try:
+                  local=hf_hub_download(repo_id=repo_id, repo_type="dataset", revision="main", filename=path)
+              except Exception as exc:
+                  records.append({"path":path,"size":size,"error":repr(exc)})
+                  continue
+              dest=out/path
+              dest.parent.mkdir(parents=True,exist_ok=True)
+              shutil.copy2(local,dest)
+              records.append({"path":path,"size":size,"dest":str(dest)})
+          (out/"manifest.json").write_text(json.dumps(records,indent=2,sort_keys=True),encoding="utf-8")
+          print(json.dumps(records,indent=2,sort_keys=True))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: gpt56pro-independent-btc15-metadata
+          path: hf_btc15_metadata/**
+          if-no-files-found: error
+          retention-days: 7
