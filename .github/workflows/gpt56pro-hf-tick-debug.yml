@@ -1,0 +1,66 @@
+name: GPT56Pro Independent Tick Schema Debug
+
+on:
+  push:
+    branches:
+      - research/gpt56pro-capture-audit-20260813
+    paths:
+      - ".github/workflows/gpt56pro-hf-tick-debug.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  debug:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install "huggingface_hub>=0.34" pyarrow pandas
+      - name: Export July 8 tick sample and schema
+        env:
+          HF_HUB_DISABLE_XET: "1"
+        run: |
+          set -euo pipefail
+          mkdir -p hf_tick_debug
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          import pandas as pd
+          import pyarrow.parquet as pq
+          from huggingface_hub import hf_hub_download
+
+          repo="huthvincent/btc15-dataset"
+          path="market_ticks/machine=server-h200/date=2026-07-08/part.parquet"
+          local=hf_hub_download(repo_id=repo,repo_type="dataset",revision="main",filename=path)
+          df=pq.read_table(local).to_pandas()
+          cols=list(df.columns)
+          report={
+              "rows":len(df),
+              "columns":cols,
+              "dtypes":{c:str(df[c].dtype) for c in cols},
+              "head":df.head(20).astype(object).where(pd.notna(df.head(20)),None).to_dict("records"),
+          }
+          for c in ["window_id","window_anchor_ts","tick_ts","market_ticker","run_id","kind"]:
+              if c in df:
+                  s=df[c]
+                  report[c]={
+                      "head":[None if pd.isna(x) else str(x) for x in s.head(20)],
+                      "nunique":int(s.nunique(dropna=True)),
+                      "min":None if s.dropna().empty else str(s.dropna().min()),
+                      "max":None if s.dropna().empty else str(s.dropna().max()),
+                  }
+          Path("hf_tick_debug/report.json").write_text(json.dumps(report,indent=2,default=str),encoding="utf-8")
+          df.head(5000).to_csv("hf_tick_debug/july8_head.csv",index=False)
+          print(json.dumps({k:v for k,v in report.items() if k!="head"},indent=2,default=str))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: gpt56pro-independent-tick-debug
+          path: hf_tick_debug/**
+          if-no-files-found: error
+          retention-days: 7
