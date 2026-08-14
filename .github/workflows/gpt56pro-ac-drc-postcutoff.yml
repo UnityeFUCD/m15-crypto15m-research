@@ -1,0 +1,41 @@
+name: GPT56Pro AC-DRC Post-Cutoff Audit
+
+on:
+  push:
+    branches:
+      - research/gpt56pro-capture-audit-20260813
+    paths:
+      - "research/ac_drc_postcutoff.py"
+      - ".github/workflows/gpt56pro-ac-drc-postcutoff.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install locked analysis dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install "numpy==2.3.2" "pandas==2.3.1" "requests==2.32.4"
+      - name: Query official Kalshi post-cutoff data and evaluate frozen rule
+        run: |
+          set -euo pipefail
+          python research/ac_drc_postcutoff.py \
+            --output-dir ac_drc_postcutoff \
+            --fetch-start 2026-08-02T00:00:00Z \
+            --evaluation-start 2026-08-06T00:00:00Z
+      - name: Upload immutable audit bundle
+        uses: actions/upload-artifact@v4
+        with:
+          name: gpt56pro-ac-drc-postcutoff
+          path: ac_drc_postcutoff/**
+          if-no-files-found: error
+          retention-days: 14
