@@ -32,7 +32,7 @@ jobs:
           mkdir -p hf_live_window_ticks
           python - <<'PY'
           from __future__ import annotations
-          import json, shutil
+          import json
           from pathlib import Path
           import pandas as pd
           import pyarrow.parquet as pq
@@ -42,13 +42,24 @@ jobs:
           out = Path("hf_live_window_ticks")
           api = HfApi()
 
-          orders_path = hf_hub_download(
-              repo_id=repo_id, repo_type="dataset", revision="main",
-              filename="orders/data.parquet"
+          def download_df(filename: str) -> pd.DataFrame:
+              path = hf_hub_download(
+                  repo_id=repo_id, repo_type="dataset", revision="main",
+                  filename=filename,
+              )
+              return pq.read_table(path).to_pandas()
+
+          orders = download_df("orders/data.parquet")
+          runs = download_df("runs/data.parquet")
+          live_run_ids = set(runs.loc[runs["kind"].eq("live"), "run_id"].astype(str))
+          live = orders[
+              orders["event_id"].astype(str).str.startswith("evt_exec_")
+              & orders["run_id"].astype(str).isin(live_run_ids)
+          ].copy()
+          target_windows = set(
+              pd.to_numeric(live["window_id"], errors="coerce")
+              .dropna().astype("int64")
           )
-          orders = pq.read_table(orders_path).to_pandas()
-          live = orders[orders["event_id"].astype(str).str.startswith("evt_exec_")].copy()
-          target_windows = set(pd.to_numeric(live["window_id"], errors="coerce").dropna().astype("int64"))
           if not target_windows:
               raise SystemExit("No live execution windows found")
 
@@ -56,20 +67,24 @@ jobs:
           records=[]
           entries=list(api.list_repo_tree(
               repo_id=repo_id, repo_type="dataset", revision="main",
-              recursive=True, expand=True
+              recursive=True, expand=True,
           ))
-          tick_files=[e for e in entries if getattr(e,"path","").startswith("market_ticks/") and getattr(e,"path","").endswith(".parquet")]
+          tick_files=[
+              e for e in entries
+              if getattr(e,"path","").startswith("market_ticks/")
+              and getattr(e,"path","").endswith(".parquet")
+          ]
           for idx, entry in enumerate(tick_files, 1):
               path=entry.path
               local=hf_hub_download(
                   repo_id=repo_id, repo_type="dataset", revision="main", filename=path
               )
               df=pq.read_table(local).to_pandas()
-              if "window_id" not in df.columns:
-                  records.append({"path":path,"rows":len(df),"kept":0,"error":"missing window_id"})
+              if "window_anchor_ts" not in df.columns:
+                  records.append({"path":path,"rows":len(df),"kept":0,"error":"missing window_anchor_ts"})
                   continue
-              win=pd.to_numeric(df["window_id"], errors="coerce")
-              keep=df[win.isin(target_windows)].copy()
+              anchor=pd.to_numeric(df["window_anchor_ts"], errors="coerce")
+              keep=df[anchor.isin(target_windows)].copy()
               if len(keep):
                   keep["source_partition"]=path
                   chunks.append(keep)
@@ -85,20 +100,19 @@ jobs:
           if not chunks:
               raise SystemExit("No market ticks matched recorded live-order windows")
           ticks=pd.concat(chunks, ignore_index=True, sort=False)
-          for c in ("window_id","tick_ts","window_anchor_ts","seconds_from_open"):
+          for c in ("tick_ts","window_anchor_ts","seconds_from_open"):
               if c in ticks.columns:
                   ticks[c]=pd.to_numeric(ticks[c], errors="coerce")
-          sort_cols=[c for c in ("window_id","tick_ts","tick_iso") if c in ticks.columns]
+          sort_cols=[c for c in ("window_anchor_ts","tick_ts","tick_iso") if c in ticks.columns]
           ticks=ticks.sort_values(sort_cols, kind="stable")
           ticks.to_parquet(out/"live_order_window_ticks.parquet", index=False)
-          # CSV is convenient for audit; gzip controls artifact size.
           ticks.to_csv(out/"live_order_window_ticks.csv.gz", index=False, compression="gzip")
           live.to_parquet(out/"live_exec_order_events.parquet", index=False)
           live.to_csv(out/"live_exec_order_events.csv", index=False)
           summary={
               "tick_partitions":len(tick_files),
               "target_windows":len(target_windows),
-              "matched_windows":int(ticks["window_id"].nunique()),
+              "matched_windows":int(ticks["window_anchor_ts"].nunique()),
               "matched_rows":len(ticks),
               "columns":list(ticks.columns),
               "order_events":len(live),
