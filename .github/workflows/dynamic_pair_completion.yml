@@ -11,7 +11,7 @@ on:
       - ".github/workflows/dynamic_pair_completion.yml"
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   audit:
@@ -23,7 +23,6 @@ jobs:
         with:
           fetch-depth: 0
           ref: codex/dynamic-pair-completion
-          persist-credentials: true
 
       - uses: actions/setup-python@v6
         with:
@@ -47,25 +46,44 @@ jobs:
           cat research/results/dpc_data_audit.log
           exit 0
 
-      - name: Commit evidence
+      - name: Publish machine-readable evidence
+        if: always()
         shell: bash
-        env:
-          GH_TOKEN: ${{ github.token }}
         run: |
-          set -euxo pipefail
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -f \
-            research/results/dpc_data_audit.log \
-            research/results/dpc_data_audit.md \
-            research/results/dpc_data_audit.json
-          if git diff --cached --quiet; then
-            echo "No generated changes"
-          else
-            git commit -m "Dynamic pair data audit results [skip dpc]"
-            git push "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" \
-              HEAD:codex/dynamic-pair-completion
-          fi
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p = Path('research/results/dpc_data_audit.json')
+          if not p.exists():
+              print('::error title=DPC_DATA_AUDIT::audit JSON missing')
+              raise SystemExit(1)
+          r = json.loads(p.read_text())
+          a = r.get('alignment', {})
+          compact = {
+              'verdict': a.get('verdict'),
+              'orders_rows': a.get('orders_rows'),
+              'lsm_orders': a.get('lsm_orders'),
+              'fills_rows': a.get('fills_rows'),
+              'lsm_fill_rows': a.get('lsm_fill_rows'),
+              'capture_book_rows': a.get('capture_book_rows'),
+              'capture_trade_rows': a.get('capture_trade_rows'),
+              'book_overlap': a.get('book_overlap'),
+              'trade_overlap': a.get('trade_overlap'),
+              'orders_columns': a.get('orders_columns'),
+              'fills_columns': a.get('fills_columns'),
+              'book_columns': a.get('book_columns'),
+              'tape_columns': a.get('tape_columns'),
+              'sqlite_table_rows': {
+                  k: v.get('rows', 0)
+                  for k, v in r.get('sqlite', {}).get('tables', {}).items()
+              },
+              'parquets': r.get('parquets'),
+          }
+          message = json.dumps(compact, separators=(',', ':'))
+          print(f'::notice title=DPC_DATA_AUDIT::{message}')
+          with open(Path.home() / 'dpc_summary.txt', 'w') as fh:
+              fh.write(message)
+          PY
 
       - name: Fail workflow if audit failed
         if: ${{ steps.audit.outputs.exit_code != '0' }}
